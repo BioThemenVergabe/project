@@ -1,0 +1,26 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+section:first-child {
+    height: 80%;
+    background-image: url('../img/bg_1.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-positio: center center;
+}
+
+section > div > div {
+    margin-top: 5%;
+}
+
+section:first-child .panel {
+    box-shadow: 0 0 15px #191919;
+}
+
+section:first-child .panel-heading {
+    font-size: 32px;
+}

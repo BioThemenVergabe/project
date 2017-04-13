@@ -16,7 +16,7 @@ section:first-child {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-positio: center center;
 }
 
 section > div > div {
@@ -51,11 +51,11 @@ footer {
 }
 
 .lang-de {
-    background-image: url('../img/flags/de.png');
+    background-img: url('../img/flags/de.png');
 }
 
 .lang-en {
-    background-image: url('../img/flags/en.png');
+    background-img: url('../img/flags/en.png');
 }
 
 .modal-dialog{

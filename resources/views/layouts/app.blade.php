@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <label>Footer</label>
+                    <label>Impressum</label>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">

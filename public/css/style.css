@@ -10,12 +10,13 @@ body {
 }
 
 section:first-child {
+    min-height: 600px;
     height: 80%;
     background-image: url('../img/bg_1.jpeg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    background-positio: center center;
+    background-position: center center;
 }
 
 section > div > div {
@@ -40,4 +41,23 @@ footer {
     background-color: #191919;
     padding-top: 50px;
     padding-bottom: 100px;
+}
+
+.lang {
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    display: block;
+}
+
+.lang-de {
+    background-image: url('../img/flags/de.png');
+}
+
+.lang-en {
+    background-image: url('../img/flags/en.png');
+}
+
+.modal-dialog{
+    display: table;
 }

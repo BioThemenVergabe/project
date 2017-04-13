@@ -6,31 +6,10 @@
         <div class="row">
             <div class="col-xs-12 col-md-6 col-md-offset-3">
                 <div class="panel">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading">
-                        <div class="pull-right">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-danger lang lang-de"></button>
-                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <label>{{ config('app.name') }}</label>
-                    </div>
+                
+                    @include('panels.heading')
                     <div class="panel-body">
-
-                            @include('auth.forms.login')
-                        </form>
-
+                        @include('auth.forms.login')
                     </div>
                 </div>
             </div>

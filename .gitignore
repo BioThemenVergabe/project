@@ -1,0 +1,11 @@
+.idea
+node_modules
+vendor
+.env*
+artisan
+composer.*
+Gruntfile.js
+gulpfile.js
+package.json
+phpunit.xml
+server.php

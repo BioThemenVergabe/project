@@ -61,3 +61,7 @@ footer {
 .modal-dialog{
     display: table;
 }
+
+.btn-social-icon {
+    margin-right: 1em; margin-left:1em
+}

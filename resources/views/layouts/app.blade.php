@@ -11,6 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="{{asset('/assets/css/application.css')}}" rel="stylesheet">
+    <link href="{{asset('/assets/css/toolkit-light.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="{{asset('/css/style.css')}}" rel="stylesheet">
 
@@ -26,6 +28,23 @@
 <body>
 
     @yield('content')
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Footer</label>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav nav-bordered nav-stacked">
+                        <li><a href="#" class="icon icon-facebook"> Facebook</a></li>
+                        <li><a href="#" class="icon icon-twitter"> Twitter</a></li>
+                        <li><a href="#" class="icon icon-google-plus"> Google+</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>

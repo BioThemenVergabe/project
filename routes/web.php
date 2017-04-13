@@ -20,8 +20,8 @@ Route::get('/dashboard', function() {
     return view('dashboard');
 });
 
-Route::post('/hallo', function() {
-   return response()->json(['success' => false ]);
+Route::post('/dashboard', function() {
+   return view('dashboard');
 });
 
 Auth::routes();

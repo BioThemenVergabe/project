@@ -22,19 +22,6 @@
 
     </section>
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <label>Footer</label>
-            </div>
-            <div class="col-md-6">
-                <label>Social Media Buttons</label>
-            </div>
-        </div>
-    </div>
-</footer>
-
 @include('modals.forgot')
 @include('modals.register')
 

@@ -1,7 +1,41 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: Patrick
- * Date: 13.04.2017
- * Time: 22:14
- */
+@extends('layouts.app')
+
+@section('content')
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="pull-right">
+                <div class="btn btn-link">Studierende</div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default icon icon-home"></button>
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </div>
+            <label id="logo">{{ config('app.name') }}</label>
+        </div>
+    </div>
+</header>
+
+<section class="container">
+
+    <h1>Willkommen</h1>
+
+</section>
+
+
+@include('modals.forgot')
+@include('modals.register')
+
+@endsection
+

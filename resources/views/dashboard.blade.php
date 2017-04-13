@@ -18,7 +18,7 @@
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#" class=""icon icon-log-out">Separated link</a></li>
                     </ul>
                 </div>
             </div>

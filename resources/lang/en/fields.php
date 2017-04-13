@@ -13,7 +13,20 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'reset' => 'Send Password Reset Link',
+    'username' => 'Username',
+    'password' => 'Password',
+    'cPassword' => 'Confirm Password',
+    'mail' => 'Email Address',
+    'name' => 'Name',
+    'pswreset' => 'Reset Your Password',
+
+    'submit' => 'Submit',
+    'register' => 'Register',
+    'reset' => 'Reset',
+    'signin' => 'Sign in',
+    'signout' => 'Sign out',
+    'remember' => 'Remember me',
+    'forgot' => 'Forgot Your Password?',
+    'login' => 'Login',
+
 ];

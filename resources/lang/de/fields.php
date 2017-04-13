@@ -13,7 +13,19 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'reset' => 'Send Password Reset Link',
+    'username' => 'Benutzername',
+    'password' => 'Passwort',
+    'cPassword' => 'Passwort (Wdh.)',
+    'mail' => 'Email Adresse',
+    'name' => 'Name',
+    'pswreset' => 'Passwort Wiederherstellen',
+
+    'submit' => 'Senden',
+    'register' => 'Registrieren',
+    'reset' => 'Zur&uuml;cksetzen',
+    'signin' => 'Anmelden',
+    'signout' => 'Abmelden',
+    'remember' => 'Anmeldung speichern',
+    'forgot' => 'Passwort vergessen?',
+    'login' => 'Anmelden',
 ];

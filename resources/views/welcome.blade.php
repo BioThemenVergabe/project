@@ -7,54 +7,58 @@
             <div class="col-xs-12 col-md-6 col-md-offset-3">
                 <div class="panel">
                     <!-- Default panel contents -->
-                    <div class="panel-heading"><label>Biologie Konstanz Wahlsystem</label></div>
+                    <div class="panel-heading">
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger lang lang-de"></button>
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <label>{{ config('app.name') }}</label>
+                    </div>
                     <div class="panel-body">
 
-                        <form class="form-horizontal" method="post" action="{{ url('/hallo') }}">
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Remember me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Sign in</button>
-                                    <a href="#" class="btn btn-link">Registrieren</a>
-                                    <a data-action="psw-reset" href="/password/reset" class="btn btn-link">Passwort vergessen</a>
-                                </div>
-                            </div>
+                            @include('auth.forms.login')
                         </form>
 
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
 
+    <section class="container">
+
+        <h1>Willkommen</h1>
+
+    </section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Footer</label>
+            </div>
+            <div class="col-md-6">
+                <label>Social Media Buttons</label>
+            </div>
+        </div>
+    </div>
+</footer>
+
+@include('modals.forgot')
+@include('modals.register')
+
 @endsection
 
-@section('JS')
-<script>
-    $.ready(function() {
-        $('a[data-action=psw-reset]').on('click', function(e) {
-            e.preventDefault();
-        });
-    });
-</script>
-@endsection

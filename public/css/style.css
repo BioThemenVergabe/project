@@ -31,3 +31,13 @@ section:first-child .panel-heading {
     font-family: Engravers;
     border-bottom: 1px solid #dcdcdc;
 }
+
+section:nth-child(2) {
+    height: 20%;
+}
+
+footer {
+    background-color: #191919;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}

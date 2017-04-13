@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'reset' => 'Send Password Reset Link',
+    'failed' => 'Die angegebenen Daten stimmen nicht&uuml;berein.',
+    'throttle' => 'Zu viele Loginversuche. Bitte versuche es in :seconds sek. erneut.',
+    'reset' => 'Passwort zur&uuml;cksetzen',
 ];

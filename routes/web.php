@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    App::setLocale('de');
     return view('welcome');
 });
 
@@ -19,6 +20,14 @@ Route::get('/dashboard', function() {
     return view('dashboard');
 });
 
+Route::post('/hallo', function() {
+   return response()->json(['success' => false ]);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/logout', function() {
+   Auth::logout();
+});

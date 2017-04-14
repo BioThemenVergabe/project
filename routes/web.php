@@ -15,9 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('language');
 
-Route::get('/dashboard', function() {
+Route::match(['get', 'post'], '/dashboard', function () {
     return view('dashboard');
 })->middleware('language');
+
 
 Route::get('/profile/edit', function() {
     return view('edit_user');
@@ -26,6 +27,10 @@ Route::get('/profile/edit', function() {
 Route::post('/profile/save', function() {
     return redirect('/dashboard');
 });
+
+Route::get('/wahl', function() {
+   return view('wahl');
+})->middleware('language');
 
 /*
  * routes for storing the lang-key.

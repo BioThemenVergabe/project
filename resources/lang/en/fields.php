@@ -30,5 +30,12 @@ return [
     'forgot' => 'Forgot Your Password?',
     'login' => 'Login',
     'save' => 'Save',
+    'sum' => 'Summe',
 
+    'welcome' => 'Welcome',
+
+    'matnr' => 'Matriculation number',
+    'results' => 'Results',
+
+    'selection' => 'Voting',
 ];

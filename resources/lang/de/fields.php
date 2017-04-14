@@ -30,5 +30,11 @@ return [
     'forgot' => 'Passwort vergessen?',
     'login' => 'Anmelden',
     'save' => 'Speichern',
+    'sum' => 'Summe',
 
+    'welcome' => 'Willkommen',
+
+    'matnr' => 'Matrikelnummer',
+    'results' => 'Wahlergebnisse',
+    'selection' => 'Wahl',
 ];

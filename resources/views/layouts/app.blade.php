@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
     <link href="{{asset('/assets/css/application.css')}}" rel="stylesheet">
@@ -39,17 +39,20 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                Fachschaft
                                 <address>
-
+                                    <h5>Fachschaft Biologie</h5>
+                                    <p>Universitätsstraße 10</p>
+                                    <p>78464 Konstanz</p>
+                                    <p>Telefon intern: 4188</p>
+<!--                                    <p>E-Mail: <a href="mailto:fachschaft.biologie@uni-konstanz.de">fachschaft.biologie@uni-konstanz.de</a></p> -->
+                                    <p>Raum: <a href="https://www.fachschaft.biologie.uni-konstanz.de/ueber-uns/wo-wir-zu-finden-sind/" target="_blank">M612</a></p>
                                 </address>
                             </div>
                             <div class="col-md-6">
-                                Autoren<br>
+                                <h5>Autoren</h5>
                                 <address>
                                     Mathias Leopold
-                                </address>
-                                <address>
+
                                     Patrick M&ouml;ser
                                 </address>
                             </div>

@@ -44,6 +44,8 @@
             @lang('fields.login')
         </button>
 
+        <a href="/admin" class="btn btn-link icon icon-key"></a>
+
         <a class="btn btn-link" data-action="register" href="{{ url('/register') }}">
             @lang('fields.register')
         </a>

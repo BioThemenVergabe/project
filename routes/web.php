@@ -24,6 +24,14 @@ Route::post('/dashboard', function() {
    return view('dashboard');
 });
 
+Route::get('/profile/edit', function() {
+    return view('edit_user');
+});
+
+Route::get('/profile/save', function() {
+    return view('dashboard');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

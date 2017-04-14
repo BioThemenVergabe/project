@@ -1,5 +1,18 @@
 $(function() {
 
+    $('[data-target=range]').html(function() {
+        return $(this).parents('tr').find('input[type=range]').val();
+    });
+
+    $('[type=range]').on('input change', function() {
+       $(this).parents('tr').find('[data-target=range]').html($(this).val());
+       var sum = 0;
+       $('[data-target=range]').each(function() {
+           sum += parseInt($(this).html());
+       })
+        $('#sum').html(sum);
+    });
+
     $('a[data-action]').on('click', function(e) {
         e.preventDefault();
         $('#'+$(this).data('action')).modal();
@@ -19,6 +32,23 @@ $(function() {
             if(sbmt.hasClass('disabled'))
                 sbmt.removeClass('disabled');
         }
+    });
+
+    $('[type=reset]').click(function() {
+        var sum = 0;
+        $('[data-target=range]').each(function() {
+           $(this).html(function() {
+               return $(this).parents('tr').find('input[type=range]').val();
+           });
+            sum += parseInt($(this).html());
+            $('#sum').html(sum);
+        });
+    });
+
+    var sum = 0;
+    $('[data-target=range]').each(function() {
+        sum += parseInt($(this).html());
+        $('#sum').html(sum);
     });
 
     $('[data-toggle="popover"]').popover();

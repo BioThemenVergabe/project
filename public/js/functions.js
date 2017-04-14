@@ -28,6 +28,7 @@ $(document).ready(function() {
     $('.löschButton').click(function () {
       trigger = this;
     });
+
     $('#löschModal').on('show.bs.modal', function () {
         var row = $(trigger).parent().parent();
         var GL = row.find("input.gl").val();

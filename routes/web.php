@@ -12,25 +12,28 @@
 */
 
 Route::get('/', function () {
-    App::setLocale('de');
     return view('welcome');
-});
+})->middleware('language');
 
 Route::get('/dashboard', function() {
     return view('dashboard');
-});
-
-Route::post('/dashboard', function() {
-   return view('dashboard');
-});
+})->middleware('language');
 
 Route::get('/profile/edit', function() {
     return view('edit_user');
+})->middleware('language');
+
+Route::post('/profile/save', function() {
+    return redirect('/dashboard');
 });
 
-Route::get('/profile/save', function() {
-    return view('dashboard');
-});
+/*
+ * routes for storing the lang-key.
+ */
+Route::get('/lang/{key}', function($key) {
+    session()->put('locale',$key);
+    return redirect()->back();
+})->middleware('language');
 
 Auth::routes();
 

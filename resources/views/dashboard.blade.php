@@ -6,7 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="pull-right">
-                <div class="btn btn-link">Studierende</div>
+                <a href="/wahl" class="btn btn-default icon icon-line-graph">Zur Wahl</a>
+<!--
                 <div class="btn-group">
                     <button type="button" class="btn btn-default icon icon-home"></button>
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -21,6 +22,7 @@
                         <li><a href="#" class=""icon icon-log-out">Separated link</a></li>
                     </ul>
                 </div>
+-->
             </div>
             <label id="logo">{{ config('app.name') }}</label>
         </div>

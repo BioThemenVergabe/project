@@ -67,12 +67,12 @@
                 </div>
                 <div class="col-md-3">
                     <ul class="nav nav-bordered nav-stacked">
-                        <li><a href="https://www.fachschaft.biologie.uni-konstanz.de/" class="icon icon-home"> Fachschaft</a></li>
-                        <li><a href="mailto:fachschaft.biologie@uni-konstanz.de" class="icon icon-mail"> Mail schreiben</a></li>
+                        <li><a href="https://www.fachschaft.biologie.uni-konstanz.de/" class="icon icon-home" target="_blank"> Fachschaft</a></li>
+                        <li><a href="mailto:fachschaft.biologie@uni-konstanz.de" class="icon icon-mail" target="_blank"> Mail schreiben</a></li>
                         <li class="nav-divider"></li>
-                        <li><a href="https://www.facebook.com/FachschaftBioKonstanz" class="icon icon-facebook"> Facebook</a></li>
-                        <li><a href="https://twitter.com/FsBioKn" class="icon icon-twitter"> Twitter</a></li>
-                        <li><a href="https://www.youtube.com/user/UniversitaetKonstanz" class="icon icon-youtube"> YouTube</a></li>
+                        <li><a href="https://www.facebook.com/FachschaftBioKonstanz" class="icon icon-facebook" target="_blank"> Facebook</a></li>
+                        <li><a href="https://twitter.com/FsBioKn" class="icon icon-twitter" target="_blank"> Twitter</a></li>
+                        <li><a href="https://www.youtube.com/user/UniversitaetKonstanz" class="icon icon-youtube" target="_blank"> YouTube</a></li>
                     </ul>
                 </div>
             </div>

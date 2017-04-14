@@ -1,3 +1,4 @@
+
 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
     {{ csrf_field() }}
 <div class="container-fluid">

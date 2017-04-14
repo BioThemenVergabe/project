@@ -19,6 +19,7 @@ return [
     'mail' => 'Email Address',
     'name' => 'Name',
     'pswreset' => 'Reset Your Password',
+    'pswold' => 'Current Password',
 
     'submit' => 'Submit',
     'register' => 'Register',
@@ -28,5 +29,6 @@ return [
     'remember' => 'Remember me',
     'forgot' => 'Forgot Your Password?',
     'login' => 'Login',
+    'save' => 'Save',
 
 ];

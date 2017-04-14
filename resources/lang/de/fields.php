@@ -19,6 +19,7 @@ return [
     'mail' => 'Email Adresse',
     'name' => 'Name',
     'pswreset' => 'Passwort Wiederherstellen',
+    'pswold' => 'Aktuelles Passwort',
 
     'submit' => 'Senden',
     'register' => 'Registrieren',
@@ -28,4 +29,6 @@ return [
     'remember' => 'Anmeldung speichern',
     'forgot' => 'Passwort vergessen?',
     'login' => 'Anmelden',
+    'save' => 'Speichern',
+
 ];

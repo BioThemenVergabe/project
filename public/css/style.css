@@ -46,6 +46,7 @@ footer {
     padding-top: 50px;
     padding-bottom: 100px;
     color: #aaaaaa;
+
 }
 
 .lang {
@@ -92,9 +93,6 @@ header label#logo {
 .nav > li > a:hover {
     background-color: transparent;
 }
-.btn-social-icon {
-    margin-right: 1em; margin-left:1em
-}
 
 
 /* Teil von Matze: */
@@ -110,20 +108,20 @@ header label#logo {
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
     color: #00b330; /*Change active text color here*/
 }
-.navbar {  margin-bottom: 0; }
+.navbar{
+    padding: 1em 0em;
+    margin-bottom: 0;
+}
+.navbar-brand, .lnk{
+    font-size: x-large;
+}
 
-
-/* div[class^="col-"] {
+/*
+ div[class^="col-"] {
      background-color: rgba(255, 0, 0, 0.2);
 }
 .row, div[class^="col-"] {border: 1px solid red; }
 */
-
-.jumbotron {
-    padding-top: 0;
-    color: black;
-    font-size: x-large;
-}
 
 h1 {
     font-size: 3em
@@ -131,6 +129,9 @@ h1 {
 
 .top-buffer {
     margin-top:0.8em;
+}
+.top-buffer-2 {
+    margin-top:1.6em;
 }
 
 #AG_Table input {
@@ -142,6 +143,39 @@ table {
     background-color: white;
 }
 
+.admin {
+    background-image: url('../img/bg_1.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 70%;
+}
+
+
+.panel  {
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+
+.last{
+    margin-bottom: 4em;
+}
+
+.btn-group{
+    min-width: 14em;
+}
+.btn-group>button{
+   max-width: 7em;
+}
+
+#bewertung_einsehen{
+    width: 100%;
+}
+#student_bearbeiten input {
+    width: 100%
+}
 
 #hinzufügen,#speicher-AG, #bearbeiten-speichern {
     float: right
@@ -151,8 +185,12 @@ table {
     font-size: smaller;
 }
 
-#a_d_main .row button {
-    width:100%;
+.admin .row button {
+    width: 70%
+}
+
+.löschButton {
+    width: 100% !important;
 }
 
 .welcome p {
@@ -178,3 +216,4 @@ footer p {
     display: table;
     width: 100%;
 }
+

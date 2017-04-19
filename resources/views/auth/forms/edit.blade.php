@@ -1,21 +1,21 @@
-<form class="form-horizontal" role="form" method="POST" action="{{ url('/profile/save') }}">
+<form class="form-horizontal" method="POST" action="{{ url('/profile/save') }}">
     {{ csrf_field() }}
     <div class="container-fluid">
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} row">
-            <label for="name" class="col-md-3 control-label">
+            <label for="edit.name" class="col-md-3 control-label">
                 @lang('fields.name')
             </label>
 
             <div class="col-md-9">
-                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                <input id="edit.name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
             </div>
         </div>
 
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
-            <label for="email" class="col-md-3 control-label">@lang('fields.mail')</label>
+            <label for="edit.email" class="col-md-3 control-label">@lang('fields.mail')</label>
 
             <div class="col-md-9">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                <input id="edit.email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
             </div>
         </div>
 

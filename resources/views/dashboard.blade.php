@@ -10,23 +10,6 @@
                     <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph">Zur Wahl</a>
                     @include('partials.lang')
                 </div>
-
-<!--
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default icon icon-home"></button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#" class=""icon icon-log-out">Separated link</a></li>
-                    </ul>
-                </div>
--->
             </div>
             <label id="logo">{{ config('app.name') }}</label>
         </div>
@@ -37,7 +20,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h1>@lang('fields.welcome'), <small>Benutzer</small></h1>
+            <h1>@lang('fields.welcome'), <small>Max Muster</small></h1>
         </div>
     </div>
 
@@ -82,15 +65,14 @@
     <div class="placeholder"></div>
 
     <div class="row">
-        <form method=""post" action="#">
             <div class="row">
 
                 <table class="table table-bordered table-striped">
                     <thead>
-                    <tr>
-                        <th class="col-xs-3"><label>Arbeitsgruppe</label></th>
-                        <th><label>Bewertung</label></th>
-                    </tr>
+                        <tr>
+                            <th class="col-xs-3"><label>Arbeitsgruppe</label></th>
+                            <th><label>Bewertung</label></th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -103,7 +85,7 @@
                             <td>
                                 <div class="input-group input-group-sm">
                                     <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-1" value="1" class="form-control" aria-describedby="ag-1" min="0" max="10" disabled>
+                                    <input type="range" name="ag-1" value="1" class="form-control" min="0" max="10" disabled>
                                     <span class="input-group-addon">10</span>
                                 </div>
                             </td>
@@ -118,7 +100,7 @@
                             <td>
                                 <div class="input-group input-group-sm">
                                     <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-1" value="7" class="form-control" aria-describedby="ag-1" min="0" max="10" disabled>
+                                    <input type="range" name="ag-2" value="7" class="form-control" min="0" max="10" disabled>
                                     <span class="input-group-addon">10</span>
                                 </div>
                             </td>
@@ -133,7 +115,7 @@
                             <td>
                                 <div class="input-group input-group-sm">
                                     <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-1" value="2" class="form-control" aria-describedby="ag-1" min="0" max="10" disabled>
+                                    <input type="range" name="ag-3" value="2" class="form-control" min="0" max="10" disabled>
                                     <span class="input-group-addon">10</span>
                                 </div>
                             </td>
@@ -148,7 +130,7 @@
                             <td>
                                 <div class="input-group input-group-sm">
                                     <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-1" value="10" class="form-control" aria-describedby="ag-1" min="0" max="10" disabled>
+                                    <input type="range" name="ag-4" value="10" class="form-control" min="0" max="10" disabled>
                                     <span class="input-group-addon">10</span>
                                 </div>
                             </td>
@@ -160,12 +142,13 @@
                                 <div class="pull-right"><label id="sum"></label></div>
                                 <label>@lang('fields.sum'):</label>
                             </td>
+                            <td>
+                            </td>
                         </tr>
                     </tfoot>
                 </table>
 
             </div>
-        </form>
 
     </div>
 
@@ -176,4 +159,3 @@
 @include('modals.register')
 
 @endsection
-

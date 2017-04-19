@@ -1,14 +1,13 @@
-
-<form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+<form class="form-horizontal" method="POST" action="{{ url('/register') }}">
     {{ csrf_field() }}
 <div class="container-fluid">
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} row">
-            <label for="name" class="col-md-4 control-label">
+            <label for="reg.name" class="col-md-4 control-label">
                 @lang('fields.name')
             </label>
 
             <div class="col-md-8">
-                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                <input id="reg.name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
 
                 @if ($errors->has('name'))
                 <span class="help-block">
@@ -19,10 +18,10 @@
         </div>
 
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
-            <label for="email" class="col-md-4 control-label">@lang('fields.mail')</label>
+            <label for="reg.email" class="col-md-4 control-label">@lang('fields.mail')</label>
 
             <div class="col-md-8">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                <input id="reg.email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                 @if ($errors->has('email'))
                 <span class="help-block">
@@ -36,10 +35,10 @@
         <!-- Matrikelnummer: -->
 
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} row">
-            <label for="password" class="col-md-4 control-label">@lang('fields.password')</label>
+            <label for="reg.password" class="col-md-4 control-label">@lang('fields.password')</label>
 
             <div class="col-md-8">
-                <input id="password" type="password" data-toggle="popover"
+                <input id="reg.password" type="password" data-toggle="popover"
                        data-placement="bottom" data-trigger="focus"
                        data-content="Hallo" class="form-control" name="password"
                        required>
@@ -53,10 +52,10 @@
         </div>
 
         <div class="form-group row">
-            <label for="password-confirm" class="col-md-4 control-label">@lang('fields.cPassword')</label>
+            <label for="reg.password-confirm" class="col-md-4 control-label">@lang('fields.cPassword')</label>
 
             <div class="col-md-8">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                <input id="reg.password-confirm" type="password" class="form-control" name="password_confirmation" required>
             </div>
         </div>
         <div class="form-group row">

@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+Route::match(['get','post'],'/', function () {
+    if(Auth::check())
+        return redirect('/dashboard');
     return view('welcome');
 })->middleware('language');
 

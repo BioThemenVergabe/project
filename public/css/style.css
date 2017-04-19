@@ -31,8 +31,14 @@ section:first-child .panel {
 
 section:first-child .panel-heading {
     font-size: 32px;
-    font-family: Engravers;
     border-bottom: 1px solid #dcdcdc;
+    margin-top: 10px !important;
+}
+
+section:first-child .panel-heading h2 {
+    font-size: 32px;
+    font-family: Engravers !important;
+    margin-top: 10px !important;
 }
 
 section:nth-child(2) {
@@ -64,24 +70,29 @@ footer {
     background-image: url('../img/flags/flag-en.png');
 }
 
-.modal-dialog{
+.modal-dialog {
     display: table;
 }
 
-header {
-    margin-top: 10px;
+header:not(.btn-group) {
     position: relative;
     line-height: 75px;
     border-bottom: 1px solid #dcdcdc;
 }
 
-header:before {
-    background-image:url('../img/BG_1.jpeg');
-    background-size: cover;
-    height: 10px;
+header:after {
     position: absolute;
-    bottom: 100%;
+    top: 100%;
     left: 0;
+    width: 100%;
+    height: 50px;
+    content: '';
+
+    background-image: url('../img/bg_1.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-positio: center center;
 }
 
 header label#logo {
@@ -94,10 +105,9 @@ header label#logo {
     background-color: transparent;
 }
 
-
 /* Teil von Matze: */
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-header >a:hover {
-    color: white;  /*Sets the text hover color on navbar*/
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-header > a:hover {
+    color: white; /*Sets the text hover color on navbar*/
 }
 
 .navbar-default {
@@ -108,11 +118,13 @@ header label#logo {
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
     color: #00b330; /*Change active text color here*/
 }
-.navbar{
+
+.navbar {
     padding: 1em 0em;
     margin-bottom: 0;
 }
-.navbar-brand, .lnk{
+
+.navbar-brand, .lnk {
     font-size: x-large;
 }
 
@@ -128,10 +140,11 @@ h1 {
 }
 
 .top-buffer {
-    margin-top:0.8em;
+    margin-top: 0.8em;
 }
+
 .top-buffer-2 {
-    margin-top:1.6em;
+    margin-top: 1.6em;
 }
 
 #AG_Table input {
@@ -152,32 +165,25 @@ table {
     min-height: 70%;
 }
 
-
-.panel  {
+.panel {
     margin-bottom: 5%;
     margin-top: 5%;
 }
 
-
-.last{
+.last {
     margin-bottom: 4em;
 }
 
-.btn-group{
-    min-width: 14em;
-}
-.btn-group>button{
-   max-width: 7em;
-}
 
-#bewertung_einsehen{
+#bewertung_einsehen {
     width: 100%;
 }
+
 #student_bearbeiten input {
     width: 100%
 }
 
-#hinzufügen,#speicher-AG, #bearbeiten-speichern {
+#hinzufügen, #speicher-AG, #bearbeiten-speichern {
     float: right
 }
 

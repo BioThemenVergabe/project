@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <address>
-                                <h5>Fachschaft Biologie</h5>
+                                <label>Fachschaft Biologie</label>
                                 <p>Universitätsstraße 10</p>
                                 <p>78464 Konstanz</p>
                                 <p>Telefon intern: 4188</p>

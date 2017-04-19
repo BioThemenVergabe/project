@@ -1,11 +1,11 @@
-<form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
+<form class="form-horizontal" method="POST" action="{{ url('/password/email') }}">
     {{ csrf_field() }}
 <div class="container-fluid">
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
-        <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        <label for="forgot.email" class="col-md-4 control-label">E-Mail Address</label>
 
         <div class="col-md-8">
-            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+            <input id="forgot.email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
             @if ($errors->has('email'))
             <span class="help-block">

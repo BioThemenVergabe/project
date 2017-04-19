@@ -10,23 +10,6 @@
                     <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"> Dashboard</a>
                     @include('partials.lang')
                 </div>
-
-                <!--
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default icon icon-home"></button>
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#" class=""icon icon-log-out">Separated link</a></li>
-                                    </ul>
-                                </div>
-                -->
             </div>
             <label id="logo">{{ config('app.name') }}</label>
         </div>
@@ -42,7 +25,8 @@
     </div>
 
     <div class="row">
-        <form method=""post" action="#">
+        <form method="post" action="/">
+            {{ csrf_field() }}
         <div class="row">
 
             <table class="table table-bordered table-striped">
@@ -63,7 +47,7 @@
                     <td>
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon">0</span>
-                            <input type="range" name="ag-1" value="5" class="form-control" aria-describedby="ag-1" min="0" max="10">
+                            <input type="range" name="ag-1" value="5" class="form-control" min="0" max="10">
                             <span class="input-group-addon">10</span>
                         </div>
                     </td>
@@ -78,7 +62,7 @@
                     <td>
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon">0</span>
-                            <input type="range" name="ag-1" value="5" class="form-control" aria-describedby="ag-1" min="0" max="10">
+                            <input type="range" name="ag-1" value="5" class="form-control" min="0" max="10">
                             <span class="input-group-addon">10</span>
                         </div>
                     </td>
@@ -93,7 +77,7 @@
                     <td>
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon">0</span>
-                            <input type="range" name="ag-1" value="5" class="form-control" aria-describedby="ag-1" min="0" max="10">
+                            <input type="range" name="ag-1" value="5" class="form-control" min="0" max="10">
                             <span class="input-group-addon">10</span>
                         </div>
                     </td>
@@ -105,6 +89,7 @@
                         <div class="pull-right"><label id="sum"></label></div>
                         <label>Summe:</label>
                     </td>
+                    <td></td>
                 </tr>
                 </tfoot>
             </table>

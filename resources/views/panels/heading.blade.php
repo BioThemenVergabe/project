@@ -2,6 +2,6 @@
     <div class="pull-right">
         @include('partials.lang')
     </div>
-    <label>{{ config('app.name') }}</label>
+    <h2>{{ config('app.name') }}</h2>
 
 </div>

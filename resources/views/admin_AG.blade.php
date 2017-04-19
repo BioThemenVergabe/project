@@ -62,14 +62,15 @@
                 </table>
             </div>
 
-            <div class="form-group">
+            <div class="last form-group">
                 <div class="col-xs-6">
-                    <button type="submit" class="btn btn-primary pull-right">
+                    <button id="speicher-AG" type="submit" class="btn btn-primary pull-right" data-toggle="modal"
+                            data-target="#speicherModal">
                         @lang('fields.save')
                     </button>
                 </div>
                 <div class="col-xs-6">
-                    <button type="reset" class="btn btn-danger">
+                    <button onclick="location.href='/admin_AG';" type="reset" class="btn btn-danger">
                         @lang('fields.reset')
                     </button>
                 </div>
@@ -78,7 +79,7 @@
             <!--Speicher-Button-->
             <!--            <div class="last top-buffer row">
                             <div class="col-md-4 col-md-offset-1">
-                                <button id="speicher-AG" type="submit" class="btn btn-primary btn-lg" data-toggle="modal"
+                                <button id="speicher-AG" type="submit" class="btn btn-primary pull-right" data-toggle="modal"
                                         data-target="#speicherModal">speichern
                                 </button>
                             </div>

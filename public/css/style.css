@@ -235,7 +235,6 @@ h1 {
 }
 
 
-
 .ignore_css{
     all:unset
 }
@@ -252,13 +251,10 @@ table {
 }
 
 .last {
-    margin-bottom: 4em;
+    margin-bottom: 2em;
 }
 
 
-#bewertung_einsehen {
-    width: 100%;
-}
 
 #student_bearbeiten input {
     width: 100%
@@ -272,7 +268,7 @@ table {
     font-size: smaller;
 }
 
-.admin .row button {
+.dashboard .row button {
     width: 70%
 }
 

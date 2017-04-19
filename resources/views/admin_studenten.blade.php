@@ -13,8 +13,16 @@
         <div class="panel-body">
             <!--Überschrift-->
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-xs-8">
                     <h1>Studenten Übersicht</h1>
+                </div>
+                <div class="col-xs-4 pull-right top-buffer-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Suchen...">
+                        <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="icon icon-magnifying-glass"></span></button>
+                        </span>
+                    </div>
                 </div>
             </div>
 

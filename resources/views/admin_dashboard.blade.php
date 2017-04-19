@@ -8,7 +8,7 @@
 @section('content')
 
 <section class="container">
-    <div class="panel">
+    <div class="panel dashboard">
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12">

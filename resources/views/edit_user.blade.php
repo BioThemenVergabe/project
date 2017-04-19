@@ -10,6 +10,7 @@
                     <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"> Startseite</a>
                     <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"> Zur Wahl</a>
                     @include('partials.lang')
+                    <a href="/logout" class="btn btn-danger btn-sm icon icon-log-out"></a>
                 </div>
             </div>
             <label id="logo">{{ config('app.name') }}</label>

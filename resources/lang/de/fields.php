@@ -35,6 +35,6 @@ return [
     'results' => 'Wahlergebnisse',
     'selection' => 'Wahl',
     'lastname' => 'Nachname',
-
+    'noresult' => 'Kein Ergebnis verf&uuml;gbar',
 
 ];

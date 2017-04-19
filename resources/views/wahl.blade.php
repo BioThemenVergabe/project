@@ -9,6 +9,7 @@
                 <div class="btn-group" role="group" aria-label="...">
                     <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"> Startseite</a>
                     @include('partials.lang')
+                    <a href="/logout" class="btn btn-danger btn-sm icon icon-log-out"></a>
                 </div>
             </div>
             <label id="logo">{{ config('app.name') }}</label>
@@ -87,7 +88,7 @@
                 <tr>
                     <td>
                         <div class="pull-right"><label id="sum"></label></div>
-                        <label>Summe:</label>
+                        <label>@lang('fields.sum'):</label>
                     </td>
                     <td></td>
                 </tr>

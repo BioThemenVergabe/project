@@ -9,6 +9,7 @@
                 <div class="btn-group" role="group" aria-label="...">
                     <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"> Zur Wahl</a>
                     @include('partials.lang')
+                    <a href="/logout" class="btn btn-danger btn-sm icon icon-log-out"></a>
                 </div>
             </div>
             <label id="logo">{{ config('app.name') }}</label>
@@ -32,29 +33,34 @@
         </div>
         <div class="col-xs-6 col-xs-offset-1">
             <div class="form-group row">
-                <label class="col-sm-3 control-label">@lang('fields.name')</label>
-                <div class="col-sm-9">
+                <label class="col-md-4 control-label">@lang('fields.name')</label>
+                <div class="col-md-8">
                     <span contentEditable>Max</span> <span contentEditable>Muster</span>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-3 control-label">@lang('fields.matnr')</label>
-                <div class="col-sm-9">
+                <label class="col-md-4 control-label">@lang('fields.matnr')</label>
+                <div class="col-md-8">
                     <span>123456</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-3 control-label">@lang('fields.mail')</label>
-                <div class="col-sm-9">
+                <label class="col-md-4 control-label">@lang('fields.mail')</label>
+                <div class="col-md-8">
                     <span contentEditable>max.muster@uni-konstanz.de</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-3 control-label">@lang('fields.results')</label>
-                <div class="col-sm-9">
-                    <span>Noch kein Ergebnis</span>
+                <label class="col-md-4 control-label">@lang('fields.results')</label>
+                <div class="col-md-6">
+
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                        <span class="btn btn-default disabled">@lang('fields.noresult')</span>
+                        <span class="btn btn-danger icon icon-cross disabled"></span>
+                    </div>
+
                 </div>
             </div>
         </div>

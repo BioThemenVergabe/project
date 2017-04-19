@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('links')
-<a href="/admin" class="btn btn-default btn-sm">Dashboard</a>
-<a href="/admin_AG" class="btn btn-default btn-sm">Arbeitsgruppen</a>
+<a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
+<a href="/admin_AG" class="btn btn-default btn-sm icon icon-traffic-cone"><span class="hidden-xs"> Arbeitsgruppen</span></a>
 @endsection
 
 @section('content')

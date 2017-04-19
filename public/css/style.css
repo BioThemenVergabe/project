@@ -14,7 +14,7 @@ body {
 
     padding-right: 0 !important;
 
-    background-image: url('../img/bg_1.jpeg');
+    background-image: url('../img/BG_1.jpeg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -33,7 +33,7 @@ header {
 
 section:first-child {
     height: 80%;
-    background-image: url('../img/bg_1.jpeg');
+    background-image: url('../img/BG_1.jpeg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -104,9 +104,105 @@ header:not(.btn-group) {
     box-shadow: 0 0 15px #161616;
 }
 
-header label#logo {
-    font-size: 32px;
+.panel-heading #logo {
+    font-size: 24px;
     font-family: Engravers;
+    padding-left: 10%;
+    position: relative;
+}
+
+.panel-heading #logo:before {
+    position: absolute;
+    left: 0;
+    top: -25%;
+    height: 150%;
+    width: 70px;
+
+    overflow: visible;
+
+    background-image: url('../img/logo.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    content: ' ';
+}
+
+header #logo {
+    font-size: 24px;
+    font-family: Engravers;
+    padding-left: 10%;
+    position: relative;
+}
+
+header #logo:before {
+    position: absolute;
+    left: 0;
+    top: -25%;
+    height: 150%;
+    width: 100px;
+
+    background-image: url('../img/logo.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    content: ' ';
+}
+
+#lang {
+    z-index: 700;
+}
+
+@media (min-width: 992px) {
+
+    .panel-heading #logo {
+        font-size: 32px;
+        font-family: Engravers;
+        padding-left: 70px;
+        position: relative;
+    }
+
+    .panel-heading #logo:before {
+        position: absolute;
+        left: 0;
+        top: -15%;
+        height: 130%;
+        width: 70px;
+
+        overflow: visible;
+
+        background-image: url('../img/logo.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+
+        content: ' ';
+    }
+
+    header #logo {
+        font-size: 32px;
+        font-family: Engravers;
+        padding-left: 110px;
+        position: relative;
+    }
+
+    header #logo:before {
+        position: absolute;
+        left: 0;
+        top: 5%;
+        height: 90%;
+        width: 100px;
+
+        overflow: visible;
+
+        background-image: url('../img/logo.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+
+        content: ' ';
+    }
 }
 
 .nav > li > a:focus,
@@ -209,12 +305,6 @@ footer .nav-bordered > li > a:hover, .nav-bordered > li > a:focus,
     color: #00b330;
 }
 
-/*
-table tr td .btn-group {
-    min-width: 15em;
+.no-padding {
+    padding: 0;
 }
-
-table tr td .btn-group > button {
-    max-width: 7.5em;
-}
-*/

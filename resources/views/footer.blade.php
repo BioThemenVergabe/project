@@ -29,7 +29,11 @@
             <div class="col-md-4">
                 <label>&Uuml;ber uns</label>
                 <p>
-                    Wir, die Fachschaft Biologie, setzen uns aus Studenten verschiedener Semester zusammen, die sich für eure Interessen an der Uni einsetzten. Einerseits in dem wir euch in den verschiedensten Gremien und R&auml;ten der Universit&auml;t vertreten, andererseits in dem wir eurer Meinung auch bei Professoren Geh&ouml;r verleihen. Dar&uuml;ber hinaus stehen wir euch bei Fragen, Problemen oder Anliegen als Ansprechpartner zur Verf&uuml;gung.
+                    Wir, die Fachschaft Biologie, setzen uns aus Studenten verschiedener Semester zusammen,
+                    die sich für eure Interessen an der Uni einsetzten.
+                    Einerseits in dem wir euch in den verschiedensten Gremien und R&auml;ten der Universit&auml;t vertreten,
+                    andererseits in dem wir eurer Meinung auch bei Professoren Geh&ouml;r verleihen. Dar&uuml;ber hinaus stehen
+                    wir euch bei Fragen, Problemen oder Anliegen als Ansprechpartner zur Verf&uuml;gung.
                 </p>
             </div>
             <div class="col-md-3">

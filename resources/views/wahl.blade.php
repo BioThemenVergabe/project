@@ -5,13 +5,13 @@
 <header>
     <div class="container">
         <div class="row">
-            <div class="pull-right">
+            <nav class="pull-right">
                 <div class="btn-group" role="group" aria-label="...">
                     <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"> Startseite</a>
                     @include('partials.lang')
                     <a href="/logout" class="btn btn-danger btn-sm icon icon-log-out"></a>
                 </div>
-            </div>
+            </nav>
             <label id="logo">{{ config('app.name') }}</label>
         </div>
     </div>

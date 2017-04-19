@@ -230,8 +230,13 @@ h1 {
     margin-top: 1.6em;
 }
 
-#AG_Table input {
-    width: 100%
+.top-buffer-3 {
+    margin-top: 2.4em;
+}
+
+
+.ignore_css{
+    all:unset
 }
 
 table {
@@ -246,13 +251,10 @@ table {
 }
 
 .last {
-    margin-bottom: 4em;
+    margin-bottom: 2em;
 }
 
 
-#bewertung_einsehen {
-    width: 100%;
-}
 
 #student_bearbeiten input {
     width: 100%
@@ -266,7 +268,7 @@ table {
     font-size: smaller;
 }
 
-.admin .row button {
+.dashboard .row button {
     width: 70%
 }
 

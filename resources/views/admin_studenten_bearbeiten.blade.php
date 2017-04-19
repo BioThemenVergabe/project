@@ -2,7 +2,7 @@
 
 @section('links')
 <a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
-<a href="/admin_AG" class="btn btn-default btn-sm icon icon-traffic-cone"> <span
+<a href="/admin_AG" class="btn btn-default btn-sm icon icon-clipboard"> <span
             class="hidden-xs"> Arbeitsgruppen</span></a>
 @endsection
 
@@ -64,10 +64,10 @@
                     <label for="edit.avgPrio" class="col-md-3 control-label">Durchschnittliche Bewertung:</label>
 
                     <div class="col-md-8">
-                        <div class="col-md-1 btn btn-default disabled" id="avg-bewertung">
+                        <div class="col-xs-1 btn btn-default disabled" id="avg-bewertung">
                             x
                         </div>
-                        <div class="col-md-3 ">
+                        <div class="col-xs-5 ">
                             <button id="bewertung_einsehen" type="button" class="btn btn-default" data-toggle="modal"
                                     data-target="#AG_Wahl_Modal">Bewertungen einsehen
                             </button>

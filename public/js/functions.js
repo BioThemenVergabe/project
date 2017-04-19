@@ -1,5 +1,5 @@
 function anhaengen(){
-    $('#AG_Table tr:last').after('<tr><td><input class="gl"></td><td><input class="gn"></td><td><input class="pl" type="number"></td><td><input class="zp"></td><td><button type="button" class="löschButton btn btn-default btn-xs" data-toggle="modal" data-target="#löschModal"><span class="icon icon-minus"></span></button></td></tr>');
+    $('#AG_Table tr:last').after('<tr><td><input class="gl form-control"></td><td><input class="gn form-control"></td><td><input class="pl form-control" type="number"></td><td><input class="zp form-control"></td><td><button type="button" class="löschButton btn btn-default btn-xs form-control" data-toggle="modal" data-target="#löschModal"><span class="icon icon-minus"></span></button></td></tr>');
 
     $('.löschButton').click(function () {
         trigger=this;
@@ -67,6 +67,19 @@ $(document).ready(function() {
 
     $('#bearbeiten-speichern').click(function(){
         window.location = "/admin_studenten";
+    });
+
+
+    //Dashboard-buttons:
+    $('#wahl_schliessen').click(function(){
+        if($('#wahl_schliessen_text').html() == ' Wahl schließen'){
+            alert('Sie haben die aktuelle Wahl geschlossen');
+            $('#wahl_schliessen_text').html(' Wahl öffnen')
+        }
+        else if($('#wahl_schliessen_text').html() == ' Wahl öffnen'){
+            alert('Sie haben die aktuelle Wahl geöffnet');
+            $('#wahl_schliessen_text').html(' Wahl schließen')
+        }
     });
 
 

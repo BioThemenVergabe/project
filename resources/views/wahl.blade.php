@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('links')
-    <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"> Startseite</a>
+    <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Startseite</span></a>
 @endsection
 
 @section('content')

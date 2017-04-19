@@ -5,7 +5,7 @@
                 <label>Impressum</label>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-8 no-padding">
                             <address>
                                 <label>Fachschaft Biologie</label>
                                 <p>Universitätsstraße 10</p>
@@ -15,10 +15,10 @@
                                 <p>Raum: <a href="https://www.fachschaft.biologie.uni-konstanz.de/ueber-uns/wo-wir-zu-finden-sind/" target="_blank">M612</a></p>
                             </address>
                         </div>
-                        <div class="col-md-4">
-                            <h5>Autoren</h5>
+                        <div class="col-md-4 no-padding">
+                            <label>Autoren</label>
                             <address>
-                                Mathias Leopold
+                                Mathias Leopold<br>
                                 <br>
                                 Patrick M&ouml;ser
                             </address>

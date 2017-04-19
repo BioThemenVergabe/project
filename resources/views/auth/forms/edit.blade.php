@@ -48,11 +48,11 @@
             </div>
         </div>
 
-        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} row">
-            <label for="passwordold" class="col-md-3 control-label">@lang('fields.pswold')</label>
+        <div class="form-group{{ $errors->has('edit.password') ? ' has-error' : '' }} row">
+            <label for="edit.passwordold" class="col-md-3 control-label">@lang('fields.pswold')</label>
 
             <div class="col-md-9">
-                <input id="passwordold" type="password" data-toggle="popover"
+                <input id="edit.passwordold" type="password" data-toggle="popover"
                        data-placement="bottom" data-trigger="focus"
                        data-content="Hallo" class="form-control" name="passwordold"
                        required>

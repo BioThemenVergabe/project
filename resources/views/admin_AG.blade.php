@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('links')
-<a href="/admin" class="btn btn-default btn-sm icon icon-home"> Dashboard</a>
+<a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
 <a href="/admin_studenten" class="btn btn-default btn-sm icon icon-users"> <span class="hidden-xs">Studenten</span></a>
 @endsection
 
@@ -29,28 +29,30 @@
                                                                             aria-hidden="true"></span></button>
                 </div>
             </div>
-<br>
+            <br>
             <!--AG-Tabelle-->
-            <table id="AG_Table" class="tablesorter table table-striped table-responsive">
-                <tr>
-                    <th>Gruppenleiter</th>
-                    <th>Gruppenname</th>
-                    <th>Plätze</th>
-                    <th>(Zeitpunkt)</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td><input class="gl"></td>
-                    <td><input class="gn"></td>
-                    <td><input class="pl" type="number"></td>
-                    <td><input class="zp"></td>
-                    <td>
-                        <button type="button" class="löschButton btn btn-default btn-xs" data-toggle="modal"
-                                data-target="#löschModal"><span
-                                    class="icon icon-minus"></span></button>
-                    </td>
-                </tr>
-            </table>
+            <div class="table-responsive">
+                <table id="AG_Table" class="tablesorter table table-striped">
+                    <tr>
+                        <th>Gruppenleiter</th>
+                        <th>Gruppenname</th>
+                        <th>Plätze</th>
+                        <th>(Zeitpunkt)</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><input class="gl"></td>
+                        <td><input class="gn"></td>
+                        <td><input class="pl" type="number"></td>
+                        <td><input class="zp"></td>
+                        <td>
+                            <button type="button" class="löschButton btn btn-default btn-xs" data-toggle="modal"
+                                    data-target="#löschModal"><span
+                                        class="icon icon-minus"></span></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
             <div class="form-group">
                 <div class="col-xs-6">

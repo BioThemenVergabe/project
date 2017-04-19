@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('links')
-    <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"> Zur Wahl</a>
+    <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs" Zur Wahl</span></a>
 @endsection
 
 @section('content')
@@ -17,12 +17,12 @@
                 </h1>
             </div>
 
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-md-4">
                 <a href="#" class="thumbnail">
                     <img src="..." alt="..."/>
                 </a>
             </div>
-            <div class="col-xs-6 col-xs-offset-1">
+            <div class="col-xs-12 col-md-6 col-md-offset-1">
                 <div class="form-group row">
                     <label class="col-md-4 control-label">@lang('fields.name')</label>
                     <div class="col-md-8">
@@ -30,22 +30,22 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-4 control-label">@lang('fields.matnr')</label>
-                    <div class="col-md-8">
+                    <label class="col-xs-12 col-md-4 control-label">@lang('fields.matnr')</label>
+                    <div class="col-xs-12 col-md-8">
                         <span>123456</span>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-4 control-label">@lang('fields.mail')</label>
-                    <div class="col-md-8">
+                    <label class="col-xs-12 col-md-4 control-label">@lang('fields.mail')</label>
+                    <div class="col-xs-12 col-md-8">
                         <span contentEditable>max.muster@uni-konstanz.de</span>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-4 control-label">@lang('fields.results')</label>
-                    <div class="col-md-6">
+                    <label class="col-xs-12 col-md-4 control-label">@lang('fields.results')</label>
+                    <div class="col-xs-12 col-md-6">
 
                         <div class="btn-group btn-group-xs" role="group" aria-label="...">
                             <span class="btn btn-default disabled">@lang('fields.noresult')</span>

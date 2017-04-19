@@ -70,5 +70,18 @@ $(document).ready(function() {
     });
 
 
+    //Dashboard-buttons:
+    $('#wahl_schliessen').click(function(){
+        if($('#wahl_schliessen_text').html() == ' Wahl schließen'){
+            alert('Sie haben die aktuelle Wahl geschlossen');
+            $('#wahl_schliessen_text').html(' Wahl öffnen')
+        }
+        else if($('#wahl_schliessen_text').html() == ' Wahl öffnen'){
+            alert('Sie haben die aktuelle Wahl geöffnet');
+            $('#wahl_schliessen_text').html(' Wahl schließen')
+        }
+    });
+
+
 });
 

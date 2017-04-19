@@ -9,20 +9,35 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+
+    padding-top: 4em;
+
+    padding-right: 0 !important;
+
+    background-image: url('../img/bg_1.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-positio: center center;
+
+}
+
+header {
+    background-color: #ffffff;
+}
+
+section,
+header {
+    width: 100%;
 }
 
 section:first-child {
-    min-height: 600px;
     height: 80%;
     background-image: url('../img/bg_1.jpeg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     background-positio: center center;
-}
-
-section > div > div {
-    margin-top: 5%;
 }
 
 section:first-child .panel {
@@ -45,6 +60,11 @@ section:nth-child(2) {
     min-height: 20%;
     display: table;
     padding-bottom: 100px;
+}
+
+section .panel-body {
+    padding: 10px;
+    margin: 0;
 }
 
 footer {
@@ -75,24 +95,13 @@ footer {
 }
 
 header:not(.btn-group) {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     line-height: 75px;
     border-bottom: 1px solid #dcdcdc;
-}
-
-header:after {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    content: '';
-
-    background-image: url('../img/bg_1.jpeg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-positio: center center;
+    z-index: 999;
+    box-shadow: 0 0 15px #161616;
 }
 
 header label#logo {
@@ -105,28 +114,6 @@ header label#logo {
     background-color: transparent;
 }
 
-/* Teil von Matze: */
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-header > a:hover {
-    color: white; /*Sets the text hover color on navbar*/
-}
-
-.navbar-default {
-    background-color: black;
-    border-color: #030033;
-}
-
-.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
-    color: #00b330; /*Change active text color here*/
-}
-
-.navbar {
-    padding: 1em 0em;
-    margin-bottom: 0;
-}
-
-.navbar-brand, .lnk {
-    font-size: x-large;
-}
 
 /*
  div[class^="col-"] {
@@ -156,14 +143,6 @@ table {
     background-color: white;
 }
 
-.admin {
-    background-image: url('../img/bg_1.jpeg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    min-height: 70%;
-}
 
 .panel {
     margin-bottom: 5%;
@@ -229,3 +208,13 @@ footer .nav-bordered > li > a:hover, .nav-bordered > li > a:focus,
 .nav-bordered > li > a:hover, .nav-bordered > li > a:active {
     color: #00b330;
 }
+
+/*
+table tr td .btn-group {
+    min-width: 15em;
+}
+
+table tr td .btn-group > button {
+    max-width: 7.5em;
+}
+*/

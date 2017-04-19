@@ -1,5 +1,5 @@
 function anhaengen(){
-    $('#AG_Table tr:last').after('<tr><td><input class="gl"></td><td><input class="gn"></td><td><input class="pl" type="number"></td><td><input class="zp"></td><td><button type="button" class="löschButton btn btn-default" data-toggle="modal" data-target="#löschModal"><span class="glyphicon glyphicon-minus"></span></button></td></tr>');
+    $('#AG_Table tr:last').after('<tr><td><input class="gl"></td><td><input class="gn"></td><td><input class="pl" type="number"></td><td><input class="zp"></td><td><button type="button" class="löschButton btn btn-default btn-xs" data-toggle="modal" data-target="#löschModal"><span class="icon icon-minus"></span></button></td></tr>');
 
     $('.löschButton').click(function () {
         trigger=this;

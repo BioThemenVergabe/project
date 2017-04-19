@@ -18,6 +18,7 @@ $(function() {
         $('#'+$(this).data('action')).modal();
     });
 
+/*
     $('[type=password]').keyup(function(e) {
         var parent = $(this).parents('.form-group');
         var sbmt = $(this).parents('form').find('[type=submit]');
@@ -33,6 +34,7 @@ $(function() {
                 sbmt.removeClass('disabled');
         }
     });
+*/
 
     $('[type=reset]').click(function() {
         var sum = 0;

@@ -17,19 +17,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Wahlsystem Biologie</a>
-        </div>
-        <div class="navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                @yield('links')
-                <li><a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+
+@include('partials.header')
 
 @yield('content')
 
@@ -39,6 +28,7 @@
 <script src="/js/app.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{{ asset('/js/application.js') }}"></script>
 <script src="{{ asset('/js/functions.js') }}"></script>
 
 </body>

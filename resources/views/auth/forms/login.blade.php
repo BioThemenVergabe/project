@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="{{ url('/dashboard') }}">
+<form class="form-horizontal" method="post" action="{{ url('/dashboard') }}">
     {{ csrf_field() }}
 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
     <label for="edit.email" class="col-md-4 control-label">@lang('fields.mail')</label>

@@ -1,13 +1,11 @@
 @extends('layouts.admin')
 
 @section('links')
-    <li class="lnk"><a href="/admin_AG">Arbeitsgruppen</a></li>
-    <li class="lnk"><a href="/admin_studenten">Studenten</a></li>
+<a href="/admin_AG" class="btn btn-default btn-sm">Arbeitsgruppen</a>
+<a href="/admin_studenten" class="btn btn-default btn-sm">Studenten</a>
 @endsection
 
 @section('content')
-
-
 
         <div class="admin container-fluid">
             <div class="col-xs-12 col-md-8 col-md-offset-2">

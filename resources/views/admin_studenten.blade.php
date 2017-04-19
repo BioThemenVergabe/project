@@ -2,7 +2,7 @@
 
 @section('links')
 <a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
-<a href="/admin_AG" class="btn btn-default btn-sm icon icon-traffic-cone"><span class="hidden-xs"> Arbeitsgruppen</span></a>
+<a href="/admin_AG" class="btn btn-default btn-sm icon icon-clipboard"><span class="hidden-xs"> Arbeitsgruppen</span></a>
 @endsection
 
 @section('content')

@@ -230,8 +230,14 @@ h1 {
     margin-top: 1.6em;
 }
 
-#AG_Table input {
-    width: 100%
+.top-buffer-3 {
+    margin-top: 2.4em;
+}
+
+
+
+.ignore_css{
+    all:unset
 }
 
 table {

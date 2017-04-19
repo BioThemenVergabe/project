@@ -12,6 +12,35 @@
         </div>
 
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
+            <label for="edit.lastname" class="col-md-3 control-label">@lang('fields.lastname')</label>
+
+            <div class="col-md-9">
+                <input id="edit.lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required>
+
+                @if ($errors->has('lastname'))
+                <span class="help-block">
+                            <strong>{{ $errors->first('lastname') }}</strong>
+                        </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
+            <label for="edit.matnr" class="col-md-3 control-label">@lang('fields.matnr')</label>
+
+            <div class="col-md-9">
+                <input id="edit.matnr" type="number" class="form-control" name="matnr" value="{{ old('matnr') }}" required>
+
+                @if ($errors->has('matnr'))
+                <span class="help-block">
+                            <strong>{{ $errors->first('matnr') }}</strong>
+                        </span>
+                @endif
+            </div>
+        </div>
+
+
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
             <label for="edit.email" class="col-md-3 control-label">@lang('fields.mail')</label>
 
             <div class="col-md-9">

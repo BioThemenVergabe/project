@@ -20,7 +20,6 @@ return [
     'name' => 'Name',
     'pswreset' => 'Passwort Wiederherstellen',
     'pswold' => 'Aktuelles Passwort',
-
     'submit' => 'Senden',
     'register' => 'Registrieren',
     'reset' => 'Zur&uuml;cksetzen',
@@ -31,10 +30,11 @@ return [
     'login' => 'Anmelden',
     'save' => 'Speichern',
     'sum' => 'Summe',
-
     'welcome' => 'Willkommen',
-
     'matnr' => 'Matrikelnummer',
     'results' => 'Wahlergebnisse',
     'selection' => 'Wahl',
+    'lastname' => 'Nachname',
+
+
 ];

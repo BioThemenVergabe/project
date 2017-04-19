@@ -18,6 +18,34 @@
         </div>
 
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
+            <label for="reg.lastname" class="col-md-4 control-label">@lang('fields.lastname')</label>
+
+            <div class="col-md-8">
+                <input id="reg.lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required>
+
+                @if ($errors->has('lastname'))
+                <span class="help-block">
+                            <strong>{{ $errors->first('lastname') }}</strong>
+                        </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
+            <label for="reg.matnr" class="col-md-4 control-label">@lang('fields.matnr')</label>
+
+            <div class="col-md-8">
+                <input id="reg.matnr" type="number" class="form-control" name="matnr" value="{{ old('matnr') }}" required>
+
+                @if ($errors->has('matnr'))
+                <span class="help-block">
+                            <strong>{{ $errors->first('matnr') }}</strong>
+                        </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
             <label for="reg.email" class="col-md-4 control-label">@lang('fields.mail')</label>
 
             <div class="col-md-8">

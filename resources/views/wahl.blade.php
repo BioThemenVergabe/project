@@ -7,7 +7,7 @@
         <div class="row">
             <div class="pull-right">
                 <div class="btn-group" role="group" aria-label="...">
-                    <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"> Dashboard</a>
+                    <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"> Startseite</a>
                     @include('partials.lang')
                 </div>
             </div>

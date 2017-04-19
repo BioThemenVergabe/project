@@ -7,7 +7,7 @@
         <div class="row">
             <div class="pull-right">
                 <div class="btn-group" role="group" aria-label="...">
-                    <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph">Zur Wahl</a>
+                    <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"> Zur Wahl</a>
                     @include('partials.lang')
                 </div>
             </div>
@@ -62,7 +62,7 @@
         <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default pull-right"> Profil bearbeiten</a>
     </div>
 
-    <div class="placeholder"></div>
+    <hr />
 
     <div class="row">
             <div class="row">

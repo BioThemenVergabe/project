@@ -34,7 +34,7 @@
                                     <th>Matr.Nr.</th>
                                     <th>Name</th>
                                     <th>AG</th>
-                                    <th></th>
+                                    <th class="col-md-3"></th>
                                 </tr>
                                 <tr>
                                     <td class="ma">00001</td>

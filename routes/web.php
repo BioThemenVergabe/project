@@ -56,7 +56,7 @@ Route::get('/logout', function() {
  * Mathias Routes
  */
 
-Route::get('/admin', function () {
+Route::match(['get','post'],'/admin', function () {
     return view('admin_dashboard');
 });
 

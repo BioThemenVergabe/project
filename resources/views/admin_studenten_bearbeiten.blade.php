@@ -20,7 +20,7 @@
             </div>
 
             <form id="student_bearbeiten" class="form-horizontal" method="post" action="/admin">
-
+                {{ csrf_field() }}
                 <div class="form-group row">
                     <label for="edit.name" class="col-md-3 control-label">
                         @lang('fields.name')
@@ -98,9 +98,12 @@
                         </button>
                     </div>
                     <div class="col-xs-6">
-                        <button type="reset" class="btn btn-danger">
+                        <button type="reset" class="btn btn-default">
                             @lang('fields.reset')
                         </button>
+                        <a href="{{ URL::previous() }}" type="button" class="btn btn-link">
+                            Abbrechen
+                        </a>
                     </div>
                 </div>
             </form>

@@ -73,12 +73,18 @@ $(document).ready(function() {
     //Dashboard-buttons:
     $('#wahl_schliessen').click(function(){
         if($('#wahl_schliessen_text').html() == ' Wahl schließen'){
-            alert('Sie haben die aktuelle Wahl geschlossen');
-            $('#wahl_schliessen_text').html(' Wahl öffnen')
+            $('#close_open').html('geschlossen');
+            $('#close_open_body').html('<ul><li>Es können sich keine neuen Studenten anmelden</li><li>Die Studenten können ihre getroffene Wahl und ihr Profil nicht mehr selbstständig ändern</li><li>Dies können nur noch sie als Administrator unter dem Reiter "Übersicht Studenten"</li><li>Sollten sie die Wahl wieder eröffnen wollen, können sie dies über denselben Button tun, den sie zum schließen genutzt haben</li></ul>');
+            $('#wahl_schliessen_text').html(' Wahl öffnen');
+            $('#wahl_schliessen').removeClass("icon-block");
+            $('#wahl_schliessen').addClass("icon-controller-play");
         }
         else if($('#wahl_schliessen_text').html() == ' Wahl öffnen'){
-            alert('Sie haben die aktuelle Wahl geöffnet');
-            $('#wahl_schliessen_text').html(' Wahl schließen')
+            $('#close_open').html('geöffnet');
+            $('#close_open_body').html('<ul><li>Ab jetzt können sich neue Studenten anmelden</li><li>Alle angemeldeten Studenten können neue Wahlen treffen,diese verändern oder ihr Profil bearbeiten</li><li>Sollten sie die Wahl schließen wollen, können sie dies über denselben Button tun, den sie zum öffnen genutzt haben</li></ul>');
+            $('#wahl_schliessen_text').html(' Wahl schließen');
+            $('#wahl_schliessen').removeClass("icon-controller-play");
+            $('#wahl_schliessen').addClass("icon-block");
         }
     });
 

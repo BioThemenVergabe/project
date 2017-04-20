@@ -36,13 +36,13 @@
 
             <div class="top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button id="wahl_schliessen" type="button" class="btn btn-primary btn-block icon icon-block"><span id="wahl_schliessen_text"> Wahl schließen</span></button>
+                    <button id="wahl_schliessen" type="button" class="btn btn-primary btn-block icon icon-block" data-toggle="modal" data-target="#Wahl_schließen_öffnen"><span id="wahl_schliessen_text"> Wahl schließen</span></button>
                 </div>
             </div>
 
             <div class="top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button id="ergebnisse_downloaden" type="button" class="btn btn-primary disabled btn-block icon icon-hour-glass"> Zuweisung starten</button>
+                    <button title="Es gibt noch Studenten, ohne Wahlabgabe." type="button" class="btn btn-primary disabled btn-block icon icon-hour-glass"> Zuweisung starten</button>
                 </div>
             </div>
 
@@ -68,6 +68,7 @@
     </div>
 </section>
 
+@include('modals.Wahl_schließen_öffnen')
 @include('modals.Begruessungstext_Modal')
 @include('modals.Wahlgang_beenden_Modal')
 

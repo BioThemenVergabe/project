@@ -19,12 +19,14 @@
                     <p>
                         Wenn sie die Wahl wirklich beenden wollen, geben sie bitte das Admin-Passwort ein und drücken sie unten auf "Wahl beenden"
                     </p>
-                    <p>Admin-Passwort: <input type="password" required></p>
+                    <form>
+                        Admin-Passwort: <input type="password" required>
+                        <button type="submit" class="btn btn-danger">Wahl beenden</button>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Wahl beenden</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Zurück</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
             </div>
         </div>
     </div>

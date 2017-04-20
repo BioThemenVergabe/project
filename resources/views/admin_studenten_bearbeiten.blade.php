@@ -131,7 +131,7 @@
                             <tr>
                                 <td class="ag">AG1</td>
                                 <td class="leiter">EinLeiter</td>
-                                <td class="note"><input value="5"></td>
+                                <td class="note"><input class= "form-control" value="5"></td>
                             </tr>
                         </table>
                     </div>

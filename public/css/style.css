@@ -246,6 +246,10 @@ table {
     background-color: white;
 }
 
+#close_open {
+    font-style: oblique;
+    text-decoration:underline;
+}
 
 .panel {
     margin-bottom: 5%;
@@ -255,8 +259,6 @@ table {
 .last {
     margin-bottom: 2em;
 }
-
-
 
 #student_bearbeiten input {
     width: 100%

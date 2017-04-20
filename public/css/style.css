@@ -260,9 +260,10 @@ table {
     margin-bottom: 2em;
 }
 
-#student_bearbeiten input {
-    width: 100%
+.note{
+    max-width: 4em;
 }
+
 
 #hinzufügen, #speicher-AG, #bearbeiten-speichern {
     float: right

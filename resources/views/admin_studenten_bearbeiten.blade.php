@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <form id="student_bearbeiten" class="form-horizontal" method="post" action="/admin">
+            <form class="form-horizontal" method="post" action="/admin">
                 {{ csrf_field() }}
                 <div class="form-group row">
                     <label for="edit.name" class="col-md-3 control-label">

@@ -17,9 +17,9 @@
                 </h1>
             </div>
 
-            <div class="col-xs-12 col-md-4">
-                <a href="#" class="thumbnail">
-                    <img src="..." alt="..."/>
+            <div class="col-xs-12 col-md-3">
+                <a href="#">
+                    <img src="{{ asset('/img/default-user.png') }}" alt="Default Userpicture" class="img-thumbnail img-circle img-responsive"/>
                 </a>
             </div>
             <div class="col-xs-12 col-md-6 col-md-offset-1">

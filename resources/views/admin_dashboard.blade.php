@@ -36,31 +36,31 @@
 
             <div class="top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button id="wahl_schliessen" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-stop" ></span><span id="wahl_schliessen_text"> Wahl schließen</span></button>
+                    <button id="wahl_schliessen" type="button" class="btn btn-primary btn-block icon icon-controller-play"><span id="wahl_schliessen_text"> Wahl schließen</span></button>
                 </div>
             </div>
 
             <div class="top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button id="ergebnisse_downloaden" type="button" class="btn btn-primary disabled"><span class="glyphicon glyphicon-hourglass"></span> Zuweisung starten</button>
+                    <button id="ergebnisse_downloaden" type="button" class="btn btn-primary disabled btn-block icon icon-hour-glass"> Zuweisung starten</button>
                 </div>
             </div>
 
             <div class="top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span><a class="ignore_css" href="/Ergebnisse.html" download> Ergebnisse Downloaden</a></button>
+                    <button type="submit" class="btn btn-primary btn-block icon icon-download"><a class="ignore_css" href="/Ergebnisse.html" download> Ergebnisse Downloaden</a></button>
                 </div>
             </div>
 
             <div class="top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Begruessungstext_Modal"><span class="glyphicon glyphicon-edit"></span> Begrüßungstext ändern</button>
+                    <button type="button" class="btn btn-primary btn-block icon icon-edit" data-toggle="modal" data-target="#Begruessungstext_Modal"> Begrüßungstext ändern</button>
                 </div>
             </div>
 
             <div class="last top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#Wahlgang_beenden_Modal"><span class="icon icon-cross"> Wahlgang beenden</span>
+                    <button type="button" class="btn btn-primary btn-block icon icon-cross" data-toggle="modal" data-target="#Wahlgang_beenden_Modal" Wahlgang beenden
                        <br> <span id="achtung"> (Es werden alle Daten gel&ouml;scht)</span></button>
                 </div>
             </div>

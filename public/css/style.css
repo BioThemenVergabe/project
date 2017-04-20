@@ -311,9 +311,10 @@ footer .nav-bordered > li > a:hover, .nav-bordered > li > a:focus,
     padding: 0;
 }
 
-button a:link,
-button a:visited,
-button a:hover,
-button a:active {
+#Ergebnisse_download:link,
+#Ergebnisse_download:visited,
+#Ergebnisse_download:hover,
+#Ergebnisse_download:active {
     color: #ffffff;
+    text-decoration: none;
 }

@@ -48,7 +48,7 @@
 
             <div class="top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button type="submit" class="btn btn-primary btn-block icon icon-download"><a href="/Ergebnisse.html" download> Ergebnisse Downloaden</a></button>
+                    <a id="Ergebnisse_download" href="/Ergebnisse.html" download><button type="submit" class="btn btn-primary btn-block icon icon-download"> Ergebnisse Downloaden</button></a>
                 </div>
             </div>
 

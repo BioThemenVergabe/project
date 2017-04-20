@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('links')
-    <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs" Zur Wahl</span></a>
+    <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs"> Zur Wahl</span></a>
 @endsection
 
 @section('content')

@@ -12,8 +12,8 @@
 */
 
 Route::match(['get','post'],'/', function () {
-    if(!Request::secure())
-        return redirect(env('APP_URL'));
+//    if(!Request::secure())
+//        return redirect(env('APP_URL'));
     if(Auth::check())
         return redirect('/dashboard');
     return view('welcome');

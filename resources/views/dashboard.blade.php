@@ -17,12 +17,12 @@
                 </h1>
             </div>
 
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-5 col-md-3">
                 <a href="#">
                     <img src="{{ asset('/img/default-user.png') }}" alt="Default Userpicture" class="img-thumbnail img-circle img-responsive"/>
                 </a>
             </div>
-            <div class="col-xs-12 col-md-6 col-md-offset-1">
+            <div class="col-xs-7 col-md-6 col-md-offset-1">
                 <div class="form-group row">
                     <label class="col-md-4 control-label">@lang('fields.name')</label>
                     <div class="col-md-8">
@@ -54,10 +54,19 @@
 
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-12 hidden-md hidden-lg">
+                        <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default"> Profil
+                            bearbeiten</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-xs hidden-sm">
+                <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default"> Profil
+                    bearbeiten</a>
             </div>
 
-            <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default pull-right"> Profil
-                bearbeiten</a>
 
             <div class="placeholder"></div>
 

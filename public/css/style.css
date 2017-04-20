@@ -26,6 +26,13 @@ header {
     background-color: #ffffff;
 }
 
+a:link #logo,
+a:visited #logo,
+a:hover #logo,
+a:active #logo {
+    color: #000000;
+}
+
 section,
 header {
     width: 100%;
@@ -234,11 +241,6 @@ h1 {
     margin-top: 2.4em;
 }
 
-
-.ignore_css{
-    all:unset
-}
-
 table {
     color: black;
     background-color: white;
@@ -266,10 +268,6 @@ table {
 
 #achtung {
     font-size: smaller;
-}
-
-.dashboard .row button {
-    width: 70%
 }
 
 .löschButton {
@@ -309,4 +307,11 @@ footer .nav-bordered > li > a:hover, .nav-bordered > li > a:focus,
 
 .no-padding {
     padding: 0;
+}
+
+button a:link,
+button a:visited,
+button a:hover,
+button a:active {
+    color: #ffffff;
 }

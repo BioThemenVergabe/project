@@ -8,7 +8,7 @@
 @section('content')
 
 <section class="container">
-    <div class="panel dashboard">
+    <div class="panel">
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12">
@@ -36,7 +36,7 @@
 
             <div class="top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button id="wahl_schliessen" type="button" class="btn btn-primary btn-block icon icon-controller-play"><span id="wahl_schliessen_text"> Wahl schließen</span></button>
+                    <button id="wahl_schliessen" type="button" class="btn btn-primary btn-block icon icon-block"><span id="wahl_schliessen_text"> Wahl schließen</span></button>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
 
             <div class="top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button type="submit" class="btn btn-primary btn-block icon icon-download"><a class="ignore_css" href="/Ergebnisse.html" download> Ergebnisse Downloaden</a></button>
+                    <button type="submit" class="btn btn-primary btn-block icon icon-download"><a href="/Ergebnisse.html" download> Ergebnisse Downloaden</a></button>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
 
             <div class="last top-buffer row">
                 <div class="col-md-4 col-md-offset-4">
-                    <button type="button" class="btn btn-primary btn-block icon icon-cross" data-toggle="modal" data-target="#Wahlgang_beenden_Modal" Wahlgang beenden
+                    <button type="button" class="btn btn-primary btn-block icon icon-cross" data-toggle="modal" data-target="#Wahlgang_beenden_Modal"> Wahlgang beenden
                        <br> <span id="achtung"> (Es werden alle Daten gel&ouml;scht)</span></button>
                 </div>
             </div>

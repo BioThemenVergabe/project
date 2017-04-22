@@ -43,13 +43,13 @@
                 <div class="table-responsive">
                     <table id="AG_Table" class="table table-striped table-hover">
                         <thead>
-                        <tr>
-                            <th>Gruppenleiter</th>
-                            <th>Gruppenname</th>
-                            <th>Plätze</th>
-                            <th>(Zeitpunkt)</th>
-                            <th></th>
-                        </tr>
+                            <tr>
+                                <th>Gruppenleiter</th>
+                                <th>Gruppenname</th>
+                                <th>Plätze</th>
+                                <th>(Zeitpunkt)</th>
+                                <th></th>
+                            </tr>
                         </thead>
                         <tbody>
                         <tr>

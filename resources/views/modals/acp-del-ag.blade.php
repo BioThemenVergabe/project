@@ -15,7 +15,6 @@
                                 <th>Gruppenname</th>
                                 <th>Plätze</th>
                                 <th>(Zeitpunkt)</th>
-                                <th></th>
                             </tr>
                             <tr id="insert-ag">
                                 <td class="gl"></td>

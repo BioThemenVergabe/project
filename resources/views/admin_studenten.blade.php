@@ -127,7 +127,7 @@
                 </div>
             </div><!--Collapse Studenten-Tabelle-->
         </div><!--Collapse panel-->
-    </section><!--Collapse container->
+    </section><!--Collapse container-->
 
 
     <!--Löschen-Modal-->

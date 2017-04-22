@@ -48,7 +48,7 @@
 
             <div class="top-buffer row">
                 <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                    <a id="Ergebnisse_download" href="/Ergebnisse.html" download><button type="submit" class="btn btn-primary btn-block icon icon-download"> Ergebnisse Downloaden</button></a>
+                    <a id="Ergebnisse_download" class="btn btn-primary btn-block icon icon-download" href="/Ergebnisse.html" download> Ergebnisse Downloaden</a>
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
 </section>
 
 @include('modals.acp-close-open-vote')
-@include('modals.acp-begrüßungstext')
+@include('modals.acp-begruessungstext')
 @include('modals.acp-end-election')
 
 @endsection

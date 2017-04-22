@@ -8,6 +8,10 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="col-xs-10">Durchschnitt der abgegebenen Wahl:</div>
+                        <div class="col-xs-2">x</div>
+                    </div>
+                    <div class="row top-buffer">
                         <table id="AG_Wahl_Modal_row" class="table table-striped">
                             <tr>
                                 <th>AG</th>

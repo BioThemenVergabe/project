@@ -82,7 +82,7 @@
                 <tbody>
                 <tr>
                     <td>
-                        <div class="input-group pull-right">
+                        <div class="input-group pull-right hidden-xs hidden-sm">
                             <span data-target="range" class="btn btn-default disabled"></span>
                         </div>
                         <label>Arbeitsgruppe #1</label>
@@ -98,7 +98,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="input-group pull-right">
+                        <div class="input-group pull-right hidden-xs hidden-sm">
                             <span data-target="range" class="btn btn-default disabled"></span>
                         </div>
                         <label>Arbeitsgruppe #2</label>
@@ -114,7 +114,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="input-group pull-right">
+                        <div class="input-group pull-right hidden-xs hidden-sm">
                             <span data-target="range" class="btn btn-default disabled"></span>
                         </div>
                         <label>Arbeitsgruppe #3</label>
@@ -130,7 +130,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="input-group pull-right">
+                        <div class="input-group pull-right hidden-xs hidden-sm">
                             <span data-target="range" class="btn btn-default disabled"></span>
                         </div>
                         <label>Arbeitsgruppe #4</label>

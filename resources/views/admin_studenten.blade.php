@@ -14,10 +14,10 @@
             <div class="panel-body">
                 <!--Überschrift-->
                 <div class="row">
-                    <div class="col-xs-8">
+                    <div class="col-sm-8">
                         <h1>Studenten Übersicht</h1>
                     </div>
-                    <div class="col-xs-4 pull-right top-buffer-3">
+                    <div class="col-sm-4 pull-right top-buffer-3">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Suchen...">
                             <span class="input-group-btn">
@@ -132,6 +132,6 @@
 
     <!--Löschen-Modal-->
     @include('modals.acp-del-student')
-    
+
 
 @endsection

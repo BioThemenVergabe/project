@@ -29,10 +29,10 @@
 
                 <!--1.Zeile-->
                 <div class="top-buffer row">
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         Anzahl AGs: <span id="AG_anz">x</span>
                     </div>
-                    <div class="col-md-4 pull-right">
+                    <div class="col-xs-4 pull-right">
                         <button id="hinzufügen" onclick="anhaengen(); update() " type="button"
                                 class="btn btn-default btn-sm">hinzufügen <span class="icon icon-plus"
                                                                                 aria-hidden="true"></span></button>
@@ -68,18 +68,16 @@
                     </table>
                 </div>
 
-                <div class="last form-group">
-                    <div class="col-xs-6">
-                        <button id="speicher-AG" type="submit" class="btn btn-primary pull-right" data-toggle="modal"
-                                data-target="#speicherModal">
-                            @lang('fields.save')
-                        </button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button onclick="location.href='/admin_AG';" type="reset" class="btn btn-danger">
-                            @lang('fields.reset')
-                        </button>
-                    </div>
+                <div class="last col-xs-6">
+                    <button id="speicher-AG" type="submit" class="btn btn-primary pull-right" data-toggle="modal"
+                            data-target="#speicherModal">
+                        @lang('fields.save')
+                    </button>
+                </div>
+                <div class="col-xs-6">
+                    <button onclick="location.href='/admin_AG';" type="reset" class="btn btn-danger">
+                        @lang('fields.reset')
+                    </button>
                 </div>
 
             </div>

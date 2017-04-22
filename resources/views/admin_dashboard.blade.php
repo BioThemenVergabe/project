@@ -11,26 +11,26 @@
     <div class="panel">
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-12 col-md-6 col-md-offset-3">
+                <div class="col-md-6 col-md-offset-3">
                     <h1>Dashboard</h1>
                 </div>
             </div>
 
             <div class="top-buffer row">
-                <div class="col-xs-8 col-md-5 col-md-offset-3">
+                <div class="col-sm-8 col-md-5 col-md-offset-3">
                     Anzahl angemeldeter Studenten:
                 </div>
-                <div class="col-xs-4 col-md-4 pull-right">
-                    X Studenten
+                <div class="col-sm-4 col-md-4 pull-right">
+                    x Studenten
                 </div>
             </div>
 
             <div class=" row">
-                <div class="col-xs-8 col-md-5 col-md-offset-3">
+                <div class="col-sm-8 col-md-5 col-md-offset-3">
                     Anzahl Studenten ohne Wahlabgabe:
                 </div>
-                <div class="col-xs-4 col-md-4 pull-right">
-                    Y Studenten
+                <div class="col-sm-4 col-md-4 pull-right">
+                    y Studenten
                 </div>
             </div>
 

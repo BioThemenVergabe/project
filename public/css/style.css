@@ -18,7 +18,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    background-positio: center center;
+    background-position: center center;
 
 }
 
@@ -276,6 +276,13 @@ table {
 .löschButton {
     width: 100% !important;
 }
+
+#Abg_Wahl{
+    padding: 6px 12px;
+    padding-right: 0;
+}
+
+
 
 @media (min-width: 992px) {
     .welcome p {

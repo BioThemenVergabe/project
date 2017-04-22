@@ -68,8 +68,8 @@
     </div>
 </section>
 
-@include('modals.Wahl_schließen_öffnen')
-@include('modals.Begruessungstext_Modal')
-@include('modals.Wahlgang_beenden_Modal')
+@include('modals.acp-close-open-vote')
+@include('modals.acp-begrüßungstext')
+@include('modals.acp-end-election')
 
 @endsection

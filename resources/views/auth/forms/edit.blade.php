@@ -29,7 +29,7 @@
             <label for="edit.matnr" class="col-md-4 control-label">@lang('fields.matnr')</label>
 
             <div class="col-md-6">
-                <input id="edit.matnr" type="number" class="form-control" name="matnr" value="{{ old('matnr') }}" required>
+                <input id="edit.matnr" type="text" class="form-control" name="matnr" value="{{ old('matnr') }}">
 
                 @if ($errors->has('matnr'))
                 <span class="help-block">

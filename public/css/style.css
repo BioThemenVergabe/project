@@ -26,11 +26,16 @@ header {
     background-color: #ffffff;
 }
 
-a:link #logo,
-a:visited #logo,
-a:hover #logo,
-a:active #logo {
+#logo a:link,
+#logo a:visited,
+#logo a:hover,
+#logo a:active {
     color: #000000;
+    text-decoration: none;
+}
+
+#logo {
+    cursor: default;
 }
 
 section,

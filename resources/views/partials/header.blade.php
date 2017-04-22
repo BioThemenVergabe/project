@@ -8,7 +8,7 @@
                     <a href="/logout" class="btn btn-danger btn-sm icon icon-log-out"></a>
                 </div>
             </nav>
-            <a href="{{ url('/') }}"><label id="logo"><span class="hidden-xs hidden-sm">{{ config('app.name') }}</span>&nbsp;</label></a>
+            <label id="logo"><a href="{{ url('/dashboard') }}"><span class="hidden-xs hidden-sm">{{ config('app.name') }}</span>&nbsp;</a></label>
         </div>
     </div>
 </header>

@@ -66,7 +66,7 @@ Route::get('/admin_AG', function () {
     return view('admin_AG');
 });
 
-Route::get('/admin_studenten', function () {
+Route::match(['get','post'],'/admin_studenten', function () {
     return view('admin_studenten');
 });
 

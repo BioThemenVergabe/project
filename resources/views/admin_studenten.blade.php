@@ -1,49 +1,50 @@
 @extends('layouts.admin')
 
 @section('links')
-<a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
-<a href="/admin_AG" class="btn btn-default btn-sm icon icon-clipboard"><span class="hidden-xs"> Arbeitsgruppen</span></a>
+    <a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
+    <a href="/admin_AG" class="btn btn-default btn-sm icon icon-clipboard"><span
+                class="hidden-xs"> Arbeitsgruppen</span></a>
 @endsection
 
 @section('content')
 
-<div class="admin container">
-    <div class="panel">
+    <section class="container">
+        <div class="panel">
 
-        <div class="panel-body">
-            <!--Überschrift-->
-            <div class="row">
-                <div class="col-xs-8">
-                    <h1>Studenten Übersicht</h1>
-                </div>
-                <div class="col-xs-4 pull-right top-buffer-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Suchen...">
-                        <span class="input-group-btn">
-                                <button class="btn btn-default" type="button"><span class="icon icon-magnifying-glass"></span></button>
+            <div class="panel-body">
+                <!--Überschrift-->
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h1>Studenten Übersicht</h1>
+                    </div>
+                    <div class="col-sm-4 pull-right top-buffer-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Suchen...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span
+                                            class="icon icon-magnifying-glass"></span></button>
                         </span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!--1.Zeile-->
-            <div class="top-buffer row">
-                <div class="col-md-8">
-                    Anzahl Studenten: <span id="stud_anz">x</span>
+                <!--1.Zeile-->
+                <div class="top-buffer row">
+                    <div class="col-md-8">
+                        Anzahl Studenten: <span id="stud_anz">x</span>
+                    </div>
                 </div>
-            </div>
 
-            <!--Studenten-Tabelle-->
-            <div class="top-buffer">
-                <div class="table-responsive">
+                <!--Studenten-Tabelle-->
+                <div class="top-buffer-2 table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>
-                            <tr>
-                                <th>Matr.Nr.</th>
-                                <th>Name</th>
-                                <th class="">AG</th>
-                                <th class="col-xs-4"></th>
-                            </tr>
+                        <tr>
+                            <th>Matr.Nr.</th>
+                            <th>Name</th>
+                            <th class="">AG</th>
+                            <th class="col-xs-4"></th>
+                        </tr>
                         </thead>
                         <tbody>
                         <tr>
@@ -124,14 +125,13 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div><!--Collapse Studenten-Tabelle-->
-    </div><!--Collapse panel-->
-</div><!--Collapse col-xxx-->
-</div><!--Collapse Container-->
+            </div><!--Collapse Studenten-Tabelle-->
+        </div><!--Collapse panel-->
+    </section><!--Collapse container->
 
-<!--Löschen-Modal-->
-@include('modals.acp-del-student')
-<!--Collapse Löschen-Modal-->
+
+    <!--Löschen-Modal-->
+    @include('modals.acp-del-student')
+
 
 @endsection

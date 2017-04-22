@@ -52,9 +52,7 @@
             <label for="edit.passwordold" class="col-md-4 control-label">@lang('fields.pswold')</label>
 
             <div class="col-md-6">
-                <input id="edit.passwordold" type="password" data-toggle="popover"
-                       data-placement="bottom" data-trigger="focus"
-                       data-content="Hallo" class="form-control" name="passwordold"
+                <input id="edit.passwordold" type="password" class="form-control" name="passwordold"
                        required>
             </div>
         </div>
@@ -63,9 +61,7 @@
             <label for="password" class="col-md-4 control-label">@lang('fields.password')</label>
 
             <div class="col-md-6">
-                <input id="password" type="password" data-toggle="popover"
-                       data-placement="bottom" data-trigger="focus"
-                       data-content="Hallo" class="form-control" name="password"
+                <input id="password" type="password" class="form-control" name="password"
                        required>
             </div>
         </div>

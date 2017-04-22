@@ -326,3 +326,10 @@ footer .nav-bordered > li > a:hover, .nav-bordered > li > a:focus,
     color: #ffffff;
     text-decoration: none;
 }
+
+@media (max-width: 768px) {
+    header .row {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}

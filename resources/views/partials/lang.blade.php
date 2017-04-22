@@ -1,6 +1,6 @@
     <div class="btn-group" id="lang">
         <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="lang lang-{{ app()->getLocale() }}"><span class="hidden-xs hidden-sm hidden-md">@lang('lang.'.app()->getLocale())</span></span> <span class="caret"></span>
+            <span class="lang lang-{{ app()->getLocale() }}"><span class="hidden-xs hidden-sm">@lang('lang.'.app()->getLocale())</span></span> <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
             <li><a href="/lang/de" class="lang lang-de"> @lang('lang.de')</a></li>

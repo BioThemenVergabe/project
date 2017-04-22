@@ -310,8 +310,14 @@ footer p {
     width: 100%;
 }
 
-footer .nav-bordered > li > a:hover, .nav-bordered > li > a:focus,
-.nav-bordered > li > a:hover, .nav-bordered > li > a:active {
+footer .nav-stacked > li > a:link,
+footer .nav-stacked > li > a:visited {
+    color: #dcdcdc;
+}
+
+footer .nav-stacked > li > a:hover,
+footer .nav-stacked > li > a:focus,
+footer .nav-stacked > li > a:active {
     color: #00b330;
 }
 
@@ -331,5 +337,9 @@ footer .nav-bordered > li > a:hover, .nav-bordered > li > a:focus,
     header .row {
         padding-left: 5%;
         padding-right: 5%;
+    }
+
+    footer .nav-stacked {
+        padding-top: 30px;
     }
 }

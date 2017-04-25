@@ -69,8 +69,10 @@ section:first-child .panel-heading h2 {
 }
 
 section:nth-child(2) {
+    /*
     min-height: 20%;
     display: table;
+    */
     padding-bottom: 100px;
 }
 

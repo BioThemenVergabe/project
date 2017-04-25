@@ -40,9 +40,9 @@
                 </div>
                 <br>
                 <!--AG-Tabelle-->
-                <div class="table-responsive">
-                    <table id="AG_Table" class="table table-striped table-hover">
-                        <thead>
+                    <div class="table-responsive">
+                        <table id="AG_Table" class="table table-striped table-hover">
+                            <thead>
                             <tr>
                                 <th>Gruppenleiter</th>
                                 <th>Gruppenname</th>
@@ -50,22 +50,22 @@
                                 <th>(Zeitpunkt)</th>
                                 <th></th>
                             </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><input class="gl form-control"></td>
-                            <td><input class="gn form-control"></td>
-                            <td><input class="pl form-control" type="number"></td>
-                            <td><input class="zp form-control"></td>
-                            <td>
-                                <button type="button" class="löschButton btn btn-default btn-xs form-control"
-                                        data-toggle="modal"
-                                        data-target="#löschModal"><span
-                                            class="icon icon-minus"></span></button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input class="gl form-control"></td>
+                                <td><input class="gn form-control"></td>
+                                <td><input class="pl form-control" type="number"></td>
+                                <td><input class="zp form-control"></td>
+                                <td>
+                                    <button type="button" class="löschButton btn btn-default btn-xs form-control"
+                                            data-toggle="modal"
+                                            data-target="#löschModal"><span
+                                                class="icon icon-minus"></span></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                 </div>
 
                 <div class="last col-xs-6">

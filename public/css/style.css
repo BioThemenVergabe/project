@@ -43,13 +43,13 @@ header {
     width: 100%;
 }
 
-section:first-child {
-    height: 80%;
+body #login_panel{
+    height: 70%;
     background-image: url('../img/BG_1.jpeg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    background-positio: center center;
+    background-position: center center;
 }
 
 section:first-child .panel {

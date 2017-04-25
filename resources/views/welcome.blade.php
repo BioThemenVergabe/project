@@ -10,7 +10,7 @@
 
 @section('content')
 
-<section class="container-fluid">
+<section id="login_panel" class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-md-6 col-md-offset-3">
             <div class="panel">

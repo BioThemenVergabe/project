@@ -31,9 +31,31 @@ return [
     'lastname' => 'Nachname',
     'noresult' => 'Kein Ergebnis verf&uuml;gbar',
 
+    'cancel' => 'Abbrechen',
+    'close' => 'Schließen',
+    'delete' => 'Löschen',
+    'nodelete' => 'Nicht Löschen',
+    'safeChange' => 'Änderungen speichern',
+
     /*
      * ACP
      */
+    'search' => 'Suchen',
+    'add' => 'hinzufügen',
+    'groupleader' => 'Gruppenleiter',
+    'groupname' => 'Gruppenname',
+    'spots' => 'Plätze',
+    'time' => 'Zeitpunkt',
+    'edit' => 'Bearbeiten',
+    'del' => 'Löschen',
+    'savechange' => 'Änderungen speichern',
+    'closeElect' => 'Wahl schließen',
+    'startAlgo' => 'Zuweisung starten',
+    'downloadResults' => 'Ergebnisse downloaden',
+    'editText' => 'Begrüßungstext ändern',
+    'endElect1' => 'Wahlgang beenden',
+    'endElect2' => 'Es werden alle Daten gel&ouml;scht',
+
 
 
     /*

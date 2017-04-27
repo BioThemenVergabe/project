@@ -15,7 +15,7 @@
             <!--Überschrift-->
             <div class="row">
                 <div class="col-xs-8">
-                    <h1>Profil bearbeiten</h1>
+                    <h1>@lang('content.heading_stud_be')</h1>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
                     <div class="col-md-6 col-md-offset-3">
                         <div class="btn-group">
                             <button type="submit" class="btn btn-primary">
-                                Änderungen speichern
+                                @lang('fields.savechange')
                             </button>
 
                             <button type="reset" class="btn btn-default">
@@ -71,26 +71,26 @@
                             </button>
                         </div>
 
-                        <a href="{{ URL::previous() }}" class="btn btn-link">
-                            Abbrechen
+                        <a href="/admin_studenten" class="btn btn-link">
+                            @lang('fields.cancel')
                         </a>
                     </div>
                 </div>
                 <hr class="top-buffer-3">
                 <div class="row top-buffer">
-                    <div class="col-sm-3"><span id="Abg_Wahl" class="hidden-xs pull-right">Abgegebene Wahl:</span></div>
+                    <div class="col-sm-3"><span id="Abg_Wahl" class="hidden-xs pull-right">@lang('content.admin_sb1'):</span></div>
 
                     <div class="col-sm-9">
                         <button id="bewertung_einsehen" type="button" class="btn btn-info icon icon-edit"
                                 data-toggle="modal"
-                                data-target="#AG_Wahl_Modal"> Bewertungen einsehen und bearbeiten
+                                data-target="#AG_Wahl_Modal"> @lang('content.admin_sb2')
                         </button>
                     </div>
                 </div>
 
                 <div class="row top-buffer">
-                    <div class="col-xs-4 col-sm-3"><span class="hidden-xs pull-right">Letzte Änderung:</span><span
-                                class="visible-xs">Letzte Änderung:</span></div>
+                    <div class="col-xs-4 col-sm-3"><span class="hidden-xs pull-right">@lang('content.admin_sb3'):</span><span
+                                class="visible-xs">@lang('content.admin_sb3')':</span></div>
 
                     <div class="col-xs-8 col-sm-9">
                         <span>01.01.1970</span>
@@ -98,8 +98,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-4 col-sm-3"><span class="hidden-xs pull-right">Registriert seit:</span><span
-                                class="visible-xs">Letzte Änderung:</span></div>
+                    <div class="col-xs-4 col-sm-3"><span class="hidden-xs pull-right">@lang('content.admin_sb4'):</span><span
+                                class="visible-xs">@lang('content.admin_sb4'):</span></div>
 
                     <div class="col-xs-8 col-sm-9">
                         <span>01.01.1970</span>

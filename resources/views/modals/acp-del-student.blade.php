@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="löschModalLabel">Möchten sie den Studenten wirklich löschen?</h4>
+                <h4 class="modal-title" id="löschModalLabel">@lang('content.modal_delstud')</h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
@@ -24,8 +24,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button onclick="deleteStudentTrigger()" type="button" class="btn btn-danger" data-dismiss="modal">Löschen</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Nicht Löschen</button>
+                <button onclick="deleteStudentTrigger()" type="button" class="btn btn-danger" data-dismiss="modal">@lang('fields.delete')</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('fields.nodelete')</button>
             </div>
         </div>
     </div>

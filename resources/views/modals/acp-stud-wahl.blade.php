@@ -3,20 +3,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Übersicht der getroffenen Wahl von Student: <i>Student1</i></h4>
+                <h4 class="modal-title">@lang('content.modal_studWahl1'): <i>Student1</i></h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xs-10">Durchschnitt der abgegebenen Wahl:</div>
+                        <div class="col-xs-10">@lang('content.modal_studWahl2'):</div>
                         <div class="col-xs-2">x</div>
                     </div>
                     <div class="row top-buffer">
                         <table id="AG_Wahl_Modal_row" class="table table-striped">
                             <tr>
                                 <th>AG</th>
-                                <th>Leiter</th>
-                                <th>Note</th>
+                                <th>@lang('fields.groupleader')</th>
+                                <th>@lang('content.modal_studWahl3')</th>
                             </tr>
                             <tr>
                                 <td class="ag">AG1</td>
@@ -28,9 +28,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button onclick="" type="button" class="btn btn-primary" data-dismiss="modal"> Änderungen speichern
+                <button onclick="" type="button" class="btn btn-primary" data-dismiss="modal">@lang('fields.safeChange')
                 </button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Zurück</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('fields.cancel')</button>
             </div>
         </div>
     </div>

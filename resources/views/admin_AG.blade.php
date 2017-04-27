@@ -14,11 +14,11 @@
                 <!--Überschrift-->
                 <div class="row">
                     <div class="col-xs-8">
-                        <h1>AG Übersicht</h1>
+                        <h1>@lang('content.heading_ag')</h1>
                     </div>
                     <div class="col-xs-4 pull-right top-buffer-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Suchen...">
+                            <input type="text" class="form-control" placeholder="@lang('fields.search')...">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button"><span
                                             class="icon icon-magnifying-glass"></span></button>
@@ -30,11 +30,11 @@
                 <!--1.Zeile-->
                 <div class="top-buffer row">
                     <div class="col-xs-4">
-                        Anzahl AGs: <span id="AG_anz">x</span>
+                        @lang('content.ag1'): <span id="AG_anz">x</span>
                     </div>
                     <div class="col-xs-4 pull-right">
                         <button id="hinzufügen" onclick="anhaengen(); update() " type="button"
-                                class="btn btn-default btn-sm">hinzufügen <span class="icon icon-plus"
+                                class="btn btn-default btn-sm">@lang('fields.add') <span class="icon icon-plus"
                                                                                 aria-hidden="true"></span></button>
                     </div>
                 </div>
@@ -44,10 +44,10 @@
                         <table id="AG_Table" class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th>Gruppenleiter</th>
-                                <th>Gruppenname</th>
-                                <th>Plätze</th>
-                                <th>(Zeitpunkt)</th>
+                                <th>@lang('fields.groupleader')</th>
+                                <th>@lang('fields.groupname')</th>
+                                <th>@lang('fields.spots')</th>
+                                <th>@lang('fields.time')</th>
                                 <th></th>
                             </tr>
                             </thead>

@@ -66,16 +66,16 @@ Route::get('/logout', function() {
 
 Route::match(['get','post'],'/admin', function () {
     return view('admin_dashboard');
-});
+})->middleware('language');
 
 Route::get('/admin_AG', function () {
     return view('admin_AG');
-});
+})->middleware('language');
 
 Route::match(['get','post'],'/admin_studenten', function () {
     return view('admin_studenten');
-});
+})->middleware('language');
 
 Route::get('/admin_studenten_bearbeiten', function () {
     return view('admin_studenten_bearbeiten');
-});
+})->middleware('language');

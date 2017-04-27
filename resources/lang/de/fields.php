@@ -35,7 +35,6 @@ return [
     'close' => 'Schließen',
     'delete' => 'Löschen',
     'nodelete' => 'Nicht Löschen',
-    'safeChange' => 'Änderungen speichern',
 
     /*
      * ACP
@@ -55,6 +54,8 @@ return [
     'editText' => 'Begrüßungstext ändern',
     'endElect1' => 'Wahlgang beenden',
     'endElect2' => 'Es werden alle Daten gel&ouml;scht',
+    'ag' => 'Arbeitsgruppen',
+    'students' => 'Studenten',
 
 
 

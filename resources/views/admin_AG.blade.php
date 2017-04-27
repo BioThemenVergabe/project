@@ -2,7 +2,7 @@
 
 @section('links')
     <a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
-    <a href="/admin_studenten" class="btn btn-default btn-sm icon icon-users"> <span class="hidden-xs">Studenten</span></a>
+    <a href="/admin_studenten" class="btn btn-default btn-sm icon icon-users"> <span class="hidden-xs"> @lang('fields.students')</span></a>
 @endsection
 
 @section('content')

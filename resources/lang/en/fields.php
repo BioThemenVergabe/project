@@ -36,4 +36,37 @@ return [
     'results' => 'Result',
     'selection' => 'Voting',
     'noresult' => 'No result available.',
+
+
+    'cancel' => 'Cancel',
+    'close' => 'Close',
+    'delete' => 'Delete',
+    'nodelete' => 'Don\'t delete',
+
+    /*
+     * ACP
+     */
+    'search' => 'Search',
+    'add' => 'Add',
+    'groupleader' => 'Group leader',
+    'groupname' => 'Group name',
+    'spots' => 'Spots',
+    'time' => 'Time',
+    'edit' => 'Edit',
+    'del' => 'Delete',
+    'savechange' => 'Save changes',
+    'closeElect' => 'Close rating-process',
+    'startAlgo' => 'Start algorithm',
+    'downloadResults' => 'Download results',
+    'editText' => 'Change welcome text',
+    'endElect1' => 'End rating-process',
+    'endElect2' => 'All data will be deleted',
+    'ag' => 'Working groups',
+    'students' => 'Students',
+
+
+
+    /*
+     * Userpanel
+     */
 ];

@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button onclick="" type="button" class="btn btn-primary" data-dismiss="modal">@lang('fields.safeChange')
+                <button onclick="" type="button" class="btn btn-primary" data-dismiss="modal">@lang('fields.savechange')
                 </button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">@lang('fields.cancel')</button>
             </div>

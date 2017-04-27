@@ -25,9 +25,14 @@
     border: 1px solid darken(@color,15%);
   }
 
-  &:active, &:active:focus {
+  &:active {
     background-color: darken(@color,30%);
     border: 1px solid darken(@color,30%);
+  }
+
+  &:active:focus {
+    background-color: darken(@color,10%);
+    border: 1px solid darken(@color,10%);
   }
 
   &.disabled {

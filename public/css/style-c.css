@@ -73,9 +73,13 @@ html .btn-primary:hover, html .btn-primary:focus {
   background-color: #067342;
   border: 1px solid #067342;
 }
-html .btn-primary:active, html .btn-primary:active:focus {
+html .btn-primary:active {
   background-color: #022a18;
   border: 1px solid #022a18;
+}
+html .btn-primary:active:focus {
+  background-color: #078b50;
+  border: 1px solid #078b50;
 }
 html .btn-primary.disabled {
   background-color: #1df494;
@@ -93,9 +97,13 @@ html .btn-info:hover, html .btn-info:focus {
   background-color: #146f6f;
   border: 1px solid #146f6f;
 }
-html .btn-info:active, html .btn-info:active:focus {
+html .btn-info:active {
   background-color: #082f2f;
   border: 1px solid #082f2f;
+}
+html .btn-info:active:focus {
+  background-color: #188585;
+  border: 1px solid #188585;
 }
 html .btn-info.disabled {
   background-color: #40dcdc;

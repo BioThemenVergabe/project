@@ -1,5 +1,7 @@
 <?php
 
+use App\Welcome;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +18,11 @@ Route::match(['get','post'],'/', function () {
 //        return redirect(env('APP_URL'));
     if(Auth::check())
         return redirect('/dashboard');
-    return view('welcome');
+
+    return view('welcome',[
+     'welcome' => Welcome::find(1)
+    ]);
+
 })->middleware('language');
 
 Route::match(['get', 'post'], '/dashboard', function () {

@@ -35,7 +35,7 @@
             <label for="reg.matnr" class="col-md-4 control-label">@lang('fields.matnr')</label>
 
             <div class="col-md-8">
-                <input id="reg.matnr" type="number" class="form-control" name="matnr" value="{{ old('matnr') }}" required>
+                <input id="reg.matnr" type="text" class="form-control" name="matnr" value="{{ old('matnr') }}" required>
 
                 @if ($errors->has('matnr'))
                 <span class="help-block">
@@ -88,7 +88,7 @@
         </div>
         <div class="form-group row">
             <div class="col-md-8 col-md-offset-4">
-                <input type="submit" class="btn btn-primary disabled" value="@lang('fields.register')">
+                <input type="submit" class="btn btn-primary" value="@lang('fields.register')">
 
                 <a href="{{ url('/') }}" data-dismiss="modal">
                     <div class="btn btn-link">

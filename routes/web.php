@@ -40,7 +40,7 @@ Route::get('/wahl', function() {
  * routes for storing the lang-key.
  */
 Route::get('/lang/{key}', function($key) {
-    // session()->put('locale',$key);
+    session()->put('locale',$key);
     return redirect()->back();
 })->middleware('language');
 

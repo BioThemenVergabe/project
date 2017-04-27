@@ -26,11 +26,6 @@ header {
 
 body #login_panel{
     height: 70%;
-    background-image: url('../img/BG_1.jpeg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
 }
 
 section:first-child .panel {

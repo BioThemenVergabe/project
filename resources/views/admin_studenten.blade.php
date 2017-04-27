@@ -15,11 +15,11 @@
                 <!--Überschrift-->
                 <div class="row">
                     <div class="col-sm-8">
-                        <h1>Studenten Übersicht</h1>
+                        <h1>@lang('content.heading_stud')</h1>
                     </div>
                     <div class="col-sm-4 pull-right top-buffer-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Suchen...">
+                            <input type="text" class="form-control" placeholder="@lang('fields.search')...">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button"><span
                                             class="icon icon-magnifying-glass"></span></button>
@@ -31,7 +31,7 @@
                 <!--1.Zeile-->
                 <div class="top-buffer row">
                     <div class="col-md-8">
-                        Anzahl Studenten: <span id="stud_anz">x</span>
+                        @lang('content.stud1'): <span id="stud_anz">x</span>
                     </div>
                 </div>
 
@@ -54,10 +54,10 @@
                             <td class="bt">
                                 <div class="btn-group pull-right" role="group">
                                     <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> Bearbeiten</span></div>
+                                                class="hidden-xs"> @lang('fields.edit')</span></div>
                                     <div class="btn btn-danger löschStudentButton icon icon-cross"
                                          data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> Löschen</span>
+                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
                                     </div>
                                 </div>
                             </td>
@@ -69,10 +69,10 @@
                             <td class="bt">
                                 <div class="btn-group pull-right" role="group">
                                     <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> Bearbeiten</span></div>
+                                                class="hidden-xs"> @lang('fields.edit')</span></div>
                                     <div class="btn btn-danger löschStudentButton icon icon-cross"
                                          data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> Löschen</span>
+                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
                                     </div>
                                 </div>
                             </td>
@@ -84,10 +84,10 @@
                             <td class="bt">
                                 <div class="btn-group pull-right" role="group">
                                     <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> Bearbeiten</span></div>
+                                                class="hidden-xs"> @lang('fields.edit')</span></div>
                                     <div class="btn btn-danger löschStudentButton icon icon-cross"
                                          data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> Löschen</span>
+                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
                                     </div>
                                 </div>
                             </td>
@@ -99,10 +99,10 @@
                             <td class="bt">
                                 <div class="btn-group pull-right" role="group">
                                     <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> Bearbeiten</span></div>
+                                                class="hidden-xs"> @lang('fields.edit')</span></div>
                                     <div class="btn btn-danger löschStudentButton icon icon-cross"
                                          data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> Löschen</span>
+                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
                                     </div>
                                 </div>
                             </td>
@@ -114,10 +114,10 @@
                             <td class="bt">
                                 <div class="btn-group pull-right" role="group">
                                     <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> Bearbeiten</span></div>
+                                                class="hidden-xs"> @lang('fields.edit')</span></div>
                                     <div class="btn btn-danger löschStudentButton icon icon-cross"
                                          data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> Löschen</span>
+                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
                                     </div>
                                 </div>
                             </td>

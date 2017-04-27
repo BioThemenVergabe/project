@@ -5,28 +5,28 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="Wahlgang_beenden_Modal_Label">Möchten sie diesen Wahlgang wirklich beenden? </h4>
+                <h4 class="modal-title" id="Wahlgang_beenden_Modal_Label">@lang('content.modal_endel1') </h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <p>
-                        Wenn sie den Wahlgang beenden, werden alle angemeldeten Studenten mit den getroffenen Wahlen gelöscht!!!
+                        @lang('content.modal_endel2')
                     </p>
                     <p>
-                        Hinweis: Haben sie die Wahlergebnisse bereits heruntergeladen und exportiert? Wenn nicht, dann tun sie das bitte hier:
+                        @lang('content.modal_endel3')
                     </p>
-                    <p><a href="/Ergebnisse.html" download>Ergebnisse Downloaden</a></p>
+                    <p><a href="/Ergebnisse.html" download>@lang('fields.downloadResults')</a></p>
                     <p>
-                        Wenn sie die Wahl wirklich beenden wollen, geben sie bitte das Admin-Passwort ein und drücken sie unten auf "Wahl beenden"
+
                     </p>
                     <form>
-                        Admin-Passwort: <input type="password" required>
-                        <button type="submit" class="btn btn-danger">Wahl beenden</button>
+                        @lang('content.modal_endel5'): <input type="password" required>
+                        <button type="submit" class="btn btn-danger">@lang('content.modal_endel6')</button>
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('fields.cancel')</button>
             </div>
         </div>
     </div>

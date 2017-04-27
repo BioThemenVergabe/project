@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('links')
-    <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs"> Zur Wahl</span></a>
+<a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs"> Zur Wahl</span></a>
 @endsection
 
 @section('content')
@@ -19,7 +19,8 @@
 
             <div class="col-xs-5 col-md-3">
                 <a href="#">
-                    <img src="{{ asset('/img/default-user.png') }}" alt="Default Userpicture" class="img-thumbnail img-circle img-responsive"/>
+                    <img src="{{ asset('/img/default-user.png') }}" alt="Default Userpicture"
+                         class="img-thumbnail img-circle img-responsive"/>
                 </a>
             </div>
             <div class="col-xs-7 col-md-6 col-md-offset-1">
@@ -72,90 +73,93 @@
 
             <hr/>
 
-            <table class="table table-bordered table-striped table-responsive">
-                <thead>
-                <tr>
-                    <th class="col-xs-3"><label>Arbeitsgruppe</label></th>
-                    <th><label>Bewertung</label></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <div class="input-group pull-right hidden-xs hidden-sm">
-                            <span data-target="range" class="btn btn-default disabled"></span>
-                        </div>
-                        <label>Arbeitsgruppe #1</label>
-                    </td>
-                    <td>
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-addon">0</span>
-                            <input type="range" name="ag-1" value="1" class="form-control" min="0" max="10"
-                                   disabled>
-                            <span class="input-group-addon">10</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="input-group pull-right hidden-xs hidden-sm">
-                            <span data-target="range" class="btn btn-default disabled"></span>
-                        </div>
-                        <label>Arbeitsgruppe #2</label>
-                    </td>
-                    <td>
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-addon">0</span>
-                            <input type="range" name="ag-2" value="7" class="form-control" min="0" max="10"
-                                   disabled>
-                            <span class="input-group-addon">10</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="input-group pull-right hidden-xs hidden-sm">
-                            <span data-target="range" class="btn btn-default disabled"></span>
-                        </div>
-                        <label>Arbeitsgruppe #3</label>
-                    </td>
-                    <td>
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-addon">0</span>
-                            <input type="range" name="ag-3" value="2" class="form-control" min="0" max="10"
-                                   disabled>
-                            <span class="input-group-addon">10</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="input-group pull-right hidden-xs hidden-sm">
-                            <span data-target="range" class="btn btn-default disabled"></span>
-                        </div>
-                        <label>Arbeitsgruppe #4</label>
-                    </td>
-                    <td>
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-addon">0</span>
-                            <input type="range" name="ag-4" value="10" class="form-control" min="0" max="10"
-                                   disabled>
-                            <span class="input-group-addon">10</span>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td>
-                        <div class="pull-right"><label id="sum"></label></div>
-                        <label>@lang('fields.sum'):</label>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-                </tfoot>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th class="col-xs-3"><label>Arbeitsgruppe</label></th>
+                        <th><label>Bewertung</label></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="input-group pull-right hidden-xs hidden-sm">
+                                <span data-target="range" class="btn btn-default disabled"></span>
+                            </div>
+                            <label>Arbeitsgruppe #1</label>
+                        </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">0</span>
+                                <input type="range" name="ag-1" value="1" class="form-control" min="0" max="10"
+                                       disabled>
+                                <span class="input-group-addon">10</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group pull-right hidden-xs hidden-sm">
+                                <span data-target="range" class="btn btn-default disabled"></span>
+                            </div>
+                            <label>Arbeitsgruppe #2</label>
+                        </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">0</span>
+                                <input type="range" name="ag-2" value="7" class="form-control" min="0" max="10"
+                                       disabled>
+                                <span class="input-group-addon">10</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group pull-right hidden-xs hidden-sm">
+                                <span data-target="range" class="btn btn-default disabled"></span>
+                            </div>
+                            <label>Arbeitsgruppe #3</label>
+                        </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">0</span>
+                                <input type="range" name="ag-3" value="2" class="form-control" min="0" max="10"
+                                       disabled>
+                                <span class="input-group-addon">10</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group pull-right hidden-xs hidden-sm">
+                                <span data-target="range" class="btn btn-default disabled"></span>
+                            </div>
+                            <label>Arbeitsgruppe #4</label>
+                        </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">0</span>
+                                <input type="range" name="ag-4" value="10" class="form-control" min="0" max="10"
+                                       disabled>
+                                <span class="input-group-addon">10</span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td>
+                            <div class="pull-right"><label id="sum"></label></div>
+                            <label>@lang('fields.sum'):</label>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+
+            </div>
 
         </div>
     </div>

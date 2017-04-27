@@ -1,0 +1,103 @@
+@font-face {
+  font-family: Engravers;
+  src: url('fonts/engravers-gothic-bt-58eb4a0972183.ttf');
+}
+/*
+ * compile to style-c.css
+ */
+/*
+ * Mixin for re-using same code in .btn-* classes :)
+ */
+html {
+  /*
+   * Tags
+   */
+
+  /*
+   * Classes
+   */
+
+}
+html body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 4em;
+  padding-right: 0 !important;
+  background-image: url('../img/BG_1.jpeg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+html header {
+  background-color: #ffffff;
+}
+html section:first-child .panel {
+  box-shadow: 0 0 15px #191919;
+}
+html section:first-child .panel-heading {
+  font-size: 32px;
+  border-bottom: 1px solid #dcdcdc;
+  margin-top: 10px !important;
+}
+html section:first-child .panel-heading h2 {
+  font-size: 32px;
+  font-family: Engravers !important;
+  margin-top: 10px !important;
+}
+html section:nth-child(2) {
+  padding-bottom: 100px;
+}
+html section .panel-body {
+  padding: 10px;
+  margin: 0;
+}
+html .btn-primary {
+  background-color: #09bc6c;
+  border: 1px solid #09bc6c;
+}
+html .btn-primary:hover {
+  background-color: #067342;
+  border: 1px solid #067342;
+}
+html .btn-primary.disabled {
+  background-color: #1df494;
+  border: 1px solid #1df494;
+}
+html .btn-primary.disabled:hover {
+  background-color: #0bed88;
+  border: 1px solid #0bed88;
+}
+html .btn-info {
+  background-color: #09bc6c;
+  border: 1px solid #09bc6c;
+}
+html .btn-info:hover {
+  background-color: #067342;
+  border: 1px solid #067342;
+}
+html .btn-info.disabled {
+  background-color: #1df494;
+  border: 1px solid #1df494;
+}
+html .btn-info.disabled:hover {
+  background-color: #0bed88;
+  border: 1px solid #0bed88;
+}
+html .btn-link {
+  color: #09bc6c;
+}
+html .btn-link:hover {
+  color: #067342;
+}
+html .form-control:focus {
+  box-shadow: 0 0 5px #008b25;
+}
+html .btn-danger.disabled {
+  cursor: default;
+}
+html .btn-default.disabled {
+  cursor: default;
+}

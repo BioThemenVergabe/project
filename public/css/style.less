@@ -1,0 +1,132 @@
+@font-face {
+  font-family: Engravers;
+  src: url('fonts/engravers-gothic-bt-58eb4a0972183.ttf');
+}
+
+/*
+ * compile to style-c.css
+ */
+
+@primary: #09BC6c;
+@info:    #20b0b0;
+@hover:   #008b25;
+@danger:  rgb(217, 83, 79);
+
+/*
+ * Mixin for re-using same code in .btn-* classes :)
+ */
+.button(@color) {
+  background-color: @color;
+  border: 1px solid @color;
+  &:hover {
+    background-color: darken(@color,15%);
+    border: 1px solid darken(@color,15%);
+  }
+
+  &.disabled {
+    background-color: lighten(@color, 15%);
+    border: 1px solid lighten(@color,15%);
+    &:hover {
+      background-color: lighten(@color, 10%);
+      border: 1px solid lighten(@color,10%);
+    }
+  }
+}
+
+html {
+
+  /*
+   * Tags
+   */
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+    padding-top: 4em;
+
+    padding-right: 0 !important;
+
+    background-image: url('../img/BG_1.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  header {
+    background-color: #ffffff;
+  }
+
+  section {
+
+    &:first-child {
+
+      .panel {
+        box-shadow: 0 0 15px #191919;
+      }
+
+      .panel-heading {
+        font-size: 32px;
+        border-bottom: 1px solid #dcdcdc;
+        margin-top: 10px !important;
+
+        h2 {
+          font-size: 32px;
+          font-family: Engravers !important;
+          margin-top: 10px !important;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      padding-bottom: 100px;
+    }
+
+    .panel-body {
+      padding: 10px;
+      margin: 0;
+    }
+  }
+
+
+
+  /*
+   * Button-Classes
+   */
+
+  .btn-primary{
+    .button(@primary);
+  }
+
+  .btn-info {
+    .button(@primary);
+  }
+
+  .btn-link {
+    color: @primary;
+    &:hover {
+      color: darken(@primary,15%);
+    }
+  }
+
+  .form-control {
+    &:focus {
+      box-shadow: 0 0 5px @hover;
+    }
+  }
+
+  .btn-danger {
+    &.disabled {
+      cursor: default;
+    }
+  }
+
+  .btn-default {
+    &.disabled {
+      cursor: default;
+    }
+  }
+}
+

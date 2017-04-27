@@ -24,10 +24,6 @@ header {
     width: 100%;
 }
 
-body #login_panel{
-    height: 70%;
-}
-
 section:first-child .panel {
     box-shadow: 0 0 15px #191919;
 }
@@ -45,10 +41,6 @@ section:first-child .panel-heading h2 {
 }
 
 section:nth-child(2) {
-    /*
-    min-height: 20%;
-    display: table;
-    */
     padding-bottom: 100px;
 }
 

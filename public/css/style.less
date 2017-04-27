@@ -11,6 +11,7 @@
 @info:    #20b0b0;
 @hover:   #008b25;
 @danger:  rgb(217, 83, 79);
+@white:   #ffffff;
 
 /*
  * Mixin for re-using same code in .btn-* classes :)
@@ -18,9 +19,15 @@
 .button(@color) {
   background-color: @color;
   border: 1px solid @color;
-  &:hover {
+
+  &:hover, &:focus {
     background-color: darken(@color,15%);
     border: 1px solid darken(@color,15%);
+  }
+
+  &:active, &:active:focus {
+    background-color: darken(@color,30%);
+    border: 1px solid darken(@color,30%);
   }
 
   &.disabled {
@@ -34,7 +41,10 @@
 }
 
 html {
-
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
   /*
    * Tags
    */
@@ -48,7 +58,7 @@ html {
 
     padding-right: 0 !important;
 
-    background-image: url('../img/BG_2.jpg');
+    background-image: url('../img/BG_1.jpeg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -60,6 +70,11 @@ html {
   }
 
   section {
+
+    &#login_panel {
+      height: 70%;
+      min-height: 400px;
+    }
 
     &:first-child {
 
@@ -78,6 +93,10 @@ html {
           margin-top: 10px !important;
         }
       }
+    }
+
+    &#welcomemsg {
+      background-color: @white;
     }
 
     &:nth-child(2) {
@@ -101,7 +120,7 @@ html {
   }
 
   .btn-info {
-    .button(@primary);
+    .button(@info);
   }
 
   .btn-link {

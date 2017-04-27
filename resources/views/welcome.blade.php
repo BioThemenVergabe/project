@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<style>
-    section {
-        background-color: #ffffff;
-    }
-</style>
+
 @endsection
 
 @section('content')
@@ -24,7 +20,7 @@
 
 </section>
 
-<section>
+<section id="welcomemsg">
     <div class="container welcome">
         <div class="row">
             <div class="col-xs-12">

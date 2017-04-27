@@ -9,6 +9,10 @@
  * Mixin for re-using same code in .btn-* classes :)
  */
 html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
   /*
    * Tags
    */
@@ -25,7 +29,7 @@ html body {
   height: 100%;
   padding-top: 4em;
   padding-right: 0 !important;
-  background-image: url('../img/BG_2.jpg');
+  background-image: url('../img/BG_1.jpeg');
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -33,6 +37,10 @@ html body {
 }
 html header {
   background-color: #ffffff;
+}
+html section#login_panel {
+  height: 70%;
+  min-height: 400px;
 }
 html section:first-child .panel {
   box-shadow: 0 0 15px #191919;
@@ -47,6 +55,9 @@ html section:first-child .panel-heading h2 {
   font-family: Engravers !important;
   margin-top: 10px !important;
 }
+html section#welcomemsg {
+  background-color: #ffffff;
+}
 html section:nth-child(2) {
   padding-bottom: 100px;
 }
@@ -58,9 +69,13 @@ html .btn-primary {
   background-color: #09bc6c;
   border: 1px solid #09bc6c;
 }
-html .btn-primary:hover {
+html .btn-primary:hover, html .btn-primary:focus {
   background-color: #067342;
   border: 1px solid #067342;
+}
+html .btn-primary:active, html .btn-primary:active:focus {
+  background-color: #022a18;
+  border: 1px solid #022a18;
 }
 html .btn-primary.disabled {
   background-color: #1df494;
@@ -71,20 +86,24 @@ html .btn-primary.disabled:hover {
   border: 1px solid #0bed88;
 }
 html .btn-info {
-  background-color: #09bc6c;
-  border: 1px solid #09bc6c;
+  background-color: #20b0b0;
+  border: 1px solid #20b0b0;
 }
-html .btn-info:hover {
-  background-color: #067342;
-  border: 1px solid #067342;
+html .btn-info:hover, html .btn-info:focus {
+  background-color: #146f6f;
+  border: 1px solid #146f6f;
+}
+html .btn-info:active, html .btn-info:active:focus {
+  background-color: #082f2f;
+  border: 1px solid #082f2f;
 }
 html .btn-info.disabled {
-  background-color: #1df494;
-  border: 1px solid #1df494;
+  background-color: #40dcdc;
+  border: 1px solid #40dcdc;
 }
 html .btn-info.disabled:hover {
-  background-color: #0bed88;
-  border: 1px solid #0bed88;
+  background-color: #2bd8d8;
+  border: 1px solid #2bd8d8;
 }
 html .btn-link {
   color: #09bc6c;

@@ -3,26 +3,20 @@
 return [
 
     /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
+     * all
+     */
+    'cPassword' => 'Passwort (Wdh.)',
     'username' => 'Benutzername',
     'password' => 'Passwort',
-    'cPassword' => 'Passwort (Wdh.)',
+
     'mail' => 'Email Adresse',
     'name' => 'Name',
     'pswreset' => 'Passwort Wiederherstellen',
     'pswold' => 'Aktuelles Passwort',
-    'submit' => 'Senden',
     'register' => 'Registrieren',
     'reset' => 'Zur&uuml;cksetzen',
+    'submit' => 'Senden',
+
     'signin' => 'Anmelden',
     'signout' => 'Abmelden',
     'remember' => 'Anmeldung speichern',
@@ -36,5 +30,15 @@ return [
     'selection' => 'Wahl',
     'lastname' => 'Nachname',
     'noresult' => 'Kein Ergebnis verf&uuml;gbar',
+
+    /*
+     * ACP
+     */
+
+
+    /*
+     * Userpanel
+     */
+
 
 ];

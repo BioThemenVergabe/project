@@ -14,8 +14,13 @@ use App\Welcome;
 */
 
 Route::match(['get','post'],'/', function () {
-//    if(!Request::secure())
-//        return redirect(env('APP_URL'));
+
+    /*
+     * Weiterleitung, wenn SSL vorhanden ist.
+     *
+     * if(!Request::secure())
+     *   return redirect(env('APP_URL'));
+     */
     if(Auth::check())
         return redirect('/dashboard');
 

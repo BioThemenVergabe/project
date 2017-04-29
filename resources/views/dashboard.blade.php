@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('links')
-<a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs"> Zur Wahl</span></a>
+<a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs"> @lang('fields.gtElect')</span></a>
 @endsection
 
 @section('content')
@@ -27,7 +27,7 @@
                 <div class="form-group row">
                     <label class="col-md-4 control-label">@lang('fields.name')</label>
                     <div class="col-md-8">
-                        <span contentEditable>Max</span> <span contentEditable>Muster</span>
+                        <span>Max Muster</span>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -40,7 +40,7 @@
                 <div class="form-group row">
                     <label class="col-xs-12 col-md-4 control-label">@lang('fields.mail')</label>
                     <div class="col-xs-12 col-md-8">
-                        <span contentEditable>max.muster@uni-konstanz.de</span>
+                        <span>max.muster@uni-konstanz.de</span>
                     </div>
                 </div>
 
@@ -58,14 +58,12 @@
 
                 <div class="form-group row">
                     <div class="col-xs-12 hidden-md hidden-lg">
-                        <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default"> Profil
-                            bearbeiten</a>
+                        <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default"> @lang('fields.editProfile')</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 hidden-xs hidden-sm">
-                <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default"> Profil
-                    bearbeiten</a>
+                <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default"> @lang('fields.editProfile')</a>
             </div>
 
 
@@ -77,8 +75,8 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th class="col-xs-3"><label>Arbeitsgruppe</label></th>
-                        <th><label>Bewertung</label></th>
+                        <th class="col-xs-3"><label>@lang('fields.ag')</label></th>
+                        <th><label>@lang('fields.valuta')</label></th>
                     </tr>
                     </thead>
                     <tbody>

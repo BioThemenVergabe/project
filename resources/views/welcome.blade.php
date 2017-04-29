@@ -22,17 +22,15 @@
 
 <section id="welcomemsg">
     <div class="container welcome">
-        <div class="row">
-            <div class="col-xs-12">
+        <p class="row">
 
                 <h1>@lang('fields.welcome')</h1>
                 @if(app()->getLocale() == "de")
-                <p>{{ $welcome->de }}</p>
+                <p class="col-xs-12">{{ $welcome->de }}</p>
                 @else
-                <p>{{ $welcome->en }}</p>
+                <p class="col-xs-12">{{ $welcome->en }}</p>
                 @endif
 
-            </div>
         </div>
     </div>
 </section>

@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'ag' => 'Working groups',
+
     'username' => 'Username',
     'password' => 'Password',
     'cPassword' => 'Confirm Password',
@@ -62,7 +64,6 @@ return [
     'editText' => 'Change welcome text',
     'endElect1' => 'End rating-process',
     'endElect2' => 'All data will be deleted',
-    'ag' => 'Working groups',
     'students' => 'Students',
 
 
@@ -70,4 +71,9 @@ return [
     /*
      * Userpanel
      */
+
+    'editProfile' => 'Edit Profile',
+    'gtElect' => 'Voting',
+    'valuta' => 'Valuation',
+    'dashboard' => 'Dashboard',
 ];

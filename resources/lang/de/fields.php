@@ -5,36 +5,35 @@ return [
     /*
      * all
      */
-    'cPassword' => 'Passwort (Wdh.)',
-    'username' => 'Benutzername',
-    'password' => 'Passwort',
 
-    'mail' => 'Email Adresse',
-    'name' => 'Name',
-    'pswreset' => 'Passwort Wiederherstellen',
-    'pswold' => 'Aktuelles Passwort',
-    'register' => 'Registrieren',
-    'reset' => 'Zur&uuml;cksetzen',
-    'submit' => 'Senden',
-
-    'signin' => 'Anmelden',
-    'signout' => 'Abmelden',
-    'remember' => 'Anmeldung speichern',
-    'forgot' => 'Passwort vergessen?',
-    'login' => 'Anmelden',
-    'save' => 'Speichern',
-    'sum' => 'Summe',
-    'welcome' => 'Willkommen',
-    'matnr' => 'Matrikelnummer',
-    'results' => 'Wahlergebnisse',
-    'selection' => 'Wahl',
-    'lastname' => 'Nachname',
-    'noresult' => 'Kein Ergebnis verf&uuml;gbar',
-
+    'ag' => 'Arbeitsgruppen',
     'cancel' => 'Abbrechen',
     'close' => 'Schließen',
+    'cPassword' => 'Passwort (Wdh.)',
     'delete' => 'Löschen',
+    'forgot' => 'Passwort vergessen?',
+    'lastname' => 'Nachname',
+    'login' => 'Anmelden',
+    'mail' => 'Email Adresse',
+    'matnr' => 'Matrikelnummer',
+    'name' => 'Name',
     'nodelete' => 'Nicht Löschen',
+    'noresult' => 'Kein Ergebnis verf&uuml;gbar',
+    'password' => 'Passwort',
+    'pswold' => 'Aktuelles Passwort',
+    'pswreset' => 'Passwort Wiederherstellen',
+    'register' => 'Registrieren',
+    'remember' => 'Anmeldung speichern',
+    'reset' => 'Zur&uuml;cksetzen',
+    'results' => 'Wahlergebnisse',
+    'save' => 'Speichern',
+    'selection' => 'Wahl',
+    'signin' => 'Anmelden',
+    'signout' => 'Abmelden',
+    'submit' => 'Senden',
+    'sum' => 'Summe',
+    'username' => 'Benutzername',
+    'welcome' => 'Willkommen',
 
     /*
      * ACP
@@ -55,7 +54,6 @@ return [
     'editText' => 'Begrüßungstext ändern',
     'endElect1' => 'Wahlgang beenden',
     'endElect2' => 'Es werden alle Daten gel&ouml;scht',
-    'ag' => 'Arbeitsgruppen',
     'students' => 'Studenten',
 
 
@@ -65,5 +63,8 @@ return [
      * Userpanel
      */
 
-
+    'editProfile' => 'Profil bearbeiten',
+    'gtElect' => 'Zur Wahl',
+    'valuta' => 'Bewertung',
+    'dashboard' => 'Startseite',
 ];

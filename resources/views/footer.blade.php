@@ -2,12 +2,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <label>Impressum</label>
+                <label>@lang('footer.impress')</label>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-8 no-padding">
                             <address>
-                                <label>Fachschaft Biologie</label>
+                                <label>@lang('footer.representative')</label>
                                 <p>Universitätsstraße 10</p>
                                 <p>78464 Konstanz</p>
                                 <p>Telefon intern: 4188</p>
@@ -16,7 +16,7 @@
                             </address>
                         </div>
                         <div class="col-md-4 no-padding">
-                            <label>Autoren</label>
+                            <label>@lang('footer.authors')</label>
                             <div class="row">
                                 <address class="col-xs-6 col-md-12">
                                     Mathias Leopold<br>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label>&Uuml;ber uns</label>
+                <label>@lang('footer.whois')</label>
                 <p>
                     Wir, die Fachschaft Biologie, setzen uns aus Studenten verschiedener Semester zusammen,
                     die sich für eure Interessen an der Uni einsetzten.
@@ -41,8 +41,8 @@
             </div>
             <div class="col-md-3">
                 <ul class="nav nav-stacked">
-                    <li><a href="https://www.fachschaft.biologie.uni-konstanz.de/" class="icon icon-home" target="_blank"> Fachschaft</a></li>
-                    <li><a href="mailto:fachschaft.biologie@uni-konstanz.de" class="icon icon-mail" target="_blank"> Mail schreiben</a></li>
+                    <li><a href="https://www.fachschaft.biologie.uni-konstanz.de/" class="icon icon-home" target="_blank"> @lang('footer.faculty')</a></li>
+                    <li><a href="mailto:fachschaft.biologie@uni-konstanz.de" class="icon icon-mail" target="_blank"> @lang('footer.mail')</a></li>
                     <li class="nav-divider"></li>
                     <li><a href="https://www.facebook.com/FachschaftBioKonstanz" class="icon icon-facebook" target="_blank"> Facebook</a></li>
                     <li><a href="https://twitter.com/FsBioKn" class="icon icon-twitter" target="_blank"> Twitter</a></li>

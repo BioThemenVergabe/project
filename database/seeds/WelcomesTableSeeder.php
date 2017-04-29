@@ -11,9 +11,22 @@ class WelcomesTableSeeder extends Seeder
      */
     public function run()
     {
+
+        $rndStringDE = "";
+        for($i = 0; $i < 100; $i++) {
+            $strLength = rand(3, 10);
+            $rndStringDE = $rndStringDE . str_random($strLength) . " ";
+        }
+
+        $rndStringEN = "";
+        for($i = 0; $i < 100; $i++) {
+            $strLength = rand(3, 10);
+            $rndStringEN = $rndStringDE . str_random($strLength) . " ";
+        }
+
         DB::table('welcomes')->insert([
-            'de' => str_random(50),
-            'en' => str_random(50),
+            'de' => $rndStringDE,
+            'en' => $rndStringEN,
         ]);
     }
 }

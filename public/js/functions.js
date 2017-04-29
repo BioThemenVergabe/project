@@ -86,6 +86,21 @@ $(document).ready(function() {
             $('#wahl_schliessen').removeClass("icon-controller-play");
             $('#wahl_schliessen').addClass("icon-block");
         }
+
+        if($('#wahl_schliessen_text').html() == ' Close the rating-process'){
+            $('#close_open').html('Closed');
+            $('#close_open_body').html('<ul><li>No more students can be registered</li><li>The students cannot change their profile data or ratings themselves</li><li>Only you as administrator can do that, under "Students overview"</li><li>If you want to open the rating-process, you can, by pressing the same button that you used to close</li></ul>');
+            $('#wahl_schliessen_text').html(' Open the rating-process');
+            $('#wahl_schliessen').removeClass("icon-block");
+            $('#wahl_schliessen').addClass("icon-controller-play");
+        }
+        else if($('#wahl_schliessen_text').html() == ' Open the rating-process'){
+            $('#close_open').html('Open');
+            $('#close_open_body').html('<ul><li>From now on, new students can register</li><li>All registered students can change their profile and ratings</li><li>If you want to close the rating-process, you can, by pressing the same button that you used to open</li></ul>');
+            $('#wahl_schliessen_text').html(' Close the rating-process');
+            $('#wahl_schliessen').removeClass("icon-controller-play");
+            $('#wahl_schliessen').addClass("icon-block");
+        }
     });
 
 

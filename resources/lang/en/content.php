@@ -27,7 +27,7 @@ return [
     'modal_Begr2' => 'Welcome text',
     'modal_Begr3' => 'Save text',
     'modal_Begr4' => 'Discard changes',
-    'modal_clop1' => 'You changed the ongoing rating-process to',
+    'modal_clop1' => 'You changed the ongoing rating-process to: ',
     'modal_delag1' => 'Do you realy want do delete this AG?',
     'modal_delstud' => 'Do you realy want to delete this student?',
     'modal_endel1' => 'Do you realy want to end the rating-process?',

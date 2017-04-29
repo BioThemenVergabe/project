@@ -49,6 +49,7 @@ return [
     'del' => 'Löschen',
     'savechange' => 'Änderungen speichern',
     'closeElect' => 'Wahl schließen',
+    'openElect' => 'Wahl öffnen',
     'startAlgo' => 'Zuweisung starten',
     'downloadResults' => 'Ergebnisse downloaden',
     'editText' => 'Begrüßungstext ändern',
@@ -56,6 +57,7 @@ return [
     'endElect2' => 'Es werden alle Daten gel&ouml;scht',
     'ag' => 'Arbeitsgruppen',
     'students' => 'Studenten',
+
 
 
 

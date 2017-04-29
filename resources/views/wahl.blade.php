@@ -25,66 +25,65 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr data-target="ag-1">
-                        <td>
-                            <div class="input-group pull-right hidden-xs hidden-sm">
-                                <span data-target="range" class="btn btn-default disabled"></span>
-                            </div>
-                            <label>Arbeitsgruppe #1</label>
-                        </td>
-                        <td>
-                            <div class="form-group hidden-md hidden-lg">
-                                <input type="number" class="form-control copyOf" id="ag-1" data-copy="range">
-                            </div>
-                            <div class="input-group input-group-sm hidden-xs hidden-sm">
-                                <span class="input-group-addon">0</span>
-                                <input type="range" name="ag-1" value="5" class="form-control" min="0" max="10">
-                                <span class="input-group-addon">10</span>
-                            </div>
-                        </td>
-                    </tr>
+                        <tr data-row="ag-1">
+                            <td>
+                                <div class="input-group pull-right hidden-xs hidden-sm">
+                                    <span data-target="range" class="btn btn-default disabled"></span>
+                                </div>
+                                <label>Arbeitsgruppe #1</label>
+                            </td>
+                            <td>
+                                <div class="form-group hidden-md hidden-lg">
+                                    <input type="number" class="form-control copyOf" data-copy="range">
+                                </div>
+                                <div class="input-group input-group-sm hidden-xs hidden-sm">
+                                    <span class="input-group-addon">0</span>
+                                    <input type="range" name="ag-1" id="ag-1" value="5" class="form-control" min="0" max="10">
+                                    <span class="input-group-addon">10</span>
+                                </div>
+                            </td>
+                        </tr>
 
-                    <tr class="hidden-md hidden-lg">
-                        <td colspan="2">
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-addon">0</span>
-                                <input type="range" name="ag-1" data-copy="ag-1" value="5" class="form-control" min="0" max="10">
-                                <span class="input-group-addon">10</span>
-                            </div>
-                        </td>
-                    </tr>
+                        <tr data-row-copy="ag-1" class="hidden-md hidden-lg">
+                            <td colspan="2">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">0</span>
+                                    <input type="range" name="ag-1" data-copy="ag-1" value="5" class="form-control" min="0" max="10">
+                                    <span class="input-group-addon">10</span>
+                                </div>
+                            </td>
+                        </tr>
 
 
-                    <tr>
-                        <td>
-                            <div class="input-group pull-right">
-                                <span data-target="range" class="btn btn-default disabled"></span>
-                            </div>
-                            <label>Arbeitsgruppe #1</label>
-                        </td>
-                        <td>
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-addon">0</span>
-                                <input type="range" name="ag-2" value="5" class="form-control" min="0" max="10">
-                                <span class="input-group-addon">10</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group pull-right">
-                                <span data-target="range" class="btn btn-default disabled"></span>
-                            </div>
-                            <label>Arbeitsgruppe #1</label>
-                        </td>
-                        <td>
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-addon">0</span>
-                                <input type="range" name="ag-3" value="5" class="form-control" min="0" max="10">
-                                <span class="input-group-addon">10</span>
-                            </div>
-                        </td>
-                    </tr>
+                        <tr data-row="ag-2">
+                            <td>
+                                <div class="input-group pull-right hidden-xs hidden-sm">
+                                    <span data-target="range" class="btn btn-default disabled"></span>
+                                </div>
+                                <label>Arbeitsgruppe #1</label>
+                            </td>
+                            <td>
+                                <div class="form-group hidden-md hidden-lg">
+                                    <input type="number" class="form-control copyOf" data-copy="range">
+                                </div>
+                                <div class="input-group input-group-sm hidden-xs hidden-sm">
+                                    <span class="input-group-addon">0</span>
+                                    <input type="range" name="ag-2" id="ag-2" value="5" class="form-control" min="0" max="10">
+                                    <span class="input-group-addon">10</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr data-row-copy="ag-2" class="hidden-md hidden-lg">
+                            <td colspan="2">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">0</span>
+                                    <input type="range" name="ag-2" data-copy="ag-2" value="5" class="form-control" min="0" max="10">
+                                    <span class="input-group-addon">10</span>
+                                </div>
+                            </td>
+                        </tr>
+
                     </tbody>
                     <tfoot>
                     <tr>

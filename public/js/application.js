@@ -1,8 +1,3 @@
-
-
-
-
-
 function calcSum() {
     var sum = 0;
     $('[data-target=range]').each(function() {

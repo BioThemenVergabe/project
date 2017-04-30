@@ -29,6 +29,8 @@ $(function() {
     });
 
     $('.copyOf').on('input change', function() {
+        if(parseInt($(this).val()) > $(this).attr('max'))
+            $(this).val(parseInt($(this).attr('max')));
         var ag = $(this).parents('tr').data('row');
         $('#'+ag).val(parseInt($(this).val()));
         $('tr[data-row='+ag+']').find('[data-target=range]').html($(this).val());

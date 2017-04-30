@@ -20,7 +20,7 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th class="col-xs-3"><label>@lang('fields.ag')</label></th>
+                        <th class="col-xs-6 col-md-3"><label>@lang('fields.ag')</label></th>
                         <th><label>@lang('fields.valuta')</label></th>
                     </tr>
                     </thead>
@@ -34,7 +34,7 @@
                             </td>
                             <td>
                                 <div class="form-group hidden-md hidden-lg">
-                                    <input type="number" class="form-control copyOf" data-copy="range">
+                                    <input type="number" class="form-control copyOf" data-copy="range" min="0" max="10">
                                 </div>
                                 <div class="input-group input-group-sm hidden-xs hidden-sm">
                                     <span class="input-group-addon">0</span>
@@ -64,7 +64,7 @@
                             </td>
                             <td>
                                 <div class="form-group hidden-md hidden-lg">
-                                    <input type="number" class="form-control copyOf" data-copy="range">
+                                    <input type="number" class="form-control copyOf" data-copy="range"  min="0" max="10">
                                 </div>
                                 <div class="input-group input-group-sm hidden-xs hidden-sm">
                                     <span class="input-group-addon">0</span>

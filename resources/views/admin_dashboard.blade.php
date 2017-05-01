@@ -10,6 +10,10 @@
 <section class="container">
     <div class="panel">
         <div class="panel-body">
+            <div id="dashboard_alert" class="alert alert-warning alert-dismissable">
+                <a id="close_alert" href="#" class="close" aria-label="close">&times;</a>
+                @lang('content.admin_dashboard_alert')
+            </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <h1>Dashboard</h1>
@@ -42,7 +46,7 @@
 
             <div class="top-buffer row">
                 <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                    <button title="Es gibt noch Studenten, ohne Wahlabgabe." type="button" class="btn btn-primary disabled btn-block icon icon-hour-glass"> @lang('fields.startAlgo')</button>
+                    <button id="start_Algo" type="button" class="btn btn-primary disabled btn-block icon icon-hour-glass"> @lang('fields.startAlgo')</button>
                 </div>
             </div>
 

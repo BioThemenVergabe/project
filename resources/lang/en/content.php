@@ -42,6 +42,8 @@ return [
     'modal_studWahl1' => 'Overview of all submitted ratings of',
     'modal_studWahl2' => 'Average rating',
     'modal_studWahl3' => 'Rating',
+    'admin_dashboard_alert' => '<strong>Info:</strong> There are still students with no submitted ratings. The algorithm can\'t be started yet',
+
 
 
 

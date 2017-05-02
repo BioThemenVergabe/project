@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('links')
-<a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs"> @lang('fields.gtElect')</span></a>
+    <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs"> @lang('fields.gtElect')</span></a>
 @endsection
 
 @section('content')

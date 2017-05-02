@@ -7,7 +7,7 @@
         <div class="col-xs-12 col-md-6 col-md-offset-3">
             <div class="panel">
                 <!-- Default panel contents -->
-                <div class="panel-heading"><label>{{ config('app.name') }}</label></div>
+                @include('panels.heading')
                 <div class="panel-body">
 
                         @include('auth.forms.login')

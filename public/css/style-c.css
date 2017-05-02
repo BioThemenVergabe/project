@@ -128,3 +128,14 @@ html .btn-danger.disabled {
 html .btn-default.disabled {
   cursor: default;
 }
+table.voting td {
+  position: relative;
+}
+table.voting td > .progress-bar {
+  top: 0;
+  left: 0;
+  position: absolute;
+  content: '';
+  height: 100%;
+  background-color: #20b0b0;
+}

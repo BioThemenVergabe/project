@@ -72,7 +72,7 @@
             <hr/>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped voting">
                     <thead>
                     <tr>
                         <th class="col-xs-3"><label>@lang('fields.ag')</label></th>
@@ -83,39 +83,29 @@
                     <tr>
                         <td>
                             <div class="input-group pull-right hidden-xs hidden-sm">
-                                <span data-target="range" class="btn btn-default disabled"></span>
+                                <span data-target="range" class="btn btn-default disabled">1</span>
                             </div>
                             <label>Arbeitsgruppe #1</label>
                         </td>
                         <td>
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-addon">0</span>
-                                <input type="range" name="ag-1" value="1" class="form-control" min="0" max="10"
-                                       disabled>
-                                <span class="input-group-addon">10</span>
-                            </div>
+                            <span class="progress-bar" style="width: 10%;"></span>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div class="input-group pull-right hidden-xs hidden-sm">
-                                <span data-target="range" class="btn btn-default disabled"></span>
+                                <span data-target="range" class="btn btn-default disabled">7</span>
                             </div>
                             <label>Arbeitsgruppe #2</label>
                         </td>
                         <td>
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-addon">0</span>
-                                <input type="range" name="ag-2" value="7" class="form-control" min="0" max="10"
-                                       disabled>
-                                <span class="input-group-addon">10</span>
-                            </div>
+                            <span class="progress-bar" style="width: 70%;"></span>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div class="input-group pull-right hidden-xs hidden-sm">
-                                <span data-target="range" class="btn btn-default disabled"></span>
+                                <span data-target="range" class="btn btn-default disabled">2</span>
                             </div>
                             <label>Arbeitsgruppe #3</label>
                         </td>
@@ -131,7 +121,7 @@
                     <tr>
                         <td>
                             <div class="input-group pull-right hidden-xs hidden-sm">
-                                <span data-target="range" class="btn btn-default disabled"></span>
+                                <span data-target="range" class="btn btn-default disabled">10</span>
                             </div>
                             <label>Arbeitsgruppe #4</label>
                         </td>

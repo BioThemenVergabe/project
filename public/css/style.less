@@ -154,3 +154,16 @@ html {
   }
 }
 
+table.voting {
+  td {
+    position: relative;
+    > .progress-bar {
+      top: 0;
+      left: 0;
+      position: absolute;
+      content: '';
+      height: 100%;
+      background-color: @info;
+    }
+  }
+}

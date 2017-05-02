@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'impress' => 'Imress',
-    'authors' => 'Authors',
-    'whois' => 'Who we are',
-    'mail' => 'Write a mail',
+    'impress' => 'Imressum',
+    'authors' => 'Autoren',
+    'whois' => '&Uuml;ber uns',
+    'mail' => 'E-Mail schreiben',
     'faculty' => 'Fachschaft',
     'representative' => 'Fachschaft Biologie',
 ];

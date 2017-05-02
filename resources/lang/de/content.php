@@ -42,6 +42,8 @@ return [
     'modal_studWahl1' => 'Übersicht der getroffenen Wahl von Student',
     'modal_studWahl2' => 'Durchschnitt der abgegebenen Wahl',
     'modal_studWahl3' => 'Note',
+    'admin_dashboard_alert' => '<strong>Info:</strong> Es gibt noch Studenten, ohne Wahlabgabe. Die Berechnungen können noch nicht gestartet werden',
+
 
 
 

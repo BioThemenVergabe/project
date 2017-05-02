@@ -89,7 +89,7 @@ $(document).ready(function() {
 
         if($('#wahl_schliessen_text').html() == ' Close the rating-process'){
             $('#close_open').html('Closed');
-            $('#close_open_body').html('<ul><li>No more students can be registered</li><li>The students cannot change their profile data or ratings themselves</li><li>Only you as administrator can do that, under "Students overview"</li><li>If you want to open the rating-process, you can, by pressing the same button that you used to close</li></ul>');
+            $('#close_open_body').html('<ul><li>No more students can be registered</li><li>The students cannot change their profile data or ratings themselves</li><li>Only you as administrator can do so, under "Students overview"</li><li>If you want to open the rating-process, you can, by pressing the same button that you used to close</li></ul>');
             $('#wahl_schliessen_text').html(' Open the rating-process');
             $('#wahl_schliessen').removeClass("icon-block");
             $('#wahl_schliessen').addClass("icon-controller-play");
@@ -103,6 +103,18 @@ $(document).ready(function() {
         }
     });
 
+    $('#start_Algo').click(function(){
+        if (document.getElementById('start_Algo').classList.contains('disabled')) {
+            $('#dashboard_alert').show();
+        }
+        else{
+            //start algo
+        }
+
+    });
+    $('#close_alert').click(function() {
+        $('#dashboard_alert').hide()
+    });
 
 });
 

@@ -17,14 +17,13 @@
             </div>
         </div>
     </div>
-
 </section>
 
 <section id="welcomemsg">
     <div class="container welcome">
         <p class="row">
 
-                <h1>@lang('fields.welcome') - GIT-Test</h1>
+                <h1>@lang('fields.welcome')</h1>
                 @if(app()->getLocale() == "de")
                 <p class="col-xs-12">{{ $welcome->de }}</p>
                 @else

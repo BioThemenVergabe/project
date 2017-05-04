@@ -24,19 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        /*
-         * Wenn Trennung der User anhand der
-         */
-        if(Auth::user()->userlevel < 1)
-            return $this->showDashboard();
-        return $this->showACP();
+        //
     }
 
-    public function showDashboard() {
-        return view('dashboard');
-    }
 
-    public function showACP() {
-
-    }
 }

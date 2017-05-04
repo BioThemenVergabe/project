@@ -15,9 +15,16 @@ function deleteTrigger(){
     update();
 }
 
+
+//delStudenten-Modal lösch Button wird hier ausgeführt -> Student wird aus DB gelöscht
 var triggerStudent;
 function deleteStudentTrigger(){
-    $(triggerStudent).parent().parent().parent().remove();
+    //Get anfrage an /delstudent
+    var row = $(triggerStudent).parent().parent().parent();
+    var matrnr = $(row).find('.ma').html();
+    var name = $(row).find('.na').html();
+    window.location = "/studenten_delete?"+"matrnr="+matrnr+"&name="+name;
+
 }
 
 $(document).ready(function() {
@@ -57,6 +64,7 @@ $(document).ready(function() {
         $('#insert-student .za').html(ZA);
     });
 
+    //Get Request an _bearbeiten mit Daten des zu bearbeitenden Studenten
     $('.bearbeitenButton').click(function(){
         var row = $(this).parent().parent().parent();
         var matrnr = $(row).find('.ma').html();
@@ -66,13 +74,6 @@ $(document).ready(function() {
         window.location = "/admin_studenten_bearbeiten?"+"matrnr="+matrnr+"&email="+email+"&name="+name+"&id="+id;
     });
 
-    $('#bearbeiten-abbrechen').click(function(){
-        window.location = "/admin_studenten";
-    });
-
-    $('#bearbeiten-speichern').click(function(){
-        window.location = "/admin_studenten";
-    });
 
 
     //Dashboard-buttons:

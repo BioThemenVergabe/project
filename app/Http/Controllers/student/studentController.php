@@ -13,12 +13,15 @@ use Illuminate\Support\Facades\DB;
 
 class studentController{
 
+
+    //alle Studenten anzeigen. Admin Accounts werden nicht angezeigt!
     public function showStudents(){
-        $students = DB::table("users")->select('id','name','lastname', 'matrnr', 'email')->get();
+        $students = DB::table("users")->where('userlevel',0)->select('id','name','lastname', 'matrnr', 'email')->get();
         $parameters = ['students' => $students];
         return view('admin_studenten', $parameters);
     }
 
+    //die _bearbeiten seite wird mit den Parametern des angeklickten Studenten aufgerufen.
     public function editStudent(Request $request){
         $name = $request->name;
         $nameArray = explode(' ', $name);
@@ -28,12 +31,19 @@ class studentController{
         return view('admin_studenten_bearbeiten', $parameters);
     }
 
+    //nachdem auf _bearbeiten die Daten des Studenten bearbeitet wurden, werden sie gesichert, und man wird auf _studenten zurückgeleitet
     function saveStudent(Request $request)
     {
         $student = new studentModel($request->id,$request->name, $request->lastname, $request->matnr, $request->email);
 
         DB::table("users")->where('id', $student->getId())->update(['name' => $student->getName(),'lastname' => $student->getLastname(),'matrnr' => $student->getMatrnr(),'email' => $student->getEmail()]);
 
+        return $this->showStudents();
+    }
+
+    //nachdem das Löschen bestätigt wurde, wird der ausgewählte student hier aus der  DB gelöscht. Der nutzer wird auf _studenten zurückgeleitet
+    function deleteStudent(Request $request){
+        DB::table("users")->where('matrnr',$request->matrnr)->delete();
 
         return $this->showStudents();
     }

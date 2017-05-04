@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Matthias
@@ -6,10 +7,11 @@
  * Time: 21:05
  */
 
-
+namespace App\Http\Controllers\student;
 
 class studentModel
 {
+    private $id;
     private $name;
     private $lastname;
     private $matrnr;
@@ -18,17 +20,19 @@ class studentModel
 
     /**
      * ContactModel constructor.
+     * @param $id
      * @param $name
      * @param $lastname
      * @param $matrnr
      * @param $email
      */
-    public function __construct($name, $lastname, $matrnr, $email)
+    public function __construct($id, $name, $lastname, $matrnr, $email)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->lastname = $lastname;
-        $this->matrnr= $matrnr;
-        $this->email= $email;
+        $this->matrnr = $matrnr;
+        $this->email = $email;
     }
 
     /**
@@ -37,6 +41,11 @@ class studentModel
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -60,6 +69,6 @@ class studentModel
      */
     public function getEmail()
     {
-        return $this->email();
+        return $this->email;
     }
 }

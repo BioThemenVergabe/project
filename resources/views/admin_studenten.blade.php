@@ -49,8 +49,10 @@
                         <tbody>
                         @foreach($students as $student)
                             <tr>
+                                <td class="id" style="display:none">{{$student->id}}</td>
                                 <td class="ma">{{$student->matrnr}}</td>
                                 <td class="na">{{$student->name . " " . $student->lastname}}</td>
+                                <td class="em" style="display:none">{{$student->email}}</td>
                                 <td class="za">-</td>
                                 <td class="bt">
                                     <div class="btn-group pull-right" role="group">

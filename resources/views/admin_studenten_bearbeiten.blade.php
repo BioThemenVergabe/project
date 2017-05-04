@@ -21,6 +21,7 @@
 
             <form class="form-horizontal" method="post" action="/admin_studenten">
                 {{ csrf_field() }}
+                <input style="display:none" type="text" name="id" value="{{ $id }}">
                 <div class="form-group row">
                     <label for="edit.name" class="col-md-3 control-label">
                         @lang('fields.name')
@@ -28,7 +29,7 @@
 
                     <div class="col-md-8">
                         <input id="edit.name" type="text" class="form-control" name="name"
-                               value="{{ old('edit.name') }}"
+                               value="{{ $vorname }}"
                                required>
                     </div>
                 </div>
@@ -38,7 +39,7 @@
 
                     <div class="col-md-8">
                         <input id="edit.lastname" type="text" class="form-control" name="lastname"
-                               value="{{ old('edit.lastname') }}" required>
+                               value="{{ $nachname }}" required>
                     </div>
                 </div>
 
@@ -47,7 +48,7 @@
 
                     <div class="col-md-8">
                         <input id="edit.matnr" type="text" class="form-control" name="matnr"
-                               value="{{ old('edit.matnr') }}" required>
+                               value="{{ $matrnr }}" required>
                     </div>
                 </div>
 
@@ -56,7 +57,7 @@
 
                     <div class="col-md-8">
                         <input id="edit.email" type="email" class="form-control" name="email"
-                               value="{{ old('edit.email') }}" required>
+                               value="{{ $email }}" required>
                     </div>
                 </div>
                 <div class="row top-buffer">
@@ -105,8 +106,6 @@
                         <span>01.01.1970</span>
                     </div>
                 </div>
-
-
             </form>
         </div>
     </div><!-- Collapse Panel-->

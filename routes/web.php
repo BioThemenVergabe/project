@@ -93,11 +93,10 @@ Route::group(['middleware' => 'language'], function () {
                 return view('admin_AG');
             });
 
-            Route::match(['get', 'post'], '/admin_studenten', 'student\studentController@showStudents');
+            Route::get('/admin_studenten', 'student\studentController@showStudents');
+            Route::post('/admin_studenten', 'student\studentController@saveStudent');
 
-            Route::get('/admin_studenten_bearbeiten', function () {
-                return view('admin_studenten_bearbeiten');
-            });
+            Route::get('/admin_studenten_bearbeiten', 'student\studentController@editStudent');
         });
 
     });

@@ -58,7 +58,12 @@ $(document).ready(function() {
     });
 
     $('.bearbeitenButton').click(function(){
-        window.location = "/admin_studenten_bearbeiten";
+        var row = $(this).parent().parent().parent();
+        var matrnr = $(row).find('.ma').html();
+        var name = $(row).find('.na').html();
+        var email = $(row).find('.em').html();
+        var id = $(row).find('.id').html();
+        window.location = "/admin_studenten_bearbeiten?"+"matrnr="+matrnr+"&email="+email+"&name="+name+"&id="+id;
     });
 
     $('#bearbeiten-abbrechen').click(function(){

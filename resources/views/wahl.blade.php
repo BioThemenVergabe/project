@@ -46,7 +46,7 @@
 
                         <tr data-row-copy="ag-1" class="hidden-md hidden-lg">
                             <td colspan="2">
-                                <div class="input-group input-group-sm">
+                                <div class="input-group input-group-sm col-xs-12">
                                     <span class="input-group-addon">0</span>
                                     <input type="range" name="ag-1" data-copy="ag-1" value="5" class="form-control" min="0" max="10">
                                     <span class="input-group-addon">10</span>
@@ -76,7 +76,7 @@
 
                         <tr data-row-copy="ag-2" class="hidden-md hidden-lg">
                             <td colspan="2">
-                                <div class="input-group input-group-sm">
+                                <div class="input-group input-group-sm col-xs-12">
                                     <span class="input-group-addon">0</span>
                                     <input type="range" name="ag-2" data-copy="ag-2" value="5" class="form-control" min="0" max="10">
                                     <span class="input-group-addon">10</span>

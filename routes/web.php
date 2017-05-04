@@ -17,21 +17,22 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::match(['get', 'post'], '/', function () {
 
-        /*
-         * Weiterleitung, wenn SSL vorhanden ist.
-         *
-         * if(!Request::secure())
-         *   return redirect(env('APP_URL'));
-         */
-        if (Auth::check())
-            return redirect('/dashboard');
+        //wenn Benutzer schon angemeldet ist, und Cookie gesetzt hat, dann wird er direkt weitergeleitet
+        if (Auth::check()) {
+            if (Auth::user()->userlevel == 0)
+                return redirect('/dashboard');
+            else
+                return redirect('/admin');
+        }
 
+        //ansonsten bekommt er die Startseite
         return view('welcome', [
             'welcome' => Welcome::find(1)
         ]);
 
     });
 
+    //Sprache ändern
     Route::get('/lang/{key}', function ($key) {
         session()->put('locale', $key);
         return redirect()->back();
@@ -39,8 +40,10 @@ Route::group(['middleware' => 'language'], function () {
 
     Auth::routes();
 
+    //Auf alles nachfolgende dürfen nur authorisierte Nutzer zugreifen
     Route::group(['middleware' => 'auth'], function () {
 
+        //nach login je nach userlevel weiterleiten
         Route::get('/redirect', function () {
             if (Auth::user()->userlevel == 0)
                 return redirect('/dashboard');
@@ -54,6 +57,8 @@ Route::group(['middleware' => 'language'], function () {
         {
             Route::match(['get', 'post'], '/dashboard', function () {
                 return view('dashboard');
+                //folgender code fixt das problem, heilt aber nur das Symptom
+                //return redirect('/redirect');
             });
 
             Route::get('/profile/edit', function () {
@@ -77,6 +82,7 @@ Route::group(['middleware' => 'language'], function () {
         /*
          * Admin-Routes
          */
+        //Middleware checklevel verweigert Zugriff für normale Benutzer. Nur Admin darf auf folgende Seiten zugreifen
         Route::group(['middleware' => 'checkLevel'], function () {
 
             Route::match(['get', 'post'], '/admin', function () {

@@ -19,10 +19,8 @@ class checkLevel
         $after = $next($request);
 
         if(Auth::user()->userlevel == 0){
-//            \Log::info('Userlevel is 0');
             return redirect()->back();
         }
-//        \Log::info(Auth::user()->userlevel);
 //        \Log::info('Userlevel is not 0');
 
         return $after;

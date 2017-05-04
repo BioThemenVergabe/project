@@ -47,81 +47,23 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="ma">00001</td>
-                            <td class="na">Peter Meyer</td>
-                            <td class="za">-</td>
-                            <td class="bt">
-                                <div class="btn-group pull-right" role="group">
-                                    <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> @lang('fields.edit')</span></div>
-                                    <div class="btn btn-danger löschStudentButton icon icon-cross"
-                                         data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
+                        @foreach($students as $student)
+                            <tr>
+                                <td class="ma">{{$student->matrnr}}</td>
+                                <td class="na">{{$student->name . " " . $student->lastname}}</td>
+                                <td class="za">-</td>
+                                <td class="bt">
+                                    <div class="btn-group pull-right" role="group">
+                                        <div class="bearbeitenButton btn btn-info icon icon-edit"><span
+                                                    class="hidden-xs"> @lang('fields.edit')</span></div>
+                                        <div class="btn btn-danger löschStudentButton icon icon-cross"
+                                             data-toggle="modal"
+                                             data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ma">00002</td>
-                            <td class="na">Hans</td>
-                            <td class="za">-</td>
-                            <td class="bt">
-                                <div class="btn-group pull-right" role="group">
-                                    <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> @lang('fields.edit')</span></div>
-                                    <div class="btn btn-danger löschStudentButton icon icon-cross"
-                                         data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ma">00003</td>
-                            <td class="na">Jens</td>
-                            <td class="za">-</td>
-                            <td class="bt">
-                                <div class="btn-group pull-right" role="group">
-                                    <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> @lang('fields.edit')</span></div>
-                                    <div class="btn btn-danger löschStudentButton icon icon-cross"
-                                         data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ma">00004</td>
-                            <td class="na">Klaus</td>
-                            <td class="za">-</td>
-                            <td class="bt">
-                                <div class="btn-group pull-right" role="group">
-                                    <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> @lang('fields.edit')</span></div>
-                                    <div class="btn btn-danger löschStudentButton icon icon-cross"
-                                         data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ma">00005</td>
-                            <td class="na">Arnold</td>
-                            <td class="za">-</td>
-                            <td class="bt">
-                                <div class="btn-group pull-right" role="group">
-                                    <div class="bearbeitenButton btn btn-info icon icon-edit"><span
-                                                class="hidden-xs"> @lang('fields.edit')</span></div>
-                                    <div class="btn btn-danger löschStudentButton icon icon-cross"
-                                         data-toggle="modal"
-                                         data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

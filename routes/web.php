@@ -93,9 +93,7 @@ Route::group(['middleware' => 'language'], function () {
                 return view('admin_AG');
             });
 
-            Route::match(['get', 'post'], '/admin_studenten', function () {
-                return view('admin_studenten');
-            });
+            Route::match(['get', 'post'], '/admin_studenten', 'student\studentController@showStudents');
 
             Route::get('/admin_studenten_bearbeiten', function () {
                 return view('admin_studenten_bearbeiten');

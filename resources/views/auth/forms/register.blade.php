@@ -66,9 +66,7 @@
             <label for="reg.password" class="col-md-4 control-label">@lang('fields.password')</label>
 
             <div class="col-md-8">
-                <input id="reg.password" type="password" data-toggle="popover"
-                       data-placement="bottom" data-trigger="focus"
-                       data-content="Hallo" class="form-control" name="password"
+                <input id="reg.password" type="password" class="form-control" name="password"
                        required>
 
                 @if ($errors->has('password'))

@@ -7,7 +7,7 @@
  * Time: 21:05
  */
 
-namespace App\Http\Controllers\student;
+namespace App\Http\Controllers\admin;
 
 class studentModel
 {

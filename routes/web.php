@@ -93,12 +93,12 @@ Route::group(['middleware' => 'language'], function () {
                 return view('admin_AG');
             });
 
-            Route::get('/admin_studenten', 'student\studentController@showStudents');
-            Route::post('/admin_studenten', 'student\studentController@saveStudent');
+            Route::get('/admin_studenten', 'admin\studentController@showStudents');
+            Route::post('/admin_studenten', 'admin\studentController@saveStudent');
 
-            Route::get('/admin_studenten_bearbeiten', 'student\studentController@editStudent');
+            Route::get('/admin_studenten_bearbeiten', 'admin\studentController@editStudent');
 
-            Route::get('/studenten_delete','student\studentController@deleteStudent');
+            Route::get('/studenten_delete','admin\studentController@deleteStudent');
         });
 
     });

@@ -5,7 +5,7 @@
  * Date: 04.05.2017
  * Time: 21:11
  */
-namespace App\Http\Controllers\student;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

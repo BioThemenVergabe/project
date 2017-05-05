@@ -46,8 +46,11 @@ class UserController extends Controller
      */
     public function show($id = null)
     {
-        if (is_null($id))
+        if (is_null($id)) {
+            if(Auth::user()->userlevel > 0 )
+                return redirect('/redirect');
             return view('dashboard')->with(['user' => Auth::user()]);
+        }
         return view('dashboard')->with(['user' => User::find($id)]);
 
     }

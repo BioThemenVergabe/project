@@ -10,7 +10,7 @@
                                 <label>@lang('footer.representative')</label>
                                 <p>Universitätsstraße 10</p>
                                 <p>78464 Konstanz</p>
-                                <p><i class="icon icon-landline"></i> 4188</p>
+                                <p>@lang('fields.phone') 4188</p>
                                 <p><i class="icon icon-mail"></i> fachschaft.biologie@uni-konstanz.de</p>
                                 <p><i class="icon icon-home"></i> <a href="https://www.fachschaft.biologie.uni-konstanz.de/ueber-uns/wo-wir-zu-finden-sind/" target="_blank">M612</a></p>
                             </address>

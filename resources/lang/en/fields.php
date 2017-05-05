@@ -20,6 +20,7 @@ return [
     'cPassword' => 'Confirm Password',
     'mail' => 'Email Address',
     'name' => 'Name',
+    'phone' => 'Phone',
     'pswreset' => 'Reset Your Password',
     'pswold' => 'Current Password',
     'submit' => 'Submit',

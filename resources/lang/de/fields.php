@@ -20,6 +20,7 @@ return [
     'nodelete' => 'Nicht Löschen',
     'noresult' => 'Kein Ergebnis verf&uuml;gbar',
     'password' => 'Passwort',
+    'phone' => 'Telefon',
     'pswold' => 'Aktuelles Passwort',
     'pswreset' => 'Passwort Wiederherstellen',
     'register' => 'Registrieren',
@@ -67,4 +68,5 @@ return [
     'gtElect' => 'Zur Wahl',
     'valuta' => 'Bewertung',
     'dashboard' => 'Startseite',
+
 ];

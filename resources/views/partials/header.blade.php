@@ -8,7 +8,7 @@
                     <a href="/logout" title="@lang('fields.signout')" class="btn btn-danger btn-sm icon icon-log-out"></a>
                 </div>
             </nav>
-            <label id="logo"><a href="{{ url('/dashboard') }}"><span class="hidden-xs hidden-sm">{{ config('app.name') }}</span>&nbsp;</a></label>
+            <label id="logo"><a href="{{ url('/redirect') }}"><span class="hidden-xs hidden-sm">{{ config('app.name') }}</span>&nbsp;</a></label>
         </div>
     </div>
 </header>

@@ -37,7 +37,7 @@
     <div class="container welcome">
         <p class="row">
 
-        <h1>@lang('fields.welcome')</h1>
+        <h1>@lang('fields.welcome') - Git Pull test</h1>
         @if(app()->getLocale() == "de")
         <p class="col-xs-12">{{ $welcome->de }}</p>
         @else

@@ -66,7 +66,7 @@ $(function() {
     $('.dropdown-toggle').dropdown();
 
     $('#logo').on('click', function() {
-        window.location.href = $(location).attr('protocol')+"//"+$(location).attr('hostname')+":"+$(location).attr('port')+"/home";
+        window.location.href = $(location).attr('protocol')+"//"+$(location).attr('hostname')+":"+$(location).attr('port')+"/redirect";
     });
 
 });

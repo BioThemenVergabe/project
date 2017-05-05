@@ -55,19 +55,9 @@ Route::group(['middleware' => 'language'], function () {
          * User-Routes
          */
         {
-            Route::match(['get', 'post'], '/dashboard', function () {
-                return view('dashboard');
-                //folgender code fixt das problem, heilt aber nur das Symptom
-                //return redirect('/redirect');
-            });
+            Route::match(['get', 'post'], '/dashboard', 'UserController@show');
 
-            Route::get('/profile/edit', function () {
-                return view('edit_user');
-            });
-
-            Route::post('/profile/save', function () {
-                return redirect('/dashboard');
-            });
+            Route::get('/profile/edit','UserController@edit');
 
             Route::get('/wahl', function () {
                 return view('wahl');

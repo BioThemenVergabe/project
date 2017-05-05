@@ -139,3 +139,21 @@ table.voting td > .progress-bar {
   height: 100%;
   background-color: #20b0b0;
 }
+#cookieWarning {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 800;
+  background-color: #f4cecd;
+}
+#cookieWarning .bs-callout {
+  padding: 10px;
+}
+#cookieWarning .bs-callout.bs-danger {
+  position: relative;
+}
+#cookieWarning .bs-callout.bs-danger h1 {
+  position: relative;
+  color: #d9534f;
+}

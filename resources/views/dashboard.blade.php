@@ -13,7 +13,7 @@
         <div class="panel-body">
             <div class="col-xs-12">
                 <h1>@lang('fields.welcome'),
-                    <small>Max Muster</small>
+                    <small>{{$user->name}} {{$user->lastname}}</small>
                 </h1>
             </div>
 
@@ -27,20 +27,20 @@
                 <div class="form-group row">
                     <label class="col-md-4 control-label">@lang('fields.name')</label>
                     <div class="col-md-8">
-                        <span>Max Muster</span>
+                        <span>{{$user->name}} {{$user->lastname}}</span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-xs-12 col-md-4 control-label">@lang('fields.matnr')</label>
                     <div class="col-xs-12 col-md-8">
-                        <span>123456</span>
+                        <span>{{$user->matrnr}}</span>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-xs-12 col-md-4 control-label">@lang('fields.mail')</label>
                     <div class="col-xs-12 col-md-8">
-                        <span>max.muster@uni-konstanz.de</span>
+                        <span>{{$user->email}}</span>
                     </div>
                 </div>
 

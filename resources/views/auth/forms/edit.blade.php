@@ -7,15 +7,15 @@
             </label>
 
             <div class="col-md-6">
-                <input id="edit.name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+                <input id="edit.name" type="text" class="form-control" name="name" value="{{ $user->name }}" required>
             </div>
         </div>
 
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
+        <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }} row">
             <label for="edit.lastname" class="col-md-4 control-label">@lang('fields.lastname')</label>
 
             <div class="col-md-6">
-                <input id="edit.lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required>
+                <input id="edit.lastname" type="text" class="form-control" name="lastname" value="{{ $user->lastname }}" required>
 
                 @if ($errors->has('lastname'))
                 <span class="help-block">
@@ -25,11 +25,11 @@
             </div>
         </div>
 
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
+        <div class="form-group{{ $errors->has('matnr') ? ' has-error' : '' }} row">
             <label for="edit.matnr" class="col-md-4 control-label">@lang('fields.matnr')</label>
 
             <div class="col-md-6">
-                <input id="edit.matnr" type="text" class="form-control" name="matnr" value="{{ old('matnr') }}">
+                <input id="edit.matnr" type="text" class="form-control" name="matnr" value="{{ $user->matrnr }}">
 
                 @if ($errors->has('matnr'))
                 <span class="help-block">
@@ -44,11 +44,11 @@
             <label for="edit.email" class="col-md-4 control-label">@lang('fields.mail')</label>
 
             <div class="col-md-6">
-                <input id="edit.email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                <input id="edit.email" type="email" class="form-control" name="email" value="{{ $user->email }}" required>
             </div>
         </div>
 
-        <div class="form-group{{ $errors->has('edit.password') ? ' has-error' : '' }} row">
+        <div class="form-group{{ $errors->has('.password') ? ' has-error' : '' }} row">
             <label for="edit.passwordold" class="col-md-4 control-label">@lang('fields.pswold')</label>
 
             <div class="col-md-6">

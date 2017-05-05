@@ -167,3 +167,22 @@ table.voting {
     }
   }
 }
+
+#cookieWarning {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 800;
+  background-color: lighten(@danger, 30%);
+  .bs-callout {
+    padding: 10px;
+    &.bs-danger {
+      position: relative;
+      h1 {
+        position: relative;
+        color: @danger;
+      }
+    }
+  }
+}

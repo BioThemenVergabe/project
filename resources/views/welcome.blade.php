@@ -43,7 +43,6 @@
         @else
         <p class="col-xs-12">{{ $welcome->en }}</p>
         @endif
-        Hallo
     </div>
     </div>
 </section>

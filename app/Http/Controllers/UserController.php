@@ -52,7 +52,6 @@ class UserController extends Controller
             return view('dashboard')->with(['user' => Auth::user()]);
         }
         return view('dashboard')->with(['user' => User::find($id)]);
-
     }
 
     /**

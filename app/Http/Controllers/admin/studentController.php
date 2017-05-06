@@ -17,7 +17,8 @@ class studentController{
     //alle Studenten anzeigen. Admin Accounts werden nicht angezeigt!
     public function showStudents(){
         $students = DB::table("users")->where('userlevel',0)->select('id','name','lastname', 'matrnr', 'email')->get();
-        $parameters = ['students' => $students];
+        $numberStudents = DB::table("users")->where("userlevel",0)->count();
+        $parameters = ['students' => $students, "numberStudents"=>$numberStudents];
         return view('admin_studenten', $parameters);
     }
 

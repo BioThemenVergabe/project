@@ -73,11 +73,9 @@ Route::group(['middleware' => 'language'], function () {
          * Admin-Routes
          */
         //Middleware checklevel verweigert Zugriff für normale Benutzer. Nur Admin darf auf folgende Seiten zugreifen
-        Route::group(['middleware' => 'checkLevel'], function () {
+            Route::group(['middleware' => 'checkLevel'], function () {
 
-            Route::match(['get', 'post'], '/admin', function () {
-                return view('admin_dashboard');
-            });
+            Route::match(['get', 'post'], '/admin', 'admin\dashboardController@showDashboard');
 
             Route::get('/admin_AG', function () {
                 return view('admin_AG');

@@ -44,7 +44,6 @@
         <p class="col-xs-12">{{ $welcome->en }}</p>
         @endif
     </div>
-    </div>
 </section>
 
 @include('modals.forgot')

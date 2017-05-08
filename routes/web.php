@@ -13,6 +13,16 @@ use App\Welcome;
 |
 */
 
+Route::get('/jannis', function() {
+   Welcome::create([
+       'de' => 'Hallo Jannis',
+       'en' => 'Good Evening Jannis!',
+   ]) ;
+
+   return response()->json(['success' => true ]);
+
+});
+
 Route::group(['middleware' => 'language'], function () {
 
     Route::match(['get', 'post'], '/', function () {

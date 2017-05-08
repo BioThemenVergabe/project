@@ -31,7 +31,7 @@
                 <!--1.Zeile-->
                 <div class="top-buffer row">
                     <div class="col-md-8">
-                        @lang('content.stud1'): <span id="stud_anz">x</span>
+                        @lang('content.stud1'): {{$numberStudents}}
                     </div>
                 </div>
 

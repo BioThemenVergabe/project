@@ -17,7 +17,7 @@ return [
     'heading_stud_be' => 'Profil bearbeiten',
     'admin_sb1' => 'Abgegebene Wahl',
     'admin_sb2' => 'Bewertungen einsehen und bearbeiten',
-    'admin_sb3' => 'Letzte Änderung',
+    'admin_sb3' => 'Letzter Login',
     'admin_sb4' => 'Registriert seit',
     'admin_dash1' => 'Anzahl angemeldeter Studenten',
     'admin_dash2' => 'Studenten',

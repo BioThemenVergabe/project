@@ -94,7 +94,7 @@
                                 class="visible-xs">@lang('content.admin_sb3')':</span></div>
 
                     <div class="col-xs-8 col-sm-9">
-                        <span>01.01.1970</span>
+                        {{$änderung}}
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@
                                 class="visible-xs">@lang('content.admin_sb4'):</span></div>
 
                     <div class="col-xs-8 col-sm-9">
-                        <span>01.01.1970</span>
+                        {{$registrierung}}
                     </div>
                 </div>
             </form>

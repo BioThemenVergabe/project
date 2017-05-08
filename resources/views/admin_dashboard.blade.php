@@ -25,7 +25,7 @@
                    @lang('content.admin_dash1'):
                 </div>
                 <div class="col-sm-4 col-md-4 pull-right">
-                    x @lang('content.admin_dash2'):
+                    {{$numberStudents}} @lang('content.admin_dash2'):
                 </div>
             </div>
 

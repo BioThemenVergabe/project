@@ -67,11 +67,8 @@ $(document).ready(function() {
     //Get Request an _bearbeiten mit Daten des zu bearbeitenden Studenten
     $('.bearbeitenButton').click(function(){
         var row = $(this).parent().parent().parent();
-        var matrnr = $(row).find('.ma').html();
-        var name = $(row).find('.na').html();
-        var email = $(row).find('.em').html();
         var id = $(row).find('.id').html();
-        window.location = "/admin_studenten_bearbeiten?"+"matrnr="+matrnr+"&email="+email+"&name="+name+"&id="+id;
+        window.location = "/admin_studenten_bearbeiten?"+"&id="+id;
     });
 
 

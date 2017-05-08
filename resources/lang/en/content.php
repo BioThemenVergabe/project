@@ -17,7 +17,7 @@ return [
     'heading_stud_be' => 'Edit profile',
     'admin_sb1' => 'Submitted ratings',
     'admin_sb2' => 'Review and edit ratings',
-    'admin_sb3' => 'Last change',
+    'admin_sb3' => 'Last login',
     'admin_sb4' => 'Registered since',
     'admin_dash1' => 'Number of registered students',
     'admin_dash2' => 'students',

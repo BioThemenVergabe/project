@@ -38,9 +38,7 @@
                 @endif
             </div>
         </div>
-        <br>
-        <div class="divider hr-divider"></div>
-        <br>
+
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
             <label for="edit.email" class="col-md-4 control-label">@lang('fields.mail')</label>
 
@@ -48,6 +46,11 @@
                 <input id="edit.email" type="email" class="form-control" name="email" value="{{ $user->email }}">
             </div>
         </div>
+
+        <br>
+        <div class="divider hr-divider"></div>
+        <br>
+
 
         <div class="form-group{{ $errors->has('.password') ? ' has-error' : '' }} row">
             <label for="edit.passwordold" class="col-md-4 control-label">@lang('fields.pswold')</label>

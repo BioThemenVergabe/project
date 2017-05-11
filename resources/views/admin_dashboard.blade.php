@@ -31,7 +31,7 @@
 
             <div class=" row">
                 <div class="col-sm-8 col-md-5 col-md-offset-3">
-                    @lang('content.admin_dash3'):
+                    @lang('content.admin_dash3')
                 </div>
                 <div class="col-sm-4 col-md-4 pull-right">
                     y @lang('content.admin_dash2')

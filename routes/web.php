@@ -1,6 +1,7 @@
 <?php
 
 use App\Welcome;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Route::group(['middleware' => 'language'], function () {
 
         //ansonsten bekommt er die Startseite
         return view('welcome', [
-            'welcome' => Welcome::find(1)
+            'welcome' => Welcome::find(1),
         ]);
 
     });
@@ -42,6 +43,10 @@ Route::group(['middleware' => 'language'], function () {
 
     //Auf alles nachfolgende dürfen nur authorisierte Nutzer zugreifen
     Route::group(['middleware' => 'auth'], function () {
+
+        Route::post('/sc/{obj}', function($obj) {
+            return response()->json($obj);
+        });
 
         //nach login je nach userlevel weiterleiten
         Route::get('/redirect', function () {

@@ -51,6 +51,11 @@ Route::group(['middleware' => 'language'], function () {
                 return redirect('/admin');
         });
 
+
+        Route::get('/logout', function () {
+            Auth::logout();
+            return redirect('/');
+        });
         /*
          * User-Routes
          *
@@ -66,10 +71,7 @@ Route::group(['middleware' => 'language'], function () {
                 return view('wahl');
             });
 
-            Route::get('/logout', function () {
-                Auth::logout();
-                return redirect('/');
-            });
+
         });
 
         /*

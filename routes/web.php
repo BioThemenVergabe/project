@@ -53,8 +53,11 @@ Route::group(['middleware' => 'language'], function () {
 
         /*
          * User-Routes
+         *
+         * Middleware checkAdmin leitet Admin auf /admin weiter um Ansichten beider User explizit zu trennen.
+         * TODO: Testen!
          */
-        {
+        Route::group(['middleware' => 'checkAdmin'], function () {
             Route::match(['get', 'post'], '/dashboard', 'UserController@show');
 
             Route::get('/profile/edit', 'UserController@edit');
@@ -67,7 +70,7 @@ Route::group(['middleware' => 'language'], function () {
                 Auth::logout();
                 return redirect('/');
             });
-        }
+        });
 
         /*
          * Admin-Routes

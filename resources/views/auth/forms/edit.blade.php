@@ -7,7 +7,7 @@
             </label>
 
             <div class="col-md-6">
-                <input id="edit.name" type="text" class="form-control" name="name" value="{{ $user->name }}" required>
+                <input id="edit.name" type="text" class="form-control" name="name" value="{{ $user->name }}">
             </div>
         </div>
 
@@ -15,7 +15,7 @@
             <label for="edit.lastname" class="col-md-4 control-label">@lang('fields.lastname')</label>
 
             <div class="col-md-6">
-                <input id="edit.lastname" type="text" class="form-control" name="lastname" value="{{ $user->lastname }}" required>
+                <input id="edit.lastname" type="text" class="form-control" name="lastname" value="{{ $user->lastname }}">
 
                 @if ($errors->has('lastname'))
                 <span class="help-block">
@@ -38,13 +38,14 @@
                 @endif
             </div>
         </div>
-
-
+        <br>
+        <div class="divider hr-divider"></div>
+        <br>
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
             <label for="edit.email" class="col-md-4 control-label">@lang('fields.mail')</label>
 
             <div class="col-md-6">
-                <input id="edit.email" type="email" class="form-control" name="email" value="{{ $user->email }}" required>
+                <input id="edit.email" type="email" class="form-control" name="email" value="{{ $user->email }}">
             </div>
         </div>
 
@@ -52,8 +53,7 @@
             <label for="edit.passwordold" class="col-md-4 control-label">@lang('fields.pswold')</label>
 
             <div class="col-md-6">
-                <input id="edit.passwordold" type="password" class="form-control" name="passwordold"
-                       required>
+                <input id="edit.passwordold" type="password" class="form-control" name="passwordold">
             </div>
         </div>
 
@@ -61,25 +61,27 @@
             <label for="password" class="col-md-4 control-label">@lang('fields.password')</label>
 
             <div class="col-md-6">
-                <input id="password" type="password" class="form-control" name="password"
-                       required>
+                <input id="password" type="password" class="form-control" name="password">
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }} row">
             <label for="password-confirm" class="col-md-4 control-label">@lang('fields.cPassword')</label>
 
             <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
             </div>
         </div>
+
         <div class="form-group row">
             <div class="col-md-8 col-md-offset-4">
                 <input type="submit" class="btn btn-primary" value="@lang('fields.save')">
 
+                <input type="reset" class="btn btn-default" value="@lang('fields.reset')">
+
                 <a href="{{ URL::previous() }}" data-dismiss="modal">
                     <div class="btn btn-link">
-                        @lang('fields.reset')
+                        @lang('fields.back')
                     </div>
                 </a>
             </div>

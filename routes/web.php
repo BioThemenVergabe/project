@@ -13,16 +13,6 @@ use App\Welcome;
 |
 */
 
-Route::get('/jannis', function() {
-   Welcome::create([
-       'de' => 'Hallo Jannis',
-       'en' => 'Good Evening Jannis!',
-   ]) ;
-
-   return response()->json(['success' => true ]);
-
-});
-
 Route::group(['middleware' => 'language'], function () {
 
     Route::match(['get', 'post'], '/', function () {
@@ -67,7 +57,7 @@ Route::group(['middleware' => 'language'], function () {
         {
             Route::match(['get', 'post'], '/dashboard', 'UserController@show');
 
-            Route::get('/profile/edit','UserController@edit');
+            Route::get('/profile/edit', 'UserController@edit');
 
             Route::get('/wahl', function () {
                 return view('wahl');
@@ -83,7 +73,7 @@ Route::group(['middleware' => 'language'], function () {
          * Admin-Routes
          */
         //Middleware checklevel verweigert Zugriff für normale Benutzer. Nur Admin darf auf folgende Seiten zugreifen
-            Route::group(['middleware' => 'checkLevel'], function () {
+        Route::group(['middleware' => 'checkLevel'], function () {
 
             Route::match(['get', 'post'], '/admin', 'admin\dashboardController@showDashboard');
 
@@ -96,10 +86,7 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::get('/admin_studenten_bearbeiten', 'admin\studentController@editStudent');
 
-            Route::get('/studenten_delete','admin\studentController@deleteStudent');
+            Route::get('/studenten_delete', 'admin\studentController@deleteStudent');
         });
-
     });
-
-
 });

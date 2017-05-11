@@ -7,6 +7,7 @@ return [
      */
 
     'ag' => 'Arbeitsgruppen',
+    'back' => 'Zur&uuml;ck',
     'cancel' => 'Abbrechen',
     'close' => 'Schließen',
     'cPassword' => 'Passwort (Wdh.)',

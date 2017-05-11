@@ -14,7 +14,7 @@ return [
     */
 
     'ag' => 'Working groups',
-
+    'back' => 'Back',
     'username' => 'Username',
     'password' => 'Password',
     'cPassword' => 'Confirm Password',

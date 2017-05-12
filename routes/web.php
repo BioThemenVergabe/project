@@ -86,16 +86,17 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::match(['get', 'post'], '/admin', 'admin\dashboardController@showDashboard');
 
-            Route::get('/admin_AG', function () {
-                return view('admin_AG');
-            });
-
             Route::get('/admin_studenten', 'admin\studentController@showStudents');
             Route::post('/admin_studenten', 'admin\studentController@saveStudent');
-
             Route::get('/admin_studenten_bearbeiten', 'admin\studentController@editStudent');
-
             Route::get('/studenten_delete', 'admin\studentController@deleteStudent');
+
+            Route::get('/admin_AG', 'admin\workgroupController@showGroups');
+            Route::get('/admin_AG_delete', 'admin\workgroupController@deleteGroup');
+            Route::post('/admin_AG_save', 'admin\workgroupController@saveGroups');
+
+
         });
+
     });
 });

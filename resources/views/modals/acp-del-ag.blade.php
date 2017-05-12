@@ -17,6 +17,7 @@
                                 <th>@lang('fields.time')</th>
                             </tr>
                             <tr id="insert-ag">
+                                <td class="id" style="display:none"></td>
                                 <td class="gl"></td>
                                 <td class="gn"></td>
                                 <td class="pl"></td>

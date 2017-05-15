@@ -29,6 +29,8 @@ class workgroupController{
         $spotss = $request->input('spots');
         $dates = $request->input('date');
 
+        $newIDs = array(); //IDs der neu hinzugefügten AGs
+
         //for schleife über alle input objekte
         for ($i = 0; $i < count($ids); $i++) {
             //id ist immer dann null, wenn die AG per javascript neu erzeugt wurde
@@ -36,13 +38,19 @@ class workgroupController{
                 DB::table("workgroups")->insert(
                     ["name"=>$names[$i], "groupLeader"=>$leaders[$i],"spots"=>$spotss[$i],"date"=>$dates[$i]]
                 );
+                $tempID = DB::table("workgroups")->where('name', $names[$i])->select('id')->get();
+                $tempID2=array(
+                    "name" => $names[$i],
+                    "id" => $tempID[0]->id
+                );
+                $newIDs[] = $tempID2;
             }else{
                 DB::table('workgroups')
                     ->where('id', $ids[$i])
                     ->update(["name"=>$names[$i], "groupLeader"=>$leaders[$i],"spots"=>$spotss[$i],"date"=>$dates[$i]]);
             }
         }
-        return redirect("/admin_AG");
+        return json_encode($newIDs);
     }
 
 }

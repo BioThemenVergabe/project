@@ -235,7 +235,7 @@ table {
     margin-bottom: 3em;
 }
 
-#dashboard_alert, #ag_alert {
+#dashboard_alert, #ag_alert, #ag_alert2 {
     display: none;
 }
 

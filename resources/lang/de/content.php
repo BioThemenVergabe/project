@@ -43,6 +43,7 @@ return [
     'modal_studWahl3' => 'Note',
     'admin_dashboard_alert' => '<strong>Info:</strong> Es gibt noch Studenten, ohne Wahlabgabe. Die Berechnungen können noch nicht gestartet werden',
     'admin_AG_alert' => '<strong>Achtung:</strong> Die Spalten "Gruppenleiter", "Gruppenname" and "Plätze" dürfen bei keiner AG leer sein. Bitte löschen sie überflüssige Reihen bzw. füllen sie die leeren Zellen aus!',
+    'admin_AG_alert2' => '<strong>Achtung:</strong> Es existieren derzeit zwei Gruppen mit dem selben Namen. Die Gruppennamen müssen eindeutig sein!',
 
 
 

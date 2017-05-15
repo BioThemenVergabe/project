@@ -43,6 +43,7 @@ return [
     'modal_studWahl3' => 'Rating',
     'admin_dashboard_alert' => '<strong>Info:</strong> There are still students with no submitted ratings. The algorithm can\'t be started yet',
     'admin_AG_alert' => '<strong>Attention:</strong> The columns "Group leader", "Group name" and "Spots" of no workgroup are allowed to be empty. Please delete spare rows or fill out the missing cells!',
+    'admin_AG_alert2' => '<strong>Attention:</strong> There are currently two groups with the same name. The group names must be unique!',
 
 
 

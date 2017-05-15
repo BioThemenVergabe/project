@@ -41,11 +41,11 @@
                     </div>
                 </div>
                 <br>
-                <!--Alert für invalide AG-speichern-->
-                <div id="ag_alert" class="alert alert-danger alert-dismissable">
-                    <a id="close_AG_alert" href="#" class="close" aria-label="close">&times;</a>
-                    @lang('content.admin_AG_alert')
-                </div>
+
+                <!-- Alert für invalide AG-speichern-->
+                @include('alerts.admin_ag')
+                <!-- Alert für doppelten AG-namen speichern-->
+                @include('alerts.admin_ag2')
 
                 <!--AG-Tabelle-->
                 <form action="/admin_AG_save" method="post" id="AG_form">

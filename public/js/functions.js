@@ -15,46 +15,88 @@ var trigger;
 function deleteTrigger(){
     var row = $(trigger).parent().parent();
     var ID = row.find("input.id").val();
-    //wenn eine AG aus DB ist, dann ist ID definiert
+    //wenn eine AG aus DB geladen wurde, dann ist ID != ""
     if(ID !== ""){
         $("#AG_table").load("admin_AG_delete?id="+ID , function(){
             update();
+            //onclick muss für neu geladene Tabelle neu gesetzt werden
             $('.löschButton').click(function () {
                 trigger = this;
             });
         });
-        //ansonsten wurde die AG gerade erst eingegeben, und wird jetzt doch gelöscht
+        //ansonsten wurde die AG gerade erst eingegeben, und wird jetzt einfach aus dem DOM gelöscht
     }else{
         $(row).remove();
     }
 }
-//Für /admin_AG: Wenn keine Gruppenleiter/name oder Plätze einer AG leer ist, wird der aktuelle AG stand in die Datenbank geschrieben. Ansonsten wird der User darauf hingewiesen.
+
+//Für /admin_AG: Wird aufgerufen, wenn gespeichert werden soll
 function checkSave(){
     var valide = true;
-    //über alle Gruppennamen
+
+    var nameUnique = true;
+    var nameArray = [];
+    //über alle Gruppenleiter, darf nicht leer sein
     $("input.gl").each(function() {
         if($(this).val()==""){
             valide = false;
         }
     });
+    //über alle Gruppennamen, darf nicht leer sein
     $("input.gn").each(function() {
         if($(this).val()==""){
             valide = false;
         }
+        //überprüfe ob name unique
+        for (i = 0; i < nameArray.length; i++) {
+            if($(this).val()===nameArray[i]){
+                nameUnique = false;
+                valide=false;
+            }
+        }
+        nameArray.push($(this).val());
     });
+
+    //über alle Plätze, darf nicht leer sein
     $("input.pl").each(function() {
         if($(this).val()==""){
             valide = false;
         }
     });
+    //Wenn keine Gruppenleiter/name oder Plätze einer AG leer ist, wird der aktuelle AG stand in die Datenbank geschrieben. Ansonsten wird der User darauf hingewiesen.
     if(valide==true){
         $('#ag_alert').hide();
-        //sobald modal geschlossen wird, wird form abgeschickt
-        $("#save_ag_button").click(function(){
-            $("#AG_form").submit();
+        $('#ag_alert2').hide();
+
+        //aktueller Stand des DOM wird in DB gespeichert
+        $("#AG_form").submit(function(e) {
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+            $.ajax({
+                type: "POST",
+                url: "/admin_AG_save",
+                data: $("#AG_form").serialize(), // serializes the form's elements.
+                success: function(data){// die IDs der neu eingegebenen AGs werden in die jeweiligen Felder eingetragen
+                    var newIDs = JSON.parse(data);//data ist ein Array mit den neuen IDs und den zugehörigen namen
+                    $.each(newIDs,function() {
+                        var jsonName=this.name;
+                        var jsonID = this.id;
+                        $("tbody>tr").each(function() {
+                            var row = $(this);
+                            var name = $(row).find('.gn').val();
+                            if(name === jsonName){
+                                $(row).find('.id').val(jsonID);
+                            }
+                        });
+                    });
+                }
+            });
+
         });
+        $("#AG_form").submit();
         $('#speicherModal').modal('toggle');
 
+    }else if(nameUnique==false) {
+        $('#ag_alert2').show();
     }else{
         $('#ag_alert').show();
     }
@@ -171,6 +213,9 @@ $(document).ready(function() {
     });
     $('#close_AG_alert').click(function() {
         $('#ag_alert').hide()
+    });
+    $('#close_AG_alert2').click(function() {
+        $('#ag_alert2').hide()
     });
 
 });

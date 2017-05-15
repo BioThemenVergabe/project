@@ -61,7 +61,6 @@ Route::group(['middleware' => 'language'], function () {
             Auth::logout();
             return redirect('/');
         });
-
         /*
          * User-Routes
          *

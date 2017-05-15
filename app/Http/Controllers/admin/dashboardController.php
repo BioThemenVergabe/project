@@ -16,7 +16,11 @@ class dashboardController
     public function showDashboard()
     {
         $numberStudents = DB::table("users")->where("userlevel",0)->count();
-        $parameter = ["numberStudents"=>$numberStudents];
+        $numberRatings = DB::table("ratings")->select("user")->distinct()->count();
+        $noRating = $numberStudents - $numberRatings;
+
+        $parameter = ["numberStudents"=>$numberStudents, "noRating"=>$noRating];
+
         return view("admin_dashboard", $parameter);
     }
 }

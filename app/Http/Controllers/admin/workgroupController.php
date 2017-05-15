@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\DB;
 
 class workgroupController{
     public function showGroups(){
-        $groups= DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')->get();
+        $groups= DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')->orderBy('name', 'asc')->get();
         $numberGroups = DB::table("workgroups")->count();
         return view('admin_AG', ["groups"=>$groups, "numberGroups"=>$numberGroups]);
     }
     public function deleteGroup(Request $request){
         DB::table("workgroups")->where('id',$request->id)->delete();
 
-        $groups= DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')->get();
+        $groups= DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')->orderBy('name', 'asc')->get();
         return view('ajax.admin_AG_table', ["groups"=>$groups]);
     }
     public function saveGroups(Request $request){

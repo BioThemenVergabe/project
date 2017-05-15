@@ -29,14 +29,16 @@
                 </div>
             </div>
 
+            @if($noRating != 0)
             <div class=" row">
                 <div class="col-sm-8 col-md-5 col-md-offset-3">
                     @lang('content.admin_dash3')
                 </div>
                 <div class="col-sm-4 col-md-4 pull-right">
-                    y @lang('content.admin_dash2')
+                    {{$noRating}} @lang('content.admin_dash2')
                 </div>
             </div>
+            @endif
 
             <div class="top-buffer-2 row">
                 <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">

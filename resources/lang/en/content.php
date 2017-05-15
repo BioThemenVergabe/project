@@ -36,13 +36,13 @@ return [
     'modal_endel4' => 'If you realy want to end the rating-process, please enter the administrator\'s password and press "End rating-process"',
     'modal_endel5' => 'Administrator\'s password',
     'modal_endel6' => 'End rating-process',
-    'modal_saveAg1' => 'Saved changes succesfully',
-    'modal_saveAg2' => 'You have added following AGs',
-    'modal_saveAg3' => 'You have deleted folloing AGs',
+    'modal_saveAg1' => 'Saved changes successfully',
+    'modal_saveAg2' => 'You have successfully saved your changes to the workgroups!',
     'modal_studWahl1' => 'Overview of all submitted ratings of',
     'modal_studWahl2' => 'Average rating',
     'modal_studWahl3' => 'Rating',
     'admin_dashboard_alert' => '<strong>Info:</strong> There are still students with no submitted ratings. The algorithm can\'t be started yet',
+    'admin_AG_alert' => '<strong>Attention:</strong> The columns "Group leader", "Group name" and "Spots" of no workgroup are allowed to be empty. Please delete spare rows or fill out the missing cells!',
 
 
 

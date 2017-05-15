@@ -1,6 +1,7 @@
 <?php
 
 use App\Welcome;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Route::group(['middleware' => 'language'], function () {
 
         //ansonsten bekommt er die Startseite
         return view('welcome', [
-            'welcome' => Welcome::find(1)
+            'welcome' => Welcome::find(1),
         ]);
 
     });
@@ -42,6 +43,10 @@ Route::group(['middleware' => 'language'], function () {
 
     //Auf alles nachfolgende dürfen nur authorisierte Nutzer zugreifen
     Route::group(['middleware' => 'auth'], function () {
+
+        Route::post('/sc/{obj}', function($obj) {
+            return response()->json($obj);
+        });
 
         //nach login je nach userlevel weiterleiten
         Route::get('/redirect', function () {
@@ -61,7 +66,6 @@ Route::group(['middleware' => 'language'], function () {
          * User-Routes
          *
          * Middleware checkAdmin leitet Admin auf /admin weiter um Ansichten beider User explizit zu trennen.
-         * TODO: Testen!
          */
         Route::group(['middleware' => 'checkAdmin'], function () {
             Route::match(['get', 'post'], '/dashboard', 'UserController@show');
@@ -83,16 +87,17 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::match(['get', 'post'], '/admin', 'admin\dashboardController@showDashboard');
 
-            Route::get('/admin_AG', function () {
-                return view('admin_AG');
-            });
-
             Route::get('/admin_studenten', 'admin\studentController@showStudents');
             Route::post('/admin_studenten', 'admin\studentController@saveStudent');
-
             Route::get('/admin_studenten_bearbeiten', 'admin\studentController@editStudent');
-
             Route::get('/studenten_delete', 'admin\studentController@deleteStudent');
+
+            Route::get('/admin_AG', 'admin\workgroupController@showGroups');
+            Route::get('/admin_AG_delete', 'admin\workgroupController@deleteGroup');
+            Route::post('/admin_AG_save', 'admin\workgroupController@saveGroups');
+
+
         });
+
     });
 });

@@ -37,12 +37,12 @@ return [
     'modal_endel5' => 'Admin-Passwort',
     'modal_endel6' => 'Wahl beenden',
     'modal_saveAg1' => 'Speichern erfolgreich',
-    'modal_saveAg2' => 'Sie haben folgende AGs hinzugefügt',
-    'modal_saveAg3' => 'Sie haben folgende AGs gelöscht',
+    'modal_saveAg2' => 'Sie haben erfolgreich ihre Änderungen an den Arbeitsgruppen gespeichert!',
     'modal_studWahl1' => 'Übersicht der getroffenen Wahl von Student',
     'modal_studWahl2' => 'Durchschnitt der abgegebenen Wahl',
     'modal_studWahl3' => 'Note',
     'admin_dashboard_alert' => '<strong>Info:</strong> Es gibt noch Studenten, ohne Wahlabgabe. Die Berechnungen können noch nicht gestartet werden',
+    'admin_AG_alert' => '<strong>Achtung:</strong> Die Spalten "Gruppenleiter", "Gruppenname" and "Plätze" dürfen bei keiner AG leer sein. Bitte löschen sie überflüssige Reihen bzw. füllen sie die leeren Zellen aus!',
 
 
 

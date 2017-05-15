@@ -44,6 +44,6 @@ class studentController{
     function deleteStudent(Request $request){
         DB::table("users")->where('matrnr',$request->matrnr)->delete();
 
-        return $this->showStudents();
+        return redirect("/admin_studenten");
     }
 }

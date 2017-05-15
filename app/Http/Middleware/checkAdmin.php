@@ -19,7 +19,7 @@ class checkAdmin
         $after = $next($request);
 
         if(Auth::user()->userlevel > 0){
-            return redirect('/admin');
+            return redirect()->back();
         }
 //        \Log::info('Userlevel is not 0');
 

@@ -70,12 +70,40 @@ $(function() {
     });
 
     $('[data-dismiss]').on('click', function() {
-       $('#'+$(this).data('dismiss')).addClass('hidden');
-        d.setTime(d.getTime() + (365*24*60*60*1000));
-        var expires = "expires="+ d.toUTCString();
-       document.cookie = "cookieWarning=true; "+expires+";path=/";
+        var target = $('#'+$(this).data('dismiss'));
+        target.addClass('hidden');
+        if(target.hasClass('hidden')){
+            var d = new Date();
+            d.setTime(d.getTime() + (365*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = "cookieAccepted=1;" + expires + ";path=/";
+
+            $('[type=submit].disabled, .btn-link.disabled').removeClass('disabled').attr('disabled',false);
+
+        }
     });
 
+    var accepted = getCookie('cookieAccepted');
 
+    if(accepted == 1) {
+        $('#cookieWarning').addClass('hidden');
+    } else {
+        $('[type=submit],.btn-link').addClass('disabled').attr('disabled',true);
+    }
 
 });
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}

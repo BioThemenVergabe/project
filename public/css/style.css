@@ -235,7 +235,7 @@ table {
     margin-bottom: 3em;
 }
 
-#dashboard_alert {
+#dashboard_alert, #ag_alert {
     display: none;
 }
 
@@ -244,7 +244,7 @@ table {
 }
 
 
-#hinzufügen, #speicher-AG, #bearbeiten-speichern {
+#hinzufügen, #bearbeiten-speichern {
     float: right
 }
 

@@ -1,19 +1,66 @@
 function anhaengen(){
-    $('#AG_Table tr:last').after('<tr><td><input class="gl form-control"></td><td><input class="gn form-control"></td><td><input class="pl form-control" type="number"></td><td><input class="zp form-control"></td><td><button type="button" class="löschButton btn btn-default btn-xs form-control" data-toggle="modal" data-target="#löschModal"><span class="icon icon-minus"></span></button></td></tr>');
+    $('#AG_table tr:last').after('<tr><td style="display:none"><input name="id[]" class="id" form="AG_form"></td><td><input name ="groupLeader[]" class="gl form-control" form="AG_form"></td><td><input name ="name[]" class="gn form-control" form="AG_form"></td><td><input name="spots[]" class="pl form-control" type="number" form="AG_form"></td><td><input name="date[]" class="zp form-control" form="AG_form"></td><td><button type="button" class="löschButton btn btn-default btn-xs form-control" data-toggle="modal" data-target="#löschModal"><span class="icon icon-minus"></span></button></td></tr>');
 
     $('.löschButton').click(function () {
         trigger=this;
     });
 }
 function update(){
-    $('#AG_anz').html($("#AG_Table tr").length -1);
+    $('#AG_anz').html($("#AG_table tr").length -1);
 }
 
 var trigger;
+
+//wird aufgerufen, nach dem Bestätigen vom Löschen einer AG
 function deleteTrigger(){
-    $(trigger).parent().parent().remove();
-    update();
+    var row = $(trigger).parent().parent();
+    var ID = row.find("input.id").val();
+    //wenn eine AG aus DB ist, dann ist ID definiert
+    if(ID !== ""){
+        $("#AG_table").load("admin_AG_delete?id="+ID , function(){
+            update();
+            $('.löschButton').click(function () {
+                trigger = this;
+            });
+        });
+        //ansonsten wurde die AG gerade erst eingegeben, und wird jetzt doch gelöscht
+    }else{
+        $(row).remove();
+    }
 }
+//Für /admin_AG: Wenn keine Gruppenleiter/name oder Plätze einer AG leer ist, wird der aktuelle AG stand in die Datenbank geschrieben. Ansonsten wird der User darauf hingewiesen.
+function checkSave(){
+    var valide = true;
+    //über alle Gruppennamen
+    $("input.gl").each(function() {
+        if($(this).val()==""){
+            valide = false;
+        }
+    });
+    $("input.gn").each(function() {
+        if($(this).val()==""){
+            valide = false;
+        }
+    });
+    $("input.pl").each(function() {
+        if($(this).val()==""){
+            valide = false;
+        }
+    });
+    if(valide==true){
+        $('#ag_alert').hide();
+        //sobald modal geschlossen wird, wird form abgeschickt
+        $("#save_ag_button").click(function(){
+            $("#AG_form").submit();
+        });
+        $('#speicherModal').modal('toggle');
+
+    }else{
+        $('#ag_alert').show();
+    }
+}
+
+
 
 
 //delStudenten-Modal lösch Button wird hier ausgeführt -> Student wird aus DB gelöscht
@@ -28,21 +75,23 @@ function deleteStudentTrigger(){
 }
 
 $(document).ready(function() {
-//    $("#AG_Table").tablesorter();
 
-    $('table .btn-group').parent().width($('table .btn-group').width());
+    //$('table .btn-group').parent().width($('table .btn-group').width());
 
     $('.löschButton').click(function () {
       trigger = this;
     });
 
+    //modal für das löschen einer AG
     $('#löschModal').on('show.bs.modal', function () {
         var row = $(trigger).parent().parent();
+        var ID = row.find("input.id").val();
         var GL = row.find("input.gl").val();
         var GN = row.find("input.gn").val();
         var PL = row.find("input.pl").val();
         var ZP = row.find("input.zp").val();
 
+        $('#insert-ag .id').html(ID);
         $('#insert-ag .gl').html(GL);
         $('#insert-ag .gn').html(GN);
         $('#insert-ag .pl').html(PL);
@@ -68,8 +117,10 @@ $(document).ready(function() {
     $('.bearbeitenButton').click(function(){
         var row = $(this).parent().parent().parent();
         var id = $(row).find('.id').html();
-        window.location = "/admin_studenten_bearbeiten?"+"&id="+id;
+        window.location = "/admin_studenten_bearbeiten?"+"id="+id;
     });
+
+
 
 
 
@@ -118,6 +169,10 @@ $(document).ready(function() {
     $('#close_alert').click(function() {
         $('#dashboard_alert').hide()
     });
+    $('#close_AG_alert').click(function() {
+        $('#ag_alert').hide()
+    });
 
 });
+
 

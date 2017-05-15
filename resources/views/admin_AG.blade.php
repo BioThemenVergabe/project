@@ -2,7 +2,8 @@
 
 @section('links')
     <a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
-    <a href="/admin_studenten" class="btn btn-default btn-sm icon icon-users"> <span class="hidden-xs"> @lang('fields.students')</span></a>
+    <a href="/admin_studenten" class="btn btn-default btn-sm icon icon-users"> <span
+                class="hidden-xs"> @lang('fields.students')</span></a>
 @endsection
 
 @section('content')
@@ -30,33 +31,46 @@
                 <!--1.Zeile-->
                 <div class="top-buffer row">
                     <div class="col-xs-4">
-                        @lang('content.ag1'): <span id="AG_anz">x</span>
+                        @lang('content.ag1'): <span id="AG_anz">{{$numberGroups}}</span>
                     </div>
                     <div class="col-xs-4 pull-right">
-                        <button id="hinzufügen" onclick="anhaengen(); update() " type="button"
+                        <button id="hinzufügen" onclick="anhaengen()" type="button"
                                 class="btn btn-default btn-sm">@lang('fields.add') <span class="icon icon-plus"
-                                                                                aria-hidden="true"></span></button>
+                                                                                         aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
                 <br>
+                <!--Alert für invalide AG-speichern-->
+                <div id="ag_alert" class="alert alert-danger alert-dismissable">
+                    <a id="close_AG_alert" href="#" class="close" aria-label="close">&times;</a>
+                    @lang('content.admin_AG_alert')
+                </div>
+
                 <!--AG-Tabelle-->
-                    <div class="table-responsive">
-                        <table id="AG_Table" class="table table-striped table-hover">
-                            <thead>
+                <form action="/admin_AG_save" method="post" id="AG_form">
+                    {{ csrf_field() }}
+                </form>
+                <div class="table-responsive" id="AG_table">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>@lang('fields.groupleader')</th>
+                            <th>@lang('fields.groupname')</th>
+                            <th>@lang('fields.spots')</th>
+                            <th>@lang('fields.time')</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php $index=0 ?>
+                        @foreach($groups as $group)
                             <tr>
-                                <th>@lang('fields.groupleader')</th>
-                                <th>@lang('fields.groupname')</th>
-                                <th>@lang('fields.spots')</th>
-                                <th>@lang('fields.time')</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><input class="gl form-control"></td>
-                                <td><input class="gn form-control"></td>
-                                <td><input class="pl form-control" type="number"></td>
-                                <td><input class="zp form-control"></td>
+                                <td style="display:none"><input name="id[]" class="id" value="{{$group->id}}" form="AG_form"></td>
+                                <td><input name ="groupLeader[]" class="gl form-control" value="{{$group->groupLeader}}" form="AG_form"></td>
+                                <td><input name ="name[]" class="gn form-control" value="{{$group->name}}" form="AG_form"></td>
+                                <td><input name ="spots[]" class="pl form-control" type="number" value="{{$group->spots}}" form="AG_form"></td>
+                                <td><input name="date[]" class="zp form-control" value="{{$group->date}}" form="AG_form"></td>
                                 <td>
                                     <button type="button" class="löschButton btn btn-default btn-xs form-control"
                                             data-toggle="modal"
@@ -64,18 +78,19 @@
                                                 class="icon icon-minus"></span></button>
                                 </td>
                             </tr>
-                            </tbody>
-                        </table>
+                            <?php $index++ ?>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="last col-xs-6">
-                    <button id="speicher-AG" type="submit" class="btn btn-primary pull-right" data-toggle="modal"
-                            data-target="#speicherModal">
+                    <button onclick="checkSave()" type="button" class="btn btn-primary pull-right">
                         @lang('fields.save')
                     </button>
                 </div>
                 <div class="col-xs-6">
-                    <button onclick="location.href='/admin_AG';" type="reset" class="btn btn-danger">
+                    <button onclick="location.href='/admin_AG';" type="button" class="btn btn-danger">
                         @lang('fields.reset')
                     </button>
                 </div>

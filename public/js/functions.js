@@ -32,9 +32,9 @@ function deleteTrigger(){
 
 //Für /admin_AG: Wird aufgerufen, wenn gespeichert werden soll
 function checkSave(){
-    var valide = true;
+    var valide = true; //AGs konsistent?
 
-    var nameUnique = true;
+    var nameUnique = true; //ist der Gruppenname eindeutig?
     var nameArray = [];
     //über alle Gruppenleiter, darf nicht leer sein
     $("input.gl").each(function() {

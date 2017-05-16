@@ -52,6 +52,7 @@ return [
     'modal_startAlgo2' => 'Die Zuweisung wurde korrekt gestartet!',
     'modal_startAlgo3' => 'Bitte warten sie einen Moment, dieses Fenster wird sich automatisch schließen, sobald die Berechnungen abgeschlossen sind.',
     'admin_dashboard_alert' => '<strong>Info:</strong> Es gibt noch Studenten, ohne Wahlabgabe. Die Berechnungen können noch nicht gestartet werden',
+    'admin_dashboard_alert2' => '<strong>Info:</strong> Die Zuweisung wurde noch nicht gestartet. Ergebnisse stehen erst danach zur Verfügung.',
     'admin_AG_alert' => '<strong>Achtung:</strong> Die Spalten "Gruppenleiter", "Gruppenname" and "Plätze" dürfen bei keiner AG leer sein. Bitte löschen sie überflüssige Reihen bzw. füllen sie die leeren Zellen aus!',
     'admin_AG_alert2' => '<strong>Achtung:</strong> Es existieren derzeit zwei Gruppen mit dem selben Namen. Die Gruppennamen müssen eindeutig sein!',
 

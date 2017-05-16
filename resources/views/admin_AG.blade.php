@@ -14,10 +14,10 @@
 
                 <!--Überschrift-->
                 <div class="row">
-                    <div class="col-xs-8">
+                    <div class="col-sm-8">
                         <h1>@lang('content.heading_ag')</h1>
                     </div>
-                    <div class="col-xs-4 pull-right top-buffer-3">
+                    <div class="col-sm-4 pull-right top-buffer-3">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="@lang('fields.search')...">
                             <span class="input-group-btn">
@@ -30,7 +30,7 @@
 
                 <!--1.Zeile-->
                 <div class="top-buffer row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                         @lang('content.ag1'): <span id="AG_anz">{{$numberGroups}}</span>
                     </div>
                     <div class="col-xs-4 pull-right">

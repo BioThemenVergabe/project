@@ -12,10 +12,9 @@
     <section class="container">
         <div class="panel">
             <div class="panel-body">
-                <div id="dashboard_alert" class="alert alert-warning alert-dismissable">
-                    <a id="close_alert" href="#" class="close" aria-label="close">&times;</a>
-                    @lang('content.admin_dashboard_alert')
-                </div>
+                @include('alerts.admin_dashboard')
+                @include('alerts.admin_dashboard2')
+
                 <div class="top-buffer row">
                     <div class="col-md-6 col-md-offset-3">
                         <h1>Dashboard</h1>
@@ -34,7 +33,7 @@
                 @if($noRating != 0)
                     <div id="noRatings" class=" row">
                         <div class="col-sm-8 col-md-5 col-md-offset-3">
-                            @lang('content.admin_dash3')
+                            @lang('content.admin_dash3'):
                         </div>
                         <div class="col-sm-4 col-md-4 pull-right">
                             {{$noRating}} @lang('content.admin_dash2')
@@ -59,7 +58,7 @@
                     <div class="col-sm-8 col-md-5 col-md-offset-3">
                         @lang('content.admin_dash7'):
                     </div>
-                    <div class="col-sm-4 col-md-4 pull-right">
+                    <div id="rated" class="col-sm-4 col-md-4 pull-right">
                         @if($rated==false)
                             @lang('content.admin_dash8')
                         @else
@@ -85,8 +84,14 @@
 
                 <div class="top-buffer row">
                     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                        <a id="Ergebnisse_download" class="btn btn-primary btn-block icon icon-download"
-                           href="/Ergebnisse.html" download> @lang('fields.downloadResults')</a>
+                        @if($rated==true)
+                            <a id="Ergebnisse_download" class="btn btn-primary btn-block icon icon-download"
+                               href="/Ergebnisse.html" download> @lang('fields.downloadResults')
+                            </a>
+                        @else
+                            <button id="Ergebnisse_download_disabled"
+                                    class="btn btn-primary btn-block icon icon-download  disabled"> @lang('fields.downloadResults')</button>
+                        @endif
                     </div>
                 </div>
 

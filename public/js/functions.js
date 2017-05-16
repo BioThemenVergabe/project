@@ -204,6 +204,9 @@ $(document).ready(function() {
         $("#start_Algo").addClass("disabled");
     }
 
+    $('#Ergebnisse_download_disabled').click(function(e){
+        $('#dashboard_alert2').show();
+    });
     $('#start_Algo').click(function(){
         //Wenn der Button disabled ist, wird alert angezeigt, dass es noch Studenten ohne Wahlabgabe gibt.
         if (document.getElementById('start_Algo').classList.contains('disabled')) {
@@ -217,6 +220,9 @@ $(document).ready(function() {
     });
     $('#close_alert').click(function() {
         $('#dashboard_alert').hide()
+    });
+    $('#close_alert2').click(function() {
+        $('#dashboard_alert2').hide()
     });
     $('#close_AG_alert').click(function() {
         $('#ag_alert').hide()

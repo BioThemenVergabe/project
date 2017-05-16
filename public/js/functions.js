@@ -199,12 +199,19 @@ $(document).ready(function() {
         }
     });
 
+    //falls es noch Studenten ohne Wahlabgabe gibt, soll der Button zum  Zuweisung starten disabled sein
+    if ($("#noRatings").length){
+        $("#start_Algo").addClass("disabled");
+    }
+
     $('#start_Algo').click(function(){
+        //Wenn der Button disabled ist, wird alert angezeigt, dass es noch Studenten ohne Wahlabgabe gibt.
         if (document.getElementById('start_Algo').classList.contains('disabled')) {
             $('#dashboard_alert').show();
         }
         else{
             //start algo
+            $('#startAlgoModal').modal('toggle');
         }
 
     });

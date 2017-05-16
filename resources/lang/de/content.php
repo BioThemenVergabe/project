@@ -22,6 +22,13 @@ return [
     'admin_dash1' => 'Anzahl angemeldeter Studenten',
     'admin_dash2' => 'Studenten',
     'admin_dash3' => 'Anzahl Studenten ohne Wahlabgabe',
+    'admin_dash4' => 'Status der aktuellen Wahl',
+    'admin_dash5' => 'geöffnet',
+    'admin_dash6' => 'geschlossen',
+    'admin_dash7' => 'Status der Zuweisung',
+    'admin_dash8' => 'nicht gestartet',
+    'admin_dash9' => 'Zuweisung abgeschlossen',
+
 
     'modal_Begr1' => 'Begrüßungstext bearbeiten',
     'modal_Begr2' => 'Begrüßungstext',
@@ -41,6 +48,9 @@ return [
     'modal_studWahl1' => 'Übersicht der getroffenen Wahl von Student',
     'modal_studWahl2' => 'Durchschnitt der abgegebenen Wahl',
     'modal_studWahl3' => 'Note',
+    'modal_startAlgo1' => 'Sie haben die Zuweisung gestartet',
+    'modal_startAlgo2' => 'Die Zuweisung wurde korrekt gestartet!',
+    'modal_startAlgo3' => 'Bitte warten sie einen Moment, dieses Fenster wird sich automatisch schließen, sobald die Berechnungen abgeschlossen sind.',
     'admin_dashboard_alert' => '<strong>Info:</strong> Es gibt noch Studenten, ohne Wahlabgabe. Die Berechnungen können noch nicht gestartet werden',
     'admin_AG_alert' => '<strong>Achtung:</strong> Die Spalten "Gruppenleiter", "Gruppenname" and "Plätze" dürfen bei keiner AG leer sein. Bitte löschen sie überflüssige Reihen bzw. füllen sie die leeren Zellen aus!',
     'admin_AG_alert2' => '<strong>Achtung:</strong> Es existieren derzeit zwei Gruppen mit dem selben Namen. Die Gruppennamen müssen eindeutig sein!',

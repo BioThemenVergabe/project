@@ -18,8 +18,9 @@ class dashboardController
         $numberStudents = DB::table("users")->where("userlevel",0)->count();
         $numberRatings = DB::table("ratings")->select("user")->distinct()->count();
         $noRating = $numberStudents - $numberRatings;
-
-        $parameter = ["numberStudents"=>$numberStudents, "noRating"=>$noRating];
+        $rated = false; //ob den Studenten bereits eine AG zugewiesen wurde
+        $status  = "open";
+        $parameter = ["numberStudents"=>$numberStudents, "noRating"=>$noRating, "rated"=>$rated, "status"=>$status];
 
         return view("admin_dashboard", $parameter);
     }

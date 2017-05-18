@@ -15,7 +15,7 @@ class CreateWorkgroupsTable extends Migration
     {
         Schema::create('workgroups', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('groupLeader');
             $table->integer('spots');
             /*

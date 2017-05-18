@@ -69,29 +69,6 @@ function checkSave(){
         $('#ag_alert2').hide();
 
         //aktueller Stand des DOM wird in DB gespeichert
-        $("#AG_form").submit(function(e) {
-            e.preventDefault(); // avoid to execute the actual submit of the form.
-            $.ajax({
-                type: "POST",
-                url: "/admin_AG_save",
-                data: $("#AG_form").serialize(), // serializes the form's elements.
-                success: function(data){// die IDs der neu eingegebenen AGs werden in die jeweiligen Felder eingetragen
-                    var newIDs = JSON.parse(data);//data ist ein Array mit den neuen IDs und den zugehörigen namen
-                    $.each(newIDs,function() {
-                        var jsonName=this.name;
-                        var jsonID = this.id;
-                        $("tbody>tr").each(function() {
-                            var row = $(this);
-                            var name = $(row).find('.gn').val();
-                            if(name === jsonName){
-                                $(row).find('.id').val(jsonID);
-                            }
-                        });
-                    });
-                }
-            });
-
-        });
         $("#AG_form").submit();
         $('#speicherModal').modal('toggle');
 
@@ -117,6 +94,30 @@ function deleteStudentTrigger(){
 }
 
 $(document).ready(function() {
+
+    //submit eventHandler, für admin_ag wenn der speicher Button geklickt wird
+    $("#AG_form").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        $.ajax({
+            type: "POST",
+            url: "/admin_AG_save",
+            data: $("#AG_form").serialize(), // serializes the form's elements.
+            success: function(data){// die IDs der neu eingegebenen AGs werden in die jeweiligen Felder eingetragen
+                var newIDs = JSON.parse(data);//data ist ein Array mit den neuen IDs und den zugehörigen namen
+                $.each(newIDs,function() {
+                    var jsonName=this.name;
+                    var jsonID = this.id;
+                    $("tbody>tr").each(function() {
+                        var row = $(this);
+                        var name = $(row).find('.gn').val();
+                        if(name === jsonName){
+                            $(row).find('.id').val(jsonID);
+                        }
+                    });
+                });
+            }
+        });
+    });
 
     //$('table .btn-group').parent().width($('table .btn-group').width());
 

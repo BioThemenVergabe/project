@@ -3,6 +3,5 @@ node_modules
 vendor
 .env*
 artisan
-composer.*
 server.php
 .gitattributes

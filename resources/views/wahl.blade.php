@@ -40,14 +40,8 @@
                                     <input type="number" class="form-control copyOf" data-copy="range" min="1" max="10">
                                 </div>
                                 <div class="input-group input-group-sm hidden-xs hidden-sm">
-                                    <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-{{ $ag->id }}" id="ag-{{ $ag->id }}" value="@foreach($ratings as $rating)
-    @if($rating->workgroup == $ag->id)
-        $rating->rating
-    @else
-        5
-    @endif
-@endforeach" class="form-control" min="1" max="10">
+                                    <span class="input-group-addon">1</span>
+                                    <input type="range" name="ag-{{ $ag->id }}" id="ag-{{ $ag->id }}" @foreach($ratings as $rating) @if($rating->workgroup == $ag->id) value="{{$rating->rating}}" @endif @endforeach class="form-control" min="1" max="10">
                                     <span class="input-group-addon">10</span>
                                 </div>
                             </td>
@@ -56,7 +50,7 @@
                         <tr data-row-copy="ag-{{ $ag->id }}" class="hidden-md hidden-lg">
                             <td colspan="2">
                                 <div class="input-group input-group-sm col-xs-12">
-                                    <span class="input-group-addon">0</span>
+                                    <span class="input-group-addon">1</span>
                                     <input type="range" name="ag-{{ $ag->id }}" data-copy="ag-{{ $ag->id }}" value="5" class="form-control" min="1" max="10">
                                     <span class="input-group-addon">10</span>
                                 </div>

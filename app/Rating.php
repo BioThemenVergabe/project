@@ -22,7 +22,7 @@ class Rating extends Model
      * @return Rating
      */
     public static function findByUser($id) {
-        return Rating::where('user','=',$id);
+        return Rating::where('user','=',$id)->get();
     }
 
     /**
@@ -32,7 +32,7 @@ class Rating extends Model
      * @return Rating
      */
     public static function findByWorkgroup($id) {
-        return Rating::where('workgroup','=',$id);
+        return Rating::where('workgroup','=',$id)->get();
     }
 
 }

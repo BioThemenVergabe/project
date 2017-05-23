@@ -83,18 +83,23 @@
                         </tr>
                     </thead>
                     <tbody>
+
                     @foreach($ratings as $rating)
-                        <tr>
-                            <td>
-                                <div class="input-group pull-right hidden-xs hidden-sm">
-                                    <span data-target="range" class="btn btn-default disabled"></span>
-                                </div>
-                                <label>Arbeitsgruppe #1</label>
-                            </td>
-                            <td>
-                                <span class="progress-bar" style="width: 10%;"></span>
-                            </td>
-                        </tr>
+                        @foreach($ags as $ag)
+                            @if($ag->id == $rating->workgroup)
+                                <tr>
+                                    <td>
+                                        <div class="input-group pull-right hidden-xs hidden-sm">
+                                            <span data-target="range" class="btn btn-default disabled">{{ $rating->rating }}</span>
+                                        </div>
+                                        <label> {{ $ag->name }}</label>
+                                    </td>
+                                    <td>
+                                        <span class="progress-bar" style="width: {{ $rating->rating*10 }}%;"></span>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     @endforeach
                     </tbody>
                     <tfoot>

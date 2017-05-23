@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Rating;
+use App\Workgroup;
 
 class UserController extends Controller
 {
@@ -48,11 +49,15 @@ class UserController extends Controller
     public function show($id = null)
     {
         if (is_null($id)) {
-            if(Auth::user()->userlevel > 0 )
+            if (Auth::user()->userlevel > 0)
                 return redirect('/redirect');
-            return view('dashboard', ['user' => Auth::user(),'ratings' => Rating::findByUser(Auth::user()->id)]);
+            return view('dashboard', [
+                'user' => Auth::user(),
+                'ratings' => Rating::findByUser(Auth::user()->id),
+                'ags' => Workgroup::all(),
+            ]);
         }
-        return view('dashboard',['user' => User::find($id)]);
+        return view('dashboard', ['user' => User::find($id)]);
     }
 
     /**
@@ -80,7 +85,6 @@ class UserController extends Controller
     {
 
         $updateArray = [];
-
 
 
         return redirect('/dashboard');

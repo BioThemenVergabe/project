@@ -44,10 +44,6 @@ Route::group(['middleware' => 'language'], function () {
     //Auf alles nachfolgende dürfen nur authorisierte Nutzer zugreifen
     Route::group(['middleware' => 'auth'], function () {
 
-        Route::post('/sc/{obj}', function($obj) {
-            return response()->json($obj);
-        });
-
         //nach login je nach userlevel weiterleiten
         Route::get('/redirect', function () {
             if (Auth::user()->userlevel == 0)
@@ -72,7 +68,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/profile/edit', 'UserController@edit');
 
             Route::get('/wahl', function () {
-                return view('wahl');
+                return view('wahl', ['ags' => \App\Workgroup::findAll()]);
             });
 
 

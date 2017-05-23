@@ -25,64 +25,40 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr data-row="ag-1">
+
+                    @foreach($ags as $ag)
+
+                        <tr data-row="ag-{{ $ag->id }}">
                             <td>
                                 <div class="input-group pull-right hidden-xs hidden-sm">
                                     <span data-target="range" class="btn btn-default disabled"></span>
                                 </div>
-                                <label>Arbeitsgruppe #1</label>
+                                <label>{{ $ag->name }}</label>
                             </td>
                             <td>
                                 <div class="form-group hidden-md hidden-lg">
-                                    <input type="number" class="form-control copyOf" data-copy="range" min="0" max="10">
+                                    <input type="number" class="form-control copyOf" data-copy="range" min="1" max="10">
                                 </div>
                                 <div class="input-group input-group-sm hidden-xs hidden-sm">
                                     <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-1" id="ag-1" value="5" class="form-control" min="0" max="10">
+                                    <input type="range" name="ag-{{ $ag->id }}" id="ag-{{ $ag->id }}" value="5" class="form-control" min="1" max="10">
                                     <span class="input-group-addon">10</span>
                                 </div>
                             </td>
                         </tr>
 
-                        <tr data-row-copy="ag-1" class="hidden-md hidden-lg">
+                        <tr data-row-copy="ag-{{ $ag->id }}" class="hidden-md hidden-lg">
                             <td colspan="2">
                                 <div class="input-group input-group-sm col-xs-12">
                                     <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-1" data-copy="ag-1" value="5" class="form-control" min="0" max="10">
+                                    <input type="range" name="ag-{{ $ag->id }}" data-copy="ag-{{ $ag->id }}" value="5" class="form-control" min="1" max="10">
                                     <span class="input-group-addon">10</span>
                                 </div>
                             </td>
                         </tr>
 
+                    @endforeach
 
-                        <tr data-row="ag-2">
-                            <td>
-                                <div class="input-group pull-right hidden-xs hidden-sm">
-                                    <span data-target="range" class="btn btn-default disabled"></span>
-                                </div>
-                                <label>Arbeitsgruppe #1</label>
-                            </td>
-                            <td>
-                                <div class="form-group hidden-md hidden-lg">
-                                    <input type="number" class="form-control copyOf" data-copy="range"  min="0" max="10">
-                                </div>
-                                <div class="input-group input-group-sm hidden-xs hidden-sm">
-                                    <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-2" id="ag-2" value="5" class="form-control" min="0" max="10">
-                                    <span class="input-group-addon">10</span>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr data-row-copy="ag-2" class="hidden-md hidden-lg">
-                            <td colspan="2">
-                                <div class="input-group input-group-sm col-xs-12">
-                                    <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-2" data-copy="ag-2" value="5" class="form-control" min="0" max="10">
-                                    <span class="input-group-addon">10</span>
-                                </div>
-                            </td>
-                        </tr>
 
                     </tbody>
                     <tfoot>

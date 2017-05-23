@@ -15,7 +15,7 @@
                 <h1>@lang('fields.selection')</h1>
             </div>
 
-            <form method="post" action="{{ url('/dashboard') }}">
+            <form method="post" action="{{ url('/wahl/save') }}">
                 {{ csrf_field() }}
                 <table class="table table-bordered table-striped">
                     <thead>

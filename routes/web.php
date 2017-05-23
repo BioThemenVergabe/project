@@ -71,6 +71,13 @@ Route::group(['middleware' => 'language'], function () {
                 return view('wahl', ['ags' => \App\Workgroup::all()]);
             });
 
+            Route::post('/wahl/save', function(Request $request) {
+
+                return response()->json(['count' => count($request->input)]);
+
+               return redirect('/dashboard');
+            });
+
 
         });
 

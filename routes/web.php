@@ -68,7 +68,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/profile/edit', 'UserController@edit');
 
             Route::get('/wahl', function () {
-                return view('wahl', ['ags' => \App\Workgroup::findAll()]);
+                return view('wahl', ['ags' => \App\Workgroup::all()]);
             });
 
 

@@ -19,7 +19,7 @@ class Rating extends Model
      * Returns all Ratings for given User.
      *
      * @param integer $id
-     * @return Rating
+     * @return \App\Rating
      */
     public static function findByUser($id) {
         return Rating::where('user','=',$id)->get();
@@ -29,7 +29,7 @@ class Rating extends Model
      * Returns all Ratings for given Workgroup.
      *
      * @param $id
-     * @return Rating
+     * @return \App\Rating
      */
     public static function findByWorkgroup($id) {
         return Rating::where('workgroup','=',$id)->get();

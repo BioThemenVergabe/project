@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Workgroup;
@@ -41,19 +42,22 @@ class RatingController extends Controller
 
         $ratings = Rating::findByUser(Auth::user()->id);
 
-        foreach ($ags as $ag) {
-            $flag = false;
+        if (count($ratings) > 0) {
             foreach ($ratings as $rating) {
-                if ($rating->workgroup == $ag->id) {
-                    $rating->rating = $request->input('ag-'.$ag->id);
-                    $rating->save();
-                } else {
-                    Rating::create([
-                        'user' => Auth::user()->id,
-                        'workgroup' => $ag->id,
-                        'rating' => $request->input('ag-' . $ag->id),
-                    ]);
-                }
+                DB::table('ratings')->where([
+                    ['user','=',Auth::user()->id],
+                    ['workgroup','=',$rating->workgroup]
+                ])->update([
+                    'rating' => $request->input('ag-'.$rating->workgroup),
+                ]);
+            }
+        } else {
+            foreach ($ags as $ag) {
+                Rating::create([
+                    'user' => Auth::user()->id,
+                    'workgroup' => $ag->id,
+                    'rating' => $request->input('ag-' . $ag->id),
+                ]);
             }
         }
         return redirect('/dashboard');

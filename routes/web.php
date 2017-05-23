@@ -65,6 +65,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::group(['middleware' => 'checkAdmin'], function () {
             Route::match(['get', 'post'], '/dashboard', 'UserController@show');
 
+            Route::post('/profile/save','UserController@update');
+
             Route::get('/profile/edit', 'UserController@edit');
 
             Route::resource('/wahl', 'RatingController');

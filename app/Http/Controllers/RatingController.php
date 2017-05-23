@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use Illuminate\Http\Request;
+use App\Workgroup;
 use App\Rating;
 
-class UserController extends Controller
+class RatingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('wahl', ['ags' => Workgroup::all(), 'ratings' => Rating::findByUser(Auth::user()->id)]);
     }
 
     /**
@@ -26,6 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -36,7 +37,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ags = Workgroup::all();
+
+        $ratings = Rating::findByUser(Auth::user()->id);
+
+        foreach ($ags as $ag) {
+            $flag = false;
+            foreach ($ratings as $rating) {
+                if ($rating->workgroup == $ag->id) {
+                    $rating->rating = $request->input('ag-'.$ag->id);
+                    $rating->save();
+                } else {
+                    Rating::create([
+                        'user' => Auth::user()->id,
+                        'workgroup' => $ag->id,
+                        'rating' => $request->input('ag-' . $ag->id),
+                    ]);
+                }
+            }
+        }
+        return redirect('/dashboard');
     }
 
     /**
@@ -45,14 +65,9 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = null)
+    public function show($id)
     {
-        if (is_null($id)) {
-            if(Auth::user()->userlevel > 0 )
-                return redirect('/redirect');
-            return view('dashboard', ['user' => Auth::user(),'ratings' => Rating::findByUser(Auth::user()->id)]);
-        }
-        return view('dashboard',['user' => User::find($id)]);
+        //
     }
 
     /**
@@ -61,12 +76,9 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id = null)
+    public function edit($id)
     {
-        if (is_null($id))
-            return view('edit_user')->with(['user' => Auth::user()]);
-        else
-            return view('edit_user')->with(['user' => User::find($id)]);
+        //
     }
 
     /**
@@ -78,12 +90,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $updateArray = [];
-
-
-
-        return redirect('/dashboard');
+        //
     }
 
     /**
@@ -96,5 +103,4 @@ class UserController extends Controller
     {
         //
     }
-
 }

@@ -15,7 +15,7 @@
                 <h1>@lang('fields.selection')</h1>
             </div>
 
-            <form method="post" action="{{ url('/wahl/save') }}">
+            <form method="post" action="{{ url('/wahl') }}">
                 {{ csrf_field() }}
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -41,7 +41,13 @@
                                 </div>
                                 <div class="input-group input-group-sm hidden-xs hidden-sm">
                                     <span class="input-group-addon">0</span>
-                                    <input type="range" name="ag-{{ $ag->id }}" id="ag-{{ $ag->id }}" value="5" class="form-control" min="1" max="10">
+                                    <input type="range" name="ag-{{ $ag->id }}" id="ag-{{ $ag->id }}" value="@foreach($ratings as $rating)
+    @if($rating->workgroup == $ag->id)
+        $rating->rating
+    @else
+        5
+    @endif
+@endforeach" class="form-control" min="1" max="10">
                                     <span class="input-group-addon">10</span>
                                 </div>
                             </td>

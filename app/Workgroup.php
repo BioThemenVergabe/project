@@ -24,4 +24,8 @@ class Workgroup extends Model
 
     ];
 
+    public function getRating() {
+
+    }
+
 }

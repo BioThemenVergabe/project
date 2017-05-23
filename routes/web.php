@@ -67,17 +67,7 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::get('/profile/edit', 'UserController@edit');
 
-            Route::get('/wahl', function () {
-                return view('wahl', ['ags' => \App\Workgroup::all()]);
-            });
-
-            Route::post('/wahl/save', function(Request $request) {
-
-                return response()->json(['count' => count($request->input)]);
-
-               return redirect('/dashboard');
-            });
-
+            Route::resource('/wahl', 'RatingController');
 
         });
 

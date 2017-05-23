@@ -14,4 +14,25 @@ class Rating extends Model
     protected $fillable = [
         'user','workgroup','rating',
     ];
+
+    /**
+     * Returns all Ratings for given User.
+     *
+     * @param integer $id
+     * @return Rating
+     */
+    public static function findByUser($id) {
+        return Rating::where('user','=',$id);
+    }
+
+    /**
+     * Returns all Ratings for given Workgroup.
+     *
+     * @param $id
+     * @return Rating
+     */
+    public static function findByWorkgroup($id) {
+        return Rating::where('workgroup','=',$id);
+    }
+
 }

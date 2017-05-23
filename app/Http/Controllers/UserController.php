@@ -90,13 +90,10 @@ class UserController extends Controller
 
         if($request->name != $user->name)
             $user->name = $request->name;
-
         if($request->lastname != $user->lastname)
             $user->lastname = $request->lastname;
-
         if($request->matnr != $user->matrnr)
             $user->matrnr = $request->matnr;
-
         if($request->email != $user->email)
             $user->email = $request->email;
 

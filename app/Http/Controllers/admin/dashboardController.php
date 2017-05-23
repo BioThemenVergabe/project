@@ -16,7 +16,8 @@ class dashboardController
     public function showDashboard()
     {
         $numberStudents = DB::table("users")->where("userlevel",0)->count();
-        $numberRatings = DB::table("ratings")->select("user")->distinct()->count();
+        $numberRatings = DB::statement('SELECT count(DISTINCT user) FROM ratings');
+
         $noRating = $numberStudents - $numberRatings;
         $rated = false; //ob den Studenten bereits eine AG zugewiesen wurde
         $status  = "open";

@@ -86,7 +86,7 @@ class UserController extends Controller
      */
     public function update(Request $request, Validator $validator)
     {
-        $user = User::find(Auth::user()->id)->first();
+        $user = User::find(Auth::user()->id)->get();
 
         if($request->name != $user->name)
             $user->name = $request->name;

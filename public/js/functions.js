@@ -79,6 +79,35 @@ function checkSave(){
     }
 }
 
+//wenn der Admin das Rating eines Studenten ändert, wird ein AJAX  POST an /admin_sb_save geschickt und in die DB geschrieben
+var errorInput = [];
+function validateRating() {
+    var valide = true;
+
+    $("input.rating").each(function() {
+        if($(this).val()<1 || $(this).val()>10 || $(this).val() % 1 !== 0){
+            valide = false;
+            //um falsches Feld einen roten Rand setzen
+            errorInput.push($(this));
+            $(this).css({ "border": '#FF0000 1px solid'});
+        }
+    });
+    if(valide===true){
+        $('#AG_Wahl_Modal').modal('hide');
+        $(".modal-backdrop").remove(); //bug: sollte eigentlich bei "hide" automatisch weg gehn
+        $("#Rating_form").submit();
+        $('#speicherModal2').modal('toggle');
+
+        //roten Rand bei Fehleingabe wieder weg machen
+        for (i = 0; i < errorInput.length; i++) {
+            $(errorInput[i]).css({ "border": '1px solid #ccc'});
+        };
+    }else{
+        alert("Hey Admin, nicht vergessen, die Noten müssen Ganzzahlen zwischen 1 und 10 sein ;)")
+    }
+
+};
+
 
 
 
@@ -115,6 +144,19 @@ $(document).ready(function() {
                         }
                     });
                 });
+            }
+        });
+    });
+
+    //submit eventHandler, für /admin_studenten_bearbeiten modal, wenn Rating geändert wird
+    $("#Rating_form").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        $.ajax({
+            type: "POST",
+            url: "/admin_sb_save",
+            data: $("#Rating_form").serialize(), // serializes the form's elements.
+            success: function(data) {// neuer Durchschnittswert der Ratings
+                $("#rDurchschnitt").html(parseFloat(data));
             }
         });
     });

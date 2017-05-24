@@ -8,7 +8,6 @@
 @endsection
 
 @section('content')
-
     <section class="container">
         <div class="panel">
             <div class="panel-body">

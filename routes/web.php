@@ -84,11 +84,13 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/admin_studenten', 'admin\studentController@showStudents');
             Route::post('/admin_studenten', 'admin\studentController@saveStudent');
             Route::get('/admin_studenten_bearbeiten', 'admin\studentController@editStudent');
+            Route::get('/admin_studenten_search', 'admin\studentController@searchStudents');
             Route::post('/admin_sb_save', 'admin\studentController@saveRating');
             Route::get('/studenten_delete', 'admin\studentController@deleteStudent');
 
             Route::get('/admin_AG', 'admin\workgroupController@showGroups');
             Route::get('/admin_AG_delete', 'admin\workgroupController@deleteGroup');
+            Route::get('/admin_AG_search', 'admin\workgroupController@searchGroups');
             Route::post('/admin_AG_save', 'admin\workgroupController@saveGroups');
 
 

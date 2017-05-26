@@ -12,6 +12,9 @@ return [
      */
     'heading_ag' => 'AG Übersicht',
     'ag1' => 'Anzahl AGs',
+    'ag2' => '<em>Hinweis:</em>
+              <i>Wenn ein Student eine AG bereits bewertet hat, kann diese AG nicht gelöscht
+              werden. Davor muss der entsprechende Student gelöscht werden. </i>',
     'heading_stud' => 'Studenten Übersicht',
     'stud1' => 'Anzahl Studenten',
     'heading_stud_be' => 'Profil bearbeiten',
@@ -56,9 +59,6 @@ return [
     'admin_dashboard_alert2' => '<strong>Info:</strong> Die Zuweisung wurde noch nicht gestartet. Ergebnisse stehen erst danach zur Verfügung.',
     'admin_AG_alert' => '<strong>Achtung:</strong> Die Spalten "Gruppenleiter", "Gruppenname" and "Plätze" dürfen bei keiner AG leer sein. Bitte löschen sie überflüssige Reihen bzw. füllen sie die leeren Zellen aus!',
     'admin_AG_alert2' => '<strong>Achtung:</strong> Es existieren derzeit zwei Gruppen mit dem selben Namen. Die Gruppennamen müssen eindeutig sein!',
-
-
-
 
 
     /*

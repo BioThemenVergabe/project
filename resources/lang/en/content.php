@@ -12,6 +12,9 @@ return [
      */
     'heading_ag' => 'AG overview',
     'ag1' => 'Number of Ag\'s',
+    'ag2' => '<em>Info:</em>
+              <i>If a student did already rate a workgroup, this workgroup cannot be deleted. 
+              To do so, the related student must be deleted beforehand. </i>',
     'heading_stud' => 'Students overview',
     'stud1' => 'Number of students',
     'heading_stud_be' => 'Edit profile',

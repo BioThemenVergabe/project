@@ -116,9 +116,8 @@ var triggerStudent;
 function deleteStudentTrigger(){
     //Get anfrage an /delstudent
     var row = $(triggerStudent).parent().parent().parent();
-    var matrnr = $(row).find('.ma').html();
-    var name = $(row).find('.na').html();
-    window.location = "/studenten_delete?"+"matrnr="+matrnr+"&name="+name;
+    var id = $(row).find('.id').html();
+    window.location = "/studenten_delete?"+"id="+id;
 
 }
 
@@ -166,6 +165,9 @@ $(document).ready(function() {
     $('.löschButton').click(function () {
       trigger = this;
     });
+    $('.löschStudentButton').click(function () {
+        triggerStudent = this;
+    });
 
     //modal für das löschen einer AG
     $('#löschModal').on('show.bs.modal', function () {
@@ -184,15 +186,16 @@ $(document).ready(function() {
     });
 
 
-    $('.löschStudentButton').click(function () {
-        triggerStudent = this;
-    });
+
+
     $('#löschStudentModal').on('show.bs.modal', function () {
         var row = $(triggerStudent).parent().parent().parent();
+        var ID = row.find("td.id").html();
         var Ma = row.find("td.ma").html();
         var NA = row.find("td.na").html();
         var ZA = row.find("td.za").html();
 
+        $('#insert-student .id').html(ID);
         $('#insert-student .ma').html(Ma);
         $('#insert-student .na').html(NA);
         $('#insert-student .za').html(ZA);
@@ -203,6 +206,38 @@ $(document).ready(function() {
         var row = $(this).parent().parent().parent();
         var id = $(row).find('.id').html();
         window.location = "/admin_studenten_bearbeiten?"+"id="+id;
+    });
+
+
+    //Per AJAX AGs neu laden, entsprechend zu Suchanfrage
+    $("#AG_search_button").click(function () {
+        var query = $("#AG_search_query").val();
+        $("#AG_table").load("admin_AG_search?q="+query , function(){
+            update();
+            //onclick muss für neu geladene Tabelle neu gesetzt werden
+            $('.löschButton').click(function () {
+                trigger = this;
+            });
+        });
+    });
+    //wenn Enter gedrückt wird soll anfrage auch geschickt werden
+    $("#AG_search_query").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#AG_search_button").click();
+        }
+    });
+
+
+    //Per AJAX Studenten neu laden, entsprechend zu Suchanfrage
+    $("#Stud_search_button").click(function () {
+        var query = $("#Stud_search_query").val();
+        $("#Stud_table").load("admin_studenten_search?q="+query);
+    });
+    //wenn Enter gedrückt wird soll anfrage auch geschickt werden
+    $("#Stud_search_query").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#Stud_search_button").click();
+        }
     });
 
 

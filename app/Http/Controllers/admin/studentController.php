@@ -19,7 +19,7 @@ class studentController
     //alle Studenten anzeigen. Admin Accounts werden nicht angezeigt!
     public function showStudents()
     {
-        $students = DB::table("users")->where('userlevel', 0)->select('id', 'name', 'lastname', 'matrnr', 'email')->orderBy('matrnr', 'asc')->get();
+        $students = DB::table("users")->where('userlevel', 0)->select('id', 'name', 'lastname', 'matrnr', 'email','zugewiesen')->orderBy('matrnr', 'asc')->get();
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
         $parameters = ['students' => $students, "numberStudents" => $numberStudents];
         return view('admin_studenten', $parameters);
@@ -69,7 +69,8 @@ class studentController
     //nachdem das Löschen bestätigt wurde, wird der ausgewählte student hier aus der  DB gelöscht. Der nutzer wird auf admin_studenten zurückgeleitet
     function deleteStudent(Request $request)
     {
-        DB::table("users")->where('matrnr', $request->matrnr)->delete();
+        DB::table("ratings")->where('user', $request->id)->delete();
+        DB::table("users")->where('id', $request->id)->delete();
 
         return redirect("/admin_studenten");
     }
@@ -93,5 +94,15 @@ class studentController
                             ->where('user', $studentenID)
                             ->avg('rating');
         return $durchschnittRating;
+    }
+
+    function searchStudents(Request $request)
+    {
+        $query= "%".$request->q."%";
+        $students = DB::table("users")->select('id', 'name', 'lastname', 'matrnr', 'email','zugewiesen')
+            ->where('name','like', $query)->orWhere('lastname','like', $query)->orWhere('matrnr','like', $query)->orWhere('zugewiesen','like', $query)->orderBy('matrnr', 'asc')->get();
+        $numberStudents = DB::table("users")->where("userlevel", 0)->count();
+        $parameters = ['students' => $students, "numberStudents" => $numberStudents];
+        return view('ajax.admin_Studenten_table', $parameters);
     }
 }

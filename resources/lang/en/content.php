@@ -13,8 +13,8 @@ return [
     'heading_ag' => 'AG overview',
     'ag1' => 'Number of Ag\'s',
     'ag2' => '<em>Info:</em>
-              <i>If a student did already rate a workgroup, this workgroup cannot be deleted. 
-              To do so, the related student must be deleted beforehand. </i>',
+               <i>As soon as a student has submitted a rating, no workgroup can be deleted, nor is it possible to add new workgroups.
+               You can make changes to the existing ones though. To add/delete groups, you have to delete all ratings (in the menu "end rating-process")</i>',
     'heading_stud' => 'Students overview',
     'stud1' => 'Number of students',
     'heading_stud_be' => 'Edit profile',
@@ -46,6 +46,8 @@ return [
     'modal_endel4' => 'If you realy want to end the rating-process, please enter the administrator\'s password and press "End rating-process"',
     'modal_endel5' => 'Administrator\'s password',
     'modal_endel6' => 'End rating-process',
+    'modal_endel7' => 'If you only want to delete all ratings, please enter the password and confirm through this button:',
+    'modal_endel8' => 'Delete ratings',
     'modal_saveAg1' => 'Saved changes successfully',
     'modal_saveAg2' => 'You have successfully saved your changes!',
     'modal_studWahl1' => 'Overview of all submitted ratings of',
@@ -58,6 +60,8 @@ return [
     'admin_dashboard_alert2' => '<strong>Info:</strong> The algorithm hasn`t been started yet. The results are only available afterwards.',
     'admin_AG_alert' => '<strong>Attention:</strong> The columns "Group leader", "Group name" and "Spots" of no workgroup are allowed to be empty. Please delete spare rows or fill out the missing cells!',
     'admin_AG_alert2' => '<strong>Attention:</strong> There are currently two groups with the same name. The group names must be unique!',
+    'admin_delRatings1' => 'Deletion succesful',
+    'admin_delRatings2' => 'You have succesfully deleted all submitted ratings!',
 
 
 

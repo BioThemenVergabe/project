@@ -20,8 +20,21 @@
 
                     </p>
                     <form>
-                        @lang('content.modal_endel5'): <input type="password" required>
+                        {{ csrf_field() }}
+                        <label for="passwort1" class="control-label"> @lang('content.modal_endel5'): <input
+                                    id="passwort1" type="password" required></label>
                         <button type="submit" class="btn btn-danger">@lang('content.modal_endel6')</button>
+                    </form>
+                    <hr>
+
+                    <p class="top-buffer">
+                        @lang('content.modal_endel7')
+                    </p>
+                    <form id="del_Ratings" action="admin_delete_ratings" method="post">
+                        {{ csrf_field() }}
+                        <label for="passwort2" class="control-label"> @lang('content.modal_endel5'): <input
+                                    id="passwort2" type="password" required></label>
+                        <button type="submit" class="btn btn-danger">@lang('content.modal_endel8')</button>
                     </form>
                 </div>
             </div>

@@ -160,6 +160,21 @@ $(document).ready(function() {
         });
     });
 
+    //wenn alle Ratings gelöscht werden sollen
+    $("#del_Ratings").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        $.ajax({
+            type: "POST",
+            url: "/admin_delete_ratings",
+            data: $("#del_Ratings").serialize(), // serializes the form's elements.
+            success: function(data) {// neuer Durchschnittswert der Ratings
+                $("#Wahlgang_beenden_Modal").modal("hide");
+                $(".modal-backdrop").remove(); //bug: sollte eigentlich bei "hide" automatisch weg gehn
+                $('#löschRatingsModal').modal('toggle');
+            }
+        });
+    });
+
     //$('table .btn-group').parent().width($('table .btn-group').width());
 
     $('.löschButton').click(function () {

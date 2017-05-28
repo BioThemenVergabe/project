@@ -80,6 +80,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::group(['middleware' => 'checkLevel'], function () {
 
             Route::match(['get', 'post'], '/admin', 'admin\dashboardController@showDashboard');
+            Route::post('/admin_delete_ratings', 'admin\dashboardController@deleteRatings');
 
             Route::get('/admin_studenten', 'admin\studentController@showStudents');
             Route::post('/admin_studenten', 'admin\studentController@saveStudent');

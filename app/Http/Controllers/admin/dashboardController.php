@@ -26,4 +26,8 @@ class dashboardController
 
         return view("admin_dashboard", $parameter);
     }
+
+    public function deleteRatings(){
+        DB::table("ratings")->delete();
+    }
 }

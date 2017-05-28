@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-11 col-xs-offset-1">
+                    <div class="col-xs-10 col-xs-offset-1">
                         @lang('content.ag2')
                     </div>
                 </div>
@@ -112,6 +112,18 @@
         </div>
     </section>
 
+
+    @if($numberRatings!=0)
+    <script>
+        //alle Buttons deaktivieren
+        document.getElementById("hinzufügen").disabled = true;
+        var buttons = document.getElementsByClassName("löschButton");
+        for(i=0; i<buttons.length;i++){
+            buttons[i].disabled = true;
+        }
+
+    </script>
+    @endif
     <!--Speicher-Modal-->
     @include('modals.acp-save-ag')
 

@@ -14,7 +14,8 @@ class workgroupController{
     public function showGroups(){
         $groups= DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')->orderBy('name', 'asc')->get();
         $numberGroups = DB::table("workgroups")->count();
-        return view('admin_AG', ["groups"=>$groups, "numberGroups"=>$numberGroups]);
+        $ratings = DB::table("ratings")->get();
+        return view('admin_AG', ["groups"=>$groups, "numberGroups"=>$numberGroups, "numberRatings"=> sizeof($ratings)]);
     }
 
     public function deleteGroup(Request $request){

@@ -19,10 +19,9 @@
             </div>
 
             <div class="col-xs-5 col-md-3">
-                <a href="#">
                     <img src="{{ asset('/img/default-user.png') }}" alt="Default Userpicture"
                          class="img-thumbnail img-circle img-responsive"/>
-                </a>
+                <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle" id="upload"></a>
             </div>
             <div class="col-xs-7 col-md-6 col-md-offset-1">
                 <div class="form-group row">
@@ -95,7 +94,7 @@
                                         <label> {{ $ag->name }}</label>
                                     </td>
                                     <td>
-                                        <span class="progress-bar" style="width: {{ $rating->rating*10 }}%;"></span>
+                                        <span class="progress-bar-zero" style="width: {{ $rating->rating*9 }}%;"></span>
                                     </td>
                                 </tr>
                             @endif
@@ -122,6 +121,9 @@
 
 
 @include('modals.forgot')
+
 @include('modals.register')
+
+@include('modals.crop')
 
 @endsection

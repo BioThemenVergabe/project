@@ -87,6 +87,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/admin_studenten_bearbeiten', 'admin\studentController@editStudent');
             Route::get('/admin_studenten_search', 'admin\studentController@searchStudents');
             Route::post('/admin_sb_save', 'admin\studentController@saveRating');
+            Route::get('/admin_get_ratings', 'admin\studentController@getRating');
             Route::get('/studenten_delete', 'admin\studentController@deleteStudent');
 
             Route::get('/admin_AG', 'admin\workgroupController@showGroups');

@@ -107,6 +107,12 @@ function validateRating() {
     }
 
 };
+//nach dem Canceln, alte Werte wiederholen
+function resetRating(){
+    var users = $("input[name='id']");
+    var userID = users[0].value;
+    $("#AG_Wahl_Modal_row").load("admin_get_ratings?user="+userID);
+}
 
 
 

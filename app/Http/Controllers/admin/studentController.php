@@ -96,6 +96,14 @@ class studentController
         return $durchschnittRating;
     }
 
+    function getRating(Request $request){
+        $studentID = $request->user;
+        //alle ratings des Studenten
+        $ratings = DB::table("ratings")->join('workgroups', 'ratings.workgroup', '=', 'workgroups.id')->where('ratings.user', $studentID)->select('workgroups.id', 'workgroups.name', 'workgroups.groupLeader', 'workgroups.date', 'rating')->get();
+
+        return view("ajax.admin_Rating_table", ["ratings"=>$ratings]);
+    }
+
     function searchStudents(Request $request)
     {
         $query= "%".$request->q."%";

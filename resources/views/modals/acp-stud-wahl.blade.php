@@ -39,7 +39,7 @@
             <div class="modal-footer">
                 <button onclick="validateRating()" type="button" class="btn btn-primary">@lang('fields.savechange')
                 </button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('fields.cancel')</button>
+                <button onclick="resetRating()" type="button" class="btn btn-default" data-dismiss="modal">@lang('fields.cancel')</button>
             </div>
         </div>
     </div>

@@ -157,13 +157,26 @@ html {
 table.voting {
   td {
     position: relative;
-    > .progress-bar {
+    > .progress-bar-zero {
       top: 0;
       left: 0;
       position: absolute;
       content: '';
       height: 100%;
-      background-color: @info;
+      background-color: transparent;
+      &:after {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        border: 1px solid #131313;
+        background-color: #999999;
+        content: '';
+        margin-top: -8px;
+        margin-left: -8px;
+      }
     }
   }
 }

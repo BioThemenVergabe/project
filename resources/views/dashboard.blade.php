@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('links')
-    <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs"> @lang('fields.gtElect')</span></a>
+<a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span
+            class="hidden-xs"> @lang('fields.gtElect')</span></a>
 @endsection
 
 @section('content')
@@ -58,12 +59,14 @@
 
                 <div class="form-group row">
                     <div class="col-xs-12 hidden-md hidden-lg">
-                        <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default"> @lang('fields.editProfile')</a>
+                        <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default">
+                            @lang('fields.editProfile')</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 hidden-xs hidden-sm">
-                <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default"> @lang('fields.editProfile')</a>
+                <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default">
+                    @lang('fields.editProfile')</a>
             </div>
 
 
@@ -74,66 +77,30 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-striped voting">
                     <thead>
-                    <tr>
-                        <th class="col-xs-3"><label>@lang('fields.ag')</label></th>
-                        <th><label>@lang('fields.valuta')</label></th>
-                    </tr>
+                        <tr>
+                            <th class="col-xs-3"><label>@lang('fields.ag')</label></th>
+                            <th><label>@lang('fields.valuta')</label></th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <div class="input-group pull-right hidden-xs hidden-sm">
-                                <span data-target="range" class="btn btn-default disabled">1</span>
-                            </div>
-                            <label>Arbeitsgruppe #1</label>
-                        </td>
-                        <td>
-                            <span class="progress-bar" style="width: 10%;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group pull-right hidden-xs hidden-sm">
-                                <span data-target="range" class="btn btn-default disabled">7</span>
-                            </div>
-                            <label>Arbeitsgruppe #2</label>
-                        </td>
-                        <td>
-                            <span class="progress-bar" style="width: 70%;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group pull-right hidden-xs hidden-sm">
-                                <span data-target="range" class="btn btn-default disabled">2</span>
-                            </div>
-                            <label>Arbeitsgruppe #3</label>
-                        </td>
-                        <td>
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-addon">0</span>
-                                <input type="range" name="ag-3" value="2" class="form-control" min="0" max="10"
-                                       disabled>
-                                <span class="input-group-addon">10</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group pull-right hidden-xs hidden-sm">
-                                <span data-target="range" class="btn btn-default disabled">10</span>
-                            </div>
-                            <label>Arbeitsgruppe #4</label>
-                        </td>
-                        <td>
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-addon">0</span>
-                                <input type="range" name="ag-4" value="10" class="form-control" min="0" max="10"
-                                       disabled>
-                                <span class="input-group-addon">10</span>
-                            </div>
-                        </td>
-                    </tr>
+
+                    @foreach($ratings as $rating)
+                        @foreach($ags as $ag)
+                            @if($ag->id == $rating->workgroup)
+                                <tr>
+                                    <td>
+                                        <div class="input-group pull-right hidden-xs hidden-sm">
+                                            <span data-target="range" class="btn btn-default disabled">{{ $rating->rating }}</span>
+                                        </div>
+                                        <label> {{ $ag->name }}</label>
+                                    </td>
+                                    <td>
+                                        <span class="progress-bar" style="width: {{ $rating->rating*10 }}%;"></span>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    @endforeach
                     </tbody>
                     <tfoot>
                     <tr>

@@ -15,6 +15,7 @@
                                 <th>AG</th>
                             </tr>
                             <tr id="insert-student">
+                                <td class="hidden id"></td>
                                 <td class="ma"></td>
                                 <td class="na"></td>
                                 <td class="za"></td>

@@ -10,7 +10,6 @@
         </tr>
         </thead>
         <tbody>
-        <?php $index=0 ?>
         @foreach($groups as $group)
             <tr>
                 <td style="display:none"><input name="id[]" class="id" value="{{$group->id}}" form="AG_form"></td>
@@ -25,7 +24,6 @@
                                 class="icon icon-minus"></span></button>
                 </td>
             </tr>
-            <?php $index++ ?>
         @endforeach
         </tbody>
     </table>

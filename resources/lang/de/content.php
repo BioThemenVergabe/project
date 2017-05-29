@@ -12,6 +12,9 @@ return [
      */
     'heading_ag' => 'AG Übersicht',
     'ag1' => 'Anzahl AGs',
+    'ag2' => '<em>Hinweis:</em>
+              <i>Sobald ein Student eine Bewertung abgegeben hat, können keine AGs gelöscht werden oder neue hinzugefügt werden,
+              die Bestehenden können jedoch verändert werden. Um AGs hinzuzufügen/löschen müssen alle Bewertungen gelöscht werden (Im Menü "Wahlgang beenden")</i>',
     'heading_stud' => 'Studenten Übersicht',
     'stud1' => 'Anzahl Studenten',
     'heading_stud_be' => 'Profil bearbeiten',
@@ -19,6 +22,7 @@ return [
     'admin_sb2' => 'Bewertungen einsehen und bearbeiten',
     'admin_sb3' => 'Letzter Login',
     'admin_sb4' => 'Registriert seit',
+    'admin_sb5' => 'Student hat noch nicht gewählt',
     'admin_dash1' => 'Anzahl angemeldeter Studenten',
     'admin_dash2' => 'Studenten',
     'admin_dash3' => 'Anzahl Studenten ohne Wahlabgabe',
@@ -43,9 +47,11 @@ return [
     'modal_endel4' => 'Wenn sie die Wahl wirklich beenden wollen, geben sie bitte das Admin-Passwort ein und drücken sie unten auf "Wahl beenden"',
     'modal_endel5' => 'Admin-Passwort',
     'modal_endel6' => 'Wahl beenden',
+    'modal_endel7' => 'Wenn sie nur alle eingegangenen Bewertungen löschen möchten, geben sie das Passwort ein und bestätigen sie mit diesem Knopf:',
+    'modal_endel8' => 'Bewertungen löschen',
     'modal_saveAg1' => 'Speichern erfolgreich',
-    'modal_saveAg2' => 'Sie haben erfolgreich ihre Änderungen an den Arbeitsgruppen gespeichert!',
-    'modal_studWahl1' => 'Übersicht der getroffenen Wahl von Student',
+    'modal_saveAg2' => 'Sie haben erfolgreich ihre Änderungen gespeichert!',
+    'modal_studWahl1' => 'Übersicht der getroffenen Wahl von',
     'modal_studWahl2' => 'Durchschnitt der abgegebenen Wahl',
     'modal_studWahl3' => 'Note',
     'modal_startAlgo1' => 'Sie haben die Zuweisung gestartet',
@@ -55,9 +61,8 @@ return [
     'admin_dashboard_alert2' => '<strong>Info:</strong> Die Zuweisung wurde noch nicht gestartet. Ergebnisse stehen erst danach zur Verfügung.',
     'admin_AG_alert' => '<strong>Achtung:</strong> Die Spalten "Gruppenleiter", "Gruppenname" and "Plätze" dürfen bei keiner AG leer sein. Bitte löschen sie überflüssige Reihen bzw. füllen sie die leeren Zellen aus!',
     'admin_AG_alert2' => '<strong>Achtung:</strong> Es existieren derzeit zwei Gruppen mit dem selben Namen. Die Gruppennamen müssen eindeutig sein!',
-
-
-
+    'admin_delRatings1' => 'Löschen erfolgreich',
+    'admin_delRatings2' => 'Sie haben erfolgreich alle Ratings gelöscht!',
 
 
     /*

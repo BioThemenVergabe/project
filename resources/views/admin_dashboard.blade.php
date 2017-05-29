@@ -8,7 +8,6 @@
 @endsection
 
 @section('content')
-
     <section class="container">
         <div class="panel">
             <div class="panel-body">
@@ -101,7 +100,6 @@
                                 data-target="#Begruessungstext_Modal"> @lang('fields.editText')</button>
                     </div>
                 </div>
-
                 <div class="last top-buffer row">
                     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                         <button type="button" class="btn btn-primary btn-block icon icon-cross" data-toggle="modal"
@@ -116,6 +114,7 @@
     @include('modals.acp-close-open-vote')
     @include('modals.acp-begruessungstext')
     @include('modals.acp-end-election')
+    @include('modals.acp-del-ratings')
     @include('modals.acp-start-algo')
 
 @endsection

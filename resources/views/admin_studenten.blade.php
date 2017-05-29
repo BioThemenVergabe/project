@@ -19,9 +19,10 @@
                     </div>
                     <div class="col-sm-4 pull-right top-buffer-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="@lang('fields.search')...">
+                            <input id="Stud_search_query" type="text" class="form-control"
+                                   placeholder="@lang('fields.search')...">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button"><span
+                                <button id="Stud_search_button" class="btn btn-default" type="button"><span
                                             class="icon icon-magnifying-glass"></span></button>
                         </span>
                         </div>
@@ -36,7 +37,7 @@
                 </div>
 
                 <!--Studenten-Tabelle-->
-                <div class="top-buffer-2 table-responsive">
+                <div id="Stud_table" class="top-buffer-2 table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>
                         <tr>
@@ -53,14 +54,19 @@
                                 <td class="ma">{{$student->matrnr}}</td>
                                 <td class="na">{{$student->name . " " . $student->lastname}}</td>
                                 <td class="em" style="display:none">{{$student->email}}</td>
-                                <td class="za">-</td>
+                                @if(sizeof($student->zugewiesen)>0)
+                                    <td class="za">{{$student->zugewiesen}}</td>
+                                @else
+                                    <td class="za">-</td>
+                                @endif
                                 <td class="bt">
                                     <div class="btn-group pull-right" role="group">
                                         <div class="bearbeitenButton btn btn-info icon icon-edit"><span
                                                     class="hidden-xs"> @lang('fields.edit')</span></div>
                                         <div class="btn btn-danger löschStudentButton icon icon-cross"
                                              data-toggle="modal"
-                                             data-target="#löschStudentModal"><span class="hidden-xs"> @lang('fields.del')</span>
+                                             data-target="#löschStudentModal"><span
+                                                    class="hidden-xs"> @lang('fields.del')</span>
                                         </div>
                                     </div>
                                 </td>
@@ -68,8 +74,8 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
-            </div><!--Collapse Studenten-Tabelle-->
+                </div><!--Collapse Studenten-Tabelle-->
+            </div>
         </div><!--Collapse panel-->
     </section><!--Collapse container-->
 

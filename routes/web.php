@@ -44,10 +44,6 @@ Route::group(['middleware' => 'language'], function () {
     //Auf alles nachfolgende dürfen nur authorisierte Nutzer zugreifen
     Route::group(['middleware' => 'auth'], function () {
 
-        Route::post('/sc/{obj}', function($obj) {
-            return response()->json($obj);
-        });
-
         //nach login je nach userlevel weiterleiten
         Route::get('/redirect', function () {
             if (Auth::user()->userlevel == 0)
@@ -69,12 +65,11 @@ Route::group(['middleware' => 'language'], function () {
         Route::group(['middleware' => 'checkAdmin'], function () {
             Route::match(['get', 'post'], '/dashboard', 'UserController@show');
 
+            Route::post('/profile/save','UserController@update');
+
             Route::get('/profile/edit', 'UserController@edit');
 
-            Route::get('/wahl', function () {
-                return view('wahl');
-            });
-
+            Route::resource('/wahl', 'RatingController');
 
         });
 
@@ -85,14 +80,18 @@ Route::group(['middleware' => 'language'], function () {
         Route::group(['middleware' => 'checkLevel'], function () {
 
             Route::match(['get', 'post'], '/admin', 'admin\dashboardController@showDashboard');
+            Route::post('/admin_delete_ratings', 'admin\dashboardController@deleteRatings');
 
             Route::get('/admin_studenten', 'admin\studentController@showStudents');
             Route::post('/admin_studenten', 'admin\studentController@saveStudent');
             Route::get('/admin_studenten_bearbeiten', 'admin\studentController@editStudent');
+            Route::get('/admin_studenten_search', 'admin\studentController@searchStudents');
+            Route::post('/admin_sb_save', 'admin\studentController@saveRating');
             Route::get('/studenten_delete', 'admin\studentController@deleteStudent');
 
             Route::get('/admin_AG', 'admin\workgroupController@showGroups');
             Route::get('/admin_AG_delete', 'admin\workgroupController@deleteGroup');
+            Route::get('/admin_AG_search', 'admin\workgroupController@searchGroups');
             Route::post('/admin_AG_save', 'admin\workgroupController@saveGroups');
 
 

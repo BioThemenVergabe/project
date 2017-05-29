@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('css')
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+@endsection
 
+@section('JS')
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 @endsection
 
 @section('content')

@@ -11,6 +11,12 @@
 
 <section class="container">
 
+            @if ($errors->has('password'))
+            <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+            @endif
+
     <div class="panel">
         <div class="panel-body">
 

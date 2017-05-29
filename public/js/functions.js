@@ -79,6 +79,35 @@ function checkSave(){
     }
 }
 
+//wenn der Admin das Rating eines Studenten ändert, wird ein AJAX  POST an /admin_sb_save geschickt und in die DB geschrieben
+var errorInput = [];
+function validateRating() {
+    var valide = true;
+
+    $("input.rating").each(function() {
+        if($(this).val()<1 || $(this).val()>10 || $(this).val() % 1 !== 0){
+            valide = false;
+            //um falsches Feld einen roten Rand setzen
+            errorInput.push($(this));
+            $(this).css({ "border": '#FF0000 1px solid'});
+        }
+    });
+    if(valide===true){
+        $('#AG_Wahl_Modal').modal('hide');
+        $(".modal-backdrop").remove(); //bug: sollte eigentlich bei "hide" automatisch weg gehn
+        $("#Rating_form").submit();
+        $('#speicherModal2').modal('toggle');
+
+        //roten Rand bei Fehleingabe wieder weg machen
+        for (i = 0; i < errorInput.length; i++) {
+            $(errorInput[i]).css({ "border": '1px solid #ccc'});
+        };
+    }else{
+        alert("Hey Admin, nicht vergessen, die Noten müssen Ganzzahlen zwischen 1 und 10 sein ;)")
+    }
+
+};
+
 
 
 
@@ -87,9 +116,8 @@ var triggerStudent;
 function deleteStudentTrigger(){
     //Get anfrage an /delstudent
     var row = $(triggerStudent).parent().parent().parent();
-    var matrnr = $(row).find('.ma').html();
-    var name = $(row).find('.na').html();
-    window.location = "/studenten_delete?"+"matrnr="+matrnr+"&name="+name;
+    var id = $(row).find('.id').html();
+    window.location = "/studenten_delete?"+"id="+id;
 
 }
 
@@ -119,10 +147,41 @@ $(document).ready(function() {
         });
     });
 
+    //submit eventHandler, für /admin_studenten_bearbeiten modal, wenn Rating geändert wird
+    $("#Rating_form").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        $.ajax({
+            type: "POST",
+            url: "/admin_sb_save",
+            data: $("#Rating_form").serialize(), // serializes the form's elements.
+            success: function(data) {// neuer Durchschnittswert der Ratings
+                $("#rDurchschnitt").html(parseFloat(data));
+            }
+        });
+    });
+
+    //wenn alle Ratings gelöscht werden sollen
+    $("#del_Ratings").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        $.ajax({
+            type: "POST",
+            url: "/admin_delete_ratings",
+            data: $("#del_Ratings").serialize(), // serializes the form's elements.
+            success: function(data) {// neuer Durchschnittswert der Ratings
+                $("#Wahlgang_beenden_Modal").modal("hide");
+                $(".modal-backdrop").remove(); //bug: sollte eigentlich bei "hide" automatisch weg gehn
+                $('#löschRatingsModal').modal('toggle');
+            }
+        });
+    });
+
     //$('table .btn-group').parent().width($('table .btn-group').width());
 
     $('.löschButton').click(function () {
       trigger = this;
+    });
+    $('.löschStudentButton').click(function () {
+        triggerStudent = this;
     });
 
     //modal für das löschen einer AG
@@ -142,15 +201,16 @@ $(document).ready(function() {
     });
 
 
-    $('.löschStudentButton').click(function () {
-        triggerStudent = this;
-    });
+
+
     $('#löschStudentModal').on('show.bs.modal', function () {
         var row = $(triggerStudent).parent().parent().parent();
+        var ID = row.find("td.id").html();
         var Ma = row.find("td.ma").html();
         var NA = row.find("td.na").html();
         var ZA = row.find("td.za").html();
 
+        $('#insert-student .id').html(ID);
         $('#insert-student .ma').html(Ma);
         $('#insert-student .na').html(NA);
         $('#insert-student .za').html(ZA);
@@ -161,6 +221,38 @@ $(document).ready(function() {
         var row = $(this).parent().parent().parent();
         var id = $(row).find('.id').html();
         window.location = "/admin_studenten_bearbeiten?"+"id="+id;
+    });
+
+
+    //Per AJAX AGs neu laden, entsprechend zu Suchanfrage
+    $("#AG_search_button").click(function () {
+        var query = $("#AG_search_query").val();
+        $("#AG_table").load("admin_AG_search?q="+query , function(){
+            update();
+            //onclick muss für neu geladene Tabelle neu gesetzt werden
+            $('.löschButton').click(function () {
+                trigger = this;
+            });
+        });
+    });
+    //wenn Enter gedrückt wird soll anfrage auch geschickt werden
+    $("#AG_search_query").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#AG_search_button").click();
+        }
+    });
+
+
+    //Per AJAX Studenten neu laden, entsprechend zu Suchanfrage
+    $("#Stud_search_button").click(function () {
+        var query = $("#Stud_search_query").val();
+        $("#Stud_table").load("admin_studenten_search?q="+query);
+    });
+    //wenn Enter gedrückt wird soll anfrage auch geschickt werden
+    $("#Stud_search_query").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#Stud_search_button").click();
+        }
     });
 
 

@@ -36,6 +36,7 @@ class CreateWorkgroupsTable extends Migration
      */
     public function down()
     {
+        DB::statement('ALTER TABLE `users` DROP FOREIGN KEY `users_workgroups_foreign`');
         Schema::dropIfExists('workgroups');
     }
 }

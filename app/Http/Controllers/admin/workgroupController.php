@@ -14,14 +14,17 @@ class workgroupController{
     public function showGroups(){
         $groups= DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')->orderBy('name', 'asc')->get();
         $numberGroups = DB::table("workgroups")->count();
-        return view('admin_AG', ["groups"=>$groups, "numberGroups"=>$numberGroups]);
+        $ratings = DB::table("ratings")->get();
+        return view('admin_AG', ["groups"=>$groups, "numberGroups"=>$numberGroups, "numberRatings"=> sizeof($ratings)]);
     }
+
     public function deleteGroup(Request $request){
         DB::table("workgroups")->where('id',$request->id)->delete();
 
         $groups= DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')->orderBy('name', 'asc')->get();
         return view('ajax.admin_AG_table', ["groups"=>$groups]);
     }
+
     public function saveGroups(Request $request){
         $ids = $request->input('id');
         $names = $request->input('name');
@@ -51,6 +54,14 @@ class workgroupController{
             }
         }
         return json_encode($newIDs);
+    }
+
+    public function searchGroups(Request $request){
+        $query ="%".$request->q."%";
+        $groups = DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')
+                                        ->where('name','like', $query)->orWhere('groupLeader','like', $query)->orWhere('date','like', $query)->orWhere('spots','like', $query)->orderBy('name', 'asc')->get();
+
+        return view('ajax.admin_AG_table', ["groups"=>$groups]);
     }
 
 }

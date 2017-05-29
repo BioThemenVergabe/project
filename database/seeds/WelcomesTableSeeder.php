@@ -11,7 +11,6 @@ class WelcomesTableSeeder extends Seeder
      */
     public function run()
     {
-
         $rndStringDE = "";
         for($i = 0; $i < 100; $i++) {
             $strLength = rand(3, 10);

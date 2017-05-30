@@ -7,6 +7,9 @@
 
 @section('CSS')
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<style type="text/css">
+
+</style>
 @endsection
 
 @section('JS')
@@ -39,7 +42,7 @@
 
                                 @foreach($ags as $ag)
 
-                                <div class="ui-state-default well">
+                                <div class="ui-state-default bs bs-info">
                                     <label>{{ $ag->name }}</label>
                                     <input type="hidden" name="ag[]" value="{{ $ag->id }}">
                                 </div>

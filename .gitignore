@@ -8,7 +8,4 @@ phpunit.xml
 server.php
 tests
 .env
-bootstrap
-config
-database
 .gitignore

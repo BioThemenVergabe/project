@@ -1,11 +1,27 @@
 @extends('layouts.app')
 
 @section('links')
-    <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> @lang('fields.dashboard')</span></a>
+<a href="/dashboard" class="btn btn-default btn-sm icon icon-home"><span
+            class="hidden-xs"> @lang('fields.dashboard')</span></a>
+@endsection
+
+@section('CSS')
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<style type="text/css">
+
+</style>
+@endsection
+
+@section('JS')
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+    $(function () {
+        $('#sortableRatings').sortable();
+    });
+</script>
 @endsection
 
 @section('content')
-
 @include('partials.header')
 
 <section class="container">
@@ -15,62 +31,28 @@
                 <h1>@lang('fields.selection')</h1>
             </div>
 
-            <form method="post" action="{{ url('/wahl') }}">
+            <form method="post" name="wahl" action="{{ url('/wahl') }}">
                 {{ csrf_field() }}
-                <table class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th class="col-xs-6 col-md-3"><label>@lang('fields.ag')</label></th>
-                        <th><label>@lang('fields.valuta')</label></th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                    @foreach($ags as $ag)
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
 
-                        <tr data-row="ag-{{ $ag->id }}">
-                            <td>
-                                <div class="input-group pull-right hidden-xs hidden-sm">
-                                    <span data-target="range" class="btn btn-default disabled"></span>
+                            <div class="well ui-widget-content" id="sortableRatings">
+
+                                @foreach($ags as $ag)
+
+                                <div class="ui-state-default bs bs-info">
+                                    <label>{{ $ag->name }}</label>
+                                    <input type="hidden" name="ag[]" value="{{ $ag->id }}">
                                 </div>
-                                <label>{{ $ag->name }}</label>
-                            </td>
-                            <td>
-                                <div class="form-group hidden-md hidden-lg">
-                                    <input type="number" class="form-control copyOf" data-copy="range" min="1" max="10">
-                                </div>
-                                <div class="input-group input-group-sm hidden-xs hidden-sm">
-                                    <span class="input-group-addon">1</span>
-                                    <input type="range" name="ag-{{ $ag->id }}" id="ag-{{ $ag->id }}" @foreach($ratings as $rating) @if($rating->workgroup == $ag->id) value="{{$rating->rating}}" @endif @endforeach class="form-control" min="1" max="10">
-                                    <span class="input-group-addon">10</span>
-                                </div>
-                            </td>
-                        </tr>
 
-                        <tr data-row-copy="ag-{{ $ag->id }}" class="hidden-md hidden-lg">
-                            <td colspan="2">
-                                <div class="input-group input-group-sm col-xs-12">
-                                    <span class="input-group-addon">1</span>
-                                    <input type="range" name="ag-{{ $ag->id }}" data-copy="ag-{{ $ag->id }}" value="5" class="form-control" min="1" max="10">
-                                    <span class="input-group-addon">10</span>
-                                </div>
-                            </td>
-                        </tr>
+                                @endforeach
+                            </div>
 
-                    @endforeach
-
-
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <td>
-                            <div class="pull-right"><label id="sum"></label></div>
-                            <label>@lang('fields.sum'):</label>
-                        </td>
-                        <td></td>
-                    </tr>
-                    </tfoot>
-                </table>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="pull-right">
                     <input type="submit" class="btn btn-primary icon icon-save" value="@lang('fields.save')">
@@ -83,9 +65,20 @@
     </div>
 </section>
 
-
-@include('modals.forgot')
-@include('modals.register')
+<div class="modal fade" tabindex="-1" role="dialog" id="errorMsg">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">@lang('fields.error')</h4>
+            </div>
+            <div class="modal-body">
+                @lang('fields.ratingToLow')
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 

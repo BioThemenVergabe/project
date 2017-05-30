@@ -79,4 +79,6 @@ return [
     'gtElect' => 'Voting',
     'valuta' => 'Valuation',
     'dashboard' => 'Dashboard',
+    'error' => "There was an error!",
+    'ratingToLow' => "The given rating was to low. You have to spend at least <span id=\"minRating\"></span> Points.",
 ];

@@ -200,3 +200,84 @@ table.voting td > .progress-bar-zero:after {
   left: 77%;
   top: 77%;
 }
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+.bs-callout.bs-info {
+  border-left-color: #5bc0de;
+}
+.bs-callout.bs-info h4 {
+  color: #5bc0de;
+}
+.bs-callout.bs-warning {
+  border-left-color: #d9534f;
+}
+.bs-callout.bs-warning h4 {
+  color: #d9534f;
+}
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code {
+  border-radius: 3px;
+}
+.bs-callout + .bs-callout {
+  margin-top: -5px;
+}
+.bs-callout-default {
+  border-left-color: #777;
+}
+.bs-callout-default h4 {
+  color: #777;
+}
+.bs-callout-primary {
+  border-left-color: #09bc6c;
+}
+.bs-callout-primary h4 {
+  color: #09bc6c;
+}
+.bs-callout-success {
+  border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+  color: #5cb85c;
+}
+.bs-callout-danger {
+  border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+  color: #d9534f;
+}
+#sortableRatings div:first-child, #listRating div:first-child {
+  border-left-color: #09bc6c;
+}
+#sortableRatings div:first-child h4, #listRating div:first-child h4 {
+  color: #09bc6c;
+}
+#sortableRatings div:nth-child(2), #listRating div:nth-child(2) {
+  border-left-color: #0bed88;
+}
+#sortableRatings div:nth-child(2) h4, #listRating div:nth-child(2) h4 {
+  color: #0bed88;
+}
+#sortableRatings div:nth-child(3), #listRating div:nth-child(3) {
+  border-left-color: #36f5a0;
+}
+#sortableRatings div:nth-child(3) h4, #listRating div:nth-child(3) h4 {
+  color: #36f5a0;
+}
+#sortableRatings div:nth-child(4), #listRating div:nth-child(4) {
+  border-left-color: #66f8b7;
+}
+#sortableRatings div:nth-child(4) h4, #listRating div:nth-child(4) h4 {
+  color: #66f8b7;
+}

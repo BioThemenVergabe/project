@@ -5,20 +5,20 @@
             class="hidden-xs"> @lang('fields.dashboard')</span></a>
 @endsection
 
-@section('CSS')
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<style type="text/css">
-
-</style>
+@section('css')
+<link rel="stylesheet" href="{{ asset('/assets/css/shepherd-theme-arrows.css') }}">
 @endsection
 
 @section('JS')
+<script src="{{ asset('/assets/js/tether.js') }}"></script>
+<script src="{{ asset('/assets/js/shepherd.min.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
     $(function () {
         $('#sortableRatings').sortable();
     });
 </script>
+
 @endsection
 
 @section('content')
@@ -30,6 +30,18 @@
             <div class="col-xs-12">
                 <h1>@lang('fields.selection')</h1>
             </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bs-callout bs-warning">
+                            <h4>Hinweis</h4>
+                            <p>Hier steht dann ein Hinweis zur Nutzung der nachfolgenden SortableListe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="hr-divider">
 
             <form method="post" name="wahl" action="{{ url('/wahl') }}">
                 {{ csrf_field() }}
@@ -38,11 +50,11 @@
                     <div class="row">
                         <div class="col-xs-12">
 
-                            <div class="well ui-widget-content" id="sortableRatings">
+                            <div class="ui-widget-content" id="sortableRatings">
 
                                 @foreach($ags as $ag)
 
-                                <div class="ui-state-default bs bs-info">
+                                <div class="ui-state-default bs-callout">
                                     <label>{{ $ag->name }}</label>
                                     <input type="hidden" name="ag[]" value="{{ $ag->id }}">
                                 </div>

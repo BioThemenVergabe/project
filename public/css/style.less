@@ -231,3 +231,96 @@ table.voting {
   left: 77%;
   top: 77%;
 }
+
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+  background-color: @white;
+  &.bs-info {
+    border-left-color: #5bc0de;
+  }
+  &.bs-info h4 {
+    color: #5bc0de;
+  }
+
+  &.bs-warning {
+    border-left-color: @danger;
+  }
+  &.bs-warning h4 {
+    color: @danger;
+  }
+
+}
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code {
+  border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+  margin-top: -5px;
+}
+.bs-callout-default {
+  border-left-color: #777;
+}
+.bs-callout-default h4 {
+  color: #777;
+}
+.bs-callout-primary {
+  border-left-color: @primary;
+}
+.bs-callout-primary h4 {
+  color: @primary;
+}
+.bs-callout-success {
+  border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+  color: #5cb85c;
+}
+.bs-callout-danger {
+  border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+  color: #d9534f;
+}
+
+
+#sortableRatings,
+#listRating {
+  div:first-child {
+    border-left-color: @primary;
+    h4 {
+      color: @primary;
+    }
+  }
+
+  div:nth-child(2) {
+    border-left-color: lighten(@primary, 10%);
+    h4 {
+      color: lighten(@primary, 10%);
+    }
+  }
+
+  div:nth-child(3) {
+    border-left-color: lighten(@primary, 20%);
+    h4 {
+      color: lighten(@primary, 20%);
+    }
+  }
+
+  div:nth-child(4) {
+    border-left-color: lighten(@primary, 30%);
+    h4 {
+      color: lighten(@primary, 30%);
+    }
+  }
+
+}

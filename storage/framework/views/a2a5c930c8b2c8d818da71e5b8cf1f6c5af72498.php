@@ -3,17 +3,20 @@
             class="hidden-xs"> <?php echo app('translator')->get('fields.dashboard'); ?></span></a>
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('CSS'); ?>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<?php $__env->startSection('css'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('/assets/css/shepherd-theme-arrows.css')); ?>">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('JS'); ?>
+<script src="<?php echo e(asset('/assets/js/tether.js')); ?>"></script>
+<script src="<?php echo e(asset('/assets/js/shepherd.min.js')); ?>"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
     $(function () {
         $('#sortableRatings').sortable();
     });
 </script>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -25,6 +28,18 @@
             <div class="col-xs-12">
                 <h1><?php echo app('translator')->get('fields.selection'); ?></h1>
             </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bs-callout bs-warning">
+                            <h4>Hinweis</h4>
+                            <p>Hier steht dann ein Hinweis zur Nutzung der nachfolgenden SortableListe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="hr-divider">
 
             <form method="post" name="wahl" action="<?php echo e(url('/wahl')); ?>">
                 <?php echo e(csrf_field()); ?>
@@ -34,11 +49,11 @@
                     <div class="row">
                         <div class="col-xs-12">
 
-                            <div class="well ui-widget-content" id="sortableRatings">
+                            <div class="ui-widget-content" id="sortableRatings">
 
                                 <?php $__currentLoopData = $ags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 
-                                <div class="ui-state-default well">
+                                <div class="ui-state-default bs-callout">
                                     <label><?php echo e($ag->name); ?></label>
                                     <input type="hidden" name="ag[]" value="<?php echo e($ag->id); ?>">
                                 </div>

@@ -54,7 +54,7 @@ class UserController extends Controller
                 return redirect('/redirect');
             return view('dashboard', [
                 'user' => Auth::user(),
-                'ratings' => Rating::findByUser(Auth::user()->id),
+                'ratings' => Rating::where('user','=',Auth::user()->id)->orderBy('rating', 'desc')->get(),
                 'ags' => Workgroup::all(),
             ]);
         }

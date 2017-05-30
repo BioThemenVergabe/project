@@ -77,54 +77,24 @@
 
             <hr/>
 
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped voting">
-                    <thead>
-                        <tr>
-                            <th class="col-xs-3"><label><?php echo app('translator')->get('fields.ag'); ?></label></th>
-                            <th><label><?php echo app('translator')->get('fields.valuta'); ?></label></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div id="listRating">
                     <?php if($ratings->count() == 0): ?>
-                    <tfoot>
-                    <tr>
-                        <td colspan="2">
-                            <label><?php echo app('translator')->get('fields.norating'); ?></label>
-                        </td>
-                    </tr>
-                    </tfoot>
+                    <div class="bs-callout bs-warning">
+                        <h4>
+                            <?php echo app('translator')->get('fields.noRating'); ?>
+                        </h4>
+                    </div>
                     <?php else: ?>
                         <?php $__currentLoopData = $ratings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rating): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                             <?php $__currentLoopData = $ags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <?php if($ag->id == $rating->workgroup): ?>
-                                    <tr>
-                                        <td>
-                                            <div class="input-group pull-right hidden-xs hidden-sm">
-                                                <span data-target="range" class="btn btn-default disabled"><?php echo e($rating->rating); ?></span>
-                                            </div>
-                                            <label> <?php echo e($ag->name); ?></label>
-                                        </td>
-                                        <td>
-                                            <span class="progress-bar-zero" style="width: <?php echo e($rating->rating*9); ?>%;"></span>
-                                        </td>
-                                    </tr>
+                                    <div class="bs-callout">
+                                        <label><?php echo e($ag->name); ?></label>
+                                    </div>
                                 <?php endif; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>
-                                    <div class="pull-right"><label id="sum"></label></div>
-                                    <label><?php echo app('translator')->get('fields.sum'); ?>:</label>
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
-                        </tfoot>
                     <?php endif; ?>
-                </table>
 
             </div>
 

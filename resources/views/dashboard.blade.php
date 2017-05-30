@@ -79,54 +79,24 @@
 
             <hr/>
 
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped voting">
-                    <thead>
-                        <tr>
-                            <th class="col-xs-3"><label>@lang('fields.ag')</label></th>
-                            <th><label>@lang('fields.valuta')</label></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div id="listRating">
                     @if($ratings->count() == 0)
-                    <tfoot>
-                    <tr>
-                        <td colspan="2">
-                            <label>@lang('fields.norating')</label>
-                        </td>
-                    </tr>
-                    </tfoot>
+                    <div class="bs-callout bs-warning">
+                        <h4>
+                            @lang('fields.noRating')
+                        </h4>
+                    </div>
                     @else
                         @foreach($ratings as $rating)
                             @foreach($ags as $ag)
                                 @if($ag->id == $rating->workgroup)
-                                    <tr>
-                                        <td>
-                                            <div class="input-group pull-right hidden-xs hidden-sm">
-                                                <span data-target="range" class="btn btn-default disabled">{{ $rating->rating }}</span>
-                                            </div>
-                                            <label> {{ $ag->name }}</label>
-                                        </td>
-                                        <td>
-                                            <span class="progress-bar-zero" style="width: {{ $rating->rating*9 }}%;"></span>
-                                        </td>
-                                    </tr>
+                                    <div class="bs-callout">
+                                        <label>{{ $ag->name }}</label>
+                                    </div>
                                 @endif
                             @endforeach
                         @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>
-                                    <div class="pull-right"><label id="sum"></label></div>
-                                    <label>@lang('fields.sum'):</label>
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
-                        </tfoot>
                     @endif
-                </table>
 
             </div>
 

@@ -40,17 +40,23 @@ class RatingController extends Controller
     {
         $ags = Workgroup::all();
 
-        return response()->json($request->input('ag'));
+        $arr = [];
+
+        foreach($request->input('ag') as $key => $rating)
+        {
+            $arr[$rating] = (10-$key > 0) ? (10-$key) : 1;
+        }
 
         $ratings = Rating::findByUser(Auth::user()->id);
 
-        if (count($ratings) > 0) {
-            foreach ($ratings as $rating) {
+        if ($ratings->count() > 0) {
+            foreach ($ratings as $key => $rating) {
+
                 DB::table('ratings')->where([
                     ['user','=',Auth::user()->id],
                     ['workgroup','=',$rating->workgroup]
                 ])->update([
-                    'rating' => $request->input('ag-'.$rating->workgroup),
+                    'rating' => $arr[$rating->workgroup],
                 ]);
             }
         } else {
@@ -58,7 +64,7 @@ class RatingController extends Controller
                 Rating::create([
                     'user' => Auth::user()->id,
                     'workgroup' => $ag->id,
-                    'rating' => $request->input('ag-' . $ag->id),
+                    'rating' => $arr[$ag->id],
                 ]);
             }
         }

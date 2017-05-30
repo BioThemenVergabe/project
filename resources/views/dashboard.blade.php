@@ -5,6 +5,12 @@
             class="hidden-xs"> @lang('fields.gtElect')</span></a>
 @endsection
 
+@section('JS')
+    <script src="{{ asset('assets/js/fine-uploader.core.min.js') }}"></script>
+    <script src="{{ asset('assets/js/fine-uploader.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.fine-uploader.core.min.js') }}"></script>
+@endsection
+
 @section('content')
 
 @include('partials.header')
@@ -82,35 +88,44 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                    @foreach($ratings as $rating)
-                        @foreach($ags as $ag)
-                            @if($ag->id == $rating->workgroup)
-                                <tr>
-                                    <td>
-                                        <div class="input-group pull-right hidden-xs hidden-sm">
-                                            <span data-target="range" class="btn btn-default disabled">{{ $rating->rating }}</span>
-                                        </div>
-                                        <label> {{ $ag->name }}</label>
-                                    </td>
-                                    <td>
-                                        <span class="progress-bar-zero" style="width: {{ $rating->rating*9 }}%;"></span>
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                    @endforeach
-                    </tbody>
+                    @if($ratings->count() == 0)
                     <tfoot>
                     <tr>
-                        <td>
-                            <div class="pull-right"><label id="sum"></label></div>
-                            <label>@lang('fields.sum'):</label>
-                        </td>
-                        <td>
+                        <td colspan="2">
+                            <label>@lang('fields.norating')</label>
                         </td>
                     </tr>
                     </tfoot>
+                    @else
+                        @foreach($ratings as $rating)
+                            @foreach($ags as $ag)
+                                @if($ag->id == $rating->workgroup)
+                                    <tr>
+                                        <td>
+                                            <div class="input-group pull-right hidden-xs hidden-sm">
+                                                <span data-target="range" class="btn btn-default disabled">{{ $rating->rating }}</span>
+                                            </div>
+                                            <label> {{ $ag->name }}</label>
+                                        </td>
+                                        <td>
+                                            <span class="progress-bar-zero" style="width: {{ $rating->rating*9 }}%;"></span>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <div class="pull-right"><label id="sum"></label></div>
+                                    <label>@lang('fields.sum'):</label>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    @endif
                 </table>
 
             </div>

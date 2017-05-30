@@ -3,6 +3,12 @@
             class="hidden-xs"> <?php echo app('translator')->get('fields.gtElect'); ?></span></a>
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('JS'); ?>
+    <script src="<?php echo e(asset('assets/js/fine-uploader.core.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/fine-uploader.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/jquery.fine-uploader.core.min.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 
 <?php echo $__env->make('partials.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -19,7 +25,7 @@
             <div class="col-xs-5 col-md-3">
                     <img src="<?php echo e(asset('/img/default-user.png')); ?>" alt="Default Userpicture"
                          class="img-thumbnail img-circle img-responsive"/>
-                <a class="icon icon-upload btn btn-lg btn-default btn-circle" data-action="cropUpload" id="upload"></a>
+                <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle" id="upload"></a>
             </div>
             <div class="col-xs-7 col-md-6 col-md-offset-1">
                 <div class="form-group row">
@@ -80,35 +86,44 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                    <?php $__currentLoopData = $ratings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rating): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                        <?php $__currentLoopData = $ags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                            <?php if($ag->id == $rating->workgroup): ?>
-                                <tr>
-                                    <td>
-                                        <div class="input-group pull-right hidden-xs hidden-sm">
-                                            <span data-target="range" class="btn btn-default disabled"><?php echo e($rating->rating); ?></span>
-                                        </div>
-                                        <label> <?php echo e($ag->name); ?></label>
-                                    </td>
-                                    <td>
-                                        <span class="progress-bar-zero" style="width: <?php echo e($rating->rating*9); ?>%;"></span>
-                                    </td>
-                                </tr>
-                            <?php endif; ?>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                    </tbody>
+                    <?php if($ratings->count() == 0): ?>
                     <tfoot>
                     <tr>
-                        <td>
-                            <div class="pull-right"><label id="sum"></label></div>
-                            <label><?php echo app('translator')->get('fields.sum'); ?>:</label>
-                        </td>
-                        <td>
+                        <td colspan="2">
+                            <label><?php echo app('translator')->get('fields.norating'); ?></label>
                         </td>
                     </tr>
                     </tfoot>
+                    <?php else: ?>
+                        <?php $__currentLoopData = $ratings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rating): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                            <?php $__currentLoopData = $ags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                <?php if($ag->id == $rating->workgroup): ?>
+                                    <tr>
+                                        <td>
+                                            <div class="input-group pull-right hidden-xs hidden-sm">
+                                                <span data-target="range" class="btn btn-default disabled"><?php echo e($rating->rating); ?></span>
+                                            </div>
+                                            <label> <?php echo e($ag->name); ?></label>
+                                        </td>
+                                        <td>
+                                            <span class="progress-bar-zero" style="width: <?php echo e($rating->rating*9); ?>%;"></span>
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <div class="pull-right"><label id="sum"></label></div>
+                                    <label><?php echo app('translator')->get('fields.sum'); ?>:</label>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    <?php endif; ?>
                 </table>
 
             </div>
@@ -117,9 +132,12 @@
     </div>
 </section>
 
-<?php echo $__env->make('modals.crop', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 <?php echo $__env->make('modals.forgot', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 <?php echo $__env->make('modals.register', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo $__env->make('modals.crop', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

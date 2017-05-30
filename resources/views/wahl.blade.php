@@ -4,8 +4,11 @@
     <a href="/dashboard" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> @lang('fields.dashboard')</span></a>
 @endsection
 
-@section('content')
+@section('JS')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+@endsection
 
+@section('content')
 @include('partials.header')
 
 <section class="container">
@@ -15,7 +18,7 @@
                 <h1>@lang('fields.selection')</h1>
             </div>
 
-            <form method="post" action="{{ url('/wahl') }}">
+            <form method="post" name="wahl" action="{{ url('/wahl') }}">
                 {{ csrf_field() }}
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -41,7 +44,7 @@
                                 </div>
                                 <div class="input-group input-group-sm hidden-xs hidden-sm">
                                     <span class="input-group-addon">1</span>
-                                    <input type="range" name="ag-{{ $ag->id }}" id="ag-{{ $ag->id }}" @foreach($ratings as $rating) @if($rating->workgroup == $ag->id) value="{{$rating->rating}}" @endif @endforeach class="form-control" min="1" max="10">
+                                    <input type="range" name="ag-{{ $ag->id }}" id="ag-{{ $ag->id }}" @foreach($ratings as $rating) @if($rating->workgroup == $ag->id) value="{{$rating->rating}}" @endif @endforeach class="form-control ag-values" min="1" max="10">
                                     <span class="input-group-addon">10</span>
                                 </div>
                             </td>
@@ -83,9 +86,19 @@
     </div>
 </section>
 
-
-@include('modals.forgot')
-@include('modals.register')
+<div class="modal fade" tabindex="-1" role="dialog" id="errorMsg">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@lang('fields.error')</h4>
+            </div>
+            <div class="modal-body">
+                @lang('fields.ratingToLow')
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 

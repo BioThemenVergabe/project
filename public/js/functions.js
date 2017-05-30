@@ -166,6 +166,25 @@ $(document).ready(function() {
         });
     });
 
+
+    //wenn Wahlgang beendet werden soll
+    $("#end_election").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        $.ajax({
+            type: "POST",
+            url: "/admin_end_election",
+            data: $("#end_election").serialize(), // serializes the form's elements.
+            success: function(data) {// Wert, ob input übereingestimmt hat
+                if(data=="true"){
+                    //$("#Wahlgang_beenden_Modal").modal("hide");
+                    //$(".modal-backdrop").hide(); //bug: sollte eigentlich bei "hide" automatisch weg gehn
+                    window.location ="/admin?action=ended";
+                }else{
+                    alert("Hey Admin. Das eingegebene Passwort war nicht korrekt.")
+                }
+            }
+        });
+    });
     //wenn alle Ratings gelöscht werden sollen
     $("#del_Ratings").submit(function(e) {
         e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -174,9 +193,11 @@ $(document).ready(function() {
             url: "/admin_delete_ratings",
             data: $("#del_Ratings").serialize(), // serializes the form's elements.
             success: function(data) {// neuer Durchschnittswert der Ratings
-                $("#Wahlgang_beenden_Modal").modal("hide");
-                $(".modal-backdrop").remove(); //bug: sollte eigentlich bei "hide" automatisch weg gehn
-                $('#löschRatingsModal').modal('toggle');
+                if(data=="true"){
+                    window.location ="/admin?action=deleted";
+                }else{
+                    alert("Hey Admin. Das eingegebene Passwort war nicht korrekt.")
+                }
             }
         });
     });

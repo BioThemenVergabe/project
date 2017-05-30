@@ -63,6 +63,12 @@ return [
     'admin_AG_alert2' => '<strong>Achtung:</strong> Es existieren derzeit zwei Gruppen mit dem selben Namen. Die Gruppennamen müssen eindeutig sein!',
     'admin_delRatings1' => 'Löschen erfolgreich',
     'admin_delRatings2' => 'Sie haben erfolgreich alle Ratings gelöscht!',
+    'admin_electionEnded1' => 'Sie haben die Wahl erfolgreich beendet!',
+    'admin_electionEnded2' => 'Alle abgegebenen Bewertungen wurden aus der Datenbank entfernt!',
+    'admin_electionEnded3' => 'Alle angemeldeten Studenten wurden aus der Datenbank entfernt!',
+    'admin_electionEnded4' => 'Der Status der aktuellen Wahl wurde auf <i>geschlossen</i> gesetzt!',
+    'admin_electionEnded5' => 'Der Status der Zuweisung wurde auf <i>nicht gestartet</i> gesetzt!',
+
 
 
     /*

@@ -19,10 +19,10 @@
                     <p>
 
                     </p>
-                    <form>
+                    <form id="end_election" action="admin_end_Election" method="post">
                         {{ csrf_field() }}
                         <label for="passwort1" class="control-label"> @lang('content.modal_endel5'): <input
-                                    id="passwort1" type="password" required></label>
+                                    name="param" type="password" required></label>
                         <button type="submit" class="btn btn-danger">@lang('content.modal_endel6')</button>
                     </form>
                     <hr>
@@ -33,7 +33,7 @@
                     <form id="del_Ratings" action="admin_delete_ratings" method="post">
                         {{ csrf_field() }}
                         <label for="passwort2" class="control-label"> @lang('content.modal_endel5'): <input
-                                    id="passwort2" type="password" required></label>
+                                    name="param" type="password" required></label>
                         <button type="submit" class="btn btn-danger">@lang('content.modal_endel8')</button>
                     </form>
                 </div>

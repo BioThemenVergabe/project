@@ -114,7 +114,18 @@
     @include('modals.acp-close-open-vote')
     @include('modals.acp-begruessungstext')
     @include('modals.acp-end-election')
+    @include('modals.acp-end-election-succesfull')
     @include('modals.acp-del-ratings')
     @include('modals.acp-start-algo')
+
+    @if($action=="ended")
+        <script>
+            $("#election_ended").modal("show");
+        </script>
+    @elseif($action=="deleted")
+        <script>
+            $("#löschRatingsModal").modal("show");
+        </script>
+    @endif
 
 @endsection

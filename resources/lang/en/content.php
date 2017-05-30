@@ -62,7 +62,11 @@ return [
     'admin_AG_alert2' => '<strong>Attention:</strong> There are currently two groups with the same name. The group names must be unique!',
     'admin_delRatings1' => 'Deletion succesful',
     'admin_delRatings2' => 'You have succesfully deleted all submitted ratings!',
-
+    'admin_electionEnded1' => 'You have succesfully ended the election-process!',
+    'admin_electionEnded2' => 'All submitted ratings have been deleted from the database!',
+    'admin_electionEnded3' => 'All registered students have been deleted from the database!',
+    'admin_electionEnded4' => 'The status of the ongoing rating-process has been set to <i>closed</i>!',
+    'admin_electionEnded5' => 'The status of the algorithm has been set to <i>not started</i>!',
 
 
 

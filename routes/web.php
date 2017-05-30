@@ -81,6 +81,7 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::match(['get', 'post'], '/admin', 'admin\dashboardController@showDashboard');
             Route::post('/admin_delete_ratings', 'admin\dashboardController@deleteRatings');
+            Route::post('/admin_end_election', 'admin\dashboardController@checkAdmin');
 
             Route::get('/admin_studenten', 'admin\studentController@showStudents');
             Route::post('/admin_studenten', 'admin\studentController@saveStudent');

@@ -1,0 +1,16 @@
+.idea
+node_modules
+public/index.php
+
+vendor
+.env
+Patrick.env
+Heroku.env
+Grunt*
+gulpfile.js
+phpunit.xml
+
+server.php
+
+.gitattributes
+tests

@@ -588,3 +588,6 @@ Stack trace:
 #50 D:\GitHub\biowahlsystem\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #51 D:\GitHub\biowahlsystem\server.php(21): require_once('D:\\GitHub\\biowa...')
 #52 {main}  
+[2017-05-30 13:45:22] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '=>' (T_DOUBLE_ARROW)' in D:\GitHub\biowahlsystem\app\Http\Controllers\RatingController.php:45
+Stack trace:
+#0 {main}  

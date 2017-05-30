@@ -40,6 +40,8 @@ class RatingController extends Controller
     {
         $ags = Workgroup::all();
 
+        return response()->json($request->input('ag'));
+
         $ratings = Rating::findByUser(Auth::user()->id);
 
         if (count($ratings) > 0) {

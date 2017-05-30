@@ -1,8 +1,6 @@
 .idea
 public/index.php
 vendor
-composer.json
-composer.lock
 .gitignore
 Grunt*
 gulpfile.js
@@ -10,3 +8,7 @@ phpunit.xml
 server.php
 tests
 .env
+bootstrap
+config
+database
+.gitignore

@@ -93,13 +93,14 @@ $(function () {
     }
 
     $('form[name=wahl] input[type=submit]').on('click', function (e) {
-        e.preventDefault()
         var values = $('.ag-values');
 
         val = new Array();
 
         $.each(values, function (value) {
             val.push(values[value].value);
+            values[value].value = parseInt(values[value].value);
+            alert(values[value].value);
         });
 
         val.sort(function (a, b) {
@@ -107,9 +108,8 @@ $(function () {
         });
         val.reverse();
 
-        if (checkWahlValues(val, calcSum()))
-            $(this).submit();
-        else {
+        if (!checkWahlValues(val, calcSum())) {
+            e.preventDefault();
             $('#errorMsg').modal();
         }
     });

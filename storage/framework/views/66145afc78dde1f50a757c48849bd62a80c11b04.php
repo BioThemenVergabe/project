@@ -30,6 +30,9 @@
     </div>
 </div>
 
+<?php echo $__env->make('modals.forgot', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('modals.register', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>

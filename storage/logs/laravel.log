@@ -1455,3 +1455,15 @@ Stack trace:
 #44 D:\GitHub\biowahlsystem\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #45 D:\GitHub\biowahlsystem\server.php(21): require_once('D:\\GitHub\\biowa...')
 #46 {main}  
+[2017-05-31 19:24:32] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Input' not found' in D:\GitHub\biowahlsystem\app\Http\Controllers\UserController.php:134
+Stack trace:
+#0 {main}  
+[2017-05-31 19:24:45] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Input' not found' in D:\GitHub\biowahlsystem\app\Http\Controllers\UserController.php:134
+Stack trace:
+#0 {main}  
+[2017-05-31 19:25:28] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Input' not found' in D:\GitHub\biowahlsystem\app\Http\Controllers\UserController.php:134
+Stack trace:
+#0 {main}  
+[2017-05-31 19:31:39] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Input' not found' in D:\GitHub\biowahlsystem\app\Http\Controllers\UserController.php:134
+Stack trace:
+#0 {main}  

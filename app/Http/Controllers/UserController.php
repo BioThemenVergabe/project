@@ -58,7 +58,11 @@ class UserController extends Controller
                 'ags' => Workgroup::all(),
             ]);
         }
-        return view('dashboard', ['user' => User::find($id)]);
+        return view('dashboard', [
+            'user' => User::find($id),
+            'ratings' => Rating::where('user','=',User::find($id)->id)->orderBy('rating', 'desc')->get(),
+            'ags' => Workgroup::all(),
+        ]);
     }
 
     /**

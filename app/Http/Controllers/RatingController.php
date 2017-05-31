@@ -17,7 +17,10 @@ class RatingController extends Controller
      */
     public function index()
     {
-        return view('wahl', ['ags' => Workgroup::all(), 'ratings' => Rating::findByUser(Auth::user()->id)]);
+        return view('wahl', [
+            'ags' => Workgroup::all(),
+            'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get()
+        ]);
     }
 
     /**
@@ -42,9 +45,8 @@ class RatingController extends Controller
 
         $arr = [];
 
-        foreach($request->input('ag') as $key => $rating)
-        {
-            $arr[$rating] = (10-$key > 0) ? (10-$key) : 1;
+        foreach ($request->input('ag') as $key => $rating) {
+            $arr[$rating] = (10 - $key > 0) ? (10 - $key) : 1;
         }
 
         $ratings = Rating::findByUser(Auth::user()->id);
@@ -53,8 +55,8 @@ class RatingController extends Controller
             foreach ($ratings as $key => $rating) {
 
                 DB::table('ratings')->where([
-                    ['user','=',Auth::user()->id],
-                    ['workgroup','=',$rating->workgroup]
+                    ['user', '=', Auth::user()->id],
+                    ['workgroup', '=', $rating->workgroup]
                 ])->update([
                     'rating' => $arr[$rating->workgroup],
                 ]);

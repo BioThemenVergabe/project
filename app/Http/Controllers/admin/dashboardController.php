@@ -62,6 +62,8 @@ class dashboardController
         $matches = Hash::check($passwort, $hashedPassword);
         if ($matches) {
             DB::table("ratings")->delete();
+            DB::table("users")->where("userlevel",0)->update(["zugewiesen"=>NULL]);
+
         }
 
         return var_export($matches, true);;

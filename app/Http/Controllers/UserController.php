@@ -131,10 +131,8 @@ class UserController extends Controller
     }
 
     public function storeUpload(Request $request) {
-        if(Input::hasFile('qqfile'))
+        if($request->hasFile('file'))
             return response()->json(['success' => true]);
-        else
-            return response()->json(['success' => false]);
     }
 
 }

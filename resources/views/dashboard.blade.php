@@ -79,20 +79,25 @@
 
             <hr/>
 
+            <h3>@lang('fields.yourRating')</h3>
+
             <div id="listRating">
                     @if($ratings->count() == 0)
-                    <div class="bs-callout bs-warning">
+                    <div class="bs-callout bs-danger">
                         <h4>
                             @lang('fields.noRating')
                         </h4>
                     </div>
                     @else
-                        @foreach($ratings as $rating)
+                        @foreach($ratings as $key => $rating)
                             @foreach($ags as $ag)
                                 @if($ag->id == $rating->workgroup)
                                     <div class="bs-callout">
                                         <label>{{ $ag->name }}</label>
                                     </div>
+                                    @if($key == 3)
+                                    <hr class="hr-divider">
+                                    @endif
                                 @endif
                             @endforeach
                         @endforeach
@@ -103,11 +108,6 @@
         </div>
     </div>
 </section>
-
-
-@include('modals.forgot')
-
-@include('modals.register')
 
 @include('modals.crop')
 

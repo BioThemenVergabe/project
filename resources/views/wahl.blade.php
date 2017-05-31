@@ -15,7 +15,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
     $(function () {
-        $('#sortableRatings').sortable();
+        $('#sortableRatings').sortable({ cancel: '.hr-divider'});
     });
 </script>
 
@@ -52,14 +52,18 @@
 
                             <div class="ui-widget-content" id="sortableRatings">
 
-                                @foreach($ags as $ag)
-
-                                <div class="ui-state-default bs-callout">
-                                    <label>{{ $ag->name }}</label>
-                                    <input type="hidden" name="ag[]" value="{{ $ag->id }}">
-                                </div>
-
+                                @foreach($ratings as $key => $rating)
+                                    @foreach($ags as $ag)
+                                        @if($ag->id == $rating->workgroup)
+                                            <div class="bs-callout">
+                                                <label>{{ $ag->name }}</label>
+                                                <input type="hidden" name="ag[]" value="{{ $ag->id }}">
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 @endforeach
+
+
                             </div>
 
                         </div>

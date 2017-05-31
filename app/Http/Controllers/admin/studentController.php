@@ -19,7 +19,7 @@ class studentController
     //alle Studenten anzeigen. Admin Accounts werden nicht angezeigt!
     public function showStudents()
     {
-        $students = DB::table("users")->where('userlevel', 0)->select('id', 'name', 'lastname', 'matrnr', 'email','zugewiesen')->orderBy('matrnr', 'asc')->get();
+        $students = DB::table("users")->join("workgroups","users.zugewiesen","=","workgroups.id")->where('userlevel', 0)->select('users.id', 'users.name', 'lastname', 'matrnr', 'email','workgroups.name as zugewiesen')->orderBy('matrnr', 'asc')->get();
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
         $parameters = ['students' => $students, "numberStudents" => $numberStudents];
         return view('admin_studenten', $parameters);
@@ -47,7 +47,7 @@ class studentController
                 $sum += $r->rating;
             }
             $averageRating = $sum / sizeof($ratings);
-
+            $averageRating = round($averageRating,2);
         }
 
 

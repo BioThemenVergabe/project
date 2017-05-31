@@ -107,6 +107,7 @@
                             <br> <span id="achtung"> (@lang('fields.endElect2'))</span></button>
                     </div>
                 </div>
+                {{ csrf_field() }}
             </div>
         </div>
     </section>

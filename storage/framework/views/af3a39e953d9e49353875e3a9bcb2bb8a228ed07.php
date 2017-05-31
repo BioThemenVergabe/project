@@ -77,20 +77,25 @@
 
             <hr/>
 
+            <h3><?php echo app('translator')->get('fields.yourRating'); ?></h3>
+
             <div id="listRating">
                     <?php if($ratings->count() == 0): ?>
-                    <div class="bs-callout bs-warning">
+                    <div class="bs-callout bs-danger">
                         <h4>
                             <?php echo app('translator')->get('fields.noRating'); ?>
                         </h4>
                     </div>
                     <?php else: ?>
-                        <?php $__currentLoopData = $ratings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rating): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                        <?php $__currentLoopData = $ratings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $rating): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                             <?php $__currentLoopData = $ags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <?php if($ag->id == $rating->workgroup): ?>
                                     <div class="bs-callout">
                                         <label><?php echo e($ag->name); ?></label>
                                     </div>
+                                    <?php if($key == 3): ?>
+                                    <hr class="hr-divider">
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
@@ -101,11 +106,6 @@
         </div>
     </div>
 </section>
-
-
-<?php echo $__env->make('modals.forgot', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-<?php echo $__env->make('modals.register', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <?php echo $__env->make('modals.crop', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 

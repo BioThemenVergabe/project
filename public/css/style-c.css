@@ -220,6 +220,12 @@ table.voting td > .progress-bar-zero:after {
 .bs-callout.bs-warning h4 {
   color: #d9534f;
 }
+.bs-callout.bs-danger {
+  border-left-color: #d9534f;
+}
+.bs-callout.bs-danger h4 {
+  color: #d9534f;
+}
 .bs-callout h4 {
   margin-top: 0;
   margin-bottom: 5px;
@@ -250,12 +256,6 @@ table.voting td > .progress-bar-zero:after {
 }
 .bs-callout-success h4 {
   color: #5cb85c;
-}
-.bs-callout-danger {
-  border-left-color: #d9534f;
-}
-.bs-callout-danger h4 {
-  color: #d9534f;
 }
 #sortableRatings div:first-child, #listRating div:first-child {
   border-left-color: #09bc6c;

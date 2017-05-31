@@ -71,6 +71,8 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::resource('/wahl', 'RatingController');
 
+            Route::post('/upload','UserController@storeUpload');
+
         });
 
         /*

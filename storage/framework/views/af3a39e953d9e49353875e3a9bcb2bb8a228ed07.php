@@ -3,10 +3,56 @@
             class="hidden-xs"> <?php echo app('translator')->get('fields.gtElect'); ?></span></a>
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('css'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('/assets/css/fine-uploader-new.min.css')); ?>" />
+
+<style>
+    #trigger-upload {
+        color: white;
+        background-color: #00ABC7;
+        font-size: 14px;
+        padding: 7px 20px;
+        background-image: none;
+    }
+
+    #fine-uploader-manual-trigger .qq-upload-button {
+        margin-right: 15px;
+    }
+
+    #fine-uploader-manual-trigger .buttons {
+        width: 36%;
+    }
+
+    #fine-uploader-manual-trigger .qq-uploader .qq-total-progress-bar-container {
+        width: 60%;
+    }
+</style>
+
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('JS'); ?>
-    <script src="<?php echo e(asset('assets/js/fine-uploader.core.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/js/fine-uploader.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/js/jquery.fine-uploader.core.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/jquery.fine-uploader.min.js')); ?>"></script>
+
+<script>
+    $('#fine-uploader-manual-trigger').fineUploader({
+        template: 'qq-template-manual-trigger',
+        request: {
+            endpoint: '/server/uploads'
+        },
+        thumbnails: {
+            placeholders: {
+                waitingPath: '/source/placeholders/waiting-generic.png',
+                notAvailablePath: '/source/placeholders/not_available-generic.png'
+            }
+        },
+        autoUpload: true
+    });
+
+    $('#trigger-upload').click(function() {
+        $('#fine-uploader-manual-trigger').fineUploader('uploadStoredFiles');
+    });
+</script>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>

@@ -130,4 +130,8 @@ class UserController extends Controller
         User::destroy($id);
     }
 
+    public function storeUpload(Request $request) {
+        return response()->json(['success' => true]);
+    }
+
 }

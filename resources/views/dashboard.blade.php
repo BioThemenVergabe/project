@@ -5,10 +5,56 @@
             class="hidden-xs"> @lang('fields.gtElect')</span></a>
 @endsection
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('/assets/css/fine-uploader-new.min.css') }}" />
+
+<style>
+    #trigger-upload {
+        color: white;
+        background-color: #00ABC7;
+        font-size: 14px;
+        padding: 7px 20px;
+        background-image: none;
+    }
+
+    #fine-uploader-manual-trigger .qq-upload-button {
+        margin-right: 15px;
+    }
+
+    #fine-uploader-manual-trigger .buttons {
+        width: 36%;
+    }
+
+    #fine-uploader-manual-trigger .qq-uploader .qq-total-progress-bar-container {
+        width: 60%;
+    }
+</style>
+
+@endsection
+
 @section('JS')
-    <script src="{{ asset('assets/js/fine-uploader.core.min.js') }}"></script>
-    <script src="{{ asset('assets/js/fine-uploader.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.fine-uploader.core.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.fine-uploader.min.js') }}"></script>
+
+<script>
+    $('#fine-uploader-manual-trigger').fineUploader({
+        template: 'qq-template-manual-trigger',
+        request: {
+            endpoint: '/upload'
+        },
+        thumbnails: {
+            placeholders: {
+                waitingPath: '/source/placeholders/waiting-generic.png',
+                notAvailablePath: '/source/placeholders/not_available-generic.png'
+            }
+        },
+        autoUpload: true
+    });
+
+    $('#trigger-upload').click(function() {
+        $('#fine-uploader-manual-trigger').fineUploader('uploadStoredFiles');
+    });
+</script>
+
 @endsection
 
 @section('content')

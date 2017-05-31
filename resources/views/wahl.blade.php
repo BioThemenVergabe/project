@@ -6,12 +6,10 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('/assets/css/shepherd-theme-arrows.css') }}">
+
 @endsection
 
 @section('JS')
-<script src="{{ asset('/assets/js/tether.js') }}"></script>
-<script src="{{ asset('/assets/js/shepherd.min.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
     $(function () {

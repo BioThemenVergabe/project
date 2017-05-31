@@ -4,16 +4,14 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
-<link rel="stylesheet" href="<?php echo e(asset('/assets/css/shepherd-theme-arrows.css')); ?>">
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('JS'); ?>
-<script src="<?php echo e(asset('/assets/js/tether.js')); ?>"></script>
-<script src="<?php echo e(asset('/assets/js/shepherd.min.js')); ?>"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
     $(function () {
-        $('#sortableRatings').sortable();
+        $('#sortableRatings').sortable({ cancel: '.hr-divider'});
     });
 </script>
 
@@ -50,15 +48,27 @@
                         <div class="col-xs-12">
 
                             <div class="ui-widget-content" id="sortableRatings">
+                                <?php if($ratings->count() > 0): ?>
+                                    <?php $__currentLoopData = $ratings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $rating): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                        <?php $__currentLoopData = $ags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                            <?php if($ag->id == $rating->workgroup): ?>
+                                                <div class="bs-callout">
+                                                    <label><?php echo e($ag->name); ?></label>
+                                                    <input type="hidden" name="ag[]" value="<?php echo e($ag->id); ?>">
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                <?php else: ?>
+                                    <?php $__currentLoopData = $ags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                        <div class="bs-callout">
+                                            <label><?php echo e($ag->name); ?></label>
+                                            <input type="hidden" name="ag[]" value="<?php echo e($ag->id); ?>">
+                                        </div>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                <?php endif; ?>
 
-                                <?php $__currentLoopData = $ags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 
-                                <div class="ui-state-default bs-callout">
-                                    <label><?php echo e($ag->name); ?></label>
-                                    <input type="hidden" name="ag[]" value="<?php echo e($ag->id); ?>">
-                                </div>
-
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </div>
 
                         </div>

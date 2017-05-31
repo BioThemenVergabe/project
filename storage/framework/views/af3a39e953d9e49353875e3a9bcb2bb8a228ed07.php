@@ -37,7 +37,10 @@
     $('#fine-uploader-manual-trigger').fineUploader({
         template: 'qq-template-manual-trigger',
         request: {
-            endpoint: '/server/uploads'
+            endpoint: '/upload',
+            customHeaders: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         },
         thumbnails: {
             placeholders: {
@@ -45,7 +48,15 @@
                 notAvailablePath: '/source/placeholders/not_available-generic.png'
             }
         },
-        autoUpload: true
+        autoUpload: true,
+        callbacks: {
+            onError: function(id, name, errorReason) {
+                alert(qq.format('Error on file number {} - {}. Reason: {}',id,name,errorReason));
+            },
+            onSubmitted: function(response) {
+                alert(response);
+            }
+        }
     });
 
     $('#trigger-upload').click(function() {

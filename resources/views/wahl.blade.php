@@ -49,17 +49,25 @@
                         <div class="col-xs-12">
 
                             <div class="ui-widget-content" id="sortableRatings">
-
-                                @foreach($ratings as $key => $rating)
-                                    @foreach($ags as $ag)
-                                        @if($ag->id == $rating->workgroup)
-                                            <div class="bs-callout">
-                                                <label>{{ $ag->name }}</label>
-                                                <input type="hidden" name="ag[]" value="{{ $ag->id }}">
-                                            </div>
-                                        @endif
+                                @if($ratings->count() > 0)
+                                    @foreach($ratings as $key => $rating)
+                                        @foreach($ags as $ag)
+                                            @if($ag->id == $rating->workgroup)
+                                                <div class="bs-callout">
+                                                    <label>{{ $ag->name }}</label>
+                                                    <input type="hidden" name="ag[]" value="{{ $ag->id }}">
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     @endforeach
-                                @endforeach
+                                @else
+                                    @foreach($ags as $ag)
+                                        <div class="bs-callout">
+                                            <label>{{ $ag->name }}</label>
+                                            <input type="hidden" name="ag[]" value="{{ $ag->id }}">
+                                        </div>
+                                    @endforeach
+                                @endif
 
 
                             </div>

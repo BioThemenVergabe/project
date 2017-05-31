@@ -53,11 +53,6 @@
     </div>
 </section>
 
-@include('modals.forgot')
-
-
-@include('modals.register')
-
 
 @endsection
 

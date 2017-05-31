@@ -32,6 +32,9 @@
     </div>
 </div>
 
+@include('modals.forgot')
+@include('modals.register')
+
 @endsection
 
 @section('css')

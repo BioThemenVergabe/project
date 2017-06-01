@@ -27,14 +27,14 @@
             });
         }
     };
-    $(function() {
-        if($('#userPicture').height() < $('#userPicture').width())
-        {
-            $('#userPicture').height(function() {
+    $(function () {
+        if ($('#userPicture').height() < $('#userPicture').width()) {
+            $('#userPicture').height(function () {
                 return $(this).width();
             });
-        } else {
-            $('#userPicture').width(function() {
+        }
+        if ($('#userPicture').height() > $('#userPicture').width()) {
+            $('#userPicture').width(function () {
                 return $(this).height();
             });
         }

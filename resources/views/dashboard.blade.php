@@ -28,9 +28,16 @@
         }
     };
     $(function() {
-        $('#userPicture').height(function() {
-           return $(this).width();
-        });
+        if($('#userPicture').height() < $('#userPicture').width())
+        {
+            $('#userPicture').height(function() {
+                return $(this).width();
+            });
+        } else {
+            $('#userPicture').width(function() {
+                return $(this).height();
+            });
+        }
     });
 </script>
 @endsection

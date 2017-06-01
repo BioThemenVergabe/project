@@ -46,7 +46,7 @@
             <div class="col-md-3 hidden-xs hidden-sm">
                 @if($user->user_picture == "")
                 <img src="{{ asset('/img/default-user.png') }}" alt="Default Userpicture"
-                     class="img-thumbnail img-circle img-responsive"/>
+                     class="img-thumbnail img-circle img-responsive col-xs-12"/>
                 @else
                 <img src="{{ asset('/img/uploads/'.$user->user_picture) }}" alt="Default Userpicture"
                      class="img-thumbnail img-circle img-responsive"/>

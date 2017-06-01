@@ -19,9 +19,8 @@ class studentController
     //alle Studenten anzeigen. Admin Accounts werden nicht angezeigt!
     public function showStudents()
     {
-        $admins  = sizeof(DB::table("users")->where("userlevel",1)->get());
         $zugewieseneStudenten = DB::table("users")->whereNotNull("zugewiesen")->get();
-        if (sizeof($zugewieseneStudenten)-$admins == 0) {
+        if (sizeof($zugewieseneStudenten) == 0) {
             $students = DB::table("users")->where('userlevel', 0)->select('id', 'name', 'lastname', 'matrnr', 'email', 'zugewiesen')->orderBy('matrnr', 'asc')->get();
 
         } else {

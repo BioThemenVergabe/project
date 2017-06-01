@@ -135,7 +135,7 @@ class UserController extends Controller
         Log::info('Filename: '.$request->file('file')->getClientOriginalName());
 
         $img = $request->file('file');
-        $imgName = time().$img->getClientOriginalName();
+        $imgName = mcrypt(time().$img->getClientOriginalName()).$img->getExtension();
         $img->move(public_path('uploads'),$imgName);
 
     }

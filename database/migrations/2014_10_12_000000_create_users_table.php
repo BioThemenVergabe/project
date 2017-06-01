@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('userlevel');
             $table->integer('zugewiesen')->unsigned()->nullable();
+            $table->string('user_picture')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -138,6 +138,10 @@ class UserController extends Controller
         $imgName = bcrypt(time().$img->getClientOriginalName()).".".$img->getClientOriginalExtension();
         $img->move(public_path('uploads'),$imgName);
 
+        $user = User::find(Auth::user()->id);
+
+        $user->user_picture = $imgName;
+        $user->update();
     }
 
 }

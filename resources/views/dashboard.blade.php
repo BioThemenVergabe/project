@@ -29,13 +29,11 @@
     };
     $(function () {
         if ($('#userPicture').height() < $('#userPicture').width()) {
-            $('#userPicture').height(function () {
-                return $(this).width();
-            });
-        }
-        if ($('#userPicture').height() > $('#userPicture').width()) {
-            $('#userPicture').width(function () {
-                return $(this).height();
+            var w = $('#userPicture').width('100%');
+            var h = $('#userPicture').height();
+
+            $('#userPicture').css({
+                height: (w < h) ? h : w
             });
         }
     });

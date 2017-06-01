@@ -28,14 +28,12 @@
         }
     };
     $(function () {
-        if ($('#userPicture').height() < $('#userPicture').width()) {
-            var w = $('#userPicture').width('100%');
-            var h = $('#userPicture').height();
+        var w = $('#userPicture').width('100%');
+        var h = $('#userPicture').height();
 
-            $('#userPicture').css({
-                height: (w < h) ? h : w
-            });
-        }
+        $('#userPicture').css({
+            height: w
+        });
     });
 </script>
 @endsection

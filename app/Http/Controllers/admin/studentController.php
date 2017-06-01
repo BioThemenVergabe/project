@@ -20,12 +20,16 @@ class studentController
     public function showStudents()
     {
         $admins  = sizeof(DB::table("users")->where("userlevel",1)->get());
-        $zugewieseneStudenten = DB::table("users")->whereNotNull("zugewiesen")->select();
+        $zugewieseneStudenten = DB::table("users")->whereNotNull("zugewiesen")->get();
         if (sizeof($zugewieseneStudenten)-$admins == 0) {
             $students = DB::table("users")->where('userlevel', 0)->select('id', 'name', 'lastname', 'matrnr', 'email', 'zugewiesen')->orderBy('matrnr', 'asc')->get();
 
         } else {
+            //$students = DB::table("users")->join("workgroups", "users.zugewiesen", "=", "workgroups.id")->join("ratings", "workgroups.id", "=", "ratings.workgroup")->where([['userlevel','=', 0],['users.id','=','ratings.user']])->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'ratings.rating as rating')->orderBy('matrnr', 'asc')->get();
             $students = DB::table("users")->join("workgroups", "users.zugewiesen", "=", "workgroups.id")->where('userlevel', 0)->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen')->orderBy('matrnr', 'asc')->get();
+            foreach($students as $student){
+                $student->rating = "x";
+            }
         }
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
         $parameters = ['students' => $students, "numberStudents" => $numberStudents];

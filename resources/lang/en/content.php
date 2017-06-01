@@ -31,7 +31,7 @@ return [
     'admin_dash6' => 'closed',
     'admin_dash7' => 'Status of the algorithm',
     'admin_dash8' => 'not started',
-    'admin_dash9' => 'calculation finished',
+    'admin_dash9' => 'finished',
 
     'modal_Begr1' => 'Edit Welcome text',
     'modal_Begr2' => 'Welcome text',

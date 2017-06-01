@@ -267,6 +267,15 @@ table {
     padding-right: 0;
 }
 
+.glyphicon-ok{
+    color:green
+}
+
+.glyphicon-remove{
+    color:red
+}
+
+
 
 
 @media (min-width: 992px) {

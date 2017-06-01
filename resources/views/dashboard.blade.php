@@ -27,6 +27,11 @@
             });
         }
     };
+    $(function() {
+        $('#userPicture').height(function() {
+           return $(this).width();
+        });
+    });
 </script>
 @endsection
 
@@ -45,10 +50,10 @@
 
             <div class="col-md-3 hidden-xs hidden-sm">
                 @if($user->user_picture == "")
-                <img src="{{ asset('/img/default-user.png') }}" alt="Default Userpicture"
+                <img src="{{ asset('/img/default-user.png') }}" id="userPicture" alt="Default Userpicture"
                      class="img-thumbnail img-circle img-responsive col-xs-12"/>
                 @else
-                <img src="{{ asset('/img/uploads/'.$user->user_picture) }}" alt="Default Userpicture"
+                <img src="{{ asset('/img/uploads/'.$user->user_picture) }}" id="userPicture" alt="Default Userpicture"
                      class="img-thumbnail img-circle img-responsive"/>
                 @endif
                 <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"

@@ -48,7 +48,7 @@
                 <img src="{{ asset('/img/default-user.png') }}" alt="Default Userpicture"
                      class="img-thumbnail img-circle img-responsive"/>
                 @else
-                <img src="/uploads/{{ $user->user_picture}}" alt="Uploaded File"
+                <img src="{{ asset('/img/uploads/'.$user->user_picture) }}" alt="Default Userpicture"
                      class="img-thumbnail img-circle img-responsive"/>
                 @endif
                 <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"

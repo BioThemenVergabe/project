@@ -134,11 +134,11 @@ class UserController extends Controller
     public function storeUpload(Request $request) {
         Log::info('Filename: '.$request->file('file')->getClientOriginalName());
 
-        $img = $request->file('file');
-        $imgName = bcrypt(time().$img->getClientOriginalName()).".".$img->getClientOriginalExtension();
-        $img->move(public_path('uploads'),$imgName);
-
         $user = User::find(Auth::user()->id);
+
+        $img = $request->file('file');
+        $imgName = time().$user->name.$user->lastname.".".$img->getClientOriginalName();
+        $img->move(public_path('img/uploads'),$imgName);
 
         $user->user_picture = $imgName;
         $user->update();

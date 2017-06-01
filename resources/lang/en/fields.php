@@ -80,8 +80,9 @@ return [
     'valuta' => 'Valuation',
     'dashboard' => 'Dashboard',
     'error' => "There was an error!",
-    'ratingToLow' => "The given rating was to low. You have to spend at least <span id=\"minRating\"></span> Points.",
-    'yourRating' => "Your Rating",
     'noRating' => "You didn't save your rating yet.",
+    'ratingToLow' => "The given rating was to low. You have to spend at least <span id=\"minRating\"></span> Points.",
+    'upload' => "Upload your userpic",
+    'yourRating' => "Your Rating",
 
 ];

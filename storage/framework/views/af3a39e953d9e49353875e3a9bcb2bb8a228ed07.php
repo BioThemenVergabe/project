@@ -4,65 +4,12 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
-<link rel="stylesheet" href="<?php echo e(asset('/assets/css/fine-uploader-new.min.css')); ?>" />
-
-<style>
-    #trigger-upload {
-        color: white;
-        background-color: #00ABC7;
-        font-size: 14px;
-        padding: 7px 20px;
-        background-image: none;
-    }
-
-    #fine-uploader-manual-trigger .qq-upload-button {
-        margin-right: 15px;
-    }
-
-    #fine-uploader-manual-trigger .buttons {
-        width: 36%;
-    }
-
-    #fine-uploader-manual-trigger .qq-uploader .qq-total-progress-bar-container {
-        width: 60%;
-    }
-</style>
+<link rel="stylesheet" href="<?php echo e(asset('/assets/css/dropzone.css')); ?>" />
 
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('JS'); ?>
-<script src="<?php echo e(asset('assets/js/jquery.fine-uploader.min.js')); ?>"></script>
-
-<script>
-    $('#fine-uploader-manual-trigger').fineUploader({
-        template: 'qq-template-manual-trigger',
-        request: {
-            endpoint: '/upload',
-            customHeaders: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        },
-        thumbnails: {
-            placeholders: {
-                waitingPath: '/source/placeholders/waiting-generic.png',
-                notAvailablePath: '/source/placeholders/not_available-generic.png'
-            }
-        },
-        autoUpload: true,
-        callbacks: {
-            onError: function(id, name, errorReason) {
-                alert(qq.format('Error on file number {} - {}. Reason: {}',id,name,errorReason));
-            },
-            onSubmitted: function(response) {
-                alert(response);
-            }
-        }
-    });
-
-    $('#trigger-upload').click(function() {
-        $('#fine-uploader-manual-trigger').fineUploader('uploadStoredFiles');
-    });
-</script>
+<script src="<?php echo e(asset('assets/js/dropzone.js')); ?>"></script>
 
 <?php $__env->stopSection(); ?>
 

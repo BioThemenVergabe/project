@@ -72,8 +72,9 @@ return [
     'valuta' => 'Bewertung',
     'dashboard' => 'Startseite',
     'error' => "Es wurde ein Fehler gefunden!",
-    'ratingToLow' => "Die Bewertung fiel zu niedrig aus. Es m&uuml;ssen mindestens <span id=\"minRating\"></span> Punkte vergeben werden.",
-    'yourRating' => "Deine Bewertung",
     'noRating' => "Es wurde noch keine Bewertung abgegeben.",
+    'ratingToLow' => "Die Bewertung fiel zu niedrig aus. Es m&uuml;ssen mindestens <span id=\"minRating\"></span> Punkte vergeben werden.",
+    'upload' => "Benutzerbild hochladen",
+    'yourRating' => "Deine Bewertung",
 
 ];

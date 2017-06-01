@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 
 
 class RatingSeeder extends Seeder
@@ -13,8 +15,8 @@ class RatingSeeder extends Seeder
      */
 
     //für alle angemeldeten user, alle AGs bewerten
-    public function run()
-    {
+
+    public function createRandomRatings(){
         $userIds = DB::table("users")->select("id")->where("userlevel", 0)->get();
         $agIds = DB::table("workgroups")->select("id")->get();
 
@@ -31,5 +33,38 @@ class RatingSeeder extends Seeder
                 }
             }
         }
+    }
+
+    public function createValideRatings(){
+        $userIds = DB::table("users")->select("id")->where("userlevel", 0)->get();
+        $agIds = DB::table("workgroups")->select("id")->get()->all();
+
+        foreach ($userIds as $userId) {
+            shuffle($agIds); //Reihenfolge zufällig mischen
+            for($i=0; $i<sizeof($agIds);$i++) {
+                //wenn noch kein rating vorhanden, dann eins erzeugen
+                $rating = DB::table("ratings")->where([["user", $userId->id], ["workgroup", $agIds[$i]->id]])->get();
+                if (sizeof($rating) == 0) {
+                    if($i<10 && $i>=0){
+                        $rate = $i+1;
+                    }else{
+                        $rate = 1;
+                    }
+                    DB::table('ratings')->insert([
+                        'user' => $userId->id,
+                        'workgroup' => $agIds[$i]->id,
+                        "rating" => $rate,
+                    ]);
+                }
+            }
+        }
+    }
+
+
+    public function run()
+    {
+        //$this->createRandomRatings();
+        $this->createValideRatings();
+
     }
 }

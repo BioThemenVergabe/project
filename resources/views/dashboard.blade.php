@@ -6,11 +6,7 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('/assets/css/fine-uploader-new.min.css') }}" />
-
-<style>
-
-</style>
+<link rel="stylesheet" href="{{ asset('/assets/css/dropzone.css') }}" />
 
 @endsection
 

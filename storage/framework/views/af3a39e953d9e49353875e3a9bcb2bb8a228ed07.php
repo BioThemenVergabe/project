@@ -4,11 +4,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
-<link rel="stylesheet" href="<?php echo e(asset('/assets/css/fine-uploader-new.min.css')); ?>" />
-
-<style>
-
-</style>
+<link rel="stylesheet" href="<?php echo e(asset('/assets/css/dropzone.css')); ?>" />
 
 <?php $__env->stopSection(); ?>
 

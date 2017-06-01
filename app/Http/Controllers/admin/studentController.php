@@ -19,7 +19,14 @@ class studentController
     //alle Studenten anzeigen. Admin Accounts werden nicht angezeigt!
     public function showStudents()
     {
-        $students = DB::table("users")->where('userlevel', 0)->select('id', 'name', 'lastname', 'matrnr', 'email','zugewiesen')->orderBy('matrnr', 'asc')->get();
+        $admins  = sizeof(DB::table("users")->where("userlevel",1)->get());
+        $zugewieseneStudenten = DB::table("users")->whereNotNull("zugewiesen")->select();
+        if (sizeof($zugewieseneStudenten)-$admins == 0) {
+            $students = DB::table("users")->where('userlevel', 0)->select('id', 'name', 'lastname', 'matrnr', 'email', 'zugewiesen')->orderBy('matrnr', 'asc')->get();
+
+        } else {
+            $students = DB::table("users")->join("workgroups", "users.zugewiesen", "=", "workgroups.id")->where('userlevel', 0)->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen')->orderBy('matrnr', 'asc')->get();
+        }
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
         $parameters = ['students' => $students, "numberStudents" => $numberStudents];
         return view('admin_studenten', $parameters);
@@ -47,7 +54,7 @@ class studentController
                 $sum += $r->rating;
             }
             $averageRating = $sum / sizeof($ratings);
-
+            $averageRating = round($averageRating, 2);
         }
 
 
@@ -91,24 +98,25 @@ class studentController
         }
 
         $durchschnittRating = DB::table('ratings')
-                            ->where('user', $studentenID)
-                            ->avg('rating');
+            ->where('user', $studentenID)
+            ->avg('rating');
         return $durchschnittRating;
     }
 
-    function getRating(Request $request){
+    function getRating(Request $request)
+    {
         $studentID = $request->user;
         //alle ratings des Studenten
         $ratings = DB::table("ratings")->join('workgroups', 'ratings.workgroup', '=', 'workgroups.id')->where('ratings.user', $studentID)->select('workgroups.id', 'workgroups.name', 'workgroups.groupLeader', 'workgroups.date', 'rating')->get();
 
-        return view("ajax.admin_Rating_table", ["ratings"=>$ratings]);
+        return view("ajax.admin_Rating_table", ["ratings" => $ratings]);
     }
 
     function searchStudents(Request $request)
     {
-        $query= "%".$request->q."%";
-        $students = DB::table("users")->select('id', 'name', 'lastname', 'matrnr', 'email','zugewiesen')
-            ->where('name','like', $query)->orWhere('lastname','like', $query)->orWhere('matrnr','like', $query)->orWhere('zugewiesen','like', $query)->orderBy('matrnr', 'asc')->get();
+        $query = "%" . $request->q . "%";
+        $students = DB::table("users")->select('id', 'name', 'lastname', 'matrnr', 'email', 'zugewiesen')
+            ->where('name', 'like', $query)->orWhere('lastname', 'like', $query)->orWhere('matrnr', 'like', $query)->orWhere('zugewiesen', 'like', $query)->orderBy('matrnr', 'asc')->get();
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
         $parameters = ['students' => $students, "numberStudents" => $numberStudents];
         return view('ajax.admin_Studenten_table', $parameters);

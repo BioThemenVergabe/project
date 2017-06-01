@@ -3,7 +3,6 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('JS'); ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -22,14 +21,18 @@
 </section>
 
 <div class="bg-warning container-fluid" id="cookieWarning">
-    <div class="bs-callout bs-danger container">
-        <h1 class="icon icon-new"> Cookie hinweis</h1>
-        <p>Diese Seite verwendet Cookies. Cookies sind keine Artefakte in Ihrem Browser, welche uns erlauben zu
-            erkennen, wenn Sie wieder auf diese Seite kommen.</p>
-        <p>Cookies werden auf dieser Seite ausschließlich zur Nutzerwiedererkennung verwendet, nicht für
-            Marketingzwecke.</p>
-        <div class="pull-right">
-            <div class="btn btn-primary" data-dismiss="cookieWarning">Akzeptieren</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="icon icon-new"> Cookie hinweis</h1>
+                <p>Diese Seite verwendet Cookies. Cookies sind keine Artefakte in Ihrem Browser, welche uns erlauben zu
+                    erkennen, wenn Sie wieder auf diese Seite kommen.</p>
+                <p>Cookies werden auf dieser Seite ausschließlich zur Nutzerwiedererkennung verwendet, nicht für
+                    Marketingzwecke.</p>
+                <div class="pull-right">
+                    <div class="btn btn-primary" data-dismiss="cookieWarning">Akzeptieren</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -47,11 +50,6 @@
         <?php endif; ?>
     </div>
 </section>
-
-<?php echo $__env->make('modals.forgot', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-
-<?php echo $__env->make('modals.register', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 
 <?php $__env->stopSection(); ?>

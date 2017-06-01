@@ -335,6 +335,24 @@ $(document).ready(function() {
         else{
             //start algo
             $('#startAlgoModal').modal('toggle');
+            $.ajax({
+                type: "POST",
+                url: "/admin_start_algo",
+                data: $("[name=_token]").serialize(), // serializes the form's elements.
+                success: function(data) {// neuer Durchschnittswert der Ratings
+                    alert(data);
+                    /*
+                    if(data=="true"){
+                        window.location ="/admin?action=deleted";
+                    }else{
+                        alert("Hey Admin. Das eingegebene Passwort war nicht korrekt.")
+                    }
+                     */
+
+                }
+            });
+
+
         }
 
     });

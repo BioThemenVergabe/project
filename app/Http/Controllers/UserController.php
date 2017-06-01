@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Workgroup;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -131,8 +132,12 @@ class UserController extends Controller
     }
 
     public function storeUpload(Request $request) {
-        if($request->hasFile('file'))
-            return response()->json(['success' => true]);
+        Log::info('Filename: '.$request->file('file')->getClientOriginalName());
+
+        $img = $request->file('file');
+        $imgName = time().$img->getClientOriginalName();
+        $img->move(public_path('uploads'),$imgName);
+
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -15,32 +16,32 @@ class UserSeeder extends Seeder
             'name' => "testName1",
             'lastname' => "testLastname1",
             "matrnr" => "012345",
-            "email" => "testEmail1",
-            "password" => "testPW1",
+            "email" => "test@Email1.de",
+            "password" => Hash::make("testPW1"),
             "userlevel" => 0,
         ]);
         DB::table('users')->insert([
             'name' => "testName2",
             'lastname' => "testLastname2",
             "matrnr" => "123457",
-            "email" => "testEmail2",
-            "password" => "testPW2",
+            "email" => "test@Email2.de",
+            "password" => Hash::make("testPW2"),
             "userlevel" => 0,
         ]);
         DB::table('users')->insert([
             'name' => "testName3",
             'lastname' => "testLastname3",
             "matrnr" => "234567",
-            "email" => "testEmail3",
-            "password" => "testPW3",
+            "email" => "test@Email3.de",
+            "password" => Hash::make("testPW3"),
             "userlevel" => 0,
         ]);
         DB::table('users')->insert([
             'name' => "testName4",
             'lastname' => "testLastname4",
             "matrnr" => "345678",
-            "email" => "testEmail4",
-            "password" => "testPW4",
+            "email" => "test@Email5.de",
+            "password" => Hash::make("testPW4"),
             "userlevel" => 0,
         ]);
     }

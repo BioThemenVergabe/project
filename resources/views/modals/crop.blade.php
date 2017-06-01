@@ -6,6 +6,14 @@
                 <h4 class="modal-title">@lang('fields.upload')</h4>
             </div>
             <div class="modal-body">
+                <div class="bs-callout bs-danger">
+                    <h4>@lang('fields.notice')</h4>
+                    <ul>
+                        <li>@lang('fields.square')</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-body">
                 <form action="/upload" class="dropzone" id="my-dropzone">
                     {{ csrf_field() }}
                 </form>

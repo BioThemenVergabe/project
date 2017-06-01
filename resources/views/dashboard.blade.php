@@ -6,13 +6,32 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('/assets/css/dropzone.css') }}" />
+<link rel="stylesheet" href="{{ asset('/assets/css/dropzone.css') }}"/>
 
 @endsection
 
 @section('JS')
 <script src="{{ asset('assets/js/dropzone.js') }}"></script>
 
+<script>
+    Dropzone.options.myDropzone = {
+        accept: function (file, done) {
+            console.log("uploaded");
+            done();
+        },
+        init: function () {
+            this.on("addedfile", function () {
+                if (this.files[1] != null) {
+                    this.removeFile(this.files[0]);
+                }
+            });
+        }
+    };
+    $(function () {
+        var w = $('#userPicture').width('100%');
+        $('#userPicture').height(w);
+    });
+</script>
 @endsection
 
 @section('content')
@@ -28,10 +47,16 @@
                 </h1>
             </div>
 
-            <div class="col-xs-5 col-md-3">
-                    <img src="{{ asset('/img/default-user.png') }}" alt="Default Userpicture"
-                         class="img-thumbnail img-circle img-responsive"/>
-                <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle" id="upload"></a>
+            <div class="col-md-3 hidden-xs hidden-sm">
+                @if($user->user_picture == "")
+                <img src="{{ asset('/img/default-user.png') }}" id="userPicture" alt="Default Userpicture"
+                     class="img-thumbnail img-circle img-responsive col-xs-12"/>
+                @else
+                <img src="{{ asset('/img/uploads/'.$user->user_picture) }}" id="userPicture" alt="Default Userpicture"
+                     class="img-thumbnail img-circle img-responsive"/>
+                @endif
+                <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"
+                   id="upload"></a>
             </div>
             <div class="col-xs-7 col-md-6 col-md-offset-1">
                 <div class="form-group row">
@@ -86,26 +111,26 @@
             <h3>@lang('fields.yourRating')</h3>
 
             <div id="listRating">
-                    @if($ratings->count() == 0)
-                    <div class="bs-callout bs-danger">
-                        <h4>
-                            @lang('fields.noRating')
-                        </h4>
-                    </div>
-                    @else
-                        @foreach($ratings as $key => $rating)
-                            @foreach($ags as $ag)
-                                @if($ag->id == $rating->workgroup)
-                                    <div class="bs-callout">
-                                        <label>{{ $ag->name }}</label>
-                                    </div>
-                                    @if($key == 3)
-                                    <hr class="hr-divider">
-                                    @endif
-                                @endif
-                            @endforeach
-                        @endforeach
-                    @endif
+                @if($ratings->count() == 0)
+                <div class="bs-callout bs-danger">
+                    <h4>
+                        @lang('fields.noRating')
+                    </h4>
+                </div>
+                @else
+                @foreach($ratings as $key => $rating)
+                @foreach($ags as $ag)
+                @if($ag->id == $rating->workgroup)
+                <div class="bs-callout">
+                    <label>{{ $ag->name }}</label>
+                </div>
+                @if($key == 3)
+                <hr class="hr-divider">
+                @endif
+                @endif
+                @endforeach
+                @endforeach
+                @endif
 
             </div>
 

@@ -130,16 +130,29 @@ class studentController
     function searchStudents(Request $request)
     {
         $query = "%" . $request->q . "%";
-        $students = DB::table("users")
-            ->join("workgroups", "users.zugewiesen", "workgroups.id")
-            ->join("ratings", function ($join) {
-                $join->on("workgroups.id", "=", "ratings.workgroup");
-                $join->on('users.id', '=', 'ratings.user');
 
-            })
-            ->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'ratings.rating as rating')
-            ->where([['userlevel', 0],['users.name', 'like', $query]])->orWhere([['userlevel', 0],['lastname', 'like', $query]])->orWhere([['userlevel', 0],['matrnr', 'like', $query]])->orWhere([['userlevel', 0],['workgroups.name', 'like', $query]])
-            ->orderBy('matrnr', 'asc')->get();
+        //wenn den Studenten noch keine AGs zugewiesen wurden, dann einfach Studenten anzeigen
+        $zugewieseneStudenten = DB::table("users")->whereNotNull("zugewiesen")->get();
+        if (sizeof($zugewieseneStudenten) == 0) {
+            $students = DB::table("users")
+                ->select('id', 'name', 'lastname', 'matrnr', 'email', 'zugewiesen')
+                ->where([['userlevel', 0], ['name', 'like', $query]])->orWhere([['userlevel', 0], ['lastname', 'like', $query]])->orWhere([['userlevel', 0], ['matrnr', 'like', $query]])
+                ->orderBy('matrnr', 'asc')->get();
+            //ansonsten auch den namen der zugewiesenen AG und die zugehörige Bewertung anzeigen
+        } else {
+            $students = DB::table("users")
+                ->join("workgroups", "users.zugewiesen", "workgroups.id")
+                ->join("ratings", function ($join) {
+                    $join->on("workgroups.id", "=", "ratings.workgroup");
+                    $join->on('users.id', '=', 'ratings.user');
+
+                })
+                ->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'ratings.rating as rating')
+                ->where([['userlevel', 0], ['users.name', 'like', $query]])->orWhere([['userlevel', 0], ['lastname', 'like', $query]])->orWhere([['userlevel', 0], ['matrnr', 'like', $query]])->orWhere([['userlevel', 0], ['workgroups.name', 'like', $query]])
+                ->orderBy('matrnr', 'asc')->get();
+        }
+
+
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
         $parameters = ['students' => $students, "numberStudents" => $numberStudents];
         return view('ajax.admin_Studenten_table', $parameters);

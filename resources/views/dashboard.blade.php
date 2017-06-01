@@ -29,11 +29,7 @@
     };
     $(function () {
         var w = $('#userPicture').width('100%');
-        var h = $('#userPicture').height();
-
-        $('#userPicture').css({
-            height: w
-        });
+        $('#userPicture').height(w);
     });
 </script>
 @endsection

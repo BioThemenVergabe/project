@@ -1,42 +1,57 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+@endsection
+
+@section('JS')
+@endsection
+
 @section('content')
 
-    <section class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-md-6 col-md-offset-3">
-                <div class="panel">
-                    @include('panels.heading')
-                    <div class="panel-body">
-                        @include('auth.forms.login')
-                    </div>
+<section id="login_panel" class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <div class="panel">
+                @include('panels.heading')
+                <div class="panel-body">
+                    @include('auth.forms.login')
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-    </section>
-
-    <section class="container welcome">
+<div class="bg-warning container-fluid" id="cookieWarning">
+    <div class="container">
         <div class="row">
             <div class="col-xs-12">
-
-                <h1>Willkommen</h1>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                    pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
-                    vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-                    mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-                    Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis,
-                    feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
-                    Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus,
-                    tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc,
-                    blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut
-                    libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla
-                    mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc!</p>
-
+                <h1 class="icon icon-new"> Cookie hinweis</h1>
+                <p>Diese Seite verwendet Cookies. Cookies sind keine Artefakte in Ihrem Browser, welche uns erlauben zu
+                    erkennen, wenn Sie wieder auf diese Seite kommen.</p>
+                <p>Cookies werden auf dieser Seite ausschließlich zur Nutzerwiedererkennung verwendet, nicht für
+                    Marketingzwecke.</p>
+                <div class="pull-right">
+                    <div class="btn btn-primary" data-dismiss="cookieWarning">Akzeptieren</div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</div>
+
+
+<section id="welcomemsg">
+    <div class="container welcome">
+        <p class="row">
+
+        <h1>@lang('fields.welcome')</h1>
+        @if(app()->getLocale() == "de")
+        <p class="col-xs-12">{{ $welcome->de }}</p>
+        @else
+        <p class="col-xs-12">{{ $welcome->en }}</p>
+        @endif
+    </div>
+</section>
 
 @include('modals.forgot')
 @include('modals.register')

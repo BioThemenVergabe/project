@@ -1,82 +1,130 @@
 @extends('layouts.admin')
 
 @section('links')
-    <li><a href="/admin">Dashboard</a></li>
-    <li><a href="/admin_AG">Arbeitsgruppen</a></li>
+    <a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
+    <a href="/admin_AG" class="btn btn-default btn-sm icon icon-clipboard"> <span
+                class="hidden-xs"> @lang('fields.ag')</span></a>
 @endsection
 
 @section('content')
-    <!--jumbotron-->
-    <div class="jumbotron">
-        <div id="a_s_b_main" class="container-fluid">
-            <!--Überschrift-->
-            <div class="row">
-                <div class="col-md-7 col-md-offset-3">
-                    <h1>Profil bearbeiten</h1>
-                </div>
-            </div>
-            <form>
+
+    <div class="container">
+        <div class="panel">
+            <div class="panel-body">
+
+                <!--Überschrift-->
                 <div class="row">
-                     <div class="col-md-1 col-md-offset-1">
-                        Name:
-                     </div>
-                     <div class="col-md-5 col-md-offset-3">
-                         <input id="name_stud">
-                     </div>
-                 </div>
-                <div class="row">
-                    <div class="col-md-2 col-md-offset-1">
-                        E-Mail:
-                    </div>
-                    <div class="col-md-5 col-md-offset-2">
-                        <input id="mail" type="email">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2 col-md-offset-1">
-                        Matrikelnummer:
-                    </div>
-                    <div class="col-md-5 col-md-offset-2">
-                        <input id="matrikel">
-                    </div>
-                </div>
-                <div class="top-buffer row">
-                    <div class="col-md-4 col-md-offset-1">
-                        Durchschnittliche Bewertung:
-                    </div>
-                    <div class="col-md-1" id="avg-bewertung">
-                        5
-                    </div>
-                    <div class="col-md-2 ">
-                        <button class="btn btn-default">Bewertungen einsehen</button>
+                    <div class="col-xs-8">
+                        <h1>@lang('content.heading_stud_be')</h1>
                     </div>
                 </div>
 
-                <div class="top-buffer row">
-                    <div class="col-md-3 col-md-offset-1">
-                        Letzte Änderung:
+                <form class="form-horizontal" method="post" action="/admin_studenten">
+                    {{ csrf_field() }}
+                    <input style="display:none" type="text" name="id" value="{{ $id }}">
+                    <div class="form-group row">
+                        <label for="edit.name" class="col-md-3 control-label">
+                            @lang('fields.name')
+                        </label>
+
+                        <div class="col-md-8">
+                            <input id="edit.name" type="text" class="form-control" name="name"
+                                   value="{{ $vorname }}"
+                                   required>
+                        </div>
                     </div>
-                    <div class="col-md-5 col-md-offset-1" id="last_change">
-                        01.01.1970
+
+                    <div class="form-group row">
+                        <label for="edit.lastname" class="col-md-3 control-label">@lang('fields.lastname')</label>
+
+                        <div class="col-md-8">
+                            <input id="edit.lastname" type="text" class="form-control" name="lastname"
+                                   value="{{ $nachname }}" required>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-md-offset-1">
-                        Registriert seit:
+
+                    <div class="form-group row">
+                        <label for="edit.matnr" class="col-md-3 control-label">@lang('fields.matnr')</label>
+
+                        <div class="col-md-8">
+                            <input id="edit.matnr" type="text" class="form-control" name="matnr"
+                                   value="{{ $matrnr }}" required>
+                        </div>
                     </div>
-                    <div class="col-md-5 col-md-offset-1" id="last_change">
-                        01.01.1970
+
+                    <div class="form-group row">
+                        <label for="edit.email" class="col-md-3 control-label">@lang('fields.mail')</label>
+
+                        <div class="col-md-8">
+                            <input id="edit.email" type="email" class="form-control" name="email"
+                                   value="{{ $email }}" required>
+                        </div>
                     </div>
-                </div>
-                <div class="top-buffer row">
-                    <div class="col-md-2 col-md-offset-3">
-                        <button id="bearbeiten-speichern" class="btn btn-primary">Speichern</button>
+                    <div class="row top-buffer">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary">
+                                    @lang('fields.savechange')
+                                </button>
+
+                                <button type="reset" class="btn btn-default">
+                                    @lang('fields.reset')
+                                </button>
+                            </div>
+
+                            <a href="/admin_studenten" class="btn btn-link">
+                                @lang('fields.cancel')
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-default" id="bearbeiten-abbrechen" type="button">Abbrechen</button>
+                    <hr class="top-buffer-3">
+                    <div class="row top-buffer">
+                        <div class="col-sm-3"><span id="Abg_Wahl" class="hidden-xs pull-right">@lang('content.admin_sb1')
+                                :</span></div>
+
+                        @if ($rated)
+                            <div class="col-sm-9">
+                                <button id="bewertung_einsehen" type="button" class="btn btn-info icon icon-edit"
+                                        data-toggle="modal"
+                                        data-target="#AG_Wahl_Modal"> @lang('content.admin_sb2')
+                                </button>
+                            </div>
+                        @else
+                            <div class="col-sm-9">
+                                <button type="button" class="disabled btn">
+                                    @lang('content.admin_sb5')
+                                </button>
+                            </div>
+                        @endif
+
                     </div>
-                </div>
-            </form>
-        </div>
-    </div>
+
+                    <div class="row top-buffer">
+                        <div class="col-xs-4 col-sm-3"><span class="hidden-xs pull-right">@lang('content.admin_sb3')
+                                :</span><span
+                                    class="visible-xs">@lang('content.admin_sb3')':</span></div>
+
+                        <div class="col-xs-8 col-sm-9">
+                            {{$änderung}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-3"><span class="hidden-xs pull-right">@lang('content.admin_sb4')
+                                :</span><span
+                                    class="visible-xs">@lang('content.admin_sb4'):</span></div>
+
+                        <div class="col-xs-8 col-sm-9">
+                            {{$registrierung}}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- Collapse Panel-->
+    </div><!-- Collapse Container-->
+
+    <!--AG-Wahl-Modal-->
+    @include('modals.acp-stud-wahl')
+    <!--Speicher-Modal-->
+    @include('modals.acp-save-rating')
 @endsection

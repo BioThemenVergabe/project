@@ -1,71 +1,87 @@
 @extends('layouts.admin')
 
 @section('links')
-    <li><a href="/admin">Dashboard</a></li>
-    <li><a href="/admin_AG">Arbeitsgruppen</a></li>
+    <a href="/admin" class="btn btn-default btn-sm icon icon-home"><span class="hidden-xs"> Dashboard</span></a>
+    <a href="/admin_AG" class="btn btn-default btn-sm icon icon-clipboard"><span
+                class="hidden-xs"> @lang('fields.ag')</span></a>
 @endsection
 
 @section('content')
-    <!--jumbotron-->
-    <div class="jumbotron">
-        <div id="a_s_main" class="container-fluid">
-            <!--Überschrift-->
-            <div class="row">
-                <div class="col-md-7 col-md-offset-3">
-                    <h1>Studenten Übersicht</h1>
-                </div>
-            </div>
 
-            <!--1.Zeile-->
-            <div class="top-buffer row">
-                <div class="col-md-3 col-md-offset-3">
-                    Anzahl Studenten: <span id="stud_anz">x</span>
-                </div>
-            </div>
+    <section class="container">
+        <div class="panel">
 
-            <!--Studenten-Tabelle-->
-            <div class="top-buffer row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <tr><th>Matr.Nr.</th><th>Name</th><th>AG</th><th></th></tr>
-                            <tr><td class="ma">00001</td><td class="na">Peter Meyer</td><td class="za">-</td><td><div class="btn-group" role="group"><button type="button" class="bearbeitenButton btn btn-info">bearbeiten</button><button type="button" class="btn btn-danger löschStudentButton" data-toggle="modal" data-target="#löschStudentModal">löschen</button></div></td></tr>
-                            <tr><td class="ma">00002</td><td class="na">Hans</td><td class="za">-</td><td class="bt"><div class="btn-group" role="group"><button type="button" class="bearbeitenButton btn btn-info">bearbeiten</button><button type="button" class="btn btn-danger löschStudentButton" data-toggle="modal" data-target="#löschStudentModal">löschen</button></div></td></tr>
-                            <tr><td class="ma">00003</td><td class="na">Jens</td><td class="za">-</td><td class="bt"><div class="btn-group" role="group"><button type="button" class="bearbeitenButton btn btn-info">bearbeiten</button><button type="button" class="btn btn-danger löschStudentButton" data-toggle="modal" data-target="#löschStudentModal">löschen</button></div></td></tr>
-                            <tr><td class="ma">00004</td><td class="na">Klaus</td><td class="za">-</td><td class="bt"><div class="btn-group" role="group"><button type="button" class="bearbeitenButton btn btn-info">bearbeiten</button><button type="button" class="btn btn-danger löschStudentButton" data-toggle="modal" data-target="#löschStudentModal">löschen</button></div></td></tr>
-                            <tr><td class="ma">00005</td><td class="na">Arnold</td><td class="za">-</td><td class="bt"><div class="btn-group" role="group"><button type="button" class="bearbeitenButton btn btn-info">bearbeiten</button><button type="button" class="btn btn-danger löschStudentButton" data-toggle="modal" data-target="#löschStudentModal">löschen</button></div></td></tr>
-                        </table>
+            <div class="panel-body">
+                <!--Überschrift-->
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h1>@lang('content.heading_stud')</h1>
                     </div>
-                </div>
-            </div><!--Collapse Studenten-Tabelle-->
-
-            <!--Löschen-Modal-->
-            <div class="modal fade" id="löschStudentModal" tabindex="-1" role="dialog" aria-labelledby="löschStudentModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="löschModalLabel">Möchten sie den Studenten wirklich löschen?</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <table id="löschmodal-row" class="table table-striped">
-                                        <tr><th>Matr.Nr.</th><th>Name</th><th>AG</th></tr>
-                                        <tr id="insert-student"><td class="ma"></td><td class="na"></td><td class="za"></td></tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button onclick="deleteStudentTrigger()" type="button" class="btn btn-default" data-dismiss="modal">Löschen</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Nicht Löschen</button>
+                    <div class="col-sm-4 pull-right top-buffer-3">
+                        <div class="input-group">
+                            <input id="Stud_search_query" type="text" class="form-control"
+                                   placeholder="@lang('fields.search')...">
+                            <span class="input-group-btn">
+                                <button id="Stud_search_button" class="btn btn-default" type="button"><span
+                                            class="icon icon-magnifying-glass"></span></button>
+                        </span>
                         </div>
                     </div>
                 </div>
+
+                <!--1.Zeile-->
+                <div class="top-buffer row">
+                    <div class="col-md-8">
+                        @lang('content.stud1'): {{$numberStudents}}
+                    </div>
+                </div>
+
+                <!--Studenten-Tabelle-->
+                <div id="Stud_table" class="top-buffer-2 table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>Matr.Nr.</th>
+                            <th>Name</th>
+                            <th class="">AG</th>
+                            <th class="col-xs-4"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($students as $student)
+                            <tr>
+                                <td class="id" style="display:none">{{$student->id}}</td>
+                                <td class="ma">{{$student->matrnr}}</td>
+                                <td class="na">{{$student->name . " " . $student->lastname}}</td>
+                                <td class="em" style="display:none">{{$student->email}}</td>
+                                @if(sizeof($student->zugewiesen)>0)
+                                    <td class="za">{{$student->zugewiesen}} (Rating={{$student->rating}})</td>
+                                @else
+                                    <td class="za">-</td>
+                                @endif
+                                <td class="bt">
+                                    <div class="btn-group pull-right" role="group">
+                                        <div class="bearbeitenButton btn btn-info icon icon-edit"><span
+                                                    class="hidden-xs"> @lang('fields.edit')</span></div>
+                                        <div class="btn btn-danger löschStudentButton icon icon-cross"
+                                             data-toggle="modal"
+                                             data-target="#löschStudentModal"><span
+                                                    class="hidden-xs"> @lang('fields.del')</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div><!--Collapse Studenten-Tabelle-->
             </div>
-            <!--Collapse Löschen-Modal-->
-        </div><!--Collapse Container-->
-    </div><!--Collapse Jumbotron-->
+        </div><!--Collapse panel-->
+    </section><!--Collapse container-->
+
+
+    <!--Löschen-Modal-->
+    @include('modals.acp-del-student')
+
 
 @endsection

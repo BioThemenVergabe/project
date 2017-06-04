@@ -23,8 +23,11 @@
             this.on("addedfile", function () {
                 if (this.files[1] != null) {
                     this.removeFile(this.files[0]);
+                    this.files[0] = this.files[1];
+                    this.removeFile(this.files[1]);
                 }
             });
+            location.reload();
         }
     };
     $(function () {

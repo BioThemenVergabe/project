@@ -11,6 +11,8 @@
 
 @section('JS')
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ asset('assets/js/jquery.ui.touchpunch.min.js') }}"></script>
+
 <script>
     $(function () {
         $('#sortableRatings').sortable({ cancel: '.hr-divider'});
@@ -32,8 +34,10 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="bs-callout bs-warning">
-                            <h4>Hinweis</h4>
-                            <p>Hier steht dann ein Hinweis zur Nutzung der nachfolgenden SortableListe.</p>
+                            <h4>@lang('rating.howTo')</h4>
+                            <ul>
+                                <li>@lang('rating.how')</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

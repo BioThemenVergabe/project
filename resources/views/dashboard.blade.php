@@ -12,7 +12,6 @@
 
 @section('JS')
 <script src="{{ asset('assets/js/dropzone.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.ui.touchpunch.min.js') }}"></script>
 
 <script>
     Dropzone.options.myDropzone = {

@@ -29,7 +29,7 @@
     };
     $(function () {
         var w = $('#userPicture').width('100%');
-        $('#userPicture').height(w);
+        $('#userPicture').height($('#userPicture').width());
     });
 </script>
 @endsection
@@ -49,11 +49,17 @@
 
             <div class="col-md-3 hidden-xs hidden-sm">
                 @if($user->user_picture == "")
-                <img src="{{ asset('/img/default-user.png') }}" id="userPicture" alt="Default Userpicture"
-                     class="img-thumbnail img-circle img-responsive col-xs-12"/>
+                <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture" style="background-image: url('{{ asset('/img/default-user.png') }}');">
+
+                </div>
+                <!-- <img src="{{ asset('/img/default-user.png') }}" id="userPicture" alt="Default Userpicture"
+                     class="img-thumbnail img-circle img-responsive col-xs-12"/> -->
                 @else
-                <img src="{{ asset('/img/uploads/'.$user->user_picture) }}" id="userPicture" alt="Default Userpicture"
-                     class="img-thumbnail img-circle img-responsive"/>
+                <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture" style="background-image: url('{{ asset('/img/uploads/'.$user->user_picture) }}');">
+
+                </div>
+                <!-- <img src="{{ asset('/img/uploads/'.$user->user_picture) }}" id="userPicture" alt="Default Userpicture"
+                     class="img-thumbnail img-circle img-responsive"/> -->
                 @endif
                 <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"
                    id="upload"></a>

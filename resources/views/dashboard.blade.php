@@ -27,7 +27,6 @@
                     this.removeFile(this.files[1]);
                 }
             });
-            location.reload();
         }
     };
     $(function () {

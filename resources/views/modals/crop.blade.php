@@ -18,6 +18,11 @@
                     {{ csrf_field() }}
                 </form>
             </div>
+            <div class="modal-footer">
+                <div class="pull-right">
+                    <div class="btn btn-primary icon icon-save" onclick="documen.reload()"> @lang('fields.save')</div>
+                </div>
+            </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

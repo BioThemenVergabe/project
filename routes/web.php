@@ -83,8 +83,12 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::match(['get', 'post'], '/admin', 'admin\dashboardController@showDashboard');
             Route::post('/admin_delete_ratings', 'admin\dashboardController@deleteRatings');
+            Route::post('/admin_delete_assignments', 'admin\dashboardController@deleteAssignments');
             Route::post('/admin_end_election', 'admin\dashboardController@checkAdmin');
             Route::post('/admin_start_algo', 'admin\dashboardController@startAlgo');
+            Route::post('/admin_start_algo', 'admin\dashboardController@startAlgo');
+            Route::get('/admin_toggleOpened1', 'admin\dashboardController@toggleOpened1');
+            Route::get('/admin_toggleOpened2', 'admin\dashboardController@toggleOpened2');
 
             Route::get('/admin_studenten', 'admin\studentController@showStudents');
             Route::post('/admin_studenten', 'admin\studentController@saveStudent');

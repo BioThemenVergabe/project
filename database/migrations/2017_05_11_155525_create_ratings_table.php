@@ -32,8 +32,10 @@ class CreateRatingsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(Blueprint $table)
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('ratings');
     }
 }

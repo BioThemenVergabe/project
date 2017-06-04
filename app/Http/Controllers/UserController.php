@@ -55,13 +55,13 @@ class UserController extends Controller
                 return redirect('/redirect');
             return view('dashboard', [
                 'user' => Auth::user(),
-                'ratings' => Rating::where('user','=',Auth::user()->id)->orderBy('rating', 'desc')->get(),
+                'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get(),
                 'ags' => Workgroup::all(),
             ]);
         }
         return view('dashboard', [
             'user' => User::find($id),
-            'ratings' => Rating::where('user','=',User::find($id)->id)->orderBy('rating', 'desc')->get(),
+            'ratings' => Rating::where('user', '=', User::find($id)->id)->orderBy('rating', 'desc')->get(),
             'ags' => Workgroup::all(),
         ]);
     }
@@ -83,31 +83,30 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * TODO: We should use the Validator!
-     *
      * @param  \Illuminate\Http\Request $request
-     * @param  \Illuminate\Validation\Validator  $validator
+     * @param  \Illuminate\Validation\Validator $validator
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Validator $validator)
     {
         $user = User::find(intval(Auth::user()->id));
 
-        if($request->name != $user->name)
+        if ($request->name != $user->name && $request->name != "")
             $user->name = $request->name;
-        if($request->lastname != $user->lastname)
+        if ($request->lastname != $user->lastname && $request->lastname != "")
             $user->lastname = $request->lastname;
-        if($request->matnr != $user->matrnr)
+        if ($request->matnr != $user->matrnr && $request->matnr != "")
             $user->matrnr = $request->matnr;
-        if($request->email != $user->email)
+        if ($request->email != $user->email && $request->email != "")
             $user->email = $request->email;
 
         /*
          * if the user want's to change his password.
          */
-        if($request->password == $request->password_confirmation & $request->password != "") {
 
-            if(bcrypt($request->passwordold) != $user->password)
+        if ($request->password != "" || $validator->fails()) {
+
+            if (bcrypt($request->passwordold) != $user->password)
                 return redirect('/profile/edit');
 
             if ($request->password != $user->password)
@@ -136,14 +135,15 @@ class UserController extends Controller
      *
      * @param Request $request
      */
-    public function storeUpload(Request $request) {
-        Log::info('Filename: '.$request->file('file')->getClientOriginalName());
+    public function storeUpload(Request $request)
+    {
+        Log::info('Filename: ' . $request->file('file')->getClientOriginalName());
 
         $user = User::find(Auth::user()->id);
 
         $img = $request->file('file');
-        $imgName = time().$user->name.$user->lastname.".".$img->getClientOriginalName();
-        $img->move(public_path('img/uploads'),$imgName);
+        $imgName = time() . $user->name . $user->lastname . "." . $img->getClientOriginalName();
+        $img->move(public_path('img/uploads'), $imgName);
 
         $user->user_picture = $imgName;
         $user->update();

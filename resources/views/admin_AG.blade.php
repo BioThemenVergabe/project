@@ -121,7 +121,6 @@
         for(i=0; i<buttons.length;i++){
             buttons[i].disabled = true;
         }
-
     </script>
     @endif
     <!--Speicher-Modal-->

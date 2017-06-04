@@ -17,7 +17,7 @@
                 <td class="na">{{$student->name . " " . $student->lastname}}</td>
                 <td class="em" style="display:none">{{$student->email}}</td>
                 @if(sizeof($student->zugewiesen)>0)
-                    <td class="za">{{$student->zugewiesen}}</td>
+                    <td class="za">{{$student->zugewiesen}} (Rating={{$student->rating}})</td>
                 @else
                     <td class="za">-</td>
                 @endif

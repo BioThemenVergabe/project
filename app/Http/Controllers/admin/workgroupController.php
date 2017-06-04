@@ -57,11 +57,12 @@ class workgroupController{
     }
 
     public function searchGroups(Request $request){
+        $ratings = DB::table("ratings")->get();
         $query ="%".$request->q."%";
         $groups = DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')
                                         ->where('name','like', $query)->orWhere('groupLeader','like', $query)->orWhere('date','like', $query)->orWhere('spots','like', $query)->orderBy('name', 'asc')->get();
 
-        return view('ajax.admin_AG_table', ["groups"=>$groups]);
+        return view('ajax.admin_AG_table', ["groups"=>$groups, "numberRatings"=>sizeof($ratings)]);
     }
 
 }

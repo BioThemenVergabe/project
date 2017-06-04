@@ -31,7 +31,7 @@ return [
     'admin_dash6' => 'geschlossen',
     'admin_dash7' => 'Status der Zuweisung',
     'admin_dash8' => 'nicht gestartet',
-    'admin_dash9' => 'Zuweisung abgeschlossen',
+    'admin_dash9' => 'abgeschlossen',
 
 
     'modal_Begr1' => 'Begrüßungstext bearbeiten',

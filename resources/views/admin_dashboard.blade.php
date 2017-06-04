@@ -46,9 +46,9 @@
                     </div>
                     <div class="col-sm-4 col-md-4 pull-right">
                         @if($status=="open")
-                            @lang('content.admin_dash5')
+                            <span class="glyphicon glyphicon-ok"></span> @lang('content.admin_dash5')
                         @else
-                            @lang('content.admin_dash6')
+                            <span class="glyphicon glyphicon-remove"></span> @lang('content.admin_dash6')
                         @endif
                     </div>
                 </div>
@@ -59,9 +59,9 @@
                     </div>
                     <div id="rated" class="col-sm-4 col-md-4 pull-right">
                         @if($rated==false)
-                            @lang('content.admin_dash8')
+                            <span class="glyphicon glyphicon-remove"></span> @lang('content.admin_dash8')
                         @else
-                            @lang('content.admin_dash9')
+                            <span class="glyphicon glyphicon-ok"></span> @lang('content.admin_dash9')
                         @endif
                     </div>
                 </div>

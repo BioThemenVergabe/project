@@ -131,6 +131,11 @@ class UserController extends Controller
         User::destroy($id);
     }
 
+    /**
+     * Stores the sent user image and updates the current user-table.
+     *
+     * @param Request $request
+     */
     public function storeUpload(Request $request) {
         Log::info('Filename: '.$request->file('file')->getClientOriginalName());
 

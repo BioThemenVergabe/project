@@ -61,8 +61,6 @@ return [
     'students' => 'Studenten',
 
 
-
-
     /*
      * Userpanel
      */
@@ -73,7 +71,9 @@ return [
     'dashboard' => 'Startseite',
     'error' => "Es wurde ein Fehler gefunden!",
     'noRating' => "Es wurde noch keine Bewertung abgegeben.",
+    'notice' => "Bitte beachten Sie:",
     'ratingToLow' => "Die Bewertung fiel zu niedrig aus. Es m&uuml;ssen mindestens <span id=\"minRating\"></span> Punkte vergeben werden.",
+    'square' => "Quadratische Bilder",
     'upload' => "Benutzerbild hochladen",
     'yourRating' => "Deine Bewertung",
 

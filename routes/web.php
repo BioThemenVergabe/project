@@ -1,6 +1,5 @@
 <?php
 
-use App\Welcome;
 use App\Option;
 
 /*
@@ -28,7 +27,7 @@ Route::group(['middleware' => 'language'], function () {
 
         //ansonsten bekommt er die Startseite
         return view('welcome', [
-            'welcome' => Welcome::find(1),
+            'options' => Option::find(1),
         ]);
 
     });

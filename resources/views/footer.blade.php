@@ -30,14 +30,8 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label>@lang('footer.whois')</label>
-                <p>
-                    @if(app()->getLocale() == 'en')
-                        {{ $options->welcomeEN }}
-                    @else
-                        {{ $options->welcomeDE }}
-                    @endif
-                </p>
+                <!-- <label>@lang('footer.whois')</label> -->
+
             </div>
             <div class="col-md-3">
                 <ul class="nav nav-stacked">

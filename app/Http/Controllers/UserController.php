@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Validator;
-use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Option;
+use App\Rating;
 use App\Workgroup;
 use Illuminate\Support\Facades\Log;
 

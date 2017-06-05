@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
 @section('links')
+    @if($options->opened == 1)
 <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span
             class="hidden-xs"> @lang('fields.gtElect')</span></a>
+    @else
+<a href="#" class="btn btn-default btn-sm icon icon-line-graph disabled"><span
+            class="hidden-xs"> @lang('fields.gtElect')</span></a>
+    @endif
 @endsection
 
 @section('css')

@@ -18,6 +18,10 @@ class RatingController extends Controller
      */
     public function index()
     {
+        $open = Option::find(1)->opened;
+        if($open < 1)
+            return redirect()->back();
+
         return view('wahl', [
             'ags' => Workgroup::all(),
             'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get(),

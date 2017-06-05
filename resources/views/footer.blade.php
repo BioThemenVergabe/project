@@ -32,10 +32,10 @@
             <div class="col-md-4">
                 <label>@lang('footer.whois')</label>
                 <p>
-                    @if(is_null($result))
-                        Hallo
+                    @if(app()->getLocale() == 'en')
+                        {{ $options->WelcomeEN }}
                     @else
-                        Bye
+                        {{ $options->WelcomeEN }}
                     @endif
                 </p>
             </div>

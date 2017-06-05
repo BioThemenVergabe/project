@@ -36,10 +36,6 @@ Route::group(['middleware' => 'language'], function () {
     //Sprache ändern
     Route::get('/lang/{key}', function ($key) {
         session()->put('locale', $key);
-        if($key == 'en')
-            session()->put('welcome',Option::find(1)->WelcomeEN);
-        else
-            session()->put('welcome',Option::find(1)->WelcomeDE);
         return redirect()->back();
     });
 

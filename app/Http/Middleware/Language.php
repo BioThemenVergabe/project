@@ -19,6 +19,11 @@ class Language
             app()->setLocale(session('locale'));
         app()->setLocale(config('app.locale'));
 
+        if(app()->getLocale() == 'en')
+            session()->put('welcome',Option::find(1)->WelcomeEN);
+        else
+            session()->put('welcome',Option::find(1)->WelcomeDE);
+
         return $next($request);
     }
 }

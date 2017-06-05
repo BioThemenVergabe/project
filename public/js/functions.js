@@ -10,6 +10,14 @@ function update(){
     $('#AG_anz').html($("#AG_table tr").length -1);
 }
 
+//wenn Wahl geöffnet oder geschlossen wird, wird dies an die DB geschickt und der Status geändert
+function toggle(){
+    var csrf = $("[name=_token]").serialize();
+    $("#status_field").load("/admin_toggleOpened1", csrf);
+    $("#close_open_button").load("/admin_toggleOpened2", csrf);
+}
+
+
 var trigger;
 
 //wird aufgerufen, nach dem Bestätigen vom Löschen einer AG
@@ -202,6 +210,22 @@ $(document).ready(function() {
             }
         });
     });
+    //wenn alle Zuweisungen gelöscht werden sollen
+    $("#del_Assigned").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        $.ajax({
+            type: "POST",
+            url: "/admin_delete_assignments",
+            data: $("#del_Assigned").serialize(), // serializes the form's elements.
+            success: function(data) {// neuer Durchschnittswert der Ratings
+                if(data=="true"){
+                    window.location ="/admin?action=deletedAssignments";
+                }else{
+                    alert("Hey Admin. Das eingegebene Passwort war nicht korrekt.")
+                }
+            }
+        });
+    });
 
     //$('table .btn-group').parent().width($('table .btn-group').width());
 
@@ -274,7 +298,10 @@ $(document).ready(function() {
     //Per AJAX Studenten neu laden, entsprechend zu Suchanfrage
     $("#Stud_search_button").click(function () {
         var query = $("#Stud_search_query").val();
-        $("#Stud_table").load("admin_studenten_search?q="+query);
+        $("#Stud_table").load("admin_studenten_search?q="+query, function () {
+            //Anzahl Studenten updaten
+            $('#Stud_Anzahl').html($("#Stud_table tr").length -1);
+        });
     });
     //wenn Enter gedrückt wird soll anfrage auch geschickt werden
     $("#Stud_search_query").keyup(function(event){
@@ -288,37 +315,6 @@ $(document).ready(function() {
 
 
     //Dashboard-buttons:
-    $('#wahl_schliessen').click(function(){
-        if($('#wahl_schliessen_text').html() == ' Wahl schließen'){
-            $('#close_open').html('geschlossen');
-            $('#close_open_body').html('<ul><li>Es können sich keine neuen Studenten anmelden</li><li>Die Studenten können ihre getroffene Wahl und ihr Profil nicht mehr selbstständig ändern</li><li>Dies können nur noch sie als Administrator unter dem Reiter "Übersicht Studenten"</li><li>Sollten sie die Wahl wieder eröffnen wollen, können sie dies über denselben Button tun, den sie zum schließen genutzt haben</li></ul>');
-            $('#wahl_schliessen_text').html(' Wahl öffnen');
-            $('#wahl_schliessen').removeClass("icon-block");
-            $('#wahl_schliessen').addClass("icon-controller-play");
-        }
-        else if($('#wahl_schliessen_text').html() == ' Wahl öffnen'){
-            $('#close_open').html('geöffnet');
-            $('#close_open_body').html('<ul><li>Ab jetzt können sich neue Studenten anmelden</li><li>Alle angemeldeten Studenten können neue Wahlen treffen,diese verändern oder ihr Profil bearbeiten</li><li>Sollten sie die Wahl schließen wollen, können sie dies über denselben Button tun, den sie zum öffnen genutzt haben</li></ul>');
-            $('#wahl_schliessen_text').html(' Wahl schließen');
-            $('#wahl_schliessen').removeClass("icon-controller-play");
-            $('#wahl_schliessen').addClass("icon-block");
-        }
-
-        if($('#wahl_schliessen_text').html() == ' Close the rating-process'){
-            $('#close_open').html('Closed');
-            $('#close_open_body').html('<ul><li>No more students can be registered</li><li>The students cannot change their profile data or ratings themselves</li><li>Only you as administrator can do so, under "Students overview"</li><li>If you want to open the rating-process, you can, by pressing the same button that you used to close</li></ul>');
-            $('#wahl_schliessen_text').html(' Open the rating-process');
-            $('#wahl_schliessen').removeClass("icon-block");
-            $('#wahl_schliessen').addClass("icon-controller-play");
-        }
-        else if($('#wahl_schliessen_text').html() == ' Open the rating-process'){
-            $('#close_open').html('Open');
-            $('#close_open_body').html('<ul><li>From now on, new students can register</li><li>All registered students can change their profile and ratings</li><li>If you want to close the rating-process, you can, by pressing the same button that you used to open</li></ul>');
-            $('#wahl_schliessen_text').html(' Close the rating-process');
-            $('#wahl_schliessen').removeClass("icon-controller-play");
-            $('#wahl_schliessen').addClass("icon-block");
-        }
-    });
 
     //falls es noch Studenten ohne Wahlabgabe gibt, soll der Button zum  Zuweisung starten disabled sein
     if ($("#noRatings").length){
@@ -341,14 +337,11 @@ $(document).ready(function() {
                 url: "/admin_start_algo",
                 data: $("[name=_token]").serialize(), // serializes the form's elements.
                 success: function(data) {// neuer Durchschnittswert der Ratings
-                    alert(data);
-                    /*
                     if(data=="true"){
-                        window.location ="/admin?action=deleted";
+                        window.location ="/admin?action=algoSucces";
                     }else{
-                        alert("Hey Admin. Das eingegebene Passwort war nicht korrekt.")
+                        alert(data)
                     }
-                     */
 
                 }
             });

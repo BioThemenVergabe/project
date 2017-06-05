@@ -35,7 +35,12 @@ class dashboardController
         }else{
             $rated = true;
         }
-        $status = "open";
+        $opened = DB::table("options")->select("opened")->get()[0]->opened;
+        if($opened){
+            $status = "open";
+        }else{
+            $status = "closed";
+        }
 
         $parameter = ["numberStudents" => $numberStudents, "noRating" => $noRating, "rated" => $rated, "status" => $status, "action" => $action];
 
@@ -73,6 +78,20 @@ class dashboardController
 
         }
 
+        return var_export($matches, true);;
+    }
+
+    public function deleteAssignments(Request $request)
+    {
+        $passwort = $request->param;
+        $hashedPasswordObject = DB::table("users")->select("password")->where("userlevel", 1)->first();
+        $hashedPassword = $hashedPasswordObject->password;
+
+        //die Hash::check Funktion nutzt gleichen Hash Algorithmus wie Laravel Auth
+        $matches = Hash::check($passwort, $hashedPassword);
+        if ($matches) {
+            DB::table("users")->where("userlevel", 0)->update(["zugewiesen" => NULL]);
+        }
         return var_export($matches, true);;
     }
 
@@ -149,7 +168,7 @@ class dashboardController
                         foreach ($ratedStudentsObject as $ratedStudentObject) {
                             if ($ratedStudentObject->priorität == $maxPrio) {
                                 //Spalte in DB aktualisieren
-                                DB::table("users")->where("id", $ratedStudentObject->id)->update(["zugewiesen", $workgroup]);
+                                DB::table("users")->where("id", $ratedStudentObject->id)->update(["zugewiesen"=> $workgroup]);
                                 //und den studenten aus Algorithmus entfernen
                                 $index = -1; //der index des studenten in $students
                                 foreach ($students as $student) {
@@ -183,5 +202,25 @@ class dashboardController
             }
         }
         return "true";
+    }
+
+    public function toggleOpened1(){
+        $opened = DB::table("options")->select("opened")->get()[0]->opened;
+        if($opened==1){
+            DB::table("options")->update(["opened"=>0]);
+            return view("ajax.admin_statusfield",["status"=>"close"]);
+        }else{
+            DB::table("options")->update(["opened"=>1]);
+            return view("ajax.admin_statusfield",["status"=>"open"]);
+        }
+    }
+    public function toggleOpened2(){
+        //opened wurde gerade durch toggleOpened1() verändert
+        $opened = DB::table("options")->select("opened")->get()[0]->opened;
+        if($opened==1){
+            return view("ajax.admin_closeOpenButton",["status"=>"open"]);
+        }else{
+            return view("ajax.admin_closeOpenButton",["status"=>"close"]);
+        }
     }
 }

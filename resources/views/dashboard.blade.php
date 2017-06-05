@@ -54,14 +54,10 @@
                 <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture" style="background-image: url('{{ asset('/img/default-user.png') }}');">
 
                 </div>
-                <!-- <img src="{{ asset('/img/default-user.png') }}" id="userPicture" alt="Default Userpicture"
-                     class="img-thumbnail img-circle img-responsive col-xs-12"/> -->
                 @else
                 <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture" style="background-image: url('{{ asset('/img/uploads/'.$user->user_picture) }}');">
 
                 </div>
-                <!-- <img src="{{ asset('/img/uploads/'.$user->user_picture) }}" id="userPicture" alt="Default Userpicture"
-                     class="img-thumbnail img-circle img-responsive"/> -->
                 @endif
                 <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"
                    id="upload"></a>

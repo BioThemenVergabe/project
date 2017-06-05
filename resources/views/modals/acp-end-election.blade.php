@@ -12,17 +12,19 @@
                     <p>
                         @lang('content.modal_endel2')
                     </p>
-                    <p>
-                        @lang('content.modal_endel3')
-                    </p>
-                    <p><a href="/Ergebnisse.html" download>@lang('fields.downloadResults')</a></p>
+                    @if($rated==true)
+                        <p>
+                            @lang('content.modal_endel3')
+                        </p>
+                        <p><a href="/Ergebnisse.html" download>@lang('fields.downloadResults')</a></p>
+                    @endif
                     <p>
 
                     </p>
                     <form id="end_election" action="admin_end_Election" method="post">
                         {{ csrf_field() }}
                         <label for="passwort1" class="control-label"> @lang('content.modal_endel5'): <input
-                                    name="param" type="password" required></label>
+                                    id="passwort1" name="param" type="password" required></label>
                         <button type="submit" class="btn btn-danger">@lang('content.modal_endel6')</button>
                     </form>
                     <hr>
@@ -33,8 +35,19 @@
                     <form id="del_Ratings" action="admin_delete_ratings" method="post">
                         {{ csrf_field() }}
                         <label for="passwort2" class="control-label"> @lang('content.modal_endel5'): <input
-                                    name="param" type="password" required></label>
+                                    id="passwort2" name="param" type="password" required></label>
                         <button type="submit" class="btn btn-danger">@lang('content.modal_endel8')</button>
+                    </form>
+                    <hr>
+
+                    <p class="top-buffer">
+                        @lang('content.modal_endel9')
+                    </p>
+                    <form id="del_Assigned" action="admin_delete_assignments" method="post">
+                        {{ csrf_field() }}
+                        <label for="passwort3" class="control-label"> @lang('content.modal_endel5'): <input
+                                    id="passwort3" name="param" type="password" required></label>
+                        <button type="submit" class="btn btn-danger">@lang('content.modal_endel10')</button>
                     </form>
                 </div>
             </div>

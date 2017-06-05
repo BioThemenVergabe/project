@@ -19,7 +19,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">@lang('content.modal_Begr3')</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('content.modal_Begr4')</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('fields.cancel')</button>
             </div>
         </div>
     </div>

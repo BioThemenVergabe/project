@@ -19,13 +19,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <div class="pull-right">
-                    <div class="btn btn-primary icon icon-save" onclick="document.reload()"> @lang('fields.save')</div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default icon icon-save" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary icon icon-save" onclick="window.location.reload()" data-dismiss="modal"> @lang('fields.save')</button>
             </div>
 
         </div><!-- /.modal-content -->

@@ -88,8 +88,8 @@
                     <div class="col-xs-12 col-md-6">
 
                         <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                            <span class="btn btn-default disabled">@if($result == 0) @lang('fields.noresult') @else {{ $result->name }}@endif</span>
-                            @if($result == 0)
+                            <span class="btn btn-default disabled">@if(is_null($result)) @lang('fields.noresult') @else {{ $result->name }}@endif</span>
+                            @if(is_null($result))
                                 <span class="btn btn-danger icon icon-cross disabled"></span>
                             @else
                                 <span class="btn btn-success icon icon-cross disabled"></span>

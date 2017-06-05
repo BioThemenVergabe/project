@@ -57,7 +57,7 @@ class UserController extends Controller
                 'user' => Auth::user(),
                 'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get(),
                 'ags' => Workgroup::all(),
-                'result' => is_null(Auth::user()->zugewiesen) ? 0 : Workgroup::find(Auth::user()->zugewiesen),
+                'result' => Workgroup::find(Auth::user()->zugewiesen),
             ]);
         }
         return view('dashboard', [

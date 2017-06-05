@@ -33,9 +33,9 @@
                 <label>@lang('footer.whois')</label>
                 <p>
                     @if(app()->getLocale() == 'en')
-                        {{ $options->WelcomeEN }}
+                        {{ $options->welcomeEN }}
                     @else
-                        {{ $options->WelcomeEN }}
+                        {{ $options->welcomeEN }}
                     @endif
                 </p>
             </div>

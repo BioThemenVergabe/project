@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">@lang('fields.upload')</h4>
+                <h4 class="modal-title">@lang('fields.closed')</h4>
             </div>
             <div class="modal-body">
                 <div class="bs-callout bs-danger">
@@ -13,21 +13,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="modal-body">
-                <form action="/upload" class="dropzone" id="my-dropzone">
-                    {{ csrf_field() }}
-                </form>
-            </div>
             <div class="modal-footer">
-                <div class="pull-right">
-                    <div class="btn btn-primary icon icon-save" onclick="document.reload()"> @lang('fields.save')</div>
-                </div>
+                <button type="button" class="btn btn-default icon icon-save" data-dismiss="modal">@lang('fields.close')</button>
             </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default icon icon-save" data-dismiss="modal">Close</button>
-            </div>
-
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

@@ -58,6 +58,7 @@ class UserController extends Controller
                 'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get(),
                 'ags' => Workgroup::all(),
                 'result' => Workgroup::find(Auth::user()->zugewiesen),
+                'options' => Option::find(1),
             ]);
         }
         return view('dashboard', [
@@ -77,9 +78,15 @@ class UserController extends Controller
     public function edit($id = null)
     {
         if (is_null($id))
-            return view('edit_user')->with(['user' => Auth::user()]);
+            return view('edit_user')->with([
+                'user' => Auth::user(),
+                'options' => Option::find(1),
+                ]);
         else
-            return view('edit_user')->with(['user' => User::find($id)]);
+            return view('edit_user')->with([
+                'user' => User::find($id),
+                'options' => Option::find(1),
+                ]);
     }
 
     /**

@@ -64,7 +64,6 @@ class UserController extends Controller
             'user' => User::find($id),
             'ratings' => Rating::where('user', '=', User::find($id)->id)->orderBy('rating', 'desc')->get(),
             'ags' => Workgroup::all(),
-            'ratingAvailable' =>
         ]);
     }
 

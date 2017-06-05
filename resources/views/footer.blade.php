@@ -32,7 +32,11 @@
             <div class="col-md-4">
                 <label>@lang('footer.whois')</label>
                 <p>
-                    {{ session('welcome') }}
+                    @if(app()->getLocale() == 'de')
+                        {{ $options->WelcomeEN }}
+                    @else
+                        {{ $options->WelcomeDE }}
+                    @endif
                 </p>
             </div>
             <div class="col-md-3">

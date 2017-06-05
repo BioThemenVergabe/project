@@ -19,7 +19,8 @@ class RatingController extends Controller
     {
         return view('wahl', [
             'ags' => Workgroup::all(),
-            'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get()
+            'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get(),
+            'options' => Option::find(1),
         ]);
     }
 

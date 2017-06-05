@@ -35,7 +35,7 @@
                     @if(app()->getLocale() == 'en')
                         {{ $options->welcomeEN }}
                     @else
-                        {{ $options->welcomeEN }}
+                        {{ $options->welcomeDE }}
                     @endif
                 </p>
             </div>

@@ -32,7 +32,11 @@
             <div class="col-md-4">
                 <label>@lang('footer.whois')</label>
                 <p>
-
+                    @if(is_null($result))
+                        Hallo
+                    @else
+                        Bye
+                    @endif
                 </p>
             </div>
             <div class="col-md-3">

@@ -36,7 +36,7 @@
     };
     $(function () {
         var w = $('#userPicture').width('100%');
-        $('#userPicture').height($('#userPicture').width());
+        $('#userPicture').height($('#userPicture').innerWidth());
     });
 </script>
 @endsection

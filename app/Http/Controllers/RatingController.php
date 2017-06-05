@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Workgroup;
 use App\Rating;
+use App\Option;
 
 class RatingController extends Controller
 {

@@ -239,61 +239,63 @@ table.voting {
   border-left-width: 5px;
   border-radius: 3px;
   background-color: @white;
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  code {
+    border-radius: 3px;
+  }
+  &+.bs-callout {
+    margin-top: -5px;
+  }
+
   &.bs-info {
     border-left-color: #5bc0de;
-  }
-  &.bs-info h4 {
-    color: #5bc0de;
+    h4 {
+      color: #5bc0de;
+    }
   }
 
   &.bs-warning {
     border-left-color: @danger;
-  }
-  &.bs-warning h4 {
-    color: @danger;
+    h4 {
+      color: @danger;
+    }
   }
 
   &.bs-danger {
     border-left-color: @danger;
+    h4 {
+      color: @danger;
+    }
   }
-  &.bs-danger h4 {
-    color: @danger;
+
+  &.bs-default {
+    border-left-color: #777;
+    h4 {
+      color: #777;
+    }
+  }
+
+  &.bs-primary {
+    border-left-color: @primary;
+    h4 {
+      color: @primary;
+    }
+  }
+
+  &.bs-success {
+    border-left-color: #5cb85c;
+    h4 {
+      color: #5cb85c;
+    }
   }
 
 }
-
-.bs-callout h4 {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-.bs-callout p:last-child {
-  margin-bottom: 0;
-}
-.bs-callout code {
-  border-radius: 3px;
-}
-.bs-callout+.bs-callout {
-  margin-top: -5px;
-}
-.bs-callout-default {
-  border-left-color: #777;
-}
-.bs-callout-default h4 {
-  color: #777;
-}
-.bs-callout-primary {
-  border-left-color: @primary;
-}
-.bs-callout-primary h4 {
-  color: @primary;
-}
-.bs-callout-success {
-  border-left-color: #5cb85c;
-}
-.bs-callout-success h4 {
-  color: #5cb85c;
-}
-
 
 #sortableRatings,
 #listRating {

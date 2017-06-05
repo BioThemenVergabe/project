@@ -208,6 +208,19 @@ table.voting td > .progress-bar-zero:after {
   border-radius: 3px;
   background-color: #ffffff;
 }
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code {
+  border-radius: 3px;
+}
+.bs-callout + .bs-callout {
+  margin-top: -5px;
+}
 .bs-callout.bs-info {
   border-left-color: #5bc0de;
 }
@@ -226,35 +239,22 @@ table.voting td > .progress-bar-zero:after {
 .bs-callout.bs-danger h4 {
   color: #d9534f;
 }
-.bs-callout h4 {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-.bs-callout p:last-child {
-  margin-bottom: 0;
-}
-.bs-callout code {
-  border-radius: 3px;
-}
-.bs-callout + .bs-callout {
-  margin-top: -5px;
-}
-.bs-callout-default {
+.bs-callout.bs-default {
   border-left-color: #777;
 }
-.bs-callout-default h4 {
+.bs-callout.bs-default h4 {
   color: #777;
 }
-.bs-callout-primary {
+.bs-callout.bs-primary {
   border-left-color: #09bc6c;
 }
-.bs-callout-primary h4 {
+.bs-callout.bs-primary h4 {
   color: #09bc6c;
 }
-.bs-callout-success {
+.bs-callout.bs-success {
   border-left-color: #5cb85c;
 }
-.bs-callout-success h4 {
+.bs-callout.bs-success h4 {
   color: #5cb85c;
 }
 #sortableRatings div:first-child, #listRating div:first-child {

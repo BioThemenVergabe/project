@@ -16,17 +16,17 @@ use Illuminate\Support\Facades\Log;
 
 class dashboardController
 {
-
+    //zeigt beim aufrufen des Dashboards den aktuellen Status der Wahl und das Dashboard(Wahlmenü) für Admin
     public function showDashboard(Request $request)
     {
         $action = "noAction";
         if ($request->has('action')) {
-            $action = $request->action;//nachdem löschen von Ratings oder dem Beenden der Wahl wird das entsprechende Modal  in der View geöffnet
+            $action = $request->action;//Wenn gerade eine action erfolgt ist, wird das entsprechende Modal  in der View geöffnet
         }
+
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
         $ratings = DB::table("ratings")->select("user")->distinct()->get();
         $numberRatings = sizeof($ratings);
-
         $noRating = $numberStudents - $numberRatings;
 
         $zugewieseneStudenten = DB::table("users")->whereNotNull("zugewiesen")->count();
@@ -42,11 +42,16 @@ class dashboardController
             $status = "closed";
         }
 
-        $parameter = ["numberStudents" => $numberStudents, "noRating" => $noRating, "rated" => $rated, "status" => $status, "action" => $action];
+        $welcomeTextDE = DB::table("options")->select("welcomeDE")->first();
+        $welcomeTextEN = DB::table("options")->select("welcomeEN")->first();
+
+        $parameter = ["numberStudents" => $numberStudents, "noRating" => $noRating, "rated" => $rated,
+                        "status" => $status, "action" => $action, "welcomeDE"=>$welcomeTextDE->welcomeDE, "welcomeEN" =>$welcomeTextEN->welcomeEN];
 
         return view("admin_dashboard", $parameter);
     }
 
+    //beendet Wahlgang: löscht alle Ratings und alle User. Danach sind nur noch Options und AGs in der DB
     public function checkAdmin(Request $request)
     {
         $passwort = $request->param;
@@ -64,6 +69,7 @@ class dashboardController
         return var_export($matches, true);;
     }
 
+    //löscht alle zugewiesenen AGs von den Studenten und zusätzlich alle abgegebenen Ratings
     public function deleteRatings(Request $request)
     {
         $passwort = $request->param;
@@ -81,6 +87,7 @@ class dashboardController
         return var_export($matches, true);;
     }
 
+    //löscht alle zugewiesenen AGs von den Studenten
     public function deleteAssignments(Request $request)
     {
         $passwort = $request->param;
@@ -204,6 +211,7 @@ class dashboardController
         return "true";
     }
 
+    //Ändert das Statusfeld, wenn wahl geöffnet bzw geschlossen wurde
     public function toggleOpened1(){
         $opened = DB::table("options")->select("opened")->get()[0]->opened;
         if($opened==1){
@@ -213,7 +221,7 @@ class dashboardController
             DB::table("options")->update(["opened"=>1]);
             return view("ajax.admin_statusfield",["status"=>"open"]);
         }
-    }
+    }//Tauscht den Öffnen/Schließen Button aus, wenn wahl geöffnet bzw geschlossen wurde
     public function toggleOpened2(){
         //opened wurde gerade durch toggleOpened1() verändert
         $opened = DB::table("options")->select("opened")->get()[0]->opened;
@@ -222,5 +230,19 @@ class dashboardController
         }else{
             return view("ajax.admin_closeOpenButton",["status"=>"close"]);
         }
+    }
+
+    //den geänderten WelcomeText in die DB speichern
+    public function saveWelcome(Request $request){
+        $lang = $request->lang;
+        $text = $request->text;
+
+        if($lang=="de"){
+            DB::table("options")->update(["welcomeDE"=>$text]);
+        }else{
+            DB::table("options")->update(["welcomeEN"=>$text]);
+        }
+
+        return("true");
     }
 }

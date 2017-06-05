@@ -13,7 +13,6 @@
             <div class="panel-body">
                 @include('alerts.admin_dashboard')
                 @include('alerts.admin_dashboard2')
-
                 <div class="top-buffer row">
                     <div class="col-md-6 col-md-offset-3">
                         <h1>Dashboard</h1>

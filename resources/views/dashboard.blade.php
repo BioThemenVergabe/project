@@ -92,7 +92,7 @@
                             @if(is_null($result))
                                 <span class="btn btn-danger icon icon-cross disabled"></span>
                             @else
-                                <span class="btn btn-success icon icon-cross disabled"></span>
+                                <span class="btn btn-success icon icon-check disabled"></span>
                             @endif
                         </div>
 

@@ -96,8 +96,8 @@
                 <div class="top-buffer row">
                     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                         @if($rated==true)
-                            <a id="Ergebnisse_download" class="btn btn-primary btn-block icon icon-download"
-                               href="/Ergebnisse.html" download> @lang('fields.downloadResults')
+                            <a id="Ergebnisse_download" class="btn btn-primary btn-block icon icon-download">
+                                @lang('fields.downloadResults')
                             </a>
                         @else
                             <button id="Ergebnisse_download_disabled"

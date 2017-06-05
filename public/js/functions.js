@@ -137,22 +137,6 @@ function deleteStudentTrigger(){
 }
 
 $(document).ready(function() {
-
-    //speichern des geänderten Welcome Textes
-    $("#change_welcome").click(function () {
-        var csrf = $("[name=_token]");
-        var language = "de";//je nachdem welche sprache, wird entweder der deutsche oder englische Text in der DB geändert
-        if($("span.lang").hasClass("lang-en")){
-            language = "en";
-        }
-        var daten = {_token:csrf[0].value , lang: language, text:$("#begruessung").val()};
-        $.ajax({
-            type: "POST",
-            url: "/admin_welcome_save",
-            data: daten
-        });
-    });
-
     //submit eventHandler, für admin_ag wenn der speicher Button geklickt wird
     $("#AG_form").submit(function(e) {
         e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -330,6 +314,26 @@ $(document).ready(function() {
 
 
     //Dashboard-buttons:
+
+    //speichern des geänderten Welcome Textes
+    $("#change_welcome").click(function () {
+        var csrf = $("[name=_token]");
+        var language = "de";//je nachdem welche sprache, wird entweder der deutsche oder englische Text in der DB geändert
+        if($("span.lang").hasClass("lang-en")){
+            language = "en";
+        }
+        var daten = {_token:csrf[0].value , lang: language, text:$("#begruessung").val()};
+        $.ajax({
+            type: "POST",
+            url: "/admin_welcome_save",
+            data: daten
+        });
+    });
+
+    //downloaden der ergebnisse
+    $("#Ergebnisse_download").click(function () {
+        window.location = "/admin_download_results";
+    });
 
     //falls es noch Studenten ohne Wahlabgabe gibt, soll der Button zum  Zuweisung starten disabled sein
     if ($("#noRatings").length){

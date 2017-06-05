@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Storage;
+use Excel;
 
 
 class dashboardController
@@ -123,13 +125,14 @@ class dashboardController
                     }
                 }
             }
-            Log::info("PräferenzRatings: ".print_r($präferenzRatings,true). "\n");
+            //Log::info("PräferenzRatings: ".print_r($präferenzRatings,true). "\n");
 
             //Nach AGs sortieren
             $workgroups = array_unique(array_values($präferenzRatings));//Array aller AGs, jede AG nur einmal vorhanden
+            $workgroups = $this->orderBySpots($workgroups);//sortiert die AGs absteigend nach Anzahl Plätzen -> zuerst wird die AG mit den meisten Plätzen gefüllt
             foreach ($workgroups as $workgroup) {
                 //Alle Studenten, welche diese AG mit $i bewertet haben
-                $ratedStudents = array_keys($präferenzRatings, $workgroup);//gibt alle schlüssel die den wert von $workgroup haben zurück
+                $ratedStudents = array_keys($präferenzRatings, $workgroup);//gibt alle Studenten, die $workgroup mit $i bewertet haben zurück
 
                 $plätzeObject = DB::table("workgroups")->select("spots")->where("id", $workgroup)->get();
                 $plätze = $plätzeObject[0]->spots;
@@ -138,22 +141,22 @@ class dashboardController
                     foreach ($ratedStudents as $ratedStudent) {
                         //Spalte in DB aktualisieren
                         DB::table("users")->where("id", "$ratedStudent")->update(["zugewiesen" => $workgroup]);
-                        Log::info('Dem Studenten: ' . $ratedStudent ." wurde die Gruppe ".$workgroup." zugewiesen. Bewertung=".$i. "\n");
+                        //Log::info('Dem Studenten: ' . $ratedStudent ." wurde die Gruppe ".$workgroup." zugewiesen. Bewertung=".$i. "\n");
                         //und den studenten aus Algorithmus entfernen
                         $index = -1; //der index des studenten in $students
                         for ($j = 0; $j < $anzahlStudents; $j++) {
-                            Log::info('Neue Iteration:' . $j . "\n");
+                            //Log::info('Neue Iteration:' . $j . "\n");
                             if (isset($students[$j])) {
                                 if ($students[$j]->id == $ratedStudent) {
                                     $index = $j;
-                                    Log::info('Found the student:' . $ratedStudent . "\n");
+                                    //Log::info('Found the student:' . $ratedStudent . "\n");
                                     break;
                                 }
                             }
                         }
                         $students->forget($index);
-                        Log::info('Forgot the student:' . $ratedStudent .". Es sind noch ".sizeof($students). " zu verteilen \n");
-                        Log::info(print_r($students,true). "\n");
+                        //Log::info('Forgot the student:' . $ratedStudent .". Es sind noch ".sizeof($students). " zu verteilen \n");
+                        //Log::info(print_r($students,true). "\n");
                     }
                 } //ansonsten Studenten mit höchster Priorität zuweisen. Danach AG mit zufälligen Studenten auffüllen
                 else {
@@ -210,6 +213,16 @@ class dashboardController
         }
         return "true";
     }
+    private function orderBySpots(array $array){
+        $orderedArray = array();
+        foreach($array as $workgroup){
+            $spots = DB::table("workgroups")->select("spots")->where("id",$workgroup)->get()[0]->spots;
+            $orderedArray[$workgroup] = $spots;
+        }
+        arsort($orderedArray);//sortiert das array nach values(spots) absteigend
+
+        return array_keys($orderedArray);
+    }
 
     //Ändert das Statusfeld, wenn wahl geöffnet bzw geschlossen wurde
     public function toggleOpened1(){
@@ -244,5 +257,51 @@ class dashboardController
         }
 
         return("true");
+    }
+
+    //initiiert den download des Ergebnisses
+    public function downloadResultsXlsx(){
+
+        Excel::create("Wahlergebnisse vom ".getdate()["month"]."_".getdate()["year"].".xlsx", function($excel) {
+
+            $excel->sheet('Ergebnisse', function($sheet) {
+                $students = DB::table("users")
+                    ->join("workgroups", "users.zugewiesen", "workgroups.id")
+                    ->join("ratings", function ($join) {
+                        $join->on("workgroups.id", "=", "ratings.workgroup");
+                        $join->on('users.id', '=', 'ratings.user');
+
+                    })
+                    ->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'workgroups.groupLeader as leiter', 'ratings.rating as rating')
+                    ->where('userlevel', 0)
+                    ->orderBy('matrnr', 'asc')->get();
+                $avgRating = DB::table("users")
+                    ->join("workgroups", "users.zugewiesen", "workgroups.id")
+                    ->join("ratings", function ($join) {
+                        $join->on("workgroups.id", "=", "ratings.workgroup");
+                        $join->on('users.id', '=', 'ratings.user');
+
+                    })
+                    ->where('userlevel', 0)
+                    ->avg('rating');
+
+
+                $ags = DB::table("workgroups")
+                    ->leftJoin("ratings", "ratings.workgroup", "workgroups.id")
+                    ->leftJoin("users", function ($join) {
+                        $join->on("workgroups.id", "=", "users.zugewiesen");
+                        $join->on('users.id', '=', 'ratings.user');
+
+                    })
+                    ->select('workgroups.name as wName','workgroups.groupLeader as leiter','workgroups.spots as plätze', DB::raw('COUNT(zugewiesen) as belegt'),DB::raw('AVG(rating) as avgRating'))
+                    ->groupBy('workgroups.name','workgroups.groupLeader','workgroups.spots')
+                    ->orderBy('workgroups.name', 'asc')->get();
+                $parameters = ['students' => $students, "avgRating" => $avgRating, "ags"=>$ags];
+
+                $sheet->loadView('partials.admin_Ergebnisse',$parameters);
+
+            });
+        })->download('xlsx');;
+        //return response()->download("../storage/app/Ergebnisse.xlsx", "Wahlergebnisse vom ".getdate()["month"]."_".getdate()["year"].".xlsx");
     }
 }

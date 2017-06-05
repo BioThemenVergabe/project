@@ -89,6 +89,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/admin_toggleOpened1', 'admin\dashboardController@toggleOpened1');
             Route::get('/admin_toggleOpened2', 'admin\dashboardController@toggleOpened2');
             Route::post('/admin_welcome_save', 'admin\dashboardController@saveWelcome');
+            Route::get('/admin_download_results', 'admin\dashboardController@downloadResultsXlsx');
 
             Route::get('/admin_studenten', 'admin\studentController@showStudents');
             Route::post('/admin_studenten', 'admin\studentController@saveStudent');

@@ -46,7 +46,7 @@ class RatingSeeder extends Seeder
                 $rating = DB::table("ratings")->where([["user", $userId->id], ["workgroup", $agIds[$i]->id]])->get();
                 if (sizeof($rating) == 0) {
                     if($i<10 && $i>=0){
-                        $rate = $i+1;
+                        $rate = 10-$i;
                     }else{
                         $rate = 1;
                     }

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Validator;
-use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Option;
+use App\Rating;
 use App\Workgroup;
 use Illuminate\Support\Facades\Log;
 
@@ -57,12 +58,15 @@ class UserController extends Controller
                 'user' => Auth::user(),
                 'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get(),
                 'ags' => Workgroup::all(),
+                'result' => Workgroup::find(Auth::user()->zugewiesen),
+                'options' => Option::find(1),
             ]);
         }
         return view('dashboard', [
             'user' => User::find($id),
             'ratings' => Rating::where('user', '=', User::find($id)->id)->orderBy('rating', 'desc')->get(),
             'ags' => Workgroup::all(),
+            'options' => Option::find(1),
         ]);
     }
 
@@ -75,9 +79,15 @@ class UserController extends Controller
     public function edit($id = null)
     {
         if (is_null($id))
-            return view('edit_user')->with(['user' => Auth::user()]);
+            return view('edit_user')->with([
+                'user' => Auth::user(),
+                'options' => Option::find(1),
+                ]);
         else
-            return view('edit_user')->with(['user' => User::find($id)]);
+            return view('edit_user')->with([
+                'user' => User::find($id),
+                'options' => Option::find(1),
+                ]);
     }
 
     /**

@@ -31,13 +31,11 @@
             </div>
             <div class="col-md-4">
                 <label>@lang('footer.whois')</label>
-                <p>
-                    Wir, die Fachschaft Biologie, setzen uns aus Studenten verschiedener Semester zusammen,
-                    die sich für eure Interessen an der Uni einsetzten.
-                    Einerseits in dem wir euch in den verschiedensten Gremien und R&auml;ten der Universit&auml;t vertreten,
-                    andererseits in dem wir eurer Meinung auch bei Professoren Geh&ouml;r verleihen. Dar&uuml;ber hinaus stehen
-                    wir euch bei Fragen, Problemen oder Anliegen als Ansprechpartner zur Verf&uuml;gung.
-                </p>
+                @if(app()->getLocale() == "de")
+                <p>Wir, die Fachschaft Biologie, setzen uns aus Studenten verschiedener Semester zusammen, die sich für eure Interessen an der Uni einsetzten. Einerseits in dem wir euch in den verschiedensten Gremien und Räten der Universität vertreten, andererseits in dem wir eurer Meinung auch bei Professoren Gehör verleihen. Darüber hinaus stehen wir euch bei Fragen, Problemen oder Anliegen als Ansprechpartner zur Verfügung.</p>
+                @else
+                <p>coming soon...</p>
+                @endif
             </div>
             <div class="col-md-3">
                 <ul class="nav nav-stacked">

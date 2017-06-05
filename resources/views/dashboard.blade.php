@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
 @section('links')
+    @if($options->opened == 1)
 <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span
             class="hidden-xs"> @lang('fields.gtElect')</span></a>
+    @else
+<a href="#" class="btn btn-default btn-sm icon icon-line-graph disabled"><span
+            class="hidden-xs"> @lang('fields.gtElect')</span></a>
+    @endif
 @endsection
 
 @section('css')
@@ -31,7 +36,7 @@
     };
     $(function () {
         var w = $('#userPicture').width('100%');
-        $('#userPicture').height($('#userPicture').width());
+        $('#userPicture').height($('#userPicture').innerWidth());
     });
 </script>
 @endsection
@@ -54,14 +59,10 @@
                 <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture" style="background-image: url('{{ asset('/img/default-user.png') }}');">
 
                 </div>
-                <!-- <img src="{{ asset('/img/default-user.png') }}" id="userPicture" alt="Default Userpicture"
-                     class="img-thumbnail img-circle img-responsive col-xs-12"/> -->
                 @else
                 <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture" style="background-image: url('{{ asset('/img/uploads/'.$user->user_picture) }}');">
 
                 </div>
-                <!-- <img src="{{ asset('/img/uploads/'.$user->user_picture) }}" id="userPicture" alt="Default Userpicture"
-                     class="img-thumbnail img-circle img-responsive"/> -->
                 @endif
                 <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"
                    id="upload"></a>
@@ -92,8 +93,12 @@
                     <div class="col-xs-12 col-md-6">
 
                         <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                            <span class="btn btn-default disabled">@lang('fields.noresult')</span>
-                            <span class="btn btn-danger icon icon-cross disabled"></span>
+                            <span class="btn btn-default disabled">@if(is_null($result)) @lang('fields.noresult') @else {{ $result->name }}@endif</span>
+                            @if(is_null($result))
+                                <span class="btn btn-danger icon icon-cross disabled"></span>
+                            @else
+                                <span class="btn btn-success icon icon-check disabled"></span>
+                            @endif
                         </div>
 
                     </div>

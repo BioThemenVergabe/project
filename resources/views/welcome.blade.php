@@ -46,9 +46,9 @@
 
         <h1>@lang('fields.welcome')</h1>
         @if(app()->getLocale() == "de")
-        <p class="col-xs-12">{{ $welcome->de }}</p>
+        <p class="col-xs-12">{{ $options->welcomeDE }}</p>
         @else
-        <p class="col-xs-12">{{ $welcome->en }}</p>
+        <p class="col-xs-12">{{ $options->welcomeEN }}</p>
         @endif
     </div>
 </section>

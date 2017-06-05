@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Workgroup;
 use App\Rating;
+use App\Option;
 
 class RatingController extends Controller
 {
@@ -17,9 +18,14 @@ class RatingController extends Controller
      */
     public function index()
     {
+        $open = Option::find(1)->opened;
+        if($open < 1)
+            return redirect()->back();
+
         return view('wahl', [
             'ags' => Workgroup::all(),
-            'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get()
+            'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get(),
+            'options' => Option::find(1),
         ]);
     }
 

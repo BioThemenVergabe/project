@@ -13,6 +13,7 @@ class CreateWelcomesTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('welcomes');
         Schema::create('welcomes', function (Blueprint $table) {
             $table->increments('id');
             $table->text('de');

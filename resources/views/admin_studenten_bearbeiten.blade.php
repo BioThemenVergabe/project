@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                <form class="form-horizontal" method="post" action="/admin_studenten">
+                <form id="sb_form" class="form-horizontal">
                     {{ csrf_field() }}
                     <input style="display:none" type="text" name="id" value="{{ $id }}">
                     <div class="form-group row">

@@ -48,7 +48,7 @@ return [
     'modal_endel4' => 'If you realy want to end the rating-process, please enter the administrator\'s password and press "End rating-process"',
     'modal_endel5' => 'Administrator\'s password',
     'modal_endel6' => 'End rating-process',
-    'modal_endel7' => 'If you only want to <u>delete all ratings</u>, please enter the password and confirm through this button:',
+    'modal_endel7' => 'If you only want to <u>delete all ratings and assigned workgroups</u>, please enter the password and confirm through this button:',
     'modal_endel8' => 'Delete ratings',
     'modal_endel9' => 'If you only want to <u>delete all assigned workgroups </u>from the students, please enter the password and comfirm through this button:',
     'modal_endel10' => 'Delete assignments',

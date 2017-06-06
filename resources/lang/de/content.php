@@ -49,7 +49,7 @@ return [
     'modal_endel4' => 'Wenn sie die Wahl wirklich beenden wollen, geben sie bitte das Admin-Passwort ein und drücken sie unten auf "Wahl beenden"',
     'modal_endel5' => 'Admin-Passwort',
     'modal_endel6' => 'Wahl beenden',
-    'modal_endel7' => 'Wenn sie nur alle <u>eingegangenen Bewertungen</u> löschen möchten, geben sie das Passwort ein und bestätigen sie mit diesem Knopf:',
+    'modal_endel7' => 'Wenn sie nur alle <u>eingegangenen Bewertungen und zugewuesebeb AGs</u> löschen möchten, geben sie das Passwort ein und bestätigen sie mit diesem Knopf:',
     'modal_endel8' => 'Bewertungen löschen',
     'modal_endel9' => 'Wenn sie nur alle <u>zugewiesenen AGs </u>von den Studenten löschen möchten, geben sie das Passwort ein und bestätigen sie mit diesem Knopf:',
     'modal_endel10' => 'Zuweisungen löschen',

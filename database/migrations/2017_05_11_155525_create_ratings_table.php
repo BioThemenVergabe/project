@@ -13,9 +13,6 @@ class CreateRatingsTable extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('ratings');
-        Schema::enableForeignKeyConstraints();
         Schema::create('ratings', function (Blueprint $table) {
             $table->integer('user')->unsigned();
             $table->integer('workgroup')->unsigned();

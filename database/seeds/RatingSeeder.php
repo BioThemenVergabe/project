@@ -68,8 +68,6 @@ class RatingSeeder extends Seeder
         foreach ($probability as $p) {
             $sum += $p;
         }
-
-        $start = DB::table("workgroups")->min("id");
         $userIds = DB::table("users")->select("id")->where("userlevel", 0)->get();
 
 

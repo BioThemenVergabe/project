@@ -13,8 +13,6 @@ class CreateWorkgroupsTable extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE `users` DROP FOREIGN KEY `users_workgroups_foreign`');
-        Schema::dropIfExists('workgroups');
         Schema::create('workgroups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
@@ -26,7 +24,6 @@ class CreateWorkgroupsTable extends Migration
             $table->string('date');
             $table->timestamps();
         });
-
 
         DB::statement('ALTER TABLE `users` ADD CONSTRAINT `users_workgroups_foreign` foreign key (`zugewiesen`) references `workgroups` (`id`)');
     }

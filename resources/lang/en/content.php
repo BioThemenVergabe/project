@@ -26,7 +26,7 @@ return [
     'admin_dash1' => 'Number of registered students',
     'admin_dash2' => 'students',
     'admin_dash3' => 'Number of students without submitted ratings',
-    'admin_dash4' => 'Status of the ongoing rating-process',
+    'admin_dash4' => 'Status of the rating-process',
     'admin_dash5' => 'open',
     'admin_dash6' => 'closed',
     'admin_dash7' => 'Status of the algorithm',

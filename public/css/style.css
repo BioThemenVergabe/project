@@ -272,11 +272,11 @@ table {
     padding-right: 0;
 }
 
-.glyphicon-ok{
+span.icon-check{
     color:green
 }
 
-.glyphicon-remove{
+span.icon-cross{
     color:red
 }
 

@@ -286,17 +286,16 @@ class dashboardController
                     ->join("ratings", function ($join) {
                         $join->on("workgroups.id", "=", "ratings.workgroup");
                         $join->on('users.id', '=', 'ratings.user');
-                    })
-                    ->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'workgroups.groupLeader as leiter', 'ratings.rating as rating')
+                    })->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'workgroups.groupLeader as leiter', 'ratings.rating as rating')
                     ->where('userlevel', 0)
                     ->orderBy('matrnr', 'asc')->get();
+
                 $avgRating = DB::table("users")
                     ->join("workgroups", "users.zugewiesen", "workgroups.id")
                     ->join("ratings", function ($join) {
                         $join->on("workgroups.id", "=", "ratings.workgroup");
                         $join->on('users.id', '=', 'ratings.user');
-                    })
-                    ->where('userlevel', 0)
+                    })->where('userlevel', 0)
                     ->avg('rating');
 
                 $ags = DB::table("workgroups")
@@ -304,15 +303,14 @@ class dashboardController
                     ->leftJoin("users", function ($join) {
                         $join->on("workgroups.id", "=", "users.zugewiesen");
                         $join->on('users.id', '=', 'ratings.user');
-                    })
-                    ->select('workgroups.name as wName', 'workgroups.groupLeader as leiter', 'workgroups.spots as plätze', DB::raw('COUNT(zugewiesen) as belegt'), DB::raw('AVG(rating) as avgRating'))
+                    })->select('workgroups.name as wName', 'workgroups.groupLeader as leiter', 'workgroups.spots as plätze', DB::raw('COUNT(zugewiesen) as belegt'), DB::raw('AVG(rating) as avgRating'))
                     ->groupBy('workgroups.name', 'workgroups.groupLeader', 'workgroups.spots')
                     ->orderBy('workgroups.name', 'asc')->get();
                 $parameters = ['students' => $students, "avgRating" => $avgRating, "ags" => $ags];
 
                 $sheet->loadView('partials.admin_Ergebnisse', $parameters);
             });
-        })->download('xlsx');;
+        })->download('xlsx');
         //return response()->download("../storage/app/Ergebnisse.xlsx", "Wahlergebnisse vom ".getdate()["month"]."_".getdate()["year"].".xlsx");
     }
 }

@@ -14,56 +14,64 @@
                 @include('alerts.admin_dashboard')
                 @include('alerts.admin_dashboard2')
                 <div class="top-buffer row">
-                    <div class="col-md-6 col-md-offset-3">
+                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                         <h1>Dashboard</h1>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-8 col-md-5 col-md-offset-3">
+                    <div class="col-sm-5 col-sm-offset-2 col-md-4 col-md-offset-3 col-xs-8">
                         @lang('content.admin_dash1'):
                     </div>
-                    <div class="col-sm-4 col-md-4 pull-right">
-                        {{$numberStudents}} @lang('content.admin_dash2')
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <div class="pull-right">
+                            {{$numberStudents}} @lang('content.admin_dash2')
+                        </div>
                     </div>
                 </div>
 
                 @if($noRating != 0)
                     <div id="noRatings" class=" row">
-                        <div class="col-sm-8 col-md-5 col-md-offset-3">
+                        <div class="col-sm-5 col-sm-offset-2 col-md-4 col-md-offset-3 col-xs-8">
                             @lang('content.admin_dash3'):
                         </div>
-                        <div class="col-sm-4 col-md-4 pull-right">
-                            {{$noRating}} @lang('content.admin_dash2')
+                        <div class="col-sm-3 col-md-2 col-xs-4">
+                            <div class="pull-right">
+                                {{$noRating}} @lang('content.admin_dash2')
+                            </div>
                         </div>
                     </div>
                 @endif
 
                 <div class="row">
-                    <div class="col-sm-8 col-md-5 col-md-offset-3">
+                    <div class="col-sm-5 col-sm-offset-2 col-md-4 col-md-offset-3 col-xs-8">
                         @lang('content.admin_dash4'):
                     </div>
                     <div id="status_field">
-                        <div class="col-sm-4 col-md-4 pull-right">
-                        @if($status=="open")
-                            <span class="glyphicon glyphicon-ok"></span> @lang('content.admin_dash5')
+                        <div class="col-sm-3 col-md-2 col-xs-4">
+                            <div class="pull-right">
+                                @if($status=="open")
+                                    <span class="icon icon-check"></span> @lang('content.admin_dash5')
                                 @else
-                                    <span class="glyphicon glyphicon-remove"></span> @lang('content.admin_dash6')
-                                        @endif
+                                    <span class="icon icon-cross"></span> @lang('content.admin_dash6')
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-8 col-md-5 col-md-offset-3">
+                    <div class="col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-3 col-xs-6">
                         @lang('content.admin_dash7'):
                     </div>
-                    <div id="rated" class="col-sm-4 col-md-4 pull-right">
-                        @if($rated==false)
-                            <span class="glyphicon glyphicon-remove"></span> @lang('content.admin_dash8')
-                                @else
-                                    <span class="glyphicon glyphicon-ok"></span> @lang('content.admin_dash9')
-                                        @endif
+                    <div id="rated" class="col-sm-4 col-md-2 col-xs-6">
+                        <div class="pull-right">
+                            @if($rated==false)
+                                <span class="icon icon-cross"></span> @lang('content.admin_dash8')
+                            @else
+                                <span class="icon icon-check"></span> @lang('content.admin_dash9')
+                            @endif
+                        </div>
                     </div>
                 </div>
 
@@ -116,7 +124,7 @@
                     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                         <button type="button" class="btn btn-primary btn-block icon icon-cross" data-toggle="modal"
                                 data-target="#Wahlgang_beenden_Modal"> @lang('fields.endElect1')
-                                <br> <span id="achtung"> (@lang('fields.endElect2'))</span></button>
+                            <br> <span id="achtung"> (@lang('fields.endElect2'))</span></button>
                     </div>
                 </div>
                 {{ csrf_field() }}

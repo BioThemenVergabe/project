@@ -6,11 +6,7 @@
 @endsection
 
 @section('JS')
-<script>
-    $(function() {
-        alert("Hallo");
-    });
-</script>
+
 @endsection
 
 @section('content')

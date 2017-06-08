@@ -151,6 +151,33 @@ $(function () {
        }
     });
 
+    $('form[name=edit] [type="password"][name*="password"]').on('change', function() {
+        var t;
+        switch($(this).attr('name')) {
+            case "password":
+                t = $(this).parents('form').find('input[name=password_confirmation]');
+                break;
+            case "password_confirmation":
+                t = $(this).parents('form').find('input[name=password]');
+                break;
+        }
+        if(t.val() != $(this).val() || $(this).val().length < 8)
+        {
+            $('.has-success').removeClass('has-success');
+            t.parent().addClass('has-error');
+            $(this).parent().addClass('has-error');
+        } else {
+            $('.has-error').removeClass('has-error');
+            t.parent().addClass('has-success');
+            $(this).parent().addClass('has-success');
+        }
+    });
+
+    $('form[name=edit] [type=submit]').on('click', function(e) {
+        e.preventDefault();
+
+    });
+
 
 });
 

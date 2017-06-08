@@ -10,6 +10,7 @@ use App\Option;
 use App\Rating;
 use App\Workgroup;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -82,12 +83,12 @@ class UserController extends Controller
             return view('edit_user')->with([
                 'user' => Auth::user(),
                 'options' => Option::find(1),
-                ]);
+            ]);
         else
             return view('edit_user')->with([
                 'user' => User::find($id),
                 'options' => Option::find(1),
-                ]);
+            ]);
     }
 
     /**
@@ -99,14 +100,22 @@ class UserController extends Controller
      */
     public function update(Request $request, Validator $validator)
     {
+
+        $validator = Validator::make($request->all(), [
+            'password' => 'confirmed|min:8|different:passwordold',
+            'password_confirmation' => 'required_with:password|min:8',
+            'email' => 'unique:users|email',
+            'matrnr' => 'unique:users',
+        ]);
+
         $user = User::find(intval(Auth::user()->id));
 
         if ($request->name != $user->name && $request->name != "")
             $user->name = $request->name;
         if ($request->lastname != $user->lastname && $request->lastname != "")
             $user->lastname = $request->lastname;
-        if ($request->matnr != $user->matrnr && $request->matnr != "")
-            $user->matrnr = $request->matnr;
+        if ($request->matrnr != $user->matrnr && $request->matrnr != "")
+            $user->matrnr = $request->matrnr;
         if ($request->email != $user->email && $request->email != "")
             $user->email = $request->email;
 
@@ -114,13 +123,12 @@ class UserController extends Controller
          * if the user want's to change his password.
          */
 
-        if ($request->password != "" || $validator->fails()) {
+        if ($request->password != "" && Hash::check($request->passwordold, $user->password)) {
 
-            if (bcrypt($request->passwordold) != $user->password)
-                return redirect('/profile/edit');
+            if ($validator->fails())
+                return redirect('/profile/edit')->withErrors($validator)->withInput();
 
-            if ($request->password != $user->password)
-                $user->password = bcrypt($request->password);
+            $user->password = Hash::make($request->password);
 
         }
 
@@ -157,6 +165,16 @@ class UserController extends Controller
 
         $user->user_picture = $imgName;
         $user->update();
+    }
+
+    /**
+     * Checks if entries in user-table, which has to be unique are unique.
+     *
+     * @param Request $request
+     */
+    public function checkUniqueCols(Request $request)
+    {
+
     }
 
 }

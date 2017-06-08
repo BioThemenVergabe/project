@@ -227,6 +227,11 @@ table {
     background-color: white;
 }
 
+.welcome {
+    padding-top: 1em;
+    padding-bottom: 4em;
+}
+
 #close_open {
     font-style: oblique;
     text-decoration:underline;
@@ -267,11 +272,11 @@ table {
     padding-right: 0;
 }
 
-.glyphicon-ok{
+span.icon-check{
     color:green
 }
 
-.glyphicon-remove{
+span.icon-cross{
     color:red
 }
 

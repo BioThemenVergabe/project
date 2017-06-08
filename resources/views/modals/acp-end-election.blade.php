@@ -16,7 +16,7 @@
                         <p>
                             @lang('content.modal_endel3')
                         </p>
-                        <p><a href="/Ergebnisse.html" download>@lang('fields.downloadResults')</a></p>
+                        <p><a href="/admin_download_results">@lang('fields.downloadResults')</a></p>
                     @endif
                     <p>
 

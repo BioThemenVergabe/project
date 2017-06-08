@@ -25,7 +25,6 @@ class CreateWorkgroupsTable extends Migration
             $table->timestamps();
         });
 
-
         DB::statement('ALTER TABLE `users` ADD CONSTRAINT `users_workgroups_foreign` foreign key (`zugewiesen`) references `workgroups` (`id`)');
     }
 

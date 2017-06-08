@@ -137,6 +137,24 @@ function deleteStudentTrigger(){
 }
 
 $(document).ready(function() {
+    //submit eventHandler, für student_bearbeiten wenn Änderung gespeichert werden soll
+    $("#sb_form").submit(function (e) {
+       e.preventDefault();
+        $.post( "/admin_studenten",$("#sb_form").serialize(), function( data ) {
+            if(data==="true"){//wenn speichern erfolgreich
+                window.location = "/admin_studenten";
+            }else if (data.error=="matrnr"){
+                alert("Der Student "+data.name+" besitzt diese Matrikelnummer bereits. Eine Matrikelnummer muss eindeutig sein. Deine Eingabe wurde Rückgängig gemacht!");
+                $("#sb_form")[0].reset();
+            }else if (data.error=="email"){
+                alert("Der Student "+data.name+" besitzt diese Email Adresse bereits. Eine Email Adresse muss eindeutig sein. Deine Eingabe wurde Rückgängig gemacht!");
+                $("#sb_form")[0].reset();
+
+            }
+        });
+    });
+
+
 
     //submit eventHandler, für admin_ag wenn der speicher Button geklickt wird
     $("#AG_form").submit(function(e) {
@@ -278,8 +296,8 @@ $(document).ready(function() {
 
     //Per AJAX AGs neu laden, entsprechend zu Suchanfrage
     $("#AG_search_button").click(function () {
-        var query = $("#AG_search_query").val();
-        $("#AG_table").load("admin_AG_search?q="+query , function(){
+        var query = encodeURI($("#AG_search_query").val());//sonderzeichen maskieren
+        $("#AG_table").load("admin_AG_search?q="+query, function(){
             update();
             //onclick muss für neu geladene Tabelle neu gesetzt werden
             $('.löschButton').click(function () {
@@ -297,7 +315,7 @@ $(document).ready(function() {
 
     //Per AJAX Studenten neu laden, entsprechend zu Suchanfrage
     $("#Stud_search_button").click(function () {
-        var query = $("#Stud_search_query").val();
+        var query = encodeURI($("#Stud_search_query").val());//sonderzeichen maskieren
         $("#Stud_table").load("admin_studenten_search?q="+query, function () {
             //Anzahl Studenten updaten
             $('#Stud_Anzahl').html($("#Stud_table tr").length -1);
@@ -315,6 +333,26 @@ $(document).ready(function() {
 
 
     //Dashboard-buttons:
+
+    //speichern des geänderten Welcome Textes
+    $("#change_welcome").click(function () {
+        var csrf = $("[name=_token]");
+        var language = "de";//je nachdem welche sprache, wird entweder der deutsche oder englische Text in der DB geändert
+        if($("span.lang").hasClass("lang-en")){
+            language = "en";
+        }
+        var daten = {_token:csrf[0].value , lang: language, text:$("#begruessung").val()};
+        $.ajax({
+            type: "POST",
+            url: "/admin_welcome_save",
+            data: daten
+        });
+    });
+
+    //downloaden der ergebnisse
+    $("#Ergebnisse_download").click(function () {
+        window.location = "/admin_download_results";
+    });
 
     //falls es noch Studenten ohne Wahlabgabe gibt, soll der Button zum  Zuweisung starten disabled sein
     if ($("#noRatings").length){

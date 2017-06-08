@@ -83,9 +83,23 @@ class studentController
     {
         $student = new studentModel($request->id, $request->name, $request->lastname, $request->matnr, $request->email);
 
+        $matrnrUnique = DB::table("users")->where('matrnr',$student->getMatrnr())->get();
+        if(sizeof($matrnrUnique)>0 && $matrnrUnique[0]->id != $student->getId()){
+            return response()->json([
+                'error' => 'matrnr',
+                'name' => $matrnrUnique[0]->name ." ".$matrnrUnique[0]->lastname
+            ]);
+        }
+        $emailUnique = DB::table("users")->where('email',$student->getEmail())->get();
+        if(sizeof($emailUnique)>0 && $emailUnique[0]->id != $student->getId()) {
+            return response()->json([
+                'error' => 'email',
+                'name' => $emailUnique[0]->name ." ".$emailUnique[0]->lastname
+            ]);
+        }
         DB::table("users")->where('id', $student->getId())->update(['name' => $student->getName(), 'lastname' => $student->getLastname(), 'matrnr' => $student->getMatrnr(), 'email' => $student->getEmail()]);
 
-        return $this->showStudents();
+        return "true";
     }
 
     //nachdem das Löschen bestätigt wurde, wird der ausgewählte student hier aus der  DB gelöscht. Der nutzer wird auf admin_studenten zurückgeleitet

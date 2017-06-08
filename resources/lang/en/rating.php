@@ -15,4 +15,8 @@ return [
 
     'howTo' => 'How to make your Rating',
     'how' => "Simply drag and drop the elements according to your own preferences.",
+
+    'closed' => "Rating process closed!",
+    'closedMsg' => "Rating process as been closed. You cannot change your rating from this point on.",
+
 ];

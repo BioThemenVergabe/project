@@ -5,6 +5,14 @@
 <a href="/wahl" class="btn btn-default btn-sm icon icon-line-graph"><span class="hidden-xs"> Zur Wahl</span></a>
 @endsection
 
+@section('JS')
+<script>
+    $(function() {
+        alert("Hallo");
+    });
+</script>
+@endsection
+
 @section('content')
 
 @include('partials.header')
@@ -29,6 +37,7 @@
             <div class="row">
 
                 @include('auth.forms.edit')
+
 
             </div>
         </div>

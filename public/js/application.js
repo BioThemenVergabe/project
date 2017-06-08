@@ -9,6 +9,11 @@ function calcSum() {
 
 $(function () {
 
+    if(sessionStorage.getItem('modal') != "") {
+        $('#'+sessionStorage.getItem('modal')).modal();
+        sessionStorage.removeItem('modal');
+    }
+
     var accepted = getCookie('cookieAccepted');
 
     if (accepted != 1) {
@@ -108,8 +113,46 @@ $(function () {
         }
     });
 
-})
-;
+    $('input:required').on('input change', function() {
+        if($(this).val() != "") {
+            $(this).parent().removeClass('has-error');
+            $(this).parent().addClass('has-success');
+        } else {
+            $(this).parent().removeClass('has-success');
+            $(this).parent().addClass('has-error');
+        }
+    })
+
+    $('form[name] input[type=submit]').on('click', function(e) {
+        e.preventDefault();
+        sessionStorage.setItem('modal',$(this).parents('form').attr('name'));
+        $(this).parents('form').submit();
+    });
+
+    $('form[name=register] [type="password"][name*="password"]').on('change', function() {
+        var t;
+       switch($(this).attr('name')) {
+           case "password":
+               t = $(this).parents('form').find('input[name=password_confirmation]');
+               break;
+           case "password_confirmation":
+               t = $(this).parents('form').find('input[name=password]');
+               break;
+       }
+       if(t.val() != $(this).val())
+       {
+           $('.has-success').removeClass('has-success');
+           t.parent().addClass('has-error');
+           $(this).parent().addClass('has-error');
+       } else {
+           $('.has-error').removeClass('has-error');
+           t.parent().addClass('has-success');
+           $(this).parent().addClass('has-success');
+       }
+    });
+
+
+});
 
 function getCookie(cname) {
     var name = cname + "=";

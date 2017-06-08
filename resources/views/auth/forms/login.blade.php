@@ -44,13 +44,19 @@
             @lang('fields.login')
         </button>
 
+        @if($options->opened == 1)
+
         <a class="btn btn-link" data-action="register" href="{{ url('/register') }}">
             @lang('fields.register')
         </a>
 
+        @endif
+<!--
         <a class="btn btn-link" data-action="psw-reset" href="{{ url('/password/reset') }}">
             @lang('fields.forgot')
         </a>
+        -->
+
     </div>
 </div>
 

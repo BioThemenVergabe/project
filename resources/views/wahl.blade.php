@@ -58,7 +58,31 @@
                                         @foreach($ags as $ag)
                                             @if($ag->id == $rating->workgroup)
                                                 <div class="bs-callout">
-                                                    <label>{{ $ag->name }}</label>
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-md-6">
+                                                                <label>{{ $ag->name }}</label>
+                                                            </div>
+                                                            <div class="col-xs-12 col-md-6">
+                                                                <div class="pull-right">
+                                                                    {{ $ag->date }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-md-6">
+                                                                {{ $ag->groupLeader }}
+                                                            </div>
+                                                            <div class="col-xs-12 col-md-6">
+                                                                <div class="hidden-xs hidden-sm pull-right">
+                                                                    {{ $ag->spots }} @lang('fields.spots')
+                                                                </div>
+                                                                <div class="hidden-md hidden-lg">
+                                                                    {{ $ag->spots }} @lang('fields.spots')
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <input type="hidden" name="ag[]" value="{{ $ag->id }}">
                                                 </div>
                                             @endif
@@ -67,7 +91,31 @@
                                 @else
                                     @foreach($ags as $ag)
                                         <div class="bs-callout">
-                                            <label>{{ $ag->name }}</label>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <label>{{ $ag->name }}</label>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <div class="pull-right">
+                                                            {{ $ag->date }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-6">
+                                                        {{ $ag->groupLeader }}
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <div class="hidden-xs hidden-sm pull-right">
+                                                            {{ $ag->spots }} @lang('fields.spots')
+                                                        </div>
+                                                        <div class="hidden-md hidden-lg">
+                                                            {{ $ag->spots }} @lang('fields.spots')
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <input type="hidden" name="ag[]" value="{{ $ag->id }}">
                                         </div>
                                     @endforeach

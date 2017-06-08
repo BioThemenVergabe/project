@@ -15,4 +15,6 @@ return [
 
     'howTo' => 'Nutzungshinweis',
     'how' => "Einfach die Elemente Ihrer gew&uuml;nschten Pr&auml;ferenz anordnen.",
+    'closed' => "Wahlvorgang wurde geschlossen!",
+    'closedMsg' => "Das Wahlverfahren wurde geschlossen. Es k&ouml;nnen nun keine weiteren Veränderungen vorgenommen werden.",
 ];

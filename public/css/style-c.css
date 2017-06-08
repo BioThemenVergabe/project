@@ -285,3 +285,6 @@ table.voting td > .progress-bar-zero:after {
   background-position: center center;
   background-size: cover;
 }
+.btn-danger {
+  color: #ffffff !important;
+}

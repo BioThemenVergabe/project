@@ -110,6 +110,13 @@
                             @lang('fields.editProfile')</a>
                     </div>
                 </div>
+                @if($options->opened == 0)
+                <div class="bs-callout bs-info">
+                    <h4>@lang('rating.closed')</h4>
+                    <p>@lang('rating.closedMsg')</p>
+                </div>
+                @endif
+
             </div>
             <div class="col-md-2 hidden-xs hidden-sm">
                 <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default">

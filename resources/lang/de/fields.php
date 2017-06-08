@@ -6,6 +6,7 @@ return [
      * all
      */
 
+    'accept' => 'Akzeptieren',
     'ag' => 'Arbeitsgruppen',
     'back' => 'Zur&uuml;ck',
     'cancel' => 'Abbrechen',
@@ -76,5 +77,14 @@ return [
     'square' => "Quadratische Bilder",
     'upload' => "Benutzerbild hochladen",
     'yourRating' => "Deine Bewertung",
+
+    /*
+     * Cookie
+     */
+
+    'cookie' => "Cookiewarnung",
+    'cookieMessage' => "Diese Seite verwendet Cookies. Cookies sind keine Artefakte in Ihrem Browser, welche uns erlauben zu erkennen, wenn Sie wieder auf diese Seite kommen.",
+    'whatCookies' => "Cookies werden auf dieser Seite ausschließlich zur Nutzerwiedererkennung verwendet, nicht f&uuml;r Marketingzwecke.",
+    'closeOnAccept' => "Sie m&uuml;ssen, um unseren Service in anspruch nehmen zu k&ouml;nnen das Setzen von Cookies akzeptieren.<br>Dieses Fenster wird sich im Anschluss schlie&szlig;en.",
 
 ];

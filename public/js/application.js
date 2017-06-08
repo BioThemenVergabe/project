@@ -9,6 +9,15 @@ function calcSum() {
 
 $(function () {
 
+    var accepted = getCookie('cookieAccepted');
+
+    if (accepted != 1) {
+        $('#cookieMessage.modal').modal({
+            keyboard: false,
+            backdrop: 'static'
+        });
+    }
+
     $('[data-target=range]').html(function () {
         return $(this).parents('tr').find('input[type=range]').val();
     });
@@ -70,27 +79,12 @@ $(function () {
         window.location.href = $(location).attr('protocol') + "//" + $(location).attr('hostname') + ":" + $(location).attr('port') + "/redirect";
     });
 
-    $('[data-dismiss]').on('click', function () {
-        var target = $('#' + $(this).data('dismiss'));
-        target.addClass('hidden');
-        if (target.hasClass('hidden')) {
-            var d = new Date();
-            d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
-            var expires = "expires=" + d.toUTCString();
-            document.cookie = "cookieAccepted=1;" + expires + ";path=/";
-
-            $('[type=submit].disabled, .btn-link.disabled').removeClass('disabled').attr('disabled', false);
-
-        }
+    $('#accept[data-dismiss]').on('click', function () {
+        var d = new Date();
+        d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = "cookieAccepted=1;" + expires + ";path=/";
     });
-
-    var accepted = getCookie('cookieAccepted');
-
-    if (accepted == 1) {
-        $('#cookieWarning').addClass('hidden');
-    } else {
-        $('[type=submit],.btn-link').addClass('disabled').attr('disabled', true);
-    }
 
     $('form[name=wahl] input[type=submit]').on('click', function (e) {
         var values = $('.ag-values');

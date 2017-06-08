@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'accept' => 'Accept',
     'ag' => 'Working groups',
     'back' => 'Back',
     'username' => 'Username',
@@ -86,5 +87,16 @@ return [
     'square' => "Please add only square images.",
     'upload' => "Upload your userpic",
     'yourRating' => "Your Rating",
+
+
+    /*
+     * Cookie
+     */
+
+    'cookie' => "Cookiewarning",
+    'cookieMessage' => "This Application uses cookies. Cookies are small artifacts placed in your browser, which allow us to recognize your visit.",
+    'whatCookies' => "Cookies are only used to recognize your visit, not for marketing uses.",
+    'closeOnAccept' => "You have to accept this message to be able to use our service. This window will close itself afterwards.",
+
 
 ];

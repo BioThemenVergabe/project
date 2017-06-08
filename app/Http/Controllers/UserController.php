@@ -104,8 +104,8 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'password' => 'confirmed|min:8|different:passwordold',
             'password_confirmation' => 'required_with:password|min:8',
-            'email' => 'unique:users|email',
-            'matrnr' => 'unique:users',
+            'email' => 'uniqueUsers|email',
+            'matrnr' => 'uniqueUsers',
         ]);
 
         $user = User::find(intval(Auth::user()->id));
@@ -123,10 +123,10 @@ class UserController extends Controller
          * if the user want's to change his password.
          */
 
-        if ($request->password != "" && Hash::check($request->passwordold, $user->password)) {
+        if ($validator->fails())
+            return redirect('/profile/edit')->withErrors($validator)->withInput();
 
-            if ($validator->fails())
-                return redirect('/profile/edit')->withErrors($validator)->withInput();
+        if ($request->password != "" && Hash::check($request->passwordold, $user->password)) {
 
             $user->password = Hash::make($request->password);
 

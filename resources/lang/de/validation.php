@@ -12,7 +12,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-
+    'unique_users'          => ':attribute wird bereits durch einen anderen benutzt.',
     'accepted'             => ':attribute muss akzeptiert werden.',
     'active_url'           => ':attribute ist keine gültige URL.',
     'after'                => ':attribute muss nach dem :date liegen.',

@@ -79,6 +79,9 @@ class UserController extends Controller
      */
     public function edit($id = null)
     {
+        if(Option::find(1)->opened == 0)
+            return redirect()->back();
+
         if (is_null($id))
             return view('edit_user')->with([
                 'user' => Auth::user(),

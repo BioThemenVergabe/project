@@ -98,18 +98,15 @@ class UserController extends Controller
      * @param  \Illuminate\Validation\Validator $validator
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Validator $validator)
+    public function update(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'password' => 'confirmed|min:8|different:passwordold',
             'password_confirmation' => 'required_with:password|min:8',
             'email' => 'uniqueUsers|email',
             'matrnr' => 'uniqueUsers',
         ]);
-
         $user = User::find(intval(Auth::user()->id));
-
         if ($request->name != $user->name && $request->name != "")
             $user->name = $request->name;
         if ($request->lastname != $user->lastname && $request->lastname != "")
@@ -118,22 +115,15 @@ class UserController extends Controller
             $user->matrnr = $request->matrnr;
         if ($request->email != $user->email && $request->email != "")
             $user->email = $request->email;
-
         /*
          * if the user want's to change his password.
          */
-
         if ($validator->fails())
             return redirect('/profile/edit')->withErrors($validator)->withInput();
-
         if ($request->password != "" && Hash::check($request->passwordold, $user->password)) {
-
             $user->password = Hash::make($request->password);
-
         }
-
         $user->save();
-
         return redirect('/dashboard');
     }
 
@@ -155,26 +145,12 @@ class UserController extends Controller
      */
     public function storeUpload(Request $request)
     {
-        Log::info('Filename: ' . $request->file('file')->getClientOriginalName());
-
         $user = User::find(Auth::user()->id);
-
         $img = $request->file('file');
         $imgName = time() . $user->name . $user->lastname . "." . $img->getClientOriginalName();
         $img->move(public_path('img/uploads'), $imgName);
-
         $user->user_picture = $imgName;
         $user->update();
-    }
-
-    /**
-     * Checks if entries in user-table, which has to be unique are unique.
-     *
-     * @param Request $request
-     */
-    public function checkUniqueCols(Request $request)
-    {
-
     }
 
 }

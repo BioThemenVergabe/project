@@ -6,6 +6,9 @@
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
+    "color-terminal": "0.0.3-4",
+    "grunt": "^1.0.1",
+    "grunt-phpdoc": "^1.0.0",
     "gulp": "^3.9.1",
     "jquery": "^3.1.0",
     "laravel-elixir": "^6.0.0-14",

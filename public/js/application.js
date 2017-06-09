@@ -23,26 +23,6 @@ $(function () {
         });
     }
 
-    $('[data-target=range]').html(function () {
-        return $(this).parents('tr').find('input[type=range]').val();
-    });
-
-    $('[type=range]').on('input change', function () {
-        var ag = $(this).attr('id');
-        $(this).parents('tr').find('[data-target=range]').html($(this).val());
-        $('tr[data-row=' + ag + ']').find('.copyOf').val(parseInt($(this).val()));
-        $('[data-row-copy=' + ag + ']').find('input[data-copy]').val(parseInt($(this).val()));
-        calcSum();
-    });
-
-    $('[type=range][data-copy]').on('input change', function () {
-        var ag = $(this).data('copy');
-        $('#' + ag).val($(this).val());
-        $('tr[data-row=' + ag + ']').find('[data-target=range]').html($(this).val());
-        $('tr[data-row=' + ag + ']').find('.copyOf').val(parseInt($(this).val()));
-        calcSum();
-    });
-
     $('.copyOf').on('input change', function () {
         if (parseInt($(this).val()) > $(this).attr('max'))
             $(this).val(parseInt($(this).attr('max')));

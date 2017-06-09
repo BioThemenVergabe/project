@@ -97,7 +97,7 @@
 
                 <input type="reset" class="btn btn-default" value="@lang('fields.reset')">
 
-                <a href="{{ URL::previous() }}" data-dismiss="modal">
+                <a href="{{ url('/dashboard') }}" data-dismiss="modal">
                     <div class="btn btn-link">
                         @lang('fields.back')
                     </div>

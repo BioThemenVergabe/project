@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +28,6 @@
 @include('footer')
 
 <!-- Scripts -->
-<script src="/js/app.js"></script>
 <script src="{{ asset('/js/application.js') }}"></script>
 <script src="{{ asset('/js/functions.js') }}"></script>
 

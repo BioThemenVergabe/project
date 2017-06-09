@@ -46,7 +46,13 @@
             <hr class="hr-divider">
 
             <form method="post" name="wahl" action="{{ url('/wahl') }}">
+
                 {{ csrf_field() }}
+
+                <div class="pull-right">
+                    <input type="submit" class="btn btn-primary icon icon-save" value="@lang('fields.save')">
+                    <input type="reset" class="btn btn-danger icon icon-cross" value="@lang('fields.reset')">
+                </div>
 
                 <div class="container-fluid">
                     <div class="row">

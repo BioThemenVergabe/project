@@ -41,6 +41,11 @@
                         </button>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        @lang('content.ag3'): <span id="spots_anzahl">{{$sumSpots}}</span>
+                    </div>
+                </div>
 
                 <br>
 
@@ -114,14 +119,14 @@
 
 
     @if($numberRatings!=0)
-    <script>
-        //alle Buttons deaktivieren
-        document.getElementById("hinzufügen").disabled = true;
-        var buttons = document.getElementsByClassName("löschButton");
-        for(i=0; i<buttons.length;i++){
-            buttons[i].disabled = true;
-        }
-    </script>
+        <script>
+            //alle Buttons deaktivieren
+            document.getElementById("hinzufügen").disabled = true;
+            var buttons = document.getElementsByClassName("löschButton");
+            for (i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+            }
+        </script>
     @endif
     <!--Speicher-Modal-->
     @include('modals.acp-save-ag')

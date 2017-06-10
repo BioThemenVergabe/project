@@ -15,14 +15,18 @@ class workgroupController{
         $groups= DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')->orderBy('name', 'asc')->get();
         $numberGroups = DB::table("workgroups")->count();
         $ratings = DB::table("ratings")->get();
-        return view('admin_AG', ["groups"=>$groups, "numberGroups"=>$numberGroups, "numberRatings"=> sizeof($ratings)]);
+        $sumSpots = DB::table("workgroups")->sum("spots");
+
+        return view('admin_AG', ["groups"=>$groups, "numberGroups"=>$numberGroups, "numberRatings"=> sizeof($ratings), "sumSpots" => $sumSpots]);
     }
 
     public function deleteGroup(Request $request){
         DB::table("workgroups")->where('id',$request->id)->delete();
 
+        $ratings = DB::table("ratings")->get();
         $groups= DB::table("workgroups")->select('id','name','groupLeader', 'spots', 'date')->orderBy('name', 'asc')->get();
-        return view('ajax.admin_AG_table', ["groups"=>$groups]);
+        return view('ajax.admin_AG_table', ["groups"=>$groups, "numberRatings"=> sizeof($ratings)]);
+
     }
 
     public function saveGroups(Request $request){
@@ -53,7 +57,10 @@ class workgroupController{
                     ->update(["name"=>$names[$i], "groupLeader"=>$leaders[$i],"spots"=>$spotss[$i],"date"=>$dates[$i]]);
             }
         }
-        return json_encode($newIDs);
+
+        $sumSpots = intval(DB::table("workgroups")->sum("spots"));
+        $data = ["IDs"=>$newIDs, "sumSpots" =>$sumSpots];
+        return json_encode($data);
     }
 
     public function searchGroups(Request $request){

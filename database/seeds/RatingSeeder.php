@@ -119,7 +119,7 @@ class RatingSeeder extends Seeder
     function run()
     {
         //$this->createRandomRatings();
-        //$this->createValideRatings();
-        $this->createRealRatings();
+        $this->createValideRatings();
+        //$this->createRealRatings();
     }
 }

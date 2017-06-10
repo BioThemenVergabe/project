@@ -10,8 +10,10 @@ function calcSum() {
 $(function () {
 
     if(sessionStorage.getItem('modal') != "") {
-        $('#'+sessionStorage.getItem('modal')).modal();
+        var a = sessionStorage.getItem('modal');
+        $('#'+a).modal();
         sessionStorage.removeItem('modal');
+        $('form:not([name="'+a+'"])').find('.has-error').removeClass('has-error');
     }
 
     var accepted = getCookie('cookieAccepted');

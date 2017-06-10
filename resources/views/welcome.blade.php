@@ -46,7 +46,11 @@
     </section>
 
     @include('modals.forgot')
+
+@if($options->opened == 1)
     @include('modals.register')
+@endif
+
     @include('modals.cookie')
 
 @endsection

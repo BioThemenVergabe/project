@@ -132,6 +132,7 @@
 
             <div id="listRating">
                 @if($ratings->count() == 0)
+                @foreach($ags as $ag)
                 <div class="bs-callout">
                     <div class="container-fluid">
                         <div class="row">
@@ -159,6 +160,7 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
                 @else
                 @foreach($ratings as $key => $rating)
                 @foreach($ags as $ag)

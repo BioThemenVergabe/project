@@ -15,6 +15,7 @@ return [
     'ag2' => '<em>Info:</em>
                <i>As soon as a student has submitted a rating, no workgroup can be deleted, nor is it possible to add new workgroups.
                You can make changes to the existing ones though. To add/delete groups, you have to delete all ratings (in the menu "end rating-process")</i>',
+    'ag3' => 'Sum of available spots',
     'heading_stud' => 'Students overview',
     'stud1' => 'Number of students',
     'heading_stud_be' => 'Edit profile',

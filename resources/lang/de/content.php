@@ -15,6 +15,7 @@ return [
     'ag2' => '<em>Hinweis:</em>
               <i>Sobald ein Student eine Bewertung abgegeben hat, können keine AGs gelöscht werden oder neue hinzugefügt werden,
               die Bestehenden können jedoch verändert werden. Um AGs hinzuzufügen/löschen müssen alle Bewertungen gelöscht werden (Im Menü "Wahlgang beenden")</i>',
+    'ag3' => 'Summe verfügbarer Plätze',
     'heading_stud' => 'Studenten Übersicht',
     'stud1' => 'Anzahl Studenten',
     'heading_stud_be' => 'Profil bearbeiten',

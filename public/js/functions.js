@@ -7,7 +7,20 @@ function anhaengen(){
     });
 }
 function update(){
+    //Anzahl AGs updaten
     $('#AG_anz').html($("#AG_table tr").length -1);
+
+    //Summe verfügbarer Plätze updaten
+    var summe = 0;
+    $("input.pl").each(function () {
+       summe+=parseInt($(this).val());
+    });
+    $('#spots_anzahl').html(summe);
+
+    //onclick muss für neu geladene Tabelle neu gesetzt werden
+    $('.löschButton').click(function () {
+        trigger = this;
+    });
 }
 
 //wenn Wahl geöffnet oder geschlossen wird, wird dies an die DB geschickt und der Status geändert
@@ -28,10 +41,6 @@ function deleteTrigger(){
     if(ID !== ""){
         $("#AG_table").load("admin_AG_delete?id="+ID , function(){
             update();
-            //onclick muss für neu geladene Tabelle neu gesetzt werden
-            $('.löschButton').click(function () {
-                trigger = this;
-            });
         });
         //ansonsten wurde die AG gerade erst eingegeben, und wird jetzt einfach aus dem DOM gelöscht
     }else{
@@ -80,6 +89,7 @@ function checkSave(){
         //aktueller Stand des DOM wird in DB gespeichert
         $("#AG_form").submit();
         $('#speicherModal').modal('toggle');
+        update();// Anzahl AGs und Spots updaten
 
     }else if(nameUnique==false) {
         $('#ag_alert2').show();
@@ -163,8 +173,10 @@ $(document).ready(function() {
             type: "POST",
             url: "/admin_AG_save",
             data: $("#AG_form").serialize(), // serializes the form's elements.
-            success: function(data){// die IDs der neu eingegebenen AGs werden in die jeweiligen Felder eingetragen
-                var newIDs = JSON.parse(data);//data ist ein Array mit den neuen IDs und den zugehörigen namen
+            success: function(data){
+                var json = JSON.parse(data);
+                var newIDs = json.IDs;//data ist ein Array mit den neuen IDs und den zugehörigen namen
+                // die IDs der neu eingegebenen AGs werden in die jeweiligen Felder eingetragen
                 $.each(newIDs,function() {
                     var jsonName=this.name;
                     var jsonID = this.id;
@@ -176,6 +188,7 @@ $(document).ready(function() {
                         }
                     });
                 });
+                //$("#spots_anzahl").html(json.sumSpots);
             }
         });
     });
@@ -299,10 +312,6 @@ $(document).ready(function() {
         var query = encodeURI($("#AG_search_query").val());//sonderzeichen maskieren
         $("#AG_table").load("admin_AG_search?q="+query, function(){
             update();
-            //onclick muss für neu geladene Tabelle neu gesetzt werden
-            $('.löschButton').click(function () {
-                trigger = this;
-            });
         });
     });
     //wenn Enter gedrückt wird soll anfrage auch geschickt werden

@@ -25,20 +25,19 @@
     <section id="welcomemsg">
         <div class="container welcome">
             <div class="row">
-
                 <h1>@lang('fields.welcome')</h1>
                 @if(app()->getLocale() == "de")
-                    <p class="col-xs-12">{{ $options->welcomeDE }}</p>
+                    <p id="welcome_text" class="col-xs-12">{{ $options->welcomeDE }}</p>
                 @else
-                    <p class="col-xs-12">{{ $options->welcomeEN }}</p>
+                    <p id="welcome_text" class="col-xs-12">{{ $options->welcomeEN }}</p>
                 @endif
             </div>
             @if($options->opened ==0)
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="bs-callout bs-info">
+                        <div class="bs-callout bs-warning">
                             <h4>@lang('rating.closed')</h4>
-                            <p>@lang('rating.closedMsg')</p>
+                            <p>@lang('rating.closedMsg2')</p>
                         </div>
                     </div>
                 </div>

@@ -141,7 +141,7 @@ class dashboardController
                     ->where("workgroups.id", $workgroup)
                     ->groupBy('workgroups.name')
                     ->get()[0]->belegt;
-                //Log::info("---------------Die AG:".$workgroup ." wurde belegt von:".$plätzeBelegt);
+                //Log::info("---------------Die AG:".$workgroup ." wurde bereits belegt von ".$plätzeBelegt." Studenten");
                 $plätze = $plätzeGesamt - $plätzeBelegt;
 
                 //Falls Anzahl der Bewertungen <= Plätze-> alle zuweisen
@@ -201,7 +201,7 @@ class dashboardController
                             }
                             $students->forget($index);
                             unset($ratedStudentsObject[key($ratedStudentsObject)]);
-
+                            //Log::info('Forgot the student:' . $ratedStudentObject->id .". Es sind noch ".sizeof($students). " zu verteilen \n");
                             $maxPrio = max(array_column($ratedStudentsObject, "priorität"));
                             $plätze--;
                         }
@@ -212,6 +212,7 @@ class dashboardController
                             foreach ($students as $student) {
                                 if ($ratedStudentObject->id == $student->id) {
                                     $student->priorität++;
+                                    //Log::info('Die Priorität von student:' . $ratedStudentObject->id ." wurde um eins erhöht. Priorität ist jetzt: ".$student->priorität);
                                 }
                             }
                         }
@@ -220,6 +221,7 @@ class dashboardController
             }
             //Wenn alle studenten zugewiesen worden, kann abgebrochen werden.
             if (sizeof($students) == 0) {
+                //Log::info("-------BREAK!!!");
                 break;
             }
         }
@@ -306,8 +308,8 @@ class dashboardController
                     })->select('workgroups.name as wName', 'workgroups.groupLeader as leiter', 'workgroups.spots as plätze', DB::raw('COUNT(zugewiesen) as belegt'), DB::raw('AVG(rating) as avgRating'))
                     ->groupBy('workgroups.name', 'workgroups.groupLeader', 'workgroups.spots')
                     ->orderBy('workgroups.name', 'asc')->get();
-                $parameters = ['students' => $students, "avgRating" => $avgRating, "ags" => $ags];
 
+                $parameters = ['students' => $students, "avgRating" => $avgRating, "ags" => $ags];
                 $sheet->loadView('partials.admin_Ergebnisse', $parameters);
             });
         })->download('xlsx');

@@ -106,7 +106,7 @@
 
                 <div class="form-group row">
                     <div class="col-xs-12 hidden-md hidden-lg">
-                        <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default">
+                        <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default disabled" disabled>
                             @lang('fields.editProfile')</a>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
 
             </div>
             <div class="col-md-2 hidden-xs hidden-sm">
-                <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default">
+                <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default disabled" disabled>
                     @lang('fields.editProfile')</a>
             </div>
 

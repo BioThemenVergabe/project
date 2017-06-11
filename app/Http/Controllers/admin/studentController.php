@@ -25,13 +25,12 @@ class studentController
 
         } else {
             $students = DB::table("users")
-                ->join("workgroups", "users.zugewiesen", "workgroups.id")
-                ->join("ratings", function ($join) {
+                ->leftJoin("workgroups", "users.zugewiesen", "workgroups.id")
+                ->leftJoin("ratings", function ($join) {
                     $join->on("workgroups.id", "=", "ratings.workgroup");
                     $join->on('users.id', '=', 'ratings.user');
 
-                })
-                ->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'ratings.rating as rating')
+                })->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'ratings.rating as rating')
                 ->where('userlevel', 0)
                 ->orderBy('matrnr', 'asc')->get();
 
@@ -155,13 +154,12 @@ class studentController
             //ansonsten auch den namen der zugewiesenen AG und die zugehörige Bewertung anzeigen
         } else {
             $students = DB::table("users")
-                ->join("workgroups", "users.zugewiesen", "workgroups.id")
-                ->join("ratings", function ($join) {
+                ->leftJoin("workgroups", "users.zugewiesen", "workgroups.id")
+                ->leftJoin("ratings", function ($join) {
                     $join->on("workgroups.id", "=", "ratings.workgroup");
                     $join->on('users.id', '=', 'ratings.user');
 
-                })
-                ->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'ratings.rating as rating')
+                })->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen', 'ratings.rating as rating')
                 ->where([['userlevel', 0], ['users.name', 'like', $query]])->orWhere([['userlevel', 0], ['lastname', 'like', $query]])->orWhere([['userlevel', 0], ['matrnr', 'like', $query]])->orWhere([['userlevel', 0], ['workgroups.name', 'like', $query]])
                 ->orderBy('matrnr', 'asc')->get();
         }

@@ -16,10 +16,10 @@
                 <td class="ma">{{$student->matrnr}}</td>
                 <td class="na">{{$student->name . " " . $student->lastname}}</td>
                 <td class="em" style="display:none">{{$student->email}}</td>
-                @if(sizeof($student->zugewiesen)>0)
-                    <td class="za">{{$student->zugewiesen}} (Rating={{$student->rating}})</td>
-                @else
+                @if(is_null($student->zugewiesen))
                     <td class="za">-</td>
+                @else
+                    <td class="za">{{$student->zugewiesen}} (Rating={{$student->rating}})</td>
                 @endif
                 <td class="bt">
                     <div class="btn-group pull-right" role="group">

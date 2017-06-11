@@ -25,7 +25,9 @@
     <section id="welcomemsg">
         <div class="container welcome">
             <div class="row">
-                <h1>@lang('fields.welcome')</h1>
+                <div class="col-xs-12">
+                    <h1>@lang('fields.welcome')</h1>
+                </div>
                 @if(app()->getLocale() == "de")
                     <p id="welcome_text" class="col-xs-12">{{ $options->welcomeDE }}</p>
                 @else
@@ -47,9 +49,9 @@
 
     @include('modals.forgot')
 
-@if($options->opened == 1)
-    @include('modals.register')
-@endif
+    @if($options->opened == 1)
+        @include('modals.register')
+    @endif
 
     @include('modals.cookie')
 

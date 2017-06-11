@@ -111,7 +111,7 @@ $(function () {
         $(this).parents('form').submit();
     });
 
-    $('form[name=register] [type="password"][name*="password"]').on('change', function() {
+    $('form[name=register] [type="password"][name*="password"]').on('keyup', function() {
         var t;
        switch($(this).attr('name')) {
            case "password":

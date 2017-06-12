@@ -106,6 +106,9 @@ class dashboardController
 
     public function startAlgo()
     {
+        //falls schon zuweisungen existieren, diese löschen.
+        DB::table("users")->where("userlevel", 0)->update(["zugewiesen" => NULL]);
+
         $students = DB::table("users")->where("userlevel", 0)->get();
         $anzahlStudents = sizeof($students);
         //für alle Studenten ein Attribut "priorität" mit 0 setzen

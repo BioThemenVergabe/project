@@ -22,7 +22,7 @@
         </div>
     </section>
 
-    <section id="welcomemsg">
+    <section id="infos">
         <div class="container welcome">
             <div class="row">
                 <div class="col-xs-12">
@@ -45,7 +45,30 @@
                 </div>
             @endif
         </div>
+        <div id="impressum" class="container top-buffer-3">
+            <hr>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Impressum</h3>
+                </div>
+                <div class="col-xs-12">
+                    <b>@lang('content.impr1')</b>
+                    <div>Universität Konstanz</div>
+                    <div>78457 Konstanz, Germany</div>
+                    <div>Tel.: +49 (0)7531 / 88 - 0</div>
+                    <div>Fax: +49 (0)7531 / 88 - 3688</div>
+                    <div>Email: Posteingang@uni-konstanz.de</div>
+                </div>
+                <div class="col-xs-12">
+
+                </div>
+                <div class="col-xs-12 top-buffer">
+                    <p>@lang('content.impr2')</p>
+                </div>
+            </div>
+        </div>
     </section>
+
 
     @include('modals.forgot')
 

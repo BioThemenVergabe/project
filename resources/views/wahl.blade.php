@@ -16,6 +16,11 @@
 <script>
     $(function () {
         $('#sortableRatings').sortable({ cancel: '.hr-divider'});
+        var $cache = $('#sortableRatings').html();
+        $('[type=reset]').on('click', function(e) {
+           e.preventDefault();
+           $('#sortableRatings').html($cache).sortable("refresh");
+        });
     });
 </script>
 

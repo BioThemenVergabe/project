@@ -40,6 +40,10 @@ Route::group(['middleware' => 'language'], function () {
 
     Auth::routes();
 
+    Route::get('/login',function() {
+        return response()->json(['key' => 'login']);
+    });
+
     //Auf alles nachfolgende dürfen nur authorisierte Nutzer zugreifen
     Route::group(['middleware' => 'auth'], function () {
 
@@ -69,6 +73,8 @@ Route::group(['middleware' => 'language'], function () {
             Route::get('/profile/edit', 'UserController@edit');
 
             Route::resource('/wahl', 'RatingController');
+
+            Route::resource('/contact', 'ContactController');
 
             Route::post('/upload','UserController@storeUpload');
 

@@ -29,6 +29,7 @@ class dashboardController
         $ratings = DB::table("ratings")->select("user")->distinct()->get();
         $numberRatings = sizeof($ratings);
         $noRating = $numberStudents - $numberRatings;
+        $notRatedStudents = DB::table("users")->leftJoin("ratings", "users.id", "=", "ratings.user")->where("userlevel",0)->whereNull('ratings.user')->select("users.*")->distinct()->get();
 
         $zugewieseneStudenten = DB::table("users")->whereNotNull("zugewiesen")->count();
         if ($zugewieseneStudenten == 0) {
@@ -46,8 +47,8 @@ class dashboardController
         $welcomeTextDE = DB::table("options")->select("welcomeDE")->first();
         $welcomeTextEN = DB::table("options")->select("welcomeEN")->first();
 
-        $parameter = ["numberStudents" => $numberStudents, "noRating" => $noRating, "rated" => $rated,
-            "status" => $status, "action" => $action, "welcomeDE" => $welcomeTextDE->welcomeDE, "welcomeEN" => $welcomeTextEN->welcomeEN];
+        $parameter = ["numberStudents" => $numberStudents, "noRating" => $noRating, "rated" => $rated, "status" => $status,
+            "action" => $action, "welcomeDE" => $welcomeTextDE->welcomeDE, "welcomeEN" => $welcomeTextEN->welcomeEN, "notRatedStudents" =>$notRatedStudents];
 
         return view("admin_dashboard", $parameter);
     }
@@ -105,6 +106,9 @@ class dashboardController
 
     public function startAlgo()
     {
+        //falls schon zuweisungen existieren, diese löschen.
+        DB::table("users")->where("userlevel", 0)->update(["zugewiesen" => NULL]);
+
         $students = DB::table("users")->where("userlevel", 0)->get();
         $anzahlStudents = sizeof($students);
         //für alle Studenten ein Attribut "priorität" mit 0 setzen
@@ -227,8 +231,7 @@ class dashboardController
         }
         return "true";
     }
-
-    private function orderBySpots(array $array)
+    private function orderBySpots(array $array)//sortiert AGs nach Anzahl Plätzen absteigend
     {
         $orderedArray = array();
         foreach ($array as $workgroup) {

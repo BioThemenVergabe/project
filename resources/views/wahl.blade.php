@@ -41,7 +41,7 @@
                         <div class="bs-callout bs-warning">
                             <h4>@lang('rating.howTo')</h4>
                             <ul>
-                                <li>@lang('rating.how')</li>
+                                @lang('rating.how')
                             </ul>
                         </div>
                     </div>

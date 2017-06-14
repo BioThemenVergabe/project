@@ -328,6 +328,17 @@ $(document).ready(function() {
         $("#Stud_table").load("admin_studenten_search?q="+query, function () {
             //Anzahl Studenten updaten
             $('#Stud_Anzahl').html($("#Stud_table tr").length -1);
+
+            //neue onclicks für die Buttons setzen
+            $('.löschStudentButton').click(function () {
+                triggerStudent = this;
+            });
+            $('.bearbeitenButton').click(function(){
+                var row = $(this).parent().parent().parent();
+                var id = $(row).find('.id').html();
+                window.location = "/admin_studenten_bearbeiten?"+"id="+id;
+            });
+
         });
     });
     //wenn Enter gedrückt wird soll anfrage auch geschickt werden

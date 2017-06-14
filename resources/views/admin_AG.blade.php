@@ -66,6 +66,7 @@
                             <th>@lang('fields.groupleader')</th>
                             <th>@lang('fields.spots')</th>
                             <th>@lang('fields.time')</th>
+                            <th>@lang('fields.delete')</th>
                             <th></th>
                         </tr>
                         </thead>

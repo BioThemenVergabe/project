@@ -59,9 +59,6 @@
                     <div>Fax: +49 (0)7531 / 88 - 3688</div>
                     <div>Email: Posteingang@uni-konstanz.de</div>
                 </div>
-                <div class="col-xs-12">
-
-                </div>
                 <div class="col-xs-12 top-buffer">
                     <p>@lang('content.impr2')</p>
                 </div>

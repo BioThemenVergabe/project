@@ -160,6 +160,10 @@ $(function () {
 
     });
 
+    var z = 1;
+    $('#sortableRatings, #listRating').children('div').each(function() {
+       $(this).attr('data-content',z++);
+    });
 
 });
 

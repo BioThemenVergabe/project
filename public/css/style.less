@@ -300,31 +300,68 @@ table.voting {
 
 #sortableRatings,
 #listRating {
-  div:first-child {
+  > div {
+    position: relative;
+    padding-left: 24px;
+    &:before {
+      content: attr(data-content);
+      font-size: 32px;
+      color: #000000;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 28px;
+      display: flex;
+      display: -webkit-flex;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+  }
+
+  > div:first-child {
     border-left-color: @primary;
     h4 {
       color: @primary;
     }
+    &:before {
+      content: '1';
+      background-color: @primary;
+    }
   }
 
-  div:nth-child(2) {
+  > div:nth-child(2) {
     border-left-color: lighten(@primary, 10%);
     h4 {
       color: lighten(@primary, 10%);
     }
+    &:before {
+      content: '2';
+      background-color: lighten(@primary, 10%);
+    }
   }
 
-  div:nth-child(3) {
+  > div:nth-child(3) {
     border-left-color: lighten(@primary, 20%);
     h4 {
       color: lighten(@primary, 20%);
     }
+    &:before {
+      background-color: lighten(@primary, 20%);
+      content: '3';
+    }
   }
 
-  div:nth-child(4) {
+  > div:nth-child(4) {
     border-left-color: lighten(@primary, 30%);
     h4 {
       color: lighten(@primary, 30%);
+    }
+    &:before {
+      content: '4';
+      background-color: lighten(@primary, 40%);
     }
   }
 

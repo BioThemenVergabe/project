@@ -258,29 +258,65 @@ table.voting td > .progress-bar-zero:after {
 .bs-callout.bs-success h4 {
   color: #5cb85c;
 }
-#sortableRatings div:first-child, #listRating div:first-child {
+#sortableRatings > div, #listRating > div {
+  position: relative;
+  padding-left: 24px;
+}
+#sortableRatings > div:before, #listRating > div:before {
+  content: attr(data-content);
+  font-size: 32px;
+  color: #000000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 28px;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+#sortableRatings > div:first-child, #listRating > div:first-child {
   border-left-color: #09bc6c;
 }
-#sortableRatings div:first-child h4, #listRating div:first-child h4 {
+#sortableRatings > div:first-child h4, #listRating > div:first-child h4 {
   color: #09bc6c;
 }
-#sortableRatings div:nth-child(2), #listRating div:nth-child(2) {
+#sortableRatings > div:first-child:before, #listRating > div:first-child:before {
+  content: '1';
+  background-color: #09bc6c;
+}
+#sortableRatings > div:nth-child(2), #listRating > div:nth-child(2) {
   border-left-color: #0bed88;
 }
-#sortableRatings div:nth-child(2) h4, #listRating div:nth-child(2) h4 {
+#sortableRatings > div:nth-child(2) h4, #listRating > div:nth-child(2) h4 {
   color: #0bed88;
 }
-#sortableRatings div:nth-child(3), #listRating div:nth-child(3) {
+#sortableRatings > div:nth-child(2):before, #listRating > div:nth-child(2):before {
+  content: '2';
+  background-color: #0bed88;
+}
+#sortableRatings > div:nth-child(3), #listRating > div:nth-child(3) {
   border-left-color: #36f5a0;
 }
-#sortableRatings div:nth-child(3) h4, #listRating div:nth-child(3) h4 {
+#sortableRatings > div:nth-child(3) h4, #listRating > div:nth-child(3) h4 {
   color: #36f5a0;
 }
-#sortableRatings div:nth-child(4), #listRating div:nth-child(4) {
+#sortableRatings > div:nth-child(3):before, #listRating > div:nth-child(3):before {
+  background-color: #36f5a0;
+  content: '3';
+}
+#sortableRatings > div:nth-child(4), #listRating > div:nth-child(4) {
   border-left-color: #66f8b7;
 }
-#sortableRatings div:nth-child(4) h4, #listRating div:nth-child(4) h4 {
+#sortableRatings > div:nth-child(4) h4, #listRating > div:nth-child(4) h4 {
   color: #66f8b7;
+}
+#sortableRatings > div:nth-child(4):before, #listRating > div:nth-child(4):before {
+  content: '4';
+  background-color: #97face;
 }
 #userPicture {
   background-position: center center;

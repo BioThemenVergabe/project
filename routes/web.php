@@ -40,8 +40,11 @@ Route::group(['middleware' => 'language'], function () {
 
     Auth::routes();
 
-    Route::get('/login',function() {
-        return response()->json(['key' => 'login']);
+    /*
+     * Overwritten Routes
+     */
+    Route::get('/login', function () {
+        return view('auth.login', ['options' => Option::find(1),]);
     });
 
     //Auf alles nachfolgende dürfen nur authorisierte Nutzer zugreifen
@@ -68,7 +71,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::group(['middleware' => 'checkAdmin'], function () {
             Route::match(['get', 'post'], '/dashboard', 'UserController@show');
 
-            Route::post('/profile/save','UserController@update');
+            Route::post('/profile/save', 'UserController@update');
 
             Route::get('/profile/edit', 'UserController@edit');
 
@@ -76,7 +79,7 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::resource('/contact', 'ContactController');
 
-            Route::post('/upload','UserController@storeUpload');
+            Route::post('/upload', 'UserController@storeUpload');
 
         });
 

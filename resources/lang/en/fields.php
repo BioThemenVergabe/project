@@ -84,6 +84,7 @@ return [
     'noRating' => "You didn't save your rating yet.",
     'notice' => "Please note:",
     'ratingToLow' => "The given rating was to low. You have to spend at least <span id=\"minRating\"></span> Points.",
+    'send' => 'Send',
     'square' => "Please add only square images.",
     'upload' => "Upload your userpic",
     'yourRating' => "Your Rating",

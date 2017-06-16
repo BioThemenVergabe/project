@@ -30,6 +30,8 @@
 
     @yield('content')
 
+    @include('modals.mail')
+
     @include('footer')
 
     <!-- Scripts -->

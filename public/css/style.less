@@ -365,6 +365,12 @@ table.voting {
     }
   }
 
+  >div#noRating {
+    &:before {
+      display: none;
+    }
+  }
+
 }
 
 #userPicture {
@@ -382,4 +388,8 @@ table.voting {
   display: flex;
   -webkit-justify-content: center;
   justify-content: center;
+}
+
+textarea {
+  resize: vertical;
 }

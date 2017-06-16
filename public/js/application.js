@@ -161,8 +161,40 @@ $(function () {
     });
 
     var z = 1;
-    $('#sortableRatings, #listRating').children('div').each(function() {
+    $('#sortableRatings, #listRating').children('div').not('#noRating').each(function() {
        $(this).attr('data-content',z++);
+    });
+
+    $('#mailContact').find('input[type=submit]').on('click', function(e) {
+       e.preventDefault();
+       var $form = $(this).parents('form');
+       var $data = $form.find('input');
+
+       var $post = {
+           'message' : $form.find('textarea').val()
+       };
+
+       $data.each(function() {
+           data[$(this).attr('name')] = $(this).attr('value');
+       });
+
+       $.ajax({
+           type: $form.attr('method'),
+           url: $form.attr('action'),
+           data: $data,
+           success: function() {
+               $('#mailContact').modal('toggle');
+           },
+           error: function(r,e) {
+               alert(e);
+               $('#mailContact').modal('toggle');
+           },
+           fail: function(e) {
+               alert("fehler");
+               $('#mailContact').modal('toggle');
+           }
+       })
+
     });
 
 });

@@ -36,7 +36,8 @@
             <div class="col-md-3">
                 <ul class="nav nav-stacked">
                     <li><a href="https://www.fachschaft.biologie.uni-konstanz.de/" class="icon icon-home" target="_blank"> @lang('footer.faculty')</a></li>
-                    <li><a href="mailto:fachschaft.biologie@uni-konstanz.de" class="icon icon-mail" target="_blank"> @lang('footer.mail')</a></li>
+                    <li><a href class="icon icon-mail" data-action="mailContact"> @lang('footer.mail')</a></li>
+                    <!--<li><a href="mailto:fachschaft.biologie@uni-konstanz.de" class="icon icon-mail" target="_blank"> @lang('footer.mail')</a></li>-->
                     <li class="nav-divider"></li>
                     <li><a href="https://www.facebook.com/FachschaftBioKonstanz" class="icon icon-facebook" target="_blank"> Facebook</a></li>
                     <li><a href="https://twitter.com/FsBioKn" class="icon icon-twitter" target="_blank"> Twitter</a></li>

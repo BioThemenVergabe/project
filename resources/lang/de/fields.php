@@ -74,6 +74,7 @@ return [
     'noRating' => "Es wurde noch keine Bewertung abgegeben.",
     'notice' => "Bitte beachten Sie:",
     'ratingToLow' => "Die Bewertung fiel zu niedrig aus. Es m&uuml;ssen mindestens <span id=\"minRating\"></span> Punkte vergeben werden.",
+    'send' => 'Senden',
     'square' => "Quadratische Bilder",
     'upload' => "Benutzerbild hochladen",
     'yourRating' => "Deine Bewertung",

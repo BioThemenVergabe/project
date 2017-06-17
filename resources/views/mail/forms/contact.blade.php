@@ -6,10 +6,10 @@
         </label>
 
         <div class="col-md-3">
-            <input id="mail.name" type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="@lang('fields.name')">
+            <input id="mail.name" type="text" class="form-control" name="name" value="" placeholder="@lang('fields.name')">
         </div>
         <div class="col-md-3">
-            <input id="mail.lastname" type="text" class="form-control" name="lastname" value="{{ $user->lastname }}" placeholder="@lang('fields.lastname')">
+            <input id="mail.lastname" type="text" class="form-control" name="lastname" value="" placeholder="@lang('fields.lastname')">
 
         </div>
     </div>
@@ -18,7 +18,7 @@
         <label for="mail.email" class="col-md-4 control-label">@lang('fields.mail')</label>
 
         <div class="col-md-6">
-            <input id="mail.email" type="email" class="form-control" name="email" value="{{ $user->email }}">
+            <input id="mail.email" type="email" class="form-control" name="email" value="">
         </div>
     </div>
 

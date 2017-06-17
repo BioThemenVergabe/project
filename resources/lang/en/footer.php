@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'impress' => 'Imress',
+    'impress' => 'Contact',
     'authors' => 'Authors',
     'whois' => 'Who we are',
     'mail' => 'Write a mail',

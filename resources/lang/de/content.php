@@ -78,7 +78,8 @@ return [
     'admin_electionEnded3' => 'Alle angemeldeten Studenten wurden aus der Datenbank entfernt!',
     'admin_electionEnded4' => 'Der Status der aktuellen Wahl wurde auf <i>geschlossen</i> gesetzt!',
     'admin_electionEnded5' => 'Der Status der Zuweisung wurde auf <i>nicht gestartet</i> gesetzt!',
-
+    'impr1' => 'Postanschrift:',
+    'impr2' => 'Die Universität Konstanz ist eine Körperschaft des öffentlichen Rechts. Sie wird durch den Rektor Prof. Dr. Ulrich Rüdiger gesetzlich vertreten.',
 
 
     /*

@@ -211,7 +211,7 @@ $(function () {
             'message': $form.find('textarea').val()
         };
 
-        $('form:not([name='+$form.attr('data-name')+']').find('.has-error').removeClass('has-error');
+        $('form').not('[data-name='+$form.attr('data-name')+']').find('.has-error').html("Hallo");
 
         $data.each(function () {
             $post[$(this).attr('name')] = $(this).val();
@@ -245,7 +245,7 @@ $(function () {
                 } else if (data.success == false) {
                     $form.html($formTpl);
                     $.each(data.errors, function () {
-                        var $e = $('[name=' + this.split(" ")[0] + ']');
+                        var $e = $form.find('[name=' + this.split(" ")[0] + ']');
                         $e.parents('.form-group').addClass('has-error');
                         $e.parent().remove('span');
                         $e.parent().append('<span class="help-block"><strong>' + this + '</strong></span>');

@@ -1,7 +1,25 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-xs-12">
+                <ul class="nav nav-bordered">
+                    <li><a href="https://www.fachschaft.biologie.uni-konstanz.de/" class="icon icon-home" target="_blank"> @lang('footer.faculty')</a></li>
+                    <li><a href class="icon icon-mail" data-action="mailContact"> @lang('footer.mail')</a></li>
+                    <!--<li><a href="mailto:fachschaft.biologie@uni-konstanz.de" class="icon icon-mail" target="_blank"> @lang('footer.mail')</a></li>-->
+                    <li class="nav-divider"></li>
+                    <li><a href="https://www.facebook.com/FachschaftBioKonstanz" class="icon icon-facebook" target="_blank"> Facebook</a></li>
+                    <li><a href="https://twitter.com/FsBioKn" class="icon icon-twitter" target="_blank"> Twitter</a></li>
+                    <li><a href="https://www.youtube.com/user/UniversitaetKonstanz" class="icon icon-youtube" target="_blank"> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="hr-divider-heading"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
                 <label>@lang('footer.impress')</label>
                 <div class="container-fluid">
                     <div class="row">
@@ -29,20 +47,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <label>@lang('footer.whois')</label>
                 <p>@lang('footer.introduction')</p>
-            </div>
-            <div class="col-md-3">
-                <ul class="nav nav-stacked">
-                    <li><a href="https://www.fachschaft.biologie.uni-konstanz.de/" class="icon icon-home" target="_blank"> @lang('footer.faculty')</a></li>
-                    <li><a href class="icon icon-mail" data-action="mailContact"> @lang('footer.mail')</a></li>
-                    <!--<li><a href="mailto:fachschaft.biologie@uni-konstanz.de" class="icon icon-mail" target="_blank"> @lang('footer.mail')</a></li>-->
-                    <li class="nav-divider"></li>
-                    <li><a href="https://www.facebook.com/FachschaftBioKonstanz" class="icon icon-facebook" target="_blank"> Facebook</a></li>
-                    <li><a href="https://twitter.com/FsBioKn" class="icon icon-twitter" target="_blank"> Twitter</a></li>
-                    <li><a href="https://www.youtube.com/user/UniversitaetKonstanz" class="icon icon-youtube" target="_blank"> YouTube</a></li>
-                </ul>
             </div>
         </div>
     </div>

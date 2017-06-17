@@ -1,7 +1,8 @@
 <?php
 
 use App\Option;
-
+use Illuminate\Http\Request;
+use App\Mail\UserContact;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +18,11 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::match(['get', 'post'], '/', function () {
 
-        //wenn Benutzer schon angemeldet ist, und Cookie gesetzt hat, dann wird er direkt weitergeleitet
+        /**
+         * if user is authentificated and has accepted our cookie-policy,
+         * he will be directly redirected to his dashboard / adminpanel if
+         * he as admin privileges.
+         */
         if (Auth::check()) {
             if (Auth::user()->userlevel == 0)
                 return redirect('/dashboard');
@@ -32,7 +37,14 @@ Route::group(['middleware' => 'language'], function () {
 
     });
 
-    //Sprache ändern
+    /**
+     * Sends the contact mail.
+     */
+    Route::post('/contact/send','MailController@send');
+
+    /**
+     * change language
+     */
     Route::get('/lang/{key}', function ($key) {
         session()->put('locale', $key);
         return redirect()->back();
@@ -40,7 +52,7 @@ Route::group(['middleware' => 'language'], function () {
 
     Auth::routes();
 
-    /*
+    /**
      * Overwritten Routes
      */
     Route::get('/login', function () {

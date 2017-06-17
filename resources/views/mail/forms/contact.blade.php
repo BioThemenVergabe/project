@@ -6,10 +6,10 @@
         </label>
 
         <div class="col-md-3">
-            <input id="mail.name" type="text" class="form-control" name="name" value="" placeholder="@lang('fields.name')">
+            <input id="mail.name" type="text" class="form-control" name="name" value="" placeholder="@lang('fields.name')" required>
         </div>
         <div class="col-md-3">
-            <input id="mail.lastname" type="text" class="form-control" name="lastname" value="" placeholder="@lang('fields.lastname')">
+            <input id="mail.lastname" type="text" class="form-control" name="lastname" value="" placeholder="@lang('fields.lastname')" required>
 
         </div>
     </div>
@@ -18,7 +18,7 @@
         <label for="mail.email" class="col-md-4 control-label">@lang('fields.mail')</label>
 
         <div class="col-md-6">
-            <input id="mail.email" type="email" class="form-control" name="email" value="">
+            <input id="mail.email" type="email" class="form-control" name="email" value="" required>
         </div>
     </div>
 
@@ -30,7 +30,7 @@
         <label for="mail.message" class="col-md-4 control-label">@lang('fields.message')</label>
 
         <div class="col-md-6">
-            <textarea id="mail.email" class="form-control" name="message"></textarea>
+            <textarea id="mail.email" class="form-control" name="message" required></textarea>
         </div>
     </div>
 

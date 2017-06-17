@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -13,11 +13,32 @@ class UserContact extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * The request Instance
+     * The Name of the Person who writes a contact message
      *
-     * @var Request
+     * @var String name
      */
-    private $request;
+    private $name;
+
+    /**
+     * The lastname of the Person who writes a contact message
+     *
+     * @var String lastname
+     */
+    private $lastname;
+
+    /**
+     * Mailaddress of the Person
+     *
+     * @var Mail Mailaddress
+     */
+    private $mail;
+
+    /**
+     * The Message send to the contact.
+     *
+     * @var Text message
+     */
+    private $message;
 
 
     /**
@@ -27,7 +48,10 @@ class UserContact extends Mailable
      */
     public function __construct(Request $request)
     {
-        $this->request = $request;
+        $this->name = $request->name;
+        $this->lastname = $request->lastname;
+        $this->mail = $request->email;
+        $this->message = $request->message;
     }
 
     /**
@@ -37,9 +61,11 @@ class UserContact extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.register')
-            ->with([
-            'data' => $this->request,
+        return $this->view('mail.contact')->with([
+            'name' => $this->name,
+            'lastname' => $this->lastname,
+            'mail' => $this->mail,
+            'message' => $this->message,
         ]);
     }
 }

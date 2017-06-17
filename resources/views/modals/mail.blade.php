@@ -1,6 +1,6 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="mailContact">
     <div class="modal-dialog" role="document">
-        <form method="post" action="/contact/send">
+        <form method="post" action="/contact/send" data-name="mail">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -11,6 +11,7 @@
                     @include('mail.forms.contact')
                 </div>
                 <div class="modal-footer">
+                    <input type="button" class="btn btn-danger hidden" value="@lang('fields.close')" data-dismiss="modal">
                     <input type="submit" class="btn btn-primary" value="@lang('fields.send')">
                 </div>
 

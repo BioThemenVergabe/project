@@ -204,8 +204,8 @@ $(function () {
 
     $('#mailContact').find('input[type=submit]').on('click', function (e) {
         e.preventDefault();
-        var $form = $(this).parents('form');
-        var $formTpl = $form.html();
+        var $form = $(this).closest('form');
+        var $formTpl = $form.clone(true);
         var $data = $form.find('input');
         var $post = {
             'message': $form.find('textarea').val()
@@ -235,12 +235,12 @@ $(function () {
 
                     $btn = $form.find('input[type=button]');
                     $btn.on('click', function () {
-                        $(this).parents('.modal').modal('toggle');
-//                        setTimeout(function() {
-//                            $form.html($formTpl);
-//                            $form.find('input[type=submit]').removeClass('hidden');
-//                            $form.find('input[type=button]').addClass('hidden');
-//                        }, 1000);
+                        $(this).closest('.modal').modal('toggle');
+                        setTimeout(function() {
+                            $form.replaceWith($formTpl);
+                            $form.find('input[type=submit]').removeClass('hidden');
+                            $form.find('input[type=button]').addClass('hidden');
+                        }, 1000);
                     });
                 } else if (data.success == false) {
                     $form.html($formTpl);

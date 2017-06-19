@@ -205,6 +205,9 @@ $(function () {
     $('#mailContact').find('input[type=submit]').on('click', function (e) {
         e.preventDefault();
         var $form = $(this).closest('form');
+
+        $form.find('.help-block').remove();
+
         var $formTpl = $form.clone(true);
         var $data = $form.find('input');
         var $post = {
@@ -247,7 +250,6 @@ $(function () {
                     $.each(data.errors, function () {
                         var $e = $form.find('[name=' + this.split(" ")[0] + ']');
                         $e.parents('.form-group').addClass('has-error');
-                        $e.parent().remove('span');
                         $e.parent().append('<span class="help-block"><strong>' + this + '</strong></span>');
                     });
                 }

@@ -56,7 +56,7 @@ section .panel-body {
 footer {
     background-color: #191919;
     padding-top: 50px;
-    padding-bottom: 100px;
+    padding-bottom: 25px;
     color: #aaaaaa;
 
 }
@@ -312,14 +312,14 @@ footer p {
     width: 100%;
 }
 
-footer .nav-stacked > li > a:link,
-footer .nav-stacked > li > a:visited {
+footer .nav > li > a:link,
+footer .nav > li > a:visited {
     color: #dcdcdc;
 }
 
-footer .nav-stacked > li > a:hover,
-footer .nav-stacked > li > a:focus,
-footer .nav-stacked > li > a:active {
+footer .nav > li > a:hover,
+footer .nav > li > a:focus,
+footer .nav > li > a:active {
     color: #00b330;
 }
 

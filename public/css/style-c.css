@@ -318,6 +318,9 @@ table.voting td > .progress-bar-zero:after {
   content: '4';
   background-color: #97face;
 }
+#sortableRatings > div#noRating:before, #listRating > div#noRating:before {
+  display: none;
+}
 #userPicture {
   background-position: center center;
   background-size: cover;
@@ -331,4 +334,7 @@ table.voting td > .progress-bar-zero:after {
   display: flex;
   -webkit-justify-content: center;
   justify-content: center;
+}
+textarea {
+  resize: vertical;
 }

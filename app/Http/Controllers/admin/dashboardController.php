@@ -283,7 +283,7 @@ class dashboardController
 //initiiert den download des Ergebnisses
     public function downloadResultsXlsx()
     {
-        Excel::create("Wahlergebnisse vom " . getdate()["month"] . "_" . getdate()["year"] . ".xlsx", function ($excel) {
+        Excel::create("Wahlergebnisse vom " . getdate()["month"] . "_" . getdate()["year"], function ($excel) {
 
             $excel->sheet('Ergebnisse', function ($sheet) {
                 $students = DB::table("users")

@@ -73,7 +73,6 @@
     </div>
 
 </section>
-@endsection
 
 @section('css')
 <style>

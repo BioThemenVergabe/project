@@ -146,7 +146,7 @@
 
             <div id="listRating">
                 @if($ratings->count() == 0)
-                <div class="bs-callout bs-info">
+                <div class="bs-callout bs-info" id="noRating">
                     <h4>@lang('fields.noRating')</h4>
                 </div>
                 @else

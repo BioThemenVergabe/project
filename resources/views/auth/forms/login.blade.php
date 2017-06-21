@@ -51,11 +51,9 @@
         </a>
 
         @endif
-<!--
         <a class="btn btn-link" data-action="psw-reset" href="{{ url('/password/reset') }}">
             @lang('fields.forgot')
         </a>
-        -->
 
     </div>
 </div>

@@ -30,7 +30,11 @@
 
     @yield('content')
 
+    @include('modals.mail')
+
     @include('footer')
+
+    @include('hidden.langFields')
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

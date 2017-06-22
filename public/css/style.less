@@ -393,3 +393,21 @@ table.voting {
 textarea {
   resize: vertical;
 }
+
+section#infos {
+  background-color: @white;
+}
+
+#footerContact {
+  padding: 0;
+  & ul {
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    overflow: auto;
+    & li {
+      float: none;
+      display: inline-block;
+    }
+  }
+}

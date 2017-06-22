@@ -231,7 +231,7 @@ $(function () {
                 $('.has-error').removeClass('has-error');
                 $('.help-block').remove();
                 if (data.success == true) {
-                    var $tpl = '<div class="bs-callout bs-info" id="noRating"><h4>' + getHidden('mailSuccess').val() + '</h4></div>';
+                    var $tpl = '<div class="bs-callout bs-info"><h4>' + getHidden('mailSuccess').val() + '</h4></div>';
                     $form.find('.modal-body').html($tpl);
                     $form.find('input[type=submit]').addClass('hidden');
                     $form.find('input[type=button]').removeClass('hidden');

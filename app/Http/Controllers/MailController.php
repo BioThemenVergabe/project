@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Log;
 
 class MailController extends Controller
 {
+    /**
+     * Send Contact mail to the e-mail adress placed in .env-file
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
     public function send(Request $request)
     {
         if ($request->ajax()) {

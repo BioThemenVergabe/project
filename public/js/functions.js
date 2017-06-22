@@ -1,5 +1,5 @@
-
-function anhaengen(){
+"use strict";
+function anhaengen() {
     $('#AG_table tr:last').after('<tr><td style="display:none"><input name="id[]" class="id" form="AG_form"></td><td><input name ="name[]" class="gn form-control" form="AG_form"></td><td><input name ="groupLeader[]" class="gl form-control" form="AG_form"></td><td><input name="spots[]" class="pl form-control" type="number" form="AG_form"></td><td><input name="date[]" class="zp form-control" form="AG_form"></td><td><button type="button" class="löschButton btn btn-default btn-xs form-control" data-toggle="modal" data-target="#löschModal"><span class="icon icon-minus"></span></button></td></tr>');
 
     $('.löschButton').click(function () {
@@ -32,7 +32,6 @@ function toggle(){
 
 
 var trigger;
-
 //wird aufgerufen, nach dem Bestätigen vom Löschen einer AG
 function deleteTrigger(){
     var row = $(trigger).parent().parent();
@@ -66,7 +65,7 @@ function checkSave(){
             valide = false;
         }
         //überprüfe ob name unique
-        for (i = 0; i < nameArray.length; i++) {
+        for (var i = 0; i < nameArray.length; i++) {
             if($(this).val()===nameArray[i]){
                 nameUnique = false;
                 valide=false;
@@ -118,14 +117,14 @@ function validateRating() {
         $('#speicherModal2').modal('toggle');
 
         //roten Rand bei Fehleingabe wieder weg machen
-        for (i = 0; i < errorInput.length; i++) {
+        for (var i = 0; i < errorInput.length; i++) {
             $(errorInput[i]).css({ "border": '1px solid #ccc'});
-        };
+        }
     }else{
-        alert("Hey Admin, nicht vergessen, die Noten müssen Ganzzahlen zwischen 1 und 10 sein ;)")
+        alert("Hey Admin, nicht vergessen, die Noten müssen Ganzzahlen zwischen 1 und 10 sein ;)");
     }
 
-};
+}
 //nach dem Canceln, alte Werte wiederholen
 function resetRating(){
     var users = $("input[name='id']");

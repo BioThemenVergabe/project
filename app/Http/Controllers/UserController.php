@@ -9,7 +9,7 @@ use App\User;
 use App\Option;
 use App\Rating;
 use App\Workgroup;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -150,10 +150,27 @@ class UserController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $img = $request->file('file');
+        /*
+         * local storing of user images
+         */
         $imgName = time() . $user->name . $user->lastname . "." . $img->getClientOriginalName();
         $img->move(public_path('img/uploads'), $imgName);
+
+        /*
+         * amazon s3 user image storage
+         */
+        $imgName = "wsb_".time()."_".$user->name.$user->lastname.".".$img->getClientOriginalName();
+        $s3 = \Storage::disk('s3');
+        $filePath = '/biowahlsystem/' . $imgName;
+        $s3->put($filePath, file_get_contents($img), 'public');
+
+
+
         $user->user_picture = $imgName;
         $user->update();
+
+
+
     }
 
 }

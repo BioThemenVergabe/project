@@ -1,7 +1,7 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12" id="footerContact">
                 <ul class="nav nav-bordered">
                     <li><a href="https://www.fachschaft.biologie.uni-konstanz.de/" class="icon icon-home" target="_blank"> @lang('footer.faculty')</a></li>
                     <li><a href class="icon icon-mail" data-action="mailContact"> @lang('footer.mail')</a></li>

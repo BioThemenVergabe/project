@@ -259,6 +259,7 @@ table.voting td > .progress-bar-zero:after {
   color: #5cb85c;
 }
 #sortableRatings > div, #listRating > div {
+  border-left-color: #dcdcdc;
   position: relative;
   padding-left: 42px;
 }

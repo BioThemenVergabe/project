@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 
 class UserContact extends Mailable
 {
@@ -48,6 +49,8 @@ class UserContact extends Mailable
      */
     public function __construct(Request $request)
     {
+        LOG::info($request->email);
+        LOG::info($request->message);
         $this->name = $request->name;
         $this->lastname = $request->lastname;
         $this->mail = $request->email;
@@ -65,7 +68,7 @@ class UserContact extends Mailable
             'name' => $this->name,
             'lastname' => $this->lastname,
             'mail' => $this->mail,
-            'message' => $this->message,
+            'msg' => (string) $this->message,
         ]);
     }
 }

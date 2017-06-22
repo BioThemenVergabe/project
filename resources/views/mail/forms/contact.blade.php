@@ -30,7 +30,7 @@
         <label for="mail.message" class="col-md-4 control-label">@lang('fields.message')</label>
 
         <div class="col-md-6">
-            <textarea id="mail.email" class="form-control" name="message" required></textarea>
+            <textarea id="mail.message" class="form-control" name="message" required></textarea>
         </div>
     </div>
 

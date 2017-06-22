@@ -15,6 +15,7 @@
                                 <th>@lang('fields.groupname')</th>
                                 <th>@lang('fields.spots')</th>
                                 <th>@lang('fields.time')</th>
+                                <th></th>
                             </tr>
                             <tr id="insert-ag">
                                 <td class="id" style="display:none"></td>

@@ -25,8 +25,7 @@
                             </tr>
                             @foreach($ratings as $rating)
                                 <tr>
-                                    <input type="hidden" name="workgroupID[]" value="{{$rating->id}}" form="Rating_form">
-                                    <td>{{$rating->name}}</td>
+                                    <td><input type="hidden" name="workgroupID[]" value="{{$rating->id}}" form="Rating_form"> {{$rating->name}}</td>
                                     <td>{{$rating->groupLeader}}</td>
                                     <td><input type="number" min="1" max="10" name="note[]" class="rating form-control" value="{{$rating->rating}}" form="Rating_form"/></td>
                                     <td>{{$rating->date}}</td>

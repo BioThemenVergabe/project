@@ -45,6 +45,7 @@
                             <th>Name</th>
                             <th class="">AG</th>
                             <th class="col-xs-4"></th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>

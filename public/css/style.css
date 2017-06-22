@@ -44,6 +44,10 @@ section:first-child .panel-heading h2 {
     padding-top: 6em;
 }
 
+#placeholder {
+    padding-bottom: 6em;
+}
+
 #impressum hr  {
     border-color: black;
 }

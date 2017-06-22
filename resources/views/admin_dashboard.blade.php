@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <section class="container">
+    <section class="container" id="placeholder">
         <div class="panel">
             <div class="panel-body">
                 @include('alerts.admin_dashboard')

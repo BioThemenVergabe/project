@@ -260,7 +260,7 @@ table.voting td > .progress-bar-zero:after {
 }
 #sortableRatings > div, #listRating > div {
   position: relative;
-  padding-left: 24px;
+  padding-left: 42px;
 }
 #sortableRatings > div:before, #listRating > div:before {
   content: attr(data-content);
@@ -270,13 +270,14 @@ table.voting td > .progress-bar-zero:after {
   left: 0;
   top: 0;
   height: 100%;
-  width: 28px;
+  width: 42px;
   display: flex;
   display: -webkit-flex;
   -webkit-justify-content: center;
   justify-content: center;
   -webkit-align-items: center;
   align-items: center;
+  background-color: #dcdcdc;
 }
 #sortableRatings > div:first-child, #listRating > div:first-child {
   border-left-color: #09bc6c;

@@ -78,7 +78,7 @@ return [
     'admin_electionEnded4' => 'The status of the ongoing rating-process has been set to <i>closed</i>!',
     'admin_electionEnded5' => 'The status of the algorithm has been set to <i>not started</i>!',
     'impr1' => 'Postal address :',
-    'impr2' => 'The universit of constance is a public body. She is legally represented by the president Prof. Dr. Ulrich Rüdiger.',
+    'impr2' => 'The universit of constance is a public body. She is legally represented by the president.',
 
 
 

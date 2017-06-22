@@ -150,6 +150,7 @@ class UserController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $img = $request->file('file');
+
         /*
          * local storing of user images
          */
@@ -164,8 +165,9 @@ class UserController extends Controller
         $filePath = '/biowahlsystem/' . $imgName;
         $s3->put($filePath, file_get_contents($img), 'public');
 
-
-
+        /*
+         * updating user model
+         */
         $user->user_picture = $imgName;
         $user->update();
 

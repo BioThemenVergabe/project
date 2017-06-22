@@ -32,9 +32,9 @@ class MailController extends Controller
                     'errors' => $validator->errors()->all(),
                 ]);
 
-            Log::info(env('MAIL_USERNAME'));
+            Log::info(config('mail.username'));
 
-            Mail::to(env('MAIL_USERNAME'))->send(new UserContact($request));
+            Mail::to(config('mail.username'))->send(new UserContact($request));
             return response()->json(['success' => true]);
         } else return redirect()->back();
     }

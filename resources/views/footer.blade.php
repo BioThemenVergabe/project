@@ -4,7 +4,7 @@
             <div class="col-xs-12" id="footerContact">
                 <ul class="nav nav-bordered">
                     <li><a href="https://www.fachschaft.biologie.uni-konstanz.de/" class="icon icon-home" target="_blank"> @lang('footer.faculty')</a></li>
-                    <li><a href class="icon icon-mail" data-action="mailContact"> @lang('footer.mail')</a></li>
+                    <li><a href="mailto:{{ config('mail.username') }}" class="icon icon-mail" data-action="mailContact"> @lang('footer.mail')</a></li>
                     <!--<li><a href="mailto:fachschaft.biologie@uni-konstanz.de" class="icon icon-mail" target="_blank"> @lang('footer.mail')</a></li>-->
                     <li class="nav-divider"></li>
                     <li><a href="https://www.facebook.com/FachschaftBioKonstanz" class="icon icon-facebook" target="_blank"> Facebook</a></li>

@@ -48,6 +48,10 @@ function checkWahlValues(values, sum) {
 
 $(function () {
 
+    setInterval(function() {
+
+    })
+
     if (sessionStorage.getItem('modal') != "") {
         var a = sessionStorage.getItem('modal');
         $('#' + a).modal();
@@ -198,7 +202,7 @@ $(function () {
     });
 
     var z = 1;
-    $('#sortableRatings, #listRating').children('div').not('#noRating').each(function () {
+    $('#listRating').children('div').not('#noRating').each(function () {
         $(this).attr('data-content', z++);
     });
 

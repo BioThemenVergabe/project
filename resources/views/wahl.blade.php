@@ -6,7 +6,15 @@
 @endsection
 
 @section('css')
+<style>
+    @for ($i = 1; $i <= $ags->count(); $i++)
+    #sortableRatings > div:nth-child({{$i}}):before {
+        content: '{{ $i }}';
+    }
 
+    @endfor
+
+</style>
 @endsection
 
 @section('JS')

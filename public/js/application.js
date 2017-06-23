@@ -198,12 +198,6 @@ $(function () {
 
     $('form[name=edit] [type=submit]').on('click', function (e) {
         e.preventDefault();
-
-    });
-
-    var z = 1;
-    $('#listRating').children('div').not('#noRating').each(function () {
-        $(this).attr('data-content', z++);
     });
 
     $('#mailContact').find('input[type=submit]').on('click', function (e) {

@@ -13,7 +13,6 @@
     }
 
     @endfor
-
 </style>
 @endsection
 

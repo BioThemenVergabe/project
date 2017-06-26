@@ -21,7 +21,7 @@ class CreateWorkgroupsTable extends Migration
             /*
              * Datenformat von Spalte 'date' noch in Klärung
              */
-            $table->string('date');
+            $table->string('date')->nullable();
             $table->timestamps();
         });
 

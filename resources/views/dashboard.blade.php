@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{{ asset('/assets/css/dropzone.css') }}"/>
 <style>
     @for ($i = 1; $i <= $ags->count(); $i++)
-    #Rating > div:nth-child({{$i}}):before {
+    #listRating > div:nth-child({{$i}}):before {
         content: '{{ $i }}';
     }
     @endfor

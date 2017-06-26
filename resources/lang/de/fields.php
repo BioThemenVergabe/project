@@ -24,6 +24,8 @@ return [
     'nodelete' => 'Nicht Löschen',
     'noresult' => 'Kein Ergebnis verf&uuml;gbar',
     'password' => 'Passwort',
+    'npassword' => 'Neues Passwort',
+    'cnPassword' => 'Bestätige neues Passwort',
     'phone' => 'Telefon',
     'pswold' => 'Aktuelles Passwort',
     'pswreset' => 'Passwort Wiederherstellen',

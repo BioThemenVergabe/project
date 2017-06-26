@@ -19,6 +19,8 @@ return [
     'username' => 'Username',
     'password' => 'Password',
     'cPassword' => 'Confirm Password',
+    'npassword' => 'New Password',
+    'cnPassword' => 'Confirm new Password',
     'mail' => 'Email Address',
     'mailB' => 'Mail',
     'mailSendSuccess' => 'Mail sent successfully.',

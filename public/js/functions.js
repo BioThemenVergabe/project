@@ -1,4 +1,6 @@
 "use strict";
+
+//beim klicken des hinzufügen Buttons auf admin_AG, wird eine neue Zeile erstellt
 function anhaengen() {
     $('#AG_table tr:last').after('<tr><td style="display:none"><input name="id[]" class="id" form="AG_form"></td><td><input name ="name[]" class="gn form-control" form="AG_form"></td><td><input name ="groupLeader[]" class="gl form-control" form="AG_form"></td><td><input name="spots[]" class="pl form-control" type="number" form="AG_form"></td><td><input name="date[]" class="zp form-control" form="AG_form"></td><td><button type="button" class="löschButton btn btn-default btn-xs form-control" data-toggle="modal" data-target="#löschModal"><span class="icon icon-minus"></span></button></td></tr>');
 
@@ -31,12 +33,12 @@ function toggle(){
 }
 
 
-var trigger;
 //wird aufgerufen, nach dem Bestätigen vom Löschen einer AG
+var trigger;
 function deleteTrigger(){
     var row = $(trigger).parent().parent();
     var ID = row.find("input.id").val();
-    //wenn eine AG aus DB geladen wurde, dann ist ID != ""
+    //wenn eine AG aus DB geladen wurde, dann besitzt sie bereits eine ID und ID ist dementsprechend != ""
     if(ID !== ""){
         $("#AG_table").load("admin_AG_delete?id="+ID , function(){
             update();
@@ -47,19 +49,19 @@ function deleteTrigger(){
     }
 }
 
-//Für /admin_AG: Wird aufgerufen, wenn gespeichert werden soll
+//Für /admin_AG: Wird aufgerufen, wenn gespeichert werden soll. Überprüfung ob AGs so in die DB gespeichert werden dürfen
 function checkSave(){
     var valide = true; //AGs konsistent?
-
     var nameUnique = true; //ist der Gruppenname eindeutig?
-    var nameArray = [];
+    var nameArray = []; //Namen aller AGs
+
     //über alle Gruppenleiter, darf nicht leer sein
     $("input.gl").each(function() {
         if($(this).val()==""){
             valide = false;
         }
     });
-    //über alle Gruppennamen, darf nicht leer sein
+    //über alle Gruppennamen, darf nicht leer sein und muss eindeutig sein
     $("input.gn").each(function() {
         if($(this).val()==""){
             valide = false;
@@ -112,7 +114,7 @@ function validateRating() {
     });
     if(valide===true){
         $('#AG_Wahl_Modal').modal('hide');
-        $(".modal-backdrop").remove(); //bug: sollte eigentlich bei "hide" automatisch weg gehn
+        $(".modal-backdrop").remove(); //bug von Bootstrap: sollte eigentlich bei "hide" automatisch weg gehn
         $("#Rating_form").submit();
         $('#speicherModal2').modal('toggle');
 
@@ -125,7 +127,7 @@ function validateRating() {
     }
 
 }
-//nach dem Canceln, alte Werte wiederholen
+//nach dem Canceln des Veränderns der Bewertung eines Studenten, alte Werte wiederholen
 function resetRating(){
     var users = $("input[name='id']");
     var userID = users[0].value;
@@ -138,10 +140,9 @@ function resetRating(){
 //delStudenten-Modal lösch Button wird hier ausgeführt -> Student wird aus DB gelöscht
 var triggerStudent;
 function deleteStudentTrigger(){
-    //Get anfrage an /delstudent
     var row = $(triggerStudent).parent().parent().parent();
     var id = $(row).find('.id').html();
-    window.location = "/studenten_delete?"+"id="+id;
+    window.location = "/studenten_delete?"+"id="+id; //Get request an /delstudent
 
 }
 
@@ -167,11 +168,11 @@ $(document).ready(function() {
 
     //submit eventHandler, für admin_ag wenn der speicher Button geklickt wird
     $("#AG_form").submit(function(e) {
-        e.preventDefault(); // avoid to execute the actual submit of the form.
+        e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/admin_AG_save",
-            data: $("#AG_form").serialize(), // serializes the form's elements.
+            data: $("#AG_form").serialize(),
             success: function(data){
                 var json = JSON.parse(data);
                 var newIDs = json.IDs;//data ist ein Array mit den neuen IDs und den zugehörigen namen
@@ -187,18 +188,17 @@ $(document).ready(function() {
                         }
                     });
                 });
-                //$("#spots_anzahl").html(json.sumSpots);
             }
         });
     });
 
     //submit eventHandler, für /admin_studenten_bearbeiten modal, wenn Rating geändert wird
     $("#Rating_form").submit(function(e) {
-        e.preventDefault(); // avoid to execute the actual submit of the form.
+        e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/admin_sb_save",
-            data: $("#Rating_form").serialize(), // serializes the form's elements.
+            data: $("#Rating_form").serialize(),
             success: function(data) {// neuer Durchschnittswert der Ratings
                 $("#rDurchschnitt").html(parseFloat(data));
             }
@@ -208,15 +208,13 @@ $(document).ready(function() {
 
     //wenn Wahlgang beendet werden soll
     $("#end_election").submit(function(e) {
-        e.preventDefault(); // avoid to execute the actual submit of the form.
+        e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/admin_end_election",
             data: $("#end_election").serialize(), // serializes the form's elements.
             success: function(data) {// Wert, ob input übereingestimmt hat
                 if(data=="true"){
-                    //$("#Wahlgang_beenden_Modal").modal("hide");
-                    //$(".modal-backdrop").hide(); //bug: sollte eigentlich bei "hide" automatisch weg gehn
                     window.location ="/admin?action=ended";
                 }else{
                     alert("Hey Admin. Das eingegebene Passwort war nicht korrekt.")
@@ -226,12 +224,12 @@ $(document).ready(function() {
     });
     //wenn alle Ratings gelöscht werden sollen
     $("#del_Ratings").submit(function(e) {
-        e.preventDefault(); // avoid to execute the actual submit of the form.
+        e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/admin_delete_ratings",
-            data: $("#del_Ratings").serialize(), // serializes the form's elements.
-            success: function(data) {// neuer Durchschnittswert der Ratings
+            data: $("#del_Ratings").serialize(),
+            success: function(data) {// ob Löschen erfolgreich
                 if(data=="true"){
                     window.location ="/admin?action=deleted";
                 }else{
@@ -242,12 +240,12 @@ $(document).ready(function() {
     });
     //wenn alle Zuweisungen gelöscht werden sollen
     $("#del_Assigned").submit(function(e) {
-        e.preventDefault(); // avoid to execute the actual submit of the form.
+        e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/admin_delete_assignments",
-            data: $("#del_Assigned").serialize(), // serializes the form's elements.
-            success: function(data) {// neuer Durchschnittswert der Ratings
+            data: $("#del_Assigned").serialize(),
+            success: function(data) {// ob Löschen erfolgreich
                 if(data=="true"){
                     window.location ="/admin?action=deletedAssignments";
                 }else{
@@ -257,17 +255,18 @@ $(document).ready(function() {
         });
     });
 
-    //$('table .btn-group').parent().width($('table .btn-group').width());
-
+    //Den Knopf (und damit die Reihe) der AG_Tabelle merken, welcher gedrückt wurde.
     $('.löschButton').click(function () {
       trigger = this;
     });
+    //Den Knopf (und damit die Reihe) der Studenten_Tabelle merken, welcher gedrückt wurde.
     $('.löschStudentButton').click(function () {
         triggerStudent = this;
     });
 
     //modal für das löschen einer AG
     $('#löschModal').on('show.bs.modal', function () {
+        //Alle Daten aus der Tabelle holen
         var row = $(trigger).parent().parent();
         var ID = row.find("input.id").val();
         var GL = row.find("input.gl").val();
@@ -275,6 +274,7 @@ $(document).ready(function() {
         var PL = row.find("input.pl").val();
         var ZP = row.find("input.zp").val();
 
+        //Daten in Modal-Tabelle einfügen
         $('#insert-ag .id').html(ID);
         $('#insert-ag .gl').html(GL);
         $('#insert-ag .gn').html(GN);
@@ -284,14 +284,16 @@ $(document).ready(function() {
 
 
 
-
+    //modal für das löschen eines Studenten
     $('#löschStudentModal').on('show.bs.modal', function () {
+        //Alle Daten aus der Tabelle holen
         var row = $(triggerStudent).parent().parent().parent();
         var ID = row.find("td.id").html();
         var Ma = row.find("td.ma").html();
         var NA = row.find("td.na").html();
         var ZA = row.find("td.za").html();
 
+        //Daten in Modal-Tabelle einfügen
         $('#insert-student .id').html(ID);
         $('#insert-student .ma').html(Ma);
         $('#insert-student .na').html(NA);
@@ -311,6 +313,15 @@ $(document).ready(function() {
         var query = encodeURI($("#AG_search_query").val());//sonderzeichen maskieren
         $("#AG_table").load("admin_AG_search?q="+query, function(){
             update();
+
+            //weil Tabelle (meistens) sehr klein ist, padding-bottom anpassen
+            if($('#AG_table tr').length == 1) {
+                $("section.container:first").css("padding-bottom","15em");
+            }else if($('#AG_table tr').length <=3){
+                $("section.container:first").css("padding-bottom","10em");
+            }else{
+                $("section.container:first").css("padding-bottom","0em");
+            }
         });
     });
     //wenn Enter gedrückt wird soll anfrage auch geschickt werden
@@ -338,6 +349,14 @@ $(document).ready(function() {
                 window.location = "/admin_studenten_bearbeiten?"+"id="+id;
             });
 
+            //weil Tabelle (meistens) sehr klein ist, padding-bottom anpassen
+            if($('#Stud_table tr').length >3 && $('#Stud_table tr').length <9) {
+                $("section.container:first").css("padding-bottom","10em");
+            }else if($('#Stud_table tr').length <=3){
+                $("section.container:first").css("padding-bottom","20em");
+            }else{
+                $("section.container:first").css("padding-bottom","0em");
+            }
         });
     });
     //wenn Enter gedrückt wird soll anfrage auch geschickt werden

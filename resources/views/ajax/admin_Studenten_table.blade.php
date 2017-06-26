@@ -1,5 +1,5 @@
 <!--Studenten-Tabelle-->
-<div class="top-buffer-2 table-responsive">
+<div class="table-responsive">
     <table class="table table-striped table-hover">
         <thead>
         <tr>

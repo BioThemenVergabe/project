@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container" style="padding-bottom: 6em">
         <div class="panel">
             <div class="panel-body">
 

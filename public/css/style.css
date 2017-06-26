@@ -213,6 +213,13 @@ header #logo:before {
 
 
 
+.studwahl .modal-dialog{
+    overflow-y: initial !important
+}
+.studwahl .modal-body{
+    height: 40em;
+    overflow-y: auto;
+}
 
 h1 {
     font-size: 3em

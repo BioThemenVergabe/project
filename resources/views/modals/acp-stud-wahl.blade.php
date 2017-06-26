@@ -1,11 +1,11 @@
 <div class="modal" id="AG_Wahl_Modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
+    <div class="studwahl modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">@lang('content.modal_studWahl1'): <i>{{$vorname ." ". $nachname}}</i></h4>
             </div>
-            <div class="modal-body">
+            <div class="studwahl modal-body">
                 <div class="container-fluid">
                     <form action="/admin_sb_save" method="post" id="Rating_form">
                         {{ csrf_field() }}

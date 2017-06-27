@@ -40,8 +40,12 @@ function deleteTrigger(){
     var ID = row.find("input.id").val();
     //wenn eine AG aus DB geladen wurde, dann besitzt sie bereits eine ID und ID ist dementsprechend != ""
     if(ID !== ""){
-        $("#AG_table").load("admin_AG_delete?id="+ID , function(){
-            update();
+        $("#AG_table").load("admin_AG_delete?id="+ID , function(response, status, xhr){
+            if ( status == "error" ) {
+                alert("Hey Admin, diese AG wurde einem der Studenten zugewiesen und kann daher nicht gelöscht werden. \nDu kannst auf dem Dashboard jedoch alle zugewiesenen AGs löschen, die AG dann löschen und die Zuweisung erneut laufen lassen!");
+            }else{
+                update();
+            }
         });
         //ansonsten wurde die AG gerade erst eingegeben, und wird jetzt einfach aus dem DOM gelöscht
     }else{

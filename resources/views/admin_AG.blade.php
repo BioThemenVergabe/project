@@ -121,12 +121,8 @@
 
     @if($numberRatings!=0)
         <script>
-            //alle Buttons deaktivieren
+            //hinzufügen Button deaktivieren
             document.getElementById("hinzufügen").disabled = true;
-            var buttons = document.getElementsByClassName("löschButton");
-            for (i = 0; i < buttons.length; i++) {
-                buttons[i].disabled = true;
-            }
         </script>
     @endif
     <!--Speicher-Modal-->

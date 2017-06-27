@@ -71,7 +71,7 @@
         </div>
 
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} row">
-            <label for="password" class="col-md-4 control-label">@lang('fields.password')</label>
+            <label for="password" class="col-md-4 control-label">@lang('fields.npassword')</label>
 
             <div class="col-md-6">
                 <input id="password" type="password" class="form-control" name="password" minlength="8">
@@ -84,7 +84,7 @@
         </div>
 
         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }} row">
-            <label for="password-confirm" class="col-md-4 control-label">@lang('fields.cPassword')</label>
+            <label for="password-confirm" class="col-md-4 control-label">@lang('fields.cnPassword')</label>
 
             <div class="col-md-6">
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" minlength="8">

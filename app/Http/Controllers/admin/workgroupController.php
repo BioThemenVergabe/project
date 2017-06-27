@@ -21,6 +21,7 @@ class workgroupController{
     }
 
     public function deleteGroup(Request $request){
+        DB::table("ratings")->where('workgroup',$request->id)->delete();
         DB::table("workgroups")->where('id',$request->id)->delete();
 
         $ratings = DB::table("ratings")->get();

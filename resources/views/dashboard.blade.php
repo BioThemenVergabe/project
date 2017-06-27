@@ -54,20 +54,7 @@
                 </h1>
             </div>
 
-            <div class="col-md-3 hidden-xs hidden-sm">
-                @if($user->user_picture == "")
-                <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture" style="background-image: url('{{ asset('/img/default-user.png') }}');">
-
-                </div>
-                @else
-                <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture" style="background-image: url('{{ asset('/img/uploads/'.$user->user_picture) }}');">
-
-                </div>
-                @endif
-                <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"
-                   id="upload"></a>
-            </div>
-            <div class="col-xs-12 col-md-6 col-md-offset-1">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
                 <div class="form-group row">
                     <label class="col-md-4 control-label">@lang('fields.name')</label>
                     <div class="col-md-8">
@@ -126,7 +113,7 @@
                 </div>
                 @else
                 <div id="flex">
-                    <a href="/wahl" class="btn btn-primary btn-lg icon icon-line-graph"> @lang('fields.gtElect')</a>
+                    <a href="{{ url('/wahl') }}" class="btn btn-primary btn-lg icon icon-line-graph"> @lang('fields.gtElect')</a>
                 </div>
                 @endif
 

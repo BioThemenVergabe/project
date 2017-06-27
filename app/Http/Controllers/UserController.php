@@ -55,8 +55,9 @@ class UserController extends Controller
         if (is_null($id)) {
             if (Auth::user()->userlevel > 0)
                 return redirect('/redirect');
+            $user = Auth::user();
             return view('dashboard', [
-                'user' => Auth::user(),
+                'user' => $user,
                 'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get(),
                 'ags' => Workgroup::all(),
                 'result' => Workgroup::find(Auth::user()->zugewiesen),
@@ -139,40 +140,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-    }
-
-    /**
-     * Stores the sent user image and updates the current user-table.
-     *
-     * @param Request $request
-     */
-    public function storeUpload(Request $request)
-    {
-        $user = User::find(Auth::user()->id);
-        $img = $request->file('file');
-
-        /*
-         * local storing of user images
-         */
-        $imgName = time() . $user->name . $user->lastname . "." . $img->getClientOriginalName();
-        //$img->move(public_path('img/uploads'), $imgName);
-
-        /*
-         * amazon s3 user image storage
-         */
-        $imgName = "wsb_".time()."_".$user->name.$user->lastname.".".$img->getClientOriginalName();
-        $s3 = \Storage::disk('s3');
-        $filePath = '/biowahlsystem/' . $imgName;
-        $s3->put($filePath, file_get_contents($img), 'public');
-
-        /*
-         * updating user model
-         */
-        $user->user_picture = $imgName;
-        $user->update();
-
-
-
     }
 
 }

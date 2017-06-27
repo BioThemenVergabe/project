@@ -3,7 +3,7 @@
             <span class="lang lang-{{ app()->getLocale() }}"><span class="hidden-xs hidden-sm">@lang('lang.'.app()->getLocale())</span></span> <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="/lang/de" class="lang lang-de"> @lang('lang.de')</a></li>
-            <li><a href="/lang/en" class="lang lang-en"> @lang('lang.en')</a></li>
+            <li><a href="{{url('/lang/de')}}" class="lang lang-de"> @lang('lang.de')</a></li>
+            <li><a href="{{url('/lang/en')}}" class="lang lang-en"> @lang('lang.en')</a></li>
         </ul>
     </div>

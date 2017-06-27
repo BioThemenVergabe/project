@@ -11,6 +11,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\studentModel;
+use Illuminate\Support\Facades\Log;
 
 
 class studentController
@@ -53,6 +54,22 @@ class studentController
         $studentArray = DB::table("users")->where('id', $request->id)->select('id', 'name', 'lastname', 'matrnr', 'email', 'created_at', 'updated_at')->get();
         $student = $studentArray[0];
 
+        //Zeit + 2h für registriert seit
+        $registered = $student->created_at;
+        $stunde = substr($student->created_at, 11, 2);
+        $neueStunde = intval($stunde) + 2;
+        $suchmuster = '/(\d\d\d\d)-(\d\d)-(\d\d) (\d\d):(\d\d):(\d\d)/';
+        $ersetzung = '$1-$2-$3 '.$neueStunde.':$5:$6';
+        $registered = preg_replace($suchmuster, $ersetzung, $registered);
+
+        //Zeit + 2h für letzte Anmeldung
+        $changed = $student->updated_at;
+        $stunde = substr($student->updated_at, 11, 2);
+        $neueStunde = intval($stunde) + 2;
+        $suchmuster = '/(\d\d\d\d)-(\d\d)-(\d\d) (\d\d):(\d\d):(\d\d)/';
+        $ersetzung = '$1-$2-$3 '.$neueStunde.':$5:$6';
+        $changed = preg_replace($suchmuster, $ersetzung, $changed);
+
         //ob student schon wahl abgegeben hat
         $ratingsCount = DB::table("ratings")->where("user", $student->id)->count();
         $ratings = array();
@@ -75,7 +92,7 @@ class studentController
 
 
         $parameters = ['id' => $student->id, 'vorname' => $student->name, 'nachname' => $student->lastname, 'email' => $student->email, 'matrnr' => $student->matrnr,
-            'änderung' => $student->updated_at, 'registrierung' => $student->created_at, 'rated' => $rated, 'ratings' => $ratings, 'averageRating' => $averageRating];
+            'änderung' => $changed, 'registrierung' => $registered, 'rated' => $rated, 'ratings' => $ratings, 'averageRating' => $averageRating];
         return view('admin_studenten_bearbeiten', $parameters);
     }
 

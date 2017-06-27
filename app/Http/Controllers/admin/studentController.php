@@ -10,6 +10,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\studentModel;
 
 
 class studentController
@@ -60,7 +61,8 @@ class studentController
             $rated = false;
         } else {
             //alle ratings des Studenten
-            $ratings = DB::table("ratings")->join('workgroups', 'ratings.workgroup', '=', 'workgroups.id')->where('ratings.user', $student->id)->select('workgroups.id', 'workgroups.name', 'workgroups.groupLeader', 'workgroups.date', 'rating')->get();
+            $ratings = DB::table("ratings")->join('workgroups', 'ratings.workgroup', '=', 'workgroups.id')->where('ratings.user', $student->id)
+                ->select('workgroups.id', 'workgroups.name', 'workgroups.groupLeader', 'workgroups.date', 'rating')->orderBy('workgroups.name','asc')->get();
             $rated = true;
 
             $sum = 0;

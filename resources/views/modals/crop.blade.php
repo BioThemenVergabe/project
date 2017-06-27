@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <form action="/upload" class="dropzone" id="my-dropzone">
+                <form action="{{url('/upload') }}" class="dropzone" id="my-dropzone">
                     {{ csrf_field() }}
                 </form>
             </div>

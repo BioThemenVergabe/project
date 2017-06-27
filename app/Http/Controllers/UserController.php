@@ -155,7 +155,7 @@ class UserController extends Controller
          * local storing of user images
          */
         $imgName = time() . $user->name . $user->lastname . "." . $img->getClientOriginalName();
-        $img->move(public_path('img/uploads'), $imgName);
+        //$img->move(public_path('img/uploads'), $imgName);
 
         /*
          * amazon s3 user image storage

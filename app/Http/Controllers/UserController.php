@@ -132,6 +132,29 @@ class UserController extends Controller
     }
 
     /**
+     * Stores the sent user image and updates the current user-table.
+     *
+     * @param Request $request
+     */
+    public function storeUpload(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $img = $request->file('file');
+
+        /*
+         * local storing of user images
+         */
+        $imgName = time() . $user->name . $user->lastname . "." . $img->getClientOriginalName();
+        $img->move(public_path('img/uploads'), $imgName);
+
+        /*
+         * updating user model
+         */
+        $user->user_picture = $imgName;
+        $user->update();
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int $id

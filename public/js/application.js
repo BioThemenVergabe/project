@@ -1,12 +1,11 @@
-function calcSum() {
-    var sum = 0;
-    $('[data-target=range]').each(function () {
-        sum += parseInt($(this).html());
-    })
-    $('#sum').html(sum);
-    return sum;
-}
-
+/**
+ * get all hidden input fields.
+ * This is necessary, since we have already translated everything in our lang directory.
+ *
+ * @author Patrick Moeser
+ * @param arg
+ * @returns {*}
+ */
 function getHidden(arg) {
     var $ret = null;
     $('input[type=hidden]').each(function () {
@@ -16,6 +15,12 @@ function getHidden(arg) {
     return $ret;
 }
 
+/**
+ * Gets the <code>name</code>-Cookie
+ *
+ * @param cname
+ * @returns {*}
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -31,27 +36,11 @@ function getCookie(cname) {
     return "";
 }
 
-function checkWahlValues(values, sum) {
-
-    var size = values.length;
-    var min = 0;
-    for (var i = 0; i < (size - 1); i++) {
-        min += (10 - i);
-    }
-
-    $('#minRating').html(min);
-
-    if (parseInt(sum) < parseInt(min))
-        return false;
-    return true;
-}
-
 $(function () {
 
-    setInterval(function() {
-
-    })
-
+    /**
+     * if the user has already submitted a form from a modal, it will be shown when errors occured.
+     */
     if (sessionStorage.getItem('modal') != "") {
         var a = sessionStorage.getItem('modal');
         $('#' + a).modal();
@@ -68,47 +57,33 @@ $(function () {
         });
     }
 
-    $('.copyOf').on('input change', function () {
-        if (parseInt($(this).val()) > $(this).attr('max'))
-            $(this).val(parseInt($(this).attr('max')));
-        var ag = $(this).parents('tr').data('row');
-        $('#' + ag).val(parseInt($(this).val()));
-        $('tr[data-row=' + ag + ']').find('[data-target=range]').html($(this).val());
-        $('[data-row-copy=' + ag + ']').find('input[data-copy]').val(parseInt($(this).val()));
-        calcSum();
-    });
-
+    /**
+     * Binds all a-elements with a data-action attribute.
+     * There should be a modal with the id-value fitting to the dat-action-value.
+     */
     $('a[data-action]').on('click', function (e) {
         e.preventDefault();
         $('#' + $(this).data('action')).modal();
     });
 
-    $('[type=reset]').click(function (e) {
-        $(this).closest('form').get(0).reset();
-        var sum = 0;
-        $('[data-target=range]').each(function () {
-            $(this).html(function () {
-                return $(this).parents('tr').find('input[type=range]').val();
-            });
-            $(this).parents('tr').find('input.copyOf').val(parseInt($(this).html()));
-            sum += parseInt($(this).html());
-            $('#sum').html(sum);
-        });
-    });
-
-    calcSum();
-
-    $('.copyOf').attr('value', function () {
-        return $('#' + $(this).parents('tr').data('row')).val();
-    });
-
+    /**
+     * init popover() and .dropdown() from bootstrap.
+     */
     $('[data-toggle="popover"]').popover();
     $('.dropdown-toggle').dropdown();
 
+    /**
+     * onClickEventListener for a click on the logo.
+     * This is necessary, because we would get validation errors if we use an a-tag.
+     */
     $('#logo').on('click', function () {
         window.location.href = $(location).attr('protocol') + "//" + $(location).attr('hostname') + ":" + $(location).attr('port') + "/redirect";
     });
 
+    /**
+     * If the user visits the web-app the first time, he will be shown our cookie message.
+     * He has to accept these terms to be able to use our application.
+     */
     $('#accept[data-dismiss]').on('click', function () {
         var d = new Date();
         d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
@@ -116,28 +91,9 @@ $(function () {
         document.cookie = "cookieAccepted=1;" + expires + ";path=/";
     });
 
-    $('form[name=wahl] input[type=submit]').on('click', function (e) {
-        var values = $('.ag-values');
-
-        val = new Array();
-
-        $.each(values, function (value) {
-            val.push(values[value].value);
-            values[value].value = parseInt(values[value].value);
-            alert(values[value].value);
-        });
-
-        val.sort(function (a, b) {
-            return a - b
-        });
-        val.reverse();
-
-        if (!checkWahlValues(val, calcSum())) {
-            e.preventDefault();
-            $('#errorMsg').modal();
-        }
-    });
-
+    /**
+     * A visual display when a user enters a value in a required input-field.
+     */
     $('input:required').on('input change', function () {
         if ($(this).val() != "") {
             $(this).parent().removeClass('has-error');
@@ -148,13 +104,20 @@ $(function () {
         }
     })
 
+    /**
+     * If a user submitts a form we store the current modal in the sessionstorage.
+     * If an error occurs, he will be shown that modal with the fitting error messages.
+     */
     $('form[name] input[type=submit]').on('click', function (e) {
         e.preventDefault();
         sessionStorage.setItem('modal', $(this).parents('form').attr('name'));
         $(this).parents('form').submit();
     });
 
-    $('form[name=register] [type="password"][name*="password"]').on('keyup', function () {
+    /**
+     * Checks if the value of the inputfield password equals password_confirmation.
+     */
+    $('form[name=edit] [type="password"][name*="password"], form[name=register] [type="password"][name*="password"]').on('keyup', function () {
         var t;
         switch ($(this).attr('name')) {
             case "password":
@@ -175,31 +138,13 @@ $(function () {
         }
     });
 
-    $('form[name=edit] [type="password"][name*="password"]').on('change', function () {
-        var t;
-        switch ($(this).attr('name')) {
-            case "password":
-                t = $(this).parents('form').find('input[name=password_confirmation]');
-                break;
-            case "password_confirmation":
-                t = $(this).parents('form').find('input[name=password]');
-                break;
-        }
-        if (t.val() != $(this).val() || $(this).val().length < 8) {
-            $('.has-success').removeClass('has-success');
-            t.parent().addClass('has-error');
-            $(this).parent().addClass('has-error');
-        } else {
-            $('.has-error').removeClass('has-error');
-            t.parent().addClass('has-success');
-            $(this).parent().addClass('has-success');
-        }
-    });
-
     $('form[name=edit] [type=submit]').on('click', function (e) {
         e.preventDefault();
     });
 
+    /**
+     * Sends the contact-form using ajax to the given e-mail.
+     */
     $('#mailContact').find('input[type=submit]').on('click', function (e) {
         e.preventDefault();
         var $form = $(this).closest('form');

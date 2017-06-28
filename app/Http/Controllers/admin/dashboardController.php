@@ -57,51 +57,66 @@ class dashboardController
     public function checkAdmin(Request $request)
     {
         $passwort = $request->param;
-        $hashedPasswordObject = DB::table("users")->select("password")->where("userlevel", 1)->first();
-        $hashedPassword = $hashedPasswordObject->password;
+        $hashedPasswordObjects = DB::table("users")->select("password")->where("userlevel", 1)->get();
 
+        $matches = false;
         //die Hash::check Funktion nutzt gleichen Hash Algorithmus wie Laravel Auth
-        $matches = Hash::check($passwort, $hashedPassword);
+        foreach($hashedPasswordObjects as $hashedPasswordObject){
+            $match = Hash::check($passwort, $hashedPasswordObject->password);
+            if($match){
+                $matches = true;
+            }
+        }
         if ($matches) {
             DB::table("ratings")->delete();
             DB::table("users")->where("userlevel", 0)->delete();
         }
 
         //var_export konvertiert den boolean in einen String
-        return var_export($matches, true);;
+        return var_export($matches, true);
     }
 
     //löscht alle zugewiesenen AGs von den Studenten und zusätzlich alle abgegebenen Ratings
     public function deleteRatings(Request $request)
     {
         $passwort = $request->param;
-        $hashedPasswordObject = DB::table("users")->select("password")->where("userlevel", 1)->first();
-        $hashedPassword = $hashedPasswordObject->password;
+        $hashedPasswordObjects = DB::table("users")->select("password")->where("userlevel", 1)->get();
 
+        $matches = false;
         //die Hash::check Funktion nutzt gleichen Hash Algorithmus wie Laravel Auth
-        $matches = Hash::check($passwort, $hashedPassword);
+        foreach($hashedPasswordObjects as $hashedPasswordObject){
+            $match = Hash::check($passwort, $hashedPasswordObject->password);
+            if($match){
+                $matches = true;
+            }
+        }
         if ($matches) {
             DB::table("ratings")->delete();
             DB::table("users")->where("userlevel", 0)->update(["zugewiesen" => NULL]);
 
         }
 
-        return var_export($matches, true);;
+        return var_export($matches, true);
     }
 
     //löscht alle zugewiesenen AGs von den Studenten
     public function deleteAssignments(Request $request)
     {
         $passwort = $request->param;
-        $hashedPasswordObject = DB::table("users")->select("password")->where("userlevel", 1)->first();
-        $hashedPassword = $hashedPasswordObject->password;
+        $hashedPasswordObjects = DB::table("users")->select("password")->where("userlevel", 1)->get();
 
+        $matches = false;
         //die Hash::check Funktion nutzt gleichen Hash Algorithmus wie Laravel Auth
-        $matches = Hash::check($passwort, $hashedPassword);
+        foreach($hashedPasswordObjects as $hashedPasswordObject){
+            $match = Hash::check($passwort, $hashedPasswordObject->password);
+            if($match){
+                $matches = true;
+            }
+        }
         if ($matches) {
             DB::table("users")->where("userlevel", 0)->update(["zugewiesen" => NULL]);
         }
-        return var_export($matches, true);;
+        return var_export($matches, true);
     }
 
     public function startAlgo()
@@ -109,6 +124,7 @@ class dashboardController
         //falls schon zuweisungen existieren, diese löschen.
         DB::table("users")->where("userlevel", 0)->update(["zugewiesen" => NULL]);
 
+        //Alle Studenten aus der Datenbank holen
         $students = DB::table("users")->where("userlevel", 0)->get();
         $anzahlStudents = sizeof($students);
         //für alle Studenten ein Attribut "priorität" mit 0 setzen
@@ -170,7 +186,7 @@ class dashboardController
                         //Log::info('Forgot the student:' . $ratedStudent .". Es sind noch ".sizeof($students). " zu verteilen \n");
                         //Log::info(print_r($students,true). "\n");
                     }
-                } //ansonsten Studenten mit höchster Priorität zuweisen. Danach AG mit zufälligen Studenten auffüllen
+                } //ansonsten Studenten mit höchster Priorität zuweisen.
                 else {
                     //alle Objecte von den passenden Studenten
                     $ratedStudentsObject = array();
@@ -184,7 +200,7 @@ class dashboardController
                     }
 
                     $maxPrio = max(array_column($ratedStudentsObject, "priorität"));
-                    //solange Studenten der höchsten Priorität zuweisen, bis voll
+                    //solange Studenten der aktuell höchsten Priorität zuweisen, bis voll
                     foreach ($ratedStudentsObject as $ratedStudentObject) {
                         if ($plätze == 0) {
                             break;
@@ -223,7 +239,7 @@ class dashboardController
                     }
                 }
             }
-            //Wenn alle studenten zugewiesen worden, kann abgebrochen werden.
+            //Wenn alle studenten zugewiesen worden, kann der Algorithmus abgeschlossen werden.
             if (sizeof($students) == 0) {
                 //Log::info("-------BREAK!!!");
                 break;
@@ -243,7 +259,7 @@ class dashboardController
         return array_keys($orderedArray);
     }
 
-//Ändert das Statusfeld, wenn wahl geöffnet bzw geschlossen wurde
+    //Ändert das Statusfeld, wenn wahl geöffnet bzw geschlossen wurde
     public function toggleOpened1()
     {
         $opened = DB::table("options")->select("opened")->get()[0]->opened;
@@ -254,8 +270,9 @@ class dashboardController
             DB::table("options")->update(["opened" => 1]);
             return view("ajax.admin_statusfield", ["status" => "open"]);
         }
-    }//Tauscht den Öffnen/Schließen Button aus, wenn wahl geöffnet bzw geschlossen wurde
+    }
 
+    //Tauscht den Öffnen/Schließen Button aus, wenn wahl geöffnet bzw geschlossen wurde
     public function toggleOpened2()
     {
         //opened wurde gerade durch toggleOpened1() verändert

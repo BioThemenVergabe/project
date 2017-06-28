@@ -254,12 +254,12 @@ $(document).ready(function() {
             $.ajax({
                 type: "POST",
                 url: "/admin_start_algo",
-                data: $("[name=_token]").serialize(), // serializes the form's elements.
-                success: function(data) {// neuer Durchschnittswert der Ratings
+                data: $("[name=_token]").serialize(),
+                success: function(data) {
                     if(data=="true"){
                         window.location ="/admin?action=algoSucces";
                     }else{
-                        alert(data)
+                        alert("Error:" +data);
                     }
 
                 }

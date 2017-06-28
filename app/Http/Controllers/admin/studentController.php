@@ -36,12 +36,6 @@ class studentController
                 ->where('userlevel', 0)
                 ->orderBy('matrnr', 'asc')->get();
 
-            /*
-             $students = DB::table("users")->join("workgroups", "users.zugewiesen", "=", "workgroups.id")->where('userlevel', 0)->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen')->orderBy('matrnr', 'asc')->get();
-            foreach($students as $student){
-                $student->rating = "x";
-            }
-            */
         }
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
         $parameters = ['students' => $students, "numberStudents" => $numberStudents];

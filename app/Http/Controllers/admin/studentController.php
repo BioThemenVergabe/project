@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Log;
 class studentController
 {
 
-
     //alle Studenten anzeigen. Admin Accounts werden nicht angezeigt!
     public function showStudents()
     {
@@ -36,12 +35,6 @@ class studentController
                 ->where('userlevel', 0)
                 ->orderBy('matrnr', 'asc')->get();
 
-            /*
-             $students = DB::table("users")->join("workgroups", "users.zugewiesen", "=", "workgroups.id")->where('userlevel', 0)->select('users.id', 'users.name', 'lastname', 'matrnr', 'email', 'workgroups.name as zugewiesen')->orderBy('matrnr', 'asc')->get();
-            foreach($students as $student){
-                $student->rating = "x";
-            }
-            */
         }
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
         $parameters = ['students' => $students, "numberStudents" => $numberStudents];
@@ -154,7 +147,7 @@ class studentController
     {
         $studentID = $request->user;
         //alle ratings des Studenten
-        $ratings = DB::table("ratings")->join('workgroups', 'ratings.workgroup', '=', 'workgroups.id')->where('ratings.user', $studentID)->select('workgroups.id', 'workgroups.name', 'workgroups.groupLeader', 'workgroups.date', 'rating')->get();
+        $ratings = DB::table("ratings")->join('workgroups', 'ratings.workgroup', '=', 'workgroups.id')->where('ratings.user', $studentID)->select('workgroups.id', 'workgroups.name', 'workgroups.groupLeader', 'workgroups.date', 'rating')->orderBy('workgroups.name','asc')->get();
 
         return view("ajax.admin_Rating_table", ["ratings" => $ratings]);
     }

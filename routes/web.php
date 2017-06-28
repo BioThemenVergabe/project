@@ -101,6 +101,7 @@ Route::group(['middleware' => 'language'], function () {
         //Middleware checklevel verweigert Zugriff für normale Benutzer. Nur Admin darf auf folgende Seiten zugreifen
         Route::group(['middleware' => 'checkLevel'], function () {
 
+            //Dashboard Routes
             Route::match(['get', 'post'], '/admin', 'admin\dashboardController@showDashboard');
             Route::post('/admin_delete_ratings', 'admin\dashboardController@deleteRatings');
             Route::post('/admin_delete_assignments', 'admin\dashboardController@deleteAssignments');
@@ -112,14 +113,17 @@ Route::group(['middleware' => 'language'], function () {
             Route::post('/admin_welcome_save', 'admin\dashboardController@saveWelcome');
             Route::get('/admin_download_results', 'admin\dashboardController@downloadResultsXlsx');
 
+            //studenten Routes
             Route::get('/admin_studenten', 'admin\studentController@showStudents');
             Route::post('/admin_studenten', 'admin\studentController@saveStudent');
-            Route::get('/admin_studenten_bearbeiten', 'admin\studentController@editStudent');
             Route::get('/admin_studenten_search', 'admin\studentController@searchStudents');
+            Route::get('/studenten_delete', 'admin\studentController@deleteStudent');
+            //studenten_bearbeiten Routes
+            Route::get('/admin_studenten_bearbeiten', 'admin\studentController@editStudent');
             Route::post('/admin_sb_save', 'admin\studentController@saveRating');
             Route::get('/admin_get_ratings', 'admin\studentController@getRating');
-            Route::get('/studenten_delete', 'admin\studentController@deleteStudent');
 
+            //AG Routes
             Route::get('/admin_AG', 'admin\workgroupController@showGroups');
             Route::get('/admin_AG_delete', 'admin\workgroupController@deleteGroup');
             Route::get('/admin_AG_search', 'admin\workgroupController@searchGroups');

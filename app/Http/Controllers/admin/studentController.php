@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Log;
 class studentController
 {
 
-
     //alle Studenten anzeigen. Admin Accounts werden nicht angezeigt!
     public function showStudents()
     {
@@ -148,7 +147,7 @@ class studentController
     {
         $studentID = $request->user;
         //alle ratings des Studenten
-        $ratings = DB::table("ratings")->join('workgroups', 'ratings.workgroup', '=', 'workgroups.id')->where('ratings.user', $studentID)->select('workgroups.id', 'workgroups.name', 'workgroups.groupLeader', 'workgroups.date', 'rating')->get();
+        $ratings = DB::table("ratings")->join('workgroups', 'ratings.workgroup', '=', 'workgroups.id')->where('ratings.user', $studentID)->select('workgroups.id', 'workgroups.name', 'workgroups.groupLeader', 'workgroups.date', 'rating')->orderBy('workgroups.name','asc')->get();
 
         return view("ajax.admin_Rating_table", ["ratings" => $ratings]);
     }

@@ -51,8 +51,7 @@ function validateRating() {
 
 //nach dem Canceln des Veränderns der Bewertung eines Studenten, alte Werte wiederholen
 function resetRating(){
-    var users = $("input[name='id']");
-    var userID = users[0].value;
+    var userID = $("input[name='id']")[0].value;
     $("#AG_Wahl_Modal_row").load("admin_get_ratings?user="+userID);
 }
 
@@ -336,7 +335,6 @@ $(document).ready(function() {
         }
     });
 
-    //------------Studenten_bearbeiten JS------------
     //Get Request an _bearbeiten mit Daten des zu bearbeitenden Studenten
     $('.bearbeitenButton').click(function(){
         var row = $(this).parent().parent().parent();
@@ -344,7 +342,8 @@ $(document).ready(function() {
         window.location = "/admin_studenten_bearbeiten?"+"id="+id;
     });
 
-    //submit eventHandler, für student_bearbeiten wenn Änderung gespeichert werden soll
+    //------------Studenten_bearbeiten JS------------
+    //submit eventHandler, für student_bearbeiten(sb) wenn Änderung gespeichert werden soll
     $("#sb_form").submit(function (e) {
         e.preventDefault();
         $.post( "/admin_studenten",$("#sb_form").serialize(), function( data ) {

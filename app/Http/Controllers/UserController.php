@@ -110,6 +110,7 @@ class UserController extends Controller
             'email' => 'uniqueUsers|email',
             'matrnr' => 'uniqueUsers',
         ]);
+
         $user = User::find(intval(Auth::user()->id));
         if ($request->name != $user->name && $request->name != "")
             $user->name = $request->name;

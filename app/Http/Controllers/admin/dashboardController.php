@@ -260,27 +260,29 @@ class dashboardController
     }
 
     //Ändert das Statusfeld, wenn wahl geöffnet bzw geschlossen wurde
-    public function toggleOpened1()
+    public function toggleOpened1(Request $request)
     {
-        $opened = DB::table("options")->select("opened")->get()[0]->opened;
-        if ($opened == 1) {
+        $opened = $request->status;
+        if ($opened == "open") {
+            //dann schließen
             DB::table("options")->update(["opened" => 0]);
             return view("ajax.admin_statusfield", ["status" => "close"]);
         } else {
+            //ansonsten öffnen
             DB::table("options")->update(["opened" => 1]);
             return view("ajax.admin_statusfield", ["status" => "open"]);
         }
     }
 
     //Tauscht den Öffnen/Schließen Button aus, wenn wahl geöffnet bzw geschlossen wurde
-    public function toggleOpened2()
+    public function toggleOpened2(Request $request)
     {
-        //opened wurde gerade durch toggleOpened1() verändert
-        $opened = DB::table("options")->select("opened")->get()[0]->opened;
-        if ($opened == 1) {
-            return view("ajax.admin_closeOpenButton", ["status" => "open"]);
-        } else {
+        $opened = $request->status;
+        if ($opened == "open") {
+            //wenn gerae offen ist, dann wurde durch toggleOpened1 geschlossen
             return view("ajax.admin_closeOpenButton", ["status" => "close"]);
+        } else {
+            return view("ajax.admin_closeOpenButton", ["status" => "open"]);
         }
     }
 

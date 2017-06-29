@@ -28,7 +28,7 @@
 
 <!-- Scripts -->
 <script src="{{ asset('/js/application.min.js') }}"></script>
-<script src="{{ asset('/js/functions.min.js') }}"></script>
+<script src="{{ asset('/js/functions.js') }}"></script>
 
 </body>
 </html>

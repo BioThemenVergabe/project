@@ -3,9 +3,15 @@
 //------------Dashboard JS------------
 //wenn Wahl geöffnet oder geschlossen wird, wird dies an die DB geschickt und der Status geändert
 function toggle(){
-    var csrf = $("[name=_token]").serialize();
-    $("#status_field").load("/admin_toggleOpened1", csrf);
-    $("#close_open_button").load("/admin_toggleOpened2", csrf);
+    var csrf = $("[name=_token]").val();
+    var status = "";
+    if($("#wahl_schliessen_button").hasClass("icon-block")){
+        status = "open";
+    }else{
+        status="closed";
+    }
+    $("#status_field").load("/admin_toggleOpened1", {_token: csrf, status: status});
+    $("#close_open_button").load("/admin_toggleOpened2", {_token: csrf, status: status});
 }
 
 

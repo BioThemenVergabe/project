@@ -10,7 +10,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\studentModel;
+use app\studentModel;
 use Illuminate\Support\Facades\Log;
 
 

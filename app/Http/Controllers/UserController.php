@@ -61,7 +61,7 @@ class UserController extends Controller
                 'ratings' => Rating::where('user', '=', Auth::user()->id)->orderBy('rating', 'desc')->get(),
                 'ags' => Workgroup::all(),
                 'result' => Workgroup::find(Auth::user()->zugewiesen),
-                'options' => Option::find(1),
+                'options' => Option::find(1)
             ]);
         }
         return view('dashboard', [
@@ -129,6 +129,29 @@ class UserController extends Controller
         }
         $user->save();
         return redirect('/dashboard');
+    }
+
+    /**
+     * Stores the sent user image and updates the current user-table.
+     *
+     * @param Request $request
+     */
+    public function storeUpload(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $img = $request->file('file');
+
+        /*
+         * local storing of user images
+         */
+        $imgName = time() . $user->name . $user->lastname . "." . $img->getClientOriginalName();
+        $img->move(public_path('img/uploads'), $imgName);
+
+        /*
+         * updating user model
+         */
+        $user->user_picture = $imgName;
+        $user->update();
     }
 
     /**

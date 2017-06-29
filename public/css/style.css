@@ -356,3 +356,10 @@ footer .nav > li > a:active {
         padding-top: 30px;
     }
 }
+
+.dropzone {
+    display: flex;
+    border: 3px dotted #dcdcdc;
+    justify-content: center;
+    align-items: center;
+}

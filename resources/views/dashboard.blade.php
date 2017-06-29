@@ -5,13 +5,8 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('/assets/css/dropzone.css') }}"/>
 <style>
-    @for ($i = 1; $i <= $ags->count(); $i++)
-    #listRating > div:nth-child({{$i}}):before {
-        content: '{{ $i }}';
-    }
-    @endfor
+    @for ($i = 1; $i <= $ags->count() ; $i++) #listRating > div:nth-child({{$i}}):before {content:'{{ $i }}';}  @endfor
 </style>
 @endsection
 
@@ -54,7 +49,22 @@
                 </h1>
             </div>
 
-            <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="col-md-3 hidden-xs hidden-sm">
+                @if($user->user_picture == "")
+                <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture"
+                     style="background-image: url('{{ asset('/img/default-user.png') }}');">
+
+                </div>
+                @else
+                <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture"
+                     style="background-image: url('{{ asset('/img/uploads/'.$user->user_picture) }}');">
+
+                </div>
+                @endif
+                <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"
+                   id="upload"></a>
+            </div>
+            <div class="col-xs-12 col-md-6 col-md-offset-1">
                 <div class="form-group row">
                     <label class="col-md-4 control-label">@lang('fields.name')</label>
                     <div class="col-md-8">
@@ -82,9 +92,9 @@
                         <div class="btn-group btn-group-xs" role="group" aria-label="...">
                             <span class="btn btn-default disabled">@if(is_null($result)) @lang('fields.noresult') @else {{ $result->name }}@endif</span>
                             @if(is_null($result))
-                                <span class="btn btn-danger icon icon-cross disabled"></span>
+                            <span class="btn btn-danger icon icon-cross disabled"></span>
                             @else
-                                <span class="btn btn-success icon icon-check disabled"></span>
+                            <span class="btn btn-success icon icon-check disabled"></span>
                             @endif
                         </div>
 
@@ -94,7 +104,8 @@
                 @if($options->opened == 0)
                 <div class="form-group row">
                     <div class="col-xs-12 hidden-md hidden-lg">
-                        <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default disabled" disabled>
+                        <a href="{{ url('/profile/edit') }}" class="icon icon-edit btn btn-default disabled"
+                           disabled>
                             @lang('fields.editProfile')</a>
                     </div>
                 </div>
@@ -113,7 +124,8 @@
                 </div>
                 @else
                 <div id="flex">
-                    <a href="{{ url('/wahl') }}" class="btn btn-primary btn-lg icon icon-line-graph"> @lang('fields.gtElect')</a>
+                    <a href="{{ url('/wahl') }}" class="btn btn-primary btn-lg icon icon-line-graph">
+                        @lang('fields.gtElect')</a>
                 </div>
                 @endif
 

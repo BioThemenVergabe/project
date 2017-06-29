@@ -6,7 +6,11 @@
 
 @section('css')
 <style>
-    @for ($i = 1; $i <= $ags->count() ; $i++) #listRating > div:nth-child({{$i}}):before {content:'{{ $i }}';}  @endfor
+    @for($i = 5; $i <= ($ags->count()+1) ; $i++)
+    #listRating > div:nth-child({{$i}}):before {
+        content:'{{ ($i-1) }}';
+    }
+    @endfor
 </style>
 @endsection
 

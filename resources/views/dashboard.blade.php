@@ -69,9 +69,9 @@
                 <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"
                    id="upload"></a>
             </div>
--->
-
             <div class="col-xs-12 col-md-6 col-md-offset-1">
+-->
+            <div class="col-xs-12 col-md-6 col-md-offset-4">
                 <div class="form-group row">
                     <label class="col-md-4 control-label">@lang('fields.name')</label>
                     <div class="col-md-8">

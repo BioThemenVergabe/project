@@ -58,18 +58,6 @@
                 <form action="/admin_AG_save" method="post" id="AG_form">
                     {{ csrf_field() }}
                 </form>
-                <div class="top-buffer-2 row">
-                    <div class="last col-xs-6">
-                        <button onclick="checkSave()" type="button" class="btn btn-primary pull-right">
-                            @lang('fields.save')
-                        </button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button onclick="location.href='/admin_AG';" type="button" class="btn btn-danger">
-                            @lang('fields.reset')
-                        </button>
-                    </div>
-                </div>
                 <div class="table-responsive" id="AG_table">
                     <table class="table table-striped table-hover">
                         <thead>

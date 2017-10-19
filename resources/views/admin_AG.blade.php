@@ -105,6 +105,14 @@
                         @endforeach
                         </tbody>
                     </table>
+                    
+                    <div class="col-xs-4 pull-right">
+                        <button id="hinzufügen" onclick="anhaengen()" type="button"
+                                class="btn btn-default btn-sm">@lang('fields.add') <span class="icon icon-plus"
+                                                                                         aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    
                 </div>
 
                 <div class="row">

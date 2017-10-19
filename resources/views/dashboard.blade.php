@@ -53,6 +53,7 @@
                 </h1>
             </div>
 
+<!--
             <div class="col-md-3 hidden-xs hidden-sm">
                 @if($user->user_picture == "")
                 <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture"
@@ -68,6 +69,8 @@
                 <a href="#" data-action="cropUpload" class="icon icon-upload btn btn-default btn-circle"
                    id="upload"></a>
             </div>
+-->
+
             <div class="col-xs-12 col-md-6 col-md-offset-1">
                 <div class="form-group row">
                     <label class="col-md-4 control-label">@lang('fields.name')</label>

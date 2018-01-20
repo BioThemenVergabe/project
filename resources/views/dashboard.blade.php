@@ -6,7 +6,11 @@
 
 @section('css')
 <style>
-    @for ($i = 1; $i <= $ags->count() ; $i++) #listRating > div:nth-child({{$i}}):before {content:'{{ $i }}';}  @endfor
+    @for($i = 5; $i <= ($ags->count()+1) ; $i++)
+    #listRating > div:nth-child({{$i}}):before {
+        content:'{{ ($i-1) }}';
+    }
+    @endfor
 </style>
 @endsection
 
@@ -49,6 +53,7 @@
                 </h1>
             </div>
 
+<!--
             <div class="col-md-3 hidden-xs hidden-sm">
                 @if($user->user_picture == "")
                 <div class="col-xs-12 img-thumbnail img-circle img-responsive" id="userPicture"
@@ -65,6 +70,8 @@
                    id="upload"></a>
             </div>
             <div class="col-xs-12 col-md-6 col-md-offset-1">
+-->
+            <div class="col-xs-12 col-md-6 col-md-offset-4">
                 <div class="form-group row">
                     <label class="col-md-4 control-label">@lang('fields.name')</label>
                     <div class="col-md-8">

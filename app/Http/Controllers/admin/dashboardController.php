@@ -121,6 +121,7 @@ class dashboardController
 
     public function startAlgo()
     {
+        $log = true;
         //falls schon zuweisungen existieren, diese löschen.
         DB::table("users")->where("userlevel", 0)->update(["zugewiesen" => NULL]);
 
@@ -144,7 +145,7 @@ class dashboardController
                     }
                 }
             }
-            //Log::info("PräferenzRatings: ".print_r($präferenzRatings,true). "\n");
+            if($log){Log::info("PräferenzRatings: ".print_r($präferenzRatings,true). "\n");}
 
             //Nach AGs sortieren
             $workgroups = array_unique(array_values($präferenzRatings));//Array aller AGs, jede AG nur einmal vorhanden
@@ -161,7 +162,7 @@ class dashboardController
                     ->where("workgroups.id", $workgroup)
                     ->groupBy('workgroups.name')
                     ->get()[0]->belegt;
-                //Log::info("---------------Die AG:".$workgroup ." wurde bereits belegt von ".$plätzeBelegt." Studenten");
+                if($log){Log::info("---------------Die AG:".$workgroup ." wurde bereits belegt von ".$plätzeBelegt." Studenten");}
                 $plätze = $plätzeGesamt - $plätzeBelegt;
 
                 //Falls Anzahl der Bewertungen <= Plätze-> alle zuweisen
@@ -169,22 +170,21 @@ class dashboardController
                     foreach ($ratedStudents as $ratedStudent) {
                         //Spalte in DB aktualisieren
                         DB::table("users")->where("id", "$ratedStudent")->update(["zugewiesen" => $workgroup]);
-                        //Log::info('Dem Studenten: ' . $ratedStudent ." wurde die Gruppe ".$workgroup." zugewiesen. Bewertung=".$i. "\n");
+                        if($log){Log::info('Dem Studenten: ' . $ratedStudent ." wurde die Gruppe ".$workgroup." zugewiesen. Bewertung=".$i. "\n");}
                         //und den studenten aus Algorithmus entfernen
                         $index = -1; //der index des studenten in $students
                         for ($j = 0; $j < $anzahlStudents; $j++) {
-                            //Log::info('Neue Iteration:' . $j . "\n");
                             if (isset($students[$j])) {
                                 if ($students[$j]->id == $ratedStudent) {
                                     $index = $j;
-                                    //Log::info('Found the student:' . $ratedStudent . "\n");
+                                    if($log){Log::info('Found the student:' . $ratedStudent . "\n");}
                                     break;
                                 }
                             }
                         }
                         $students->forget($index);
-                        //Log::info('Forgot the student:' . $ratedStudent .". Es sind noch ".sizeof($students). " zu verteilen \n");
-                        //Log::info(print_r($students,true). "\n");
+                        if($log){Log::info('Forgot the student:' . $ratedStudent .". Es sind noch ".sizeof($students). " zu verteilen \n");}
+                        if($log){Log::info(print_r($students,true). "\n");}
                     }
                 } //ansonsten Studenten mit höchster Priorität zuweisen.
                 else {
@@ -203,12 +203,13 @@ class dashboardController
                     //solange Studenten der aktuell höchsten Priorität zuweisen, bis voll
                     foreach ($ratedStudentsObject as $ratedStudentObject) {
                         if ($plätze == 0) {
+                            if($log){Log::info("Leider sind in dieser Gruppe keine Plätze mehr frei...\n");}
                             break;
                         }
                         if ($ratedStudentObject->priorität == $maxPrio) {
                             //Spalte in DB aktualisieren
                             DB::table("users")->where("id", $ratedStudentObject->id)->update(["zugewiesen" => $workgroup]);
-                            //Log::info('--ELSE: Dem Studenten: ' . $ratedStudentObject->id ." wurde die Gruppe ".$workgroup." zugewiesen. Bewertung=".$i. "\n");
+                            if($log){Log::info('--ELSE: Dem Studenten: ' . $ratedStudentObject->id ." wurde die Gruppe ".$workgroup." zugewiesen. Bewertung=".$i. "\n");}
                             //und den studenten aus Algorithmus entfernen
                             $index = -1; //der index des studenten in $students
                             for ($j = 0; $j < $anzahlStudents; $j++) {
@@ -221,7 +222,7 @@ class dashboardController
                             }
                             $students->forget($index);
                             unset($ratedStudentsObject[key($ratedStudentsObject)]);
-                            //Log::info('Forgot the student:' . $ratedStudentObject->id .". Es sind noch ".sizeof($students). " zu verteilen \n");
+                            if($log){Log::info('--ELSE: Forgot the student:' . $ratedStudentObject->id .". Es sind noch ".sizeof($students). " zu verteilen \n");}
                             $maxPrio = max(array_column($ratedStudentsObject, "priorität"));
                             $plätze--;
                         }
@@ -232,7 +233,7 @@ class dashboardController
                             foreach ($students as $student) {
                                 if ($ratedStudentObject->id == $student->id) {
                                     $student->priorität++;
-                                    //Log::info('Die Priorität von student:' . $ratedStudentObject->id ." wurde um eins erhöht. Priorität ist jetzt: ".$student->priorität);
+                                    if($log){Log::info("Der Student ".$ratedStudentObject->id . " konnte leider nicht zugewiesen werden. Die Priorität von dem Studenten wurde um eins erhöht. Priorität ist jetzt: ".$student->priorität);}
                                 }
                             }
                         }
@@ -241,7 +242,7 @@ class dashboardController
             }
             //Wenn alle studenten zugewiesen worden, kann der Algorithmus abgeschlossen werden.
             if (sizeof($students) == 0) {
-                //Log::info("-------BREAK!!!");
+                if($log){Log::info("-------BREAK!!!");}
                 break;
             }
         }

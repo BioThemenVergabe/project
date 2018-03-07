@@ -8,9 +8,12 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
+                        <p>@lang("content.admin_algoSucces2")</p>
                         <p>
-                            @lang("content.admin_algoSucces2")
+                            <b> {{$zugewieseneStudenten}}/{{$numberStudents}} </b>
+                            @lang("content.admin_algoSucces3")
                         </p>
+
                     </div>
                 </div>
             </div>

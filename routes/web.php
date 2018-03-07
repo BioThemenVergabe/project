@@ -107,7 +107,6 @@ Route::group(['middleware' => 'language'], function () {
             Route::post('/admin_delete_assignments', 'admin\dashboardController@deleteAssignments');
             Route::post('/admin_end_election', 'admin\dashboardController@checkAdmin');
             Route::post('/admin_start_algo', 'admin\dashboardController@startAlgo');
-            Route::post('/admin_start_algo', 'admin\dashboardController@startAlgo');
             Route::post('/admin_toggleOpened1', 'admin\dashboardController@toggleOpened1');
             Route::post('/admin_toggleOpened2', 'admin\dashboardController@toggleOpened2');
             Route::post('/admin_welcome_save', 'admin\dashboardController@saveWelcome');

@@ -184,7 +184,7 @@ class dashboardController
                 $availableAgs = DB::table("workgroups")
                     ->leftJoin("users", "users.zugewiesen", "workgroups.id")
                     ->select('workgroups.id as id', 'workgroups.spots as plätze', DB::raw('COUNT(zugewiesen) as belegt'))
-                    ->groupBy('workgroups.id')
+                    ->groupBy('workgroups.id', 'workgroups.spots')
                     ->get();
                 Log::info("Informationen zu den AGs, wieviele von den Plätzen wurden belegt:");
                 Log::info(print_r($availableAgs,true));
@@ -201,7 +201,7 @@ class dashboardController
         $availableAgsTemp = DB::table("workgroups")
             ->leftJoin("users", "users.zugewiesen", "workgroups.id")
             ->select('workgroups.id as id', 'workgroups.spots as plätze', DB::raw('COUNT(zugewiesen) as belegt'))
-            ->groupBy('workgroups.id')
+            ->groupBy('workgroups.id' , 'workgroups.spots')
             ->get();
         //array with id as key
         $availableAGs = array();

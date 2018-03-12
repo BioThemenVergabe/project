@@ -35,8 +35,8 @@
                         @lang('content.ag1'): <span id="AG_anz">{{$numberGroups}}</span>
                     </div>
                     <div class="col-xs-4 pull-right">
-                        <button id="hinzufügen" onclick="anhaengen()" type="button"
-                                class="btn btn-default btn-sm">@lang('fields.add') <span class="icon icon-plus"
+                        <button onclick="anhaengen()" type="button"
+                                class="hinzufügen pull-right btn btn-default btn-sm">@lang('fields.add') <span class="icon icon-plus"
                                                                                          aria-hidden="true"></span>
                         </button>
                     </div>
@@ -95,8 +95,8 @@
                     </table>
                     
                     <div class="col-xs-4 pull-right">
-                        <button id="hinzufügen" onclick="anhaengen()" type="button"
-                                class="btn btn-default btn-sm">@lang('fields.add') <span class="icon icon-plus"
+                        <button onclick="anhaengen()" type="button"
+                                class="hinzufügen pull-right btn btn-default btn-sm">@lang('fields.add') <span class="icon icon-plus"
                                                                                          aria-hidden="true"></span>
                         </button>
                     </div>
@@ -130,7 +130,10 @@
     @if($numberRatings!=0)
         <script>
             //hinzufügen Button deaktivieren
-            document.getElementById("hinzufügen").disabled = true;
+            var buttons = document.getElementsByClassName("hinzufügen");
+            for(var i=0; i<buttons.length;i++){
+                buttons[i].disabled = true;
+            }
         </script>
     @endif
     <!--Speicher-Modal-->

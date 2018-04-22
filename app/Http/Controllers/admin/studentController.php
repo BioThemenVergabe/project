@@ -21,10 +21,10 @@ class studentController
     public function showStudents()
     {
         $zugewieseneStudenten = DB::table("users")->whereNotNull("zugewiesen")->get();
-        if (sizeof($zugewieseneStudenten) == 0) {
+        if (sizeof($zugewieseneStudenten) == 0) { //wenn keine Zugewiesen sind, nur Studenteninfos
             $students = DB::table("users")->where('userlevel', 0)->select('id', 'name', 'lastname', 'matrnr', 'email', 'zugewiesen')->orderBy('matrnr', 'asc')->get();
 
-        } else {
+        } else {//wenn schon zugewiesen wurde: auch infos über zugewiesene AG
             $students = DB::table("users")
                 ->leftJoin("workgroups", "users.zugewiesen", "workgroups.id")
                 ->leftJoin("ratings", function ($join) {
@@ -37,7 +37,13 @@ class studentController
 
         }
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
-        $parameters = ['students' => $students, "numberStudents" => $numberStudents];
+        $ratedStudentsObject = DB::table("ratings")->select("user")->get();
+        $ratedStudents = [];
+        foreach ($ratedStudentsObject as $ratedStudent){
+            array_push($ratedStudents, $ratedStudent->user);
+        }
+
+        $parameters = ['students' => $students, "numberStudents" => $numberStudents, "ratedStudents"=>$ratedStudents];
         return view('admin_studenten', $parameters);
     }
 
@@ -178,7 +184,15 @@ class studentController
 
 
         $numberStudents = DB::table("users")->where("userlevel", 0)->count();
-        $parameters = ['students' => $students, "numberStudents" => $numberStudents];
+
+        $ratedStudentsObject = DB::table("ratings")->select("user")->get();
+        $ratedStudents = [];
+        foreach ($ratedStudentsObject as $ratedStudent){
+            array_push($ratedStudents, $ratedStudent->user);
+        }
+
+
+        $parameters = ['students' => $students, "numberStudents" => $numberStudents, "ratedStudents"=>$ratedStudents];
         return view('ajax.admin_Studenten_table', $parameters);
     }
 }

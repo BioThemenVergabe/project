@@ -3,6 +3,7 @@
     <table class="table table-striped table-hover">
         <thead>
         <tr>
+            <th>Gewählt</th>
             <th>Matr.Nr.</th>
             <th>Name</th>
             <th class="">AG</th>
@@ -12,6 +13,11 @@
         <tbody>
         @foreach($students as $student)
             <tr>
+                @if(in_array($student->id,$ratedStudents))
+                    <td style="text-align:center"> <span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green"></span></td>
+                @else
+                    <td></td>
+                @endif
                 <td class="id" style="display:none">{{$student->id}}</td>
                 <td class="ma">{{$student->matrnr}}</td>
                 <td class="na">{{$student->name . " " . $student->lastname}}</td>

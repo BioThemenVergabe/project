@@ -126,11 +126,14 @@ class dashboardController
         ini_set('max_execution_time', 360);
 
         //falls schon zuweisungen existieren, diese löschen.
-
         DB::table("users")->where("userlevel", 0)->update(["zugewiesen" => NULL]);
 
+        //Logg all students
+        $all_students = DB::table("users")->where("userlevel", 0)->get();
+        Log::info($all_students);
+
         //step 1:
-        Log::info("--------------------step 1: for all AGs check if sum(ratings >= 7) is less then available positions");
+        Log::info("----------------------------------------step 1: Approximation: Assign students for AGs where sum(ratings >= 7) is less then available positions----------------------------------------");
         $groups = DB::table("workgroups")->select("id", "spots")->get();
         foreach ($groups as $group) {
             $ratings = DB::table("ratings")->where([
@@ -138,10 +141,11 @@ class dashboardController
                 ['rating', '>', '6'],
             ])->get();
 
-            if (sizeof($ratings) <= $group->spots) {
-                Log::info("-Workgroup " . $group->id . "matches.");
+            if (sizeof($ratings) >0 & sizeof($ratings) <= $group->spots) {
+                Log::info("-Workgroup " . $group->id . " matches.");
+                Log::info($ratings);
                 foreach ($ratings as $rating) {
-                    //Todo: What if a student has two AGs that fit (select one with higher rating)
+                    //Todo: What if a student has two AGs that fit (select one with higher rating) -> Gets handled later in optimisation
                     DB::table("users")->where("id", $rating->user)->update(["zugewiesen" => $rating->workgroup]);
                     Log::info($rating->user . " was assigned.");
                 }
@@ -149,17 +153,83 @@ class dashboardController
         }
 
         //steps 2:
-        Log::info("\n--------------------step 2: starting old algorithm");
+        Log::info("\n\n----------------------------------------step 2: starting old(pre 03/2018) algorithm for all non-assigned students----------------------------------------");
         $students = DB::table("users")->where("userlevel", 0)->whereNull('zugewiesen')->get();
         $this->startAlgo_old($students);
 
-
         //step 3:
-        Log::info("\n--------------------step 3: Trying to improve assignments by trying to push down assigned students, in order to make space for badly assigned");
+        Log::info("\n\n----------------------------------------step 3: Try if any better spots are still available----------------------------------------");
+        $this->find_simple_improvements();
+
+        //step 4:
+        Log::info("\n\n----------------------------------------step 4: Try to improve assignments by trying to push down assigned students, in order to make space for badly assigned----------------------------------------");
+        $this->optimize_results_by_swapping();
+
+
+        $availableAgs = DB::table("workgroups")
+            ->leftJoin("users", "users.zugewiesen", "workgroups.id")
+            ->select('workgroups.id as id', 'workgroups.spots as plätze', DB::raw('COUNT(zugewiesen) as belegt'))
+            ->groupBy('workgroups.id', 'workgroups.spots')
+            ->get();
+        Log::info("\n\n------------- Algorithm completed succesfully -------------");
+        Log::info("Informationen zu den AGs, wieviele von den Plätzen wurden belegt:");
+        Log::info(print_r($availableAgs,true));
+
+        return "true";
+    }
+
+    public function find_simple_improvements(){
+        //noch freie AGs
+        $availableAgsTemp = DB::table("workgroups")
+            ->leftJoin("users", "users.zugewiesen", "workgroups.id")
+            ->select('workgroups.id as id', 'workgroups.spots as plätze', DB::raw('COUNT(zugewiesen) as belegt'))
+            ->groupBy('workgroups.id' , 'workgroups.spots')
+            ->get();
+        //array with id as key
+        $availableAGs = array();
+        foreach ($availableAgsTemp as $ag) {
+            $availableAGs[$ag->id] = $ag;
+            $availableAGs[$ag->id]->spotsLeft = $ag->plätze - $ag->belegt;
+        }
+
+        $all_students = DB::table("users")->where("userlevel", 0)->get();
+        foreach ($all_students as $student) {
+            //zugewiesenes rating
+            if (is_null($student->zugewiesen)) {
+                $assignedRating = 1;# if no assignment yet, assignmentRating=1(bad)
+            } else {
+                $assignedAG = $student->zugewiesen;
+                $assignedRating = DB::table("ratings")->where([["workgroup", $assignedAG], ["user", $student->id]])->first()->rating;
+            }
+
+            Log::info("----Student: " . $student->id . " has an assignment of: " . $assignedRating);
+
+            $ratings = DB::table("ratings")->where("user", $student->id)->get();
+            //für alle ratings größer als zugewiesen
+            for ($i = 10; $i > $assignedRating; $i--) {
+                foreach ($ratings as $rating) {
+                    if ($rating->rating == $i) {//for the rating with $i
+                        $workgroup = $rating->workgroup;//the id of workgroup, that the badlyassigned Student has rated with $i
+                        Log::info("---Selected Student voted for the group " . $workgroup . " with rating: " . $i);
+                        if($availableAGs[$workgroup]->spotsLeft >0){
+                            Log::info("!There still is a spot left in this group. Student got assigned!");
+                            //Zuweisung ändern:
+                            DB::table("users")->where("id", $student->id)->update(["zugewiesen" => $workgroup]);
+                            $availableAGs[$workgroup]->spotsLeft--;
+                            if (isset($assignedAG)) {
+                                $availableAGs[$assignedAG]->spotsLeft++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    public function optimize_results_by_swapping(){
         $notAssigned = DB::table("users")->where("userlevel", 0)->whereNull("zugewiesen")->get();
-
-
-        Log::info("Sizeof notAssigned: " . sizeof($notAssigned));
+        Log::info("Sizeof notAssigned: " . sizeof($notAssigned) ."\n");
 
         if (sizeof($notAssigned) > 0) {
             $this->optimize($notAssigned);
@@ -168,6 +238,7 @@ class dashboardController
         $threshhold = 6;//all above this are good
         $max_iterations = 7;
         $iteration = 0;
+        #find bad assigned students and try to optimize
         do {
             $iteration++;
             $badAssigned = DB::table("users")
@@ -176,23 +247,19 @@ class dashboardController
                     $join->on('users.id', 'ratings.user');
                 })->where("ratings.rating", "<=", $threshhold)->select("users.*")->get();
 
-            Log::info("\n\nSizeof badAssigned: " . sizeof($badAssigned));
+            Log::info("Sizeof badAssigned: " . sizeof($badAssigned));
 
+            #if bad assignments are present
             if (sizeof($badAssigned) > 0) {
                 $this->optimize($badAssigned);
-            } else {
-                $availableAgs = DB::table("workgroups")
-                    ->leftJoin("users", "users.zugewiesen", "workgroups.id")
-                    ->select('workgroups.id as id', 'workgroups.spots as plätze', DB::raw('COUNT(zugewiesen) as belegt'))
-                    ->groupBy('workgroups.id', 'workgroups.spots')
-                    ->get();
-                Log::info("Informationen zu den AGs, wieviele von den Plätzen wurden belegt:");
-                Log::info(print_r($availableAgs,true));
+
+            } else if($threshhold <= 8) {#if no bad assignments, but still iterations left -> try to increase bad threshhold
+                $threshhold++;
+                Log::info("Threshhold increase to: " . $threshhold);
+            } else{
                 break;
             }
         } while($iteration < $max_iterations);
-
-        return "true";
     }
 
     public function optimize($students)
@@ -220,42 +287,55 @@ class dashboardController
     {
         //zugewiesenes rating
         if (is_null($student->zugewiesen)) {
-            $assigned = 1;
+            $assignedRating = 1;# if no assignment yet, assignmentRating=1(bad)
         } else {
             $assignedAG = $student->zugewiesen;
-            $assigned = DB::table("ratings")->where([["workgroup", $assignedAG], ["user", $student->id]])->first()->rating;
+            $assignedRating = DB::table("ratings")->where([["workgroup", $assignedAG], ["user", $student->id]])->first()->rating;
         }
 
-        Log::info("----Student: " . $student->id . " has an assignment of: " . $assigned);
+        Log::info("----Student: " . $student->id . " has an assignment of: " . $assignedRating);
 
         $ratings = DB::table("ratings")->where("user", $student->id)->get();
-        //für alle ratings > als zugewiesen
-        for ($i = 10; $i > $assigned; $i--) {
+        //für alle ratings größer als zugewiesen
+        for ($i = 10; $i > $assignedRating; $i--) {
             foreach ($ratings as $rating) {
                 if ($rating->rating == $i) {//for the rating with $i
                     $workgroup = $rating->workgroup;//the id of workgroup, that the badlyassigned Student has rated with $i
                     Log::info("---Selected Student voted for the group " . $workgroup . " with rating: " . $i);
-                    $assignedStudents = DB::table("users")->where("zugewiesen", $workgroup)->get();//all other students that got assignet to this workgroup
-                    foreach ($assignedStudents as $assStudent) {//try to move them down
-                        $assRating = DB::table("ratings")->where([["user", $assStudent->id], ["workgroup", $workgroup]])->first()->rating; //how the other Student rated this workgroup
-                        Log::info("-The other assigned student " . $assStudent->id . " voted for this workgroup with: " . $assRating);
-                        $otherRatings = DB::table("ratings")->where([["user", $assStudent->id], ["workgroup", "<>", $workgroup]])->get();
-                        foreach ($otherRatings as $oRating) {
-                            //if space and loss less then gain)
-                            $loss = $assRating - $oRating->rating;
-                            $gain = $i - $assigned;
-                            if ($availableAGs[$oRating->workgroup]->spotsLeft > 0 && $loss < $gain) {
-                                Log::info("Found an available swap:");
-                                Log::info("Switching " . $assStudent->id . " to workgroup " . $oRating->workgroup . "(rating of " . $oRating->rating . ")");
-                                //Zuweisung ändern:
-                                DB::table("users")->where("id", $assStudent->id)->update(["zugewiesen" => $oRating->workgroup]);
-                                $availableAGs[$oRating->workgroup]->spotsLeft--;
+                    //if still a spot left
+                    if($availableAGs[$workgroup]->spotsLeft >0){
+                        Log::info("!There still is a spot left in this group. Student got assigned!");
+                        //Zuweisung ändern:
+                        DB::table("users")->where("id", $student->id)->update(["zugewiesen" => $workgroup]);
+                        $availableAGs[$workgroup]->spotsLeft--;
+                        if (isset($assignedAG)) {
+                            $availableAGs[$assignedAG]->spotsLeft++;
+                        }
+                    }
+                    else {
+                        //try to swap with other student to increase total rating
+                        $assignedStudents = DB::table("users")->where("zugewiesen", $workgroup)->get();//all other students that got assigned to this workgroup
+                        foreach ($assignedStudents as $assStudent) {//try to move them down
+                            $assRating = DB::table("ratings")->where([["user", $assStudent->id], ["workgroup", $workgroup]])->first()->rating; //how the other Student rated this (assigned) workgroup
+                            Log::info("-The other assigned student " . $assStudent->id . " voted for this workgroup with: " . $assRating);
+                            $otherRatings = DB::table("ratings")->where([["user", $assStudent->id], ["workgroup", "<>", $workgroup]])->get();//get all other Ratings from the assigned Student
+                            foreach ($otherRatings as $oRating) {
+                                //if space and loss less then gain)
+                                $loss = $assRating - $oRating->rating;
+                                $gain = $i - $assignedRating;
+                                if ($availableAGs[$oRating->workgroup]->spotsLeft > 0 && $loss < $gain) {
+                                    Log::info("!Found an available swap!:");
+                                    Log::info("Switching " . $assStudent->id . " to workgroup " . $oRating->workgroup . "(rating of " . $oRating->rating . ")");
+                                    //Zuweisung ändern:
+                                    DB::table("users")->where("id", $assStudent->id)->update(["zugewiesen" => $oRating->workgroup]);
+                                    $availableAGs[$oRating->workgroup]->spotsLeft--;
 
-                                DB::table("users")->where("id", $student->id)->update(["zugewiesen" => $workgroup]);
-                                if (isset($assignedAG)) {
-                                    $availableAGs[$assignedAG]->spotsLeft++;
+                                    DB::table("users")->where("id", $student->id)->update(["zugewiesen" => $workgroup]);
+                                    if (isset($assignedAG)) {
+                                        $availableAGs[$assignedAG]->spotsLeft++;
+                                    }
+                                    return $availableAGs;
                                 }
-                                return $availableAGs;
                             }
                         }
                     }
